@@ -1,13 +1,23 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
+import { Route } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 
 describe('App: CleanToTheCore', () => {
+
+  let config: Route[] = [
+    { path: '', component: HomeComponent }
+  ];
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule.withRoutes(config)],
       declarations: [
-        AppComponent
+        AppComponent,
+        HomeComponent
       ],
     });
   });
