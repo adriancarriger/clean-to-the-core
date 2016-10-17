@@ -5,6 +5,14 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: './home/home.module#HomeModule'
+  },
+  {
+    path: 'recipe/:slug',
+    loadChildren: './recipe/recipe.module#RecipeModule'
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 
