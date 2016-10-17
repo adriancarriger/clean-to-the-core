@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 
 @NgModule({
@@ -12,10 +13,11 @@ import { HomeModule } from './home/home.module';
     AppComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
+    CoreModule,
     HomeModule
   ],
   providers: [],
