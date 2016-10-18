@@ -1,13 +1,16 @@
 @import '../../../variables';
-.nav {
-  display: flex;
-  justify-content: space-between;
-  .nav-right {
-    justify-content: flex-end;
-  }
-  .nav-item {
-    padding: 10px;
-    display: inline-block;
-    font-family: $titleFont;
+:host {
+  display: block;
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    .nav-right {
+      justify-content: flex-end;
+    }
+    .nav-item {
+      padding: 10px;
+      display: inline-block;
+      font-family: $titleFont;
+    }
   }
 }

@@ -1,0 +1,30 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+app-layout { // :host (this element)
+  display: block;
+  position: relative;
+  min-height: 100%;
+  app-nav {
+     // Some routes require the nav to be fixed to the top of the page
+    &.fixed {
+      position: fixed;
+    }
+    // Otherwise the nav attaches to the top of it's parent element
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .content-container {
+    display: block;
+  }
+  app-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+  }
+}

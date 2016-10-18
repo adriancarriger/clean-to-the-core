@@ -4,13 +4,15 @@ import { RouterModule } from '@angular/router';
 
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import { LayoutComponent } from './layout/layout.component';
+import { WatchHeightDirective } from './watch-height.directive';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule
   ],
-  exports: [NavComponent, FooterComponent],
-  declarations: [NavComponent, FooterComponent]
+  exports: [LayoutComponent],
+  declarations: [NavComponent, FooterComponent, LayoutComponent, WatchHeightDirective]
 })
 export class CoreModule { }
