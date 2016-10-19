@@ -17,15 +17,9 @@ before_install:
   - sudo apt-get install -y libappindicator1 fonts-liberation
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
-  - echo "machine github.com\n   login ${github_email}\n   password ${github_token}" > ~/.netrc
-  - chmod 600 ~/.netrc
 
 after_success:
   # Send coverage data to Coveralls
   - cat ./coverage/coverage.lcov | ./node_modules/coveralls/bin/coveralls.js
-  # Remove uncommitted changes
-  - rm google-chrome-stable_current_amd64.deb
-  # deploy to github pages if build succeeds
-  - git status; npm run deploy-gh-pages
 
 after_script:
