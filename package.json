@@ -6,10 +6,11 @@
   "scripts": {
     "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
     "e2e": "protractor",
+    "fixCoverage": "node ./scripts/fix_coverage.js",
     "lint": "tslint \"src/**/*.ts\"",
     "pree2e": "webdriver-manager update",
     "start": "ng serve",
-    "test": "ng test --watch false",
+    "test": "ng test --watch false && npm run fixCoverage",
     "typedoc": "typedoc"
   },
   "private": false,
