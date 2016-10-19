@@ -39,4 +39,9 @@ describe('LayoutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should update padding on Height changes', () => {
+    component.onHeightChange('top', 10, 40);
+    expect(component.padding.top).toEqual('50px');
+  });
 });
