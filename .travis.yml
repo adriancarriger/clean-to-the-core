@@ -17,7 +17,7 @@ before_install:
   - sudo apt-get install -y libappindicator1 fonts-liberation
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
-  - sudo ./scripts/setup-github-access.sh
+  - echo "machine github.com\n   login ${github_email}\n   password ${github_token}" > ~/.netrc
 
 after_success:
   # Send coverage data to Coveralls
