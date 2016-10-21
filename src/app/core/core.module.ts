@@ -1,4 +1,4 @@
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -13,14 +13,20 @@ import { GlobalEventsService } from './global-events.service';
     CommonModule,
     RouterModule
   ],
-  providers: [
-    { provide: 'Window', useValue: window },
-    GlobalEventsService
-  ],
   exports: [LayoutComponent],
   declarations: [NavComponent, FooterComponent, LayoutComponent, WatchHeightDirective]
 })
 export class CoreModule {
+
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: CoreModule,
+      providers: [
+        { provide: 'Window', useValue: window },
+        GlobalEventsService
+      ]
+    };
+  }
 
   constructor (@Optional() @SkipSelf() parentModule: CoreModule) {
     if (parentModule) {
