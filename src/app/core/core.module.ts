@@ -12,6 +12,9 @@ import { WatchHeightDirective } from './watch-height.directive';
     CommonModule,
     RouterModule
   ],
+  providers: [
+    { provide: 'Window', useValue: window }
+  ],
   exports: [LayoutComponent],
   declarations: [NavComponent, FooterComponent, LayoutComponent, WatchHeightDirective]
 })
