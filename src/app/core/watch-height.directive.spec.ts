@@ -1,30 +1,66 @@
 /* tslint:disable:no-unused-variable */
-
-import { TestBed, async } from '@angular/core/testing';
+import { Component, Injectable } from '@angular/core';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { WatchHeightDirective } from './watch-height.directive';
+import { Subject } from 'rxjs/Rx';
+import { GlobalEventsService } from './global-events.service';
+
+@Component({
+  template: `<div [style.height]="heightInput" (heightChange)="testOutput = $event" appWatchHeight></div>`
+})
+export class ContainerComponent {
+  heightInput = '101px';
+  testOutput;
+}
+
+@Injectable()
+export class MockGlobalEventsService {
+  events$;
+  constructor() {
+    this.events$ = new Subject();
+  }
+  resize() {
+    return this.events$.asObservable();
+  }
+  update() {
+    this.events$.next(1);
+  }
+}
 
 describe('Directive: WatchHeight', () => {
-  let directive;
-  let el;
-  let window: Window;
+  let fixture: ComponentFixture<ContainerComponent>;
+  let mockEvents = new MockGlobalEventsService;
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: GlobalEventsService, useValue: mockEvents }
+      ],
+      declarations: [ContainerComponent, WatchHeightDirective]
+    })
+    .compileComponents();
+  }));
+
   beforeEach( () => {
-    el = {
-      nativeElement: {
-        clientHeight: 1234
-      }
-    };
-    directive = new WatchHeightDirective(el, window);
+    fixture = TestBed.createComponent(ContainerComponent);
+    fixture.detectChanges();
   });
 
   it('should create an instance', () => {
-    expect(directive).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should emit the inital height', done => {
-    directive.heightChange.subscribe(data => {
-      expect(data).toBe(1234);
-      done();
-    });
-    directive.ngOnInit();
+  it('should emit the inital height', () => {
+    let newValue = fixture.componentInstance.testOutput;
+    expect(newValue).toBe(0);
   });
+
+  it('should emit an updated height', done => {
+    mockEvents.update();
+    setTimeout( () => { // Wait for height to update
+      let newValue = fixture.componentInstance.testOutput;
+      expect(newValue).toBe(101);
+      done();
+    }, 500);
+  });
+  
 });

@@ -6,6 +6,7 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import { WatchHeightDirective } from './watch-height.directive';
+import { GlobalEventsService } from './global-events.service';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { WatchHeightDirective } from './watch-height.directive';
     RouterModule
   ],
   providers: [
-    { provide: 'Window', useValue: window }
+    { provide: 'Window', useValue: window },
+    GlobalEventsService
   ],
   exports: [LayoutComponent],
   declarations: [NavComponent, FooterComponent, LayoutComponent, WatchHeightDirective]
