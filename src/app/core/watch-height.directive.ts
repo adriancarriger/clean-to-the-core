@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 @Directive({
@@ -7,7 +7,9 @@ import { Observable } from 'rxjs/Rx';
 export class WatchHeightDirective implements OnInit {
   @Output() heightChange = new EventEmitter();
 
-  constructor(private el: ElementRef) { }
+  constructor(
+    private el: ElementRef,
+    @Inject('Window') window: Window) { }
 
   ngOnInit() {
     this.updateHeight();
@@ -21,7 +23,7 @@ export class WatchHeightDirective implements OnInit {
   private listenToResize() {
     Observable.fromEvent(window, 'resize')
       .throttleTime( 300 )
-      .subscribe( () =>  this.updateHeight() );
+      .subscribe( () => this.updateHeight() );
   }
 
 }
