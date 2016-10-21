@@ -1,8 +1,8 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Route } from '@angular/router';
+import { Location } from '@angular/common';
+import { Route, Router} from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { FooterComponent } from '../footer/footer.component';
@@ -12,9 +12,11 @@ import { LayoutComponent } from './layout.component';
 import { NavComponent } from '../nav/nav.component';
 
 describe('LayoutComponent', () => {
-
+  let router: Router;
+  let location: Location;
   let config: Route[] = [
-    { path: '', component: HomeComponent }
+    { path: '', component: HomeComponent },
+    { path: 'test', component: HomeComponent, data: { fixed: true }}
   ];
   let component: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>;
@@ -25,16 +27,19 @@ describe('LayoutComponent', () => {
         RouterTestingModule.withRoutes(config),
         HomeModule
       ],
+      providers: [Location],
       declarations: [ FooterComponent, LayoutComponent, NavComponent ]
     })
     .compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach(inject([Router, Location], (_router: Router, _location: Location) => {
+    location = _location;
+    router = _router;
     fixture = TestBed.createComponent(LayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -44,4 +49,12 @@ describe('LayoutComponent', () => {
     component.onHeightChange('top', 10, 40);
     expect(component.padding.top).toEqual('50px');
   });
+
+  it('should set fixed to true on route change', () => {
+    router.navigate(['/test']).then(() => {
+      expect(location.path()).toBe('/test');
+      expect(component.fixed).toBe(true);
+    });
+  });
+
 });
