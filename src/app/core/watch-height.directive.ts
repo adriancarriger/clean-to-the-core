@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 @Directive({
@@ -8,8 +8,7 @@ export class WatchHeightDirective implements OnInit {
   @Output() heightChange = new EventEmitter();
 
   constructor(
-    private el: ElementRef,
-    @Inject('Window') window: Window) { }
+    private el: ElementRef) { }
 
   ngOnInit() {
     this.updateHeight();

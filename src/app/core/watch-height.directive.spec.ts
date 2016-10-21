@@ -6,14 +6,13 @@ import { WatchHeightDirective } from './watch-height.directive';
 describe('Directive: WatchHeight', () => {
   let directive;
   let el;
-  let window: Window;
   beforeEach( () => {
     el = {
       nativeElement: {
         clientHeight: 1234
       }
     };
-    directive = new WatchHeightDirective(el, window);
+    directive = new WatchHeightDirective(el);
   });
 
   it('should create an instance', () => {
