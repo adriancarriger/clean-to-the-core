@@ -2,6 +2,7 @@
 
 [![Build Status](http://img.shields.io/travis/adriancarriger/clean-to-the-core/master.svg?maxAge=60)](https://travis-ci.org/adriancarriger/clean-to-the-core)
 [![Coverage Status](http://img.shields.io/coveralls/adriancarriger/clean-to-the-core/master.svg?maxAge=60)](https://coveralls.io/github/adriancarriger/clean-to-the-core?branch=master)
+[![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 
 This is my fifth of five projects in the Udacity [Senior Web Developer Nanodegree](https://www.udacity.com/course/senior-web-developer-nanodegree--nd802) program. This is a work in progress.
 
