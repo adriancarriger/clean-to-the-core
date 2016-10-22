@@ -17,7 +17,7 @@ describe('App: CleanToTheCore', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule.withRoutes(config),
-        CoreModule
+        CoreModule.forRoot()
       ],
       declarations: [
         AppComponent,
