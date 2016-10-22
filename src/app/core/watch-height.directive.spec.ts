@@ -51,15 +51,13 @@ describe('Directive: WatchHeight', () => {
   });
 
   it('should emit the inital height', () => {
-    let newValue = fixture.componentInstance.testOutput;
-    expect(newValue).toBe(0);
+    expect( fixture.componentInstance.testOutput ).toBe(0);
   });
 
   it('should emit an updated height', done => {
     mockEvents.update();
     setTimeout( () => { // Wait for height to update
-      let newValue = fixture.componentInstance.testOutput;
-      expect(newValue).toBe(101);
+      expect( fixture.componentInstance.testOutput ).toBe(101);
       done();
     }, 500);
   });

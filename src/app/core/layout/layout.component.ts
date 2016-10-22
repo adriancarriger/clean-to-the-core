@@ -23,8 +23,7 @@ export class LayoutComponent implements OnInit {
    * of `.content-area`.
    */
   onHeightChange(item, additionalPadding, newHeight) {
-    let newPadding = newHeight + additionalPadding;
-    this.padding[item] = newPadding + 'px';
+    this.padding[item] = newHeight + additionalPadding + 'px';
   }
   ngOnInit(): void {
     this.router.events.subscribe(event => {

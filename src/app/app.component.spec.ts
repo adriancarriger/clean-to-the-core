@@ -8,7 +8,7 @@ import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
 
 describe('App: CleanToTheCore', () => {
-  let config: Route[] = [
+  const config: Route[] = [
     { path: '', component: HomeComponent }
   ];
   beforeEach(() => {

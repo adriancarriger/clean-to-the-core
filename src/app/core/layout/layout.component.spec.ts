@@ -12,7 +12,7 @@ import { HomeComponent } from '../../home/home.component';
 import { HomeModule } from '../../home/home.module';
 
 describe('LayoutComponent', () => {
-  let config: Route[] = [
+  const config: Route[] = [
     { path: '', component: HomeComponent },
     { path: 'test', component: HomeComponent, data: { fixed: true }}
   ];
