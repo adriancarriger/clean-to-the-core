@@ -1,12 +1,13 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { NavComponent } from './nav/nav.component';
+import { GlobalEventsService } from './global-events.service';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
+import { NavComponent } from './nav/nav.component';
 import { WatchHeightDirective } from './watch-height.directive';
-import { GlobalEventsService } from './global-events.service';
+
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { GlobalEventsService } from './global-events.service';
     RouterModule
   ],
   exports: [LayoutComponent],
-  declarations: [NavComponent, FooterComponent, LayoutComponent, WatchHeightDirective]
+  declarations: [FooterComponent, NavComponent, LayoutComponent, WatchHeightDirective]
 })
 export class CoreModule {
 
@@ -22,8 +23,8 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        { provide: 'Window', useValue: window },
-        GlobalEventsService
+        GlobalEventsService,
+        { provide: 'Window', useValue: window }
       ]
     };
   }

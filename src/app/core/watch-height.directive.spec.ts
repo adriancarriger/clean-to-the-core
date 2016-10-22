@@ -1,9 +1,10 @@
 /* tslint:disable:no-unused-variable */
 import { Component, Injectable } from '@angular/core';
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { WatchHeightDirective } from './watch-height.directive';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs/Rx';
+
 import { GlobalEventsService } from './global-events.service';
+import { WatchHeightDirective } from './watch-height.directive';
 
 @Component({
   template: `<div [style.height]="heightInput" (heightChange)="testOutput = $event" appWatchHeight></div>`

@@ -1,5 +1,6 @@
 /* tslint:disable:no-unused-variable */
-import { TestBed, async, inject } from '@angular/core/testing';
+import { async, inject, TestBed } from '@angular/core/testing';
+
 import { GlobalEventsService } from './global-events.service';
 
 describe('Service: GlobalEvents', () => {
@@ -8,8 +9,8 @@ describe('Service: GlobalEvents', () => {
     myMockWindow = <any> {location: <any> {hostname: '127.0.0.1'}};
     TestBed.configureTestingModule({
       providers: [
-        { provide: 'Window', useValue: window },
-        GlobalEventsService
+        GlobalEventsService,
+        { provide: 'Window', useValue: window }
       ]
     });
   });
