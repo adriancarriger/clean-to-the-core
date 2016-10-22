@@ -16,9 +16,7 @@ describe('Service: GlobalEvents', () => {
   });
 
   beforeEach(async(() => {
-    console.log('Compiling');
     TestBed.compileComponents().catch(error => console.error(error));
-    console.log('Compiling again');
   }));
 
   it('should ...', inject([GlobalEventsService], (service: GlobalEventsService) => {

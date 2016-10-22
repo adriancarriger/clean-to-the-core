@@ -8,7 +8,6 @@ import { LayoutComponent } from './layout/layout.component';
 import { NavComponent } from './nav/nav.component';
 import { WatchHeightDirective } from './watch-height.directive';
 
-
 @NgModule({
   imports: [
     CommonModule,

@@ -12,14 +12,14 @@ import { HomeComponent } from '../../home/home.component';
 import { HomeModule } from '../../home/home.module';
 
 describe('LayoutComponent', () => {
-  let router: Router;
-  let location: Location;
   let config: Route[] = [
     { path: '', component: HomeComponent },
     { path: 'test', component: HomeComponent, data: { fixed: true }}
   ];
   let component: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>;
+  let location: Location;
+  let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

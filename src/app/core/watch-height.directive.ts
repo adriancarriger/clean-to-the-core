@@ -17,14 +17,12 @@ export class WatchHeightDirective implements OnInit {
     this.listenToResize();
   }
 
-  private updateHeight() {
-    this.heightChange.emit( this.el.nativeElement.clientHeight );
-  }
-
   private listenToResize() {
     this.events.resize().subscribe( () => {
       this.updateHeight();
     });
   }
-
+  private updateHeight() {
+    this.heightChange.emit( this.el.nativeElement.clientHeight );
+  }
 }

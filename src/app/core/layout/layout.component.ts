@@ -15,9 +15,17 @@ export class LayoutComponent implements OnInit {
   };
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
+  /**
+   * When the height of `app-nav` or `app-footer` changes this adds the new height to the padding
+   * of `.content-area`.
+   */
+  onHeightChange(item, additionalPadding, newHeight) {
+    let newPadding = newHeight + additionalPadding;
+    this.padding[item] = newPadding + 'px';
+  }
   ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -27,13 +35,4 @@ export class LayoutComponent implements OnInit {
       }
     });
   }
-  /**
-   * When the height of `app-nav` or `app-footer` changes this adds the new height to the padding
-   * of `.content-area`.
-   */
-  onHeightChange(item, additionalPadding, newHeight) {
-    let newPadding = newHeight + additionalPadding;
-    this.padding[item] = newPadding + 'px';
-  }
-
 }

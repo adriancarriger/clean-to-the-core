@@ -63,5 +63,4 @@ describe('Directive: WatchHeight', () => {
       done();
     }, 500);
   });
-  
 });
