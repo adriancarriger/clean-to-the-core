@@ -5,7 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "deploy-gh-pages": "ng github-pages:deploy --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"",
-    "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
+    "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/app",
     "e2e": "protractor",
     "fixCoverage": "node ./scripts/fix_coverage.js",
     "lint": "tslint \"src/**/*.ts\"",
@@ -43,6 +43,7 @@
     "core-js": "^2.4.1",
     "rxjs": "5.0.0-rc.1",
     "ts-helpers": "^1.1.1",
+    "typedoc-plugin-external-module-name": "^1.0.4",
     "zone.js": "^0.6.23"
   },
   "devDependencies": {

@@ -1,3 +1,6 @@
+/**
+ * @module CoreModule
+ */ /** */
 import { Directive, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { GlobalEventsService } from './global-events.service';

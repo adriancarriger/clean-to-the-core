@@ -1,3 +1,7 @@
+/**
+ * @module CoreModule
+ */ /** */
+
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 

@@ -1,3 +1,6 @@
+/**
+ * @module CoreModule
+ */ /** */
 import { Component } from '@angular/core';
 
 @Component({

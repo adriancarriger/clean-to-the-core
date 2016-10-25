@@ -1,3 +1,6 @@
+/**
+ * @module CoreModule
+ */ /** */
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
