@@ -46,7 +46,7 @@ describe('LayoutComponent', () => {
   });
 
   it('should update padding on Height changes', () => {
-    component.onHeightChange('top', 10, 40);
+    component.onHeightChange('top', 40, 10);
     expect(component.padding.top).toEqual('50px');
   });
 

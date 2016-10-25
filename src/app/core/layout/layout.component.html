@@ -1,7 +1,7 @@
-<app-nav [class.fixed]="fixed" appWatchHeight (heightChange)="onHeightChange('top', 10, $event)"></app-nav>
+<app-nav [class.fixed]="fixed" appWatchHeight (heightChange)="onHeightChange('top', $event, 10)"></app-nav>
 <div class="content-container">
   <div [style.padding-top]="padding.top" [style.padding-bottom]="padding.bottom" class="content-area">
     <router-outlet></router-outlet>
   </div>
 </div>
-<app-footer appWatchHeight (heightChange)="onHeightChange('bottom', 10, $event)"></app-footer>
+<app-footer appWatchHeight (heightChange)="onHeightChange('bottom', $event, 10)"></app-footer>

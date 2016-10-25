@@ -3,7 +3,22 @@
  */ /** */
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-
+/**
+ * @whatItDoes Manages all layout functions for the {@link AppComponent}.
+ * @purpose The goal for this component is to encapsulate all logic relating to how the app's layout
+ * should function.
+ * 
+ * **This allows**:
+ * - all sub-components to focus on their own encapsulated behaviour
+ * - most layout changes to be made in one place
+ * - the {@link AppComponent} to stay lean and focused on its main task, orchestrating the app as a whole
+ * - the layout to be separate from other non-layout dependant elements such as modals and alerts
+ * - the layout to later be put inside a lazy-loaded route if the site requires a different
+ * layout for signed in users
+ * 
+ * For example, a change in the {@link FooterComponent} design shouldn't also require a change in the
+ * {@link LayoutComponent} or {@link NavComponent}. 
+ */
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -11,30 +26,62 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class LayoutComponent implements OnInit {
+  /**
+   * This allows the {@link NavComponent} to be fixed to the top of the page.
+   */
   fixed: boolean;
+  /**
+   * Current padding of the layout, updated by {@link onHeightChange}.
+   * 
+   * **Padding is set dynamically so that**:
+   * - {@link LayoutComponent} does not need to know about other elements' styling
+   * - layout sub-components can be made without a predefined height
+   * @param padding.top Responds to the height of {@link NavComponent}. Defaults to `20px`.
+   * @param padding.bottom Responds to the height of {@link FooterComponent}. Defaults to `20px`.
+   */
   padding = {
     top: '20px',
     bottom: '20px'
   };
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router) { }
-
   /**
-   * When the height of `app-nav` or `app-footer` changes this adds the new height to the padding
-   * of `.content-area`.
+   * Creates the {@link LayoutComponent}.
    */
-  onHeightChange(item, additionalPadding, newHeight) {
-    this.padding[item] = newHeight + additionalPadding + 'px';
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
+  /**
+   * When {@link NavComponent} or {@link FooterComponent} emits a height change,
+   * {@link onHeightChange} adds the new height to the padding of the `.content-area` element.
+   * @param position           accepts `top` or `bottom`.
+   * @param newHeight          the new pixel height of the element being measured
+   * @param additionalPadding  extra padding beyond the pixel height of the element being measured.
+   */
+  onHeightChange(position: string, newHeight: number, additionalPadding: number) {
+    this.padding[position] = newHeight + additionalPadding + 'px';
   }
-  ngOnInit(): void {
+  /**
+   * Sets up the route change listener.
+   */
+  ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        // If this route requires the nav to fixed to the top
-        this.fixed = this.route.snapshot.firstChild.data['fixed'];
-        document.body.scrollTop = 0;
+        this.onNewRoute();
       }
     });
+  }
+  /**
+   * {@link onNewRoute} is responsible for setting up route specific elements relating to the layout.
+   * 
+   * **`this.fixed`**: Tells the view if the new route requires {@link NavComponent} to fixed to the
+   * top of the page.
+   * - Route data is set in the {@link AppRoutingModule}.
+   * 
+   * **`scrollTop`**: Scrolls the page to the top.
+   * - Without this users will stay at their current scroll position when navigating between pages
+   * which is unexpected.
+   */
+  private onNewRoute() {
+    this.fixed = this.activatedRoute.snapshot.firstChild.data['fixed'];
+    document.body.scrollTop = 0;
   }
 }
