@@ -4,6 +4,8 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
+    "deploy": "ng build && npm run docs && npm run deployDocs && ng gh-pages:deploy --skip-build",
+    "deployDocs": "cp -R docs/ dist/docs/",
     "deploy-gh-pages": "ng github-pages:deploy --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"",
     "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/app",
     "e2e": "protractor",
