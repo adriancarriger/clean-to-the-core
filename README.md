@@ -8,13 +8,17 @@
 
 This is my fifth of five projects in the Udacity [Senior Web Developer Nanodegree](https://www.udacity.com/course/senior-web-developer-nanodegree--nd802) program. This is a work in progress.
 
+## Description
+
+A progressive web app recipe blog that meets the [requirements](REQUIREMENTS.md).
+
 ## Demo
 
 Checkout the demo at: [https://adriancarriger.github.io/clean-to-the-core/](https://adriancarriger.github.io/clean-to-the-core/)
 
-## Description
+## Docs
 
-A progressive web app recipe blog that meets the [requirements](REQUIREMENTS.md).
+Documentation available at [https://adriancarriger.github.io/clean-to-the-core/docs/](https://adriancarriger.github.io/clean-to-the-core/docs/)
 
 ## Tech Stack
 
