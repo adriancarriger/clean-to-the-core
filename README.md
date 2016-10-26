@@ -18,7 +18,7 @@ Checkout the [demo](https://adriancarriger.github.io/clean-to-the-core/)
 
 ## Docs
 
-Checkout the [documentation](https://adriancarriger.github.io/clean-to-the-core/docs/globals.html)
+Checkout the [documentation](https://adriancarriger.github.io/clean-to-the-core/assets/docs/globals.html)
 
 ## Tech Stack
 
