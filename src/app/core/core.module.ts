@@ -10,6 +10,7 @@ import { GlobalEventsService } from './global-events.service';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NavComponent } from './nav/nav.component';
+import { throwIfAlreadyLoaded } from './module-import-guard';
 import { WatchHeightDirective } from './watch-height.directive';
 /**
  * This module follows the Angular style guide [STYLE 04-11](https://angular.io/styleguide#04-11)
@@ -33,11 +34,11 @@ export class CoreModule {
       ]
     };
   }
-
-  constructor (@Optional() @SkipSelf() parentModule: CoreModule) {
-    if (parentModule) {
-      throw new Error(
-        'CoreModule is already loaded. Import it in the AppModule only');
-    }
+  /**
+   * Prevent Reimport of Core Module
+   * [STYLE 04-11](https://angular.io/styleguide#04-12)
+   */
+  constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
+    throwIfAlreadyLoaded(parentModule, 'CoreModule');
   }
 }
