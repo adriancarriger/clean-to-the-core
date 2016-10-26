@@ -4,15 +4,17 @@
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 /**
- * {@link GlobalEventsService} is reponsible for handling and dispatching global events such as
- * `window` resizing, `body` scrolling, etc.  
+ * @whatItDoes Reponsible for handling and dispatching global events such as `window` resizing,
+ * `body` scrolling, etc.
+ * @consumers {@link WatchHeightDirective}
+ * @providerContext {@link AppComponent}   
  */
 @Injectable()
 export class GlobalEventsService {
   /**
-   * Creates {@link GlobalEventsService}
+   * Creates the {@link GlobalEventsService}
    * @param window `@Inject` is used to allow a mock window during testing
-   * (following this [Stackover answer](http://stackoverflow.com/a/38875374/5357459)).
+   * (following this [Stackoverflow answer](http://stackoverflow.com/a/38875374/5357459)).
    */
   constructor(@Inject('Window') window: Window) { }
   /**
@@ -21,5 +23,4 @@ export class GlobalEventsService {
   resize(): Observable<Event> {
     return Observable.fromEvent(window, 'resize');
   }
-
 }

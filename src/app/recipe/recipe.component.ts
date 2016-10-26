@@ -1,18 +1,14 @@
 /**
  * @module RecipeModule
  */ /** */
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
+/**
+ * @whatItDoes Returns the {@link RecipeComponent} view.
+ * @consumers {@link RecipeModule}, {@link RecipeRoutingModule}
+ */
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.scss']
 })
-export class RecipeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class RecipeComponent { }

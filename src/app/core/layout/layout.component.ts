@@ -8,7 +8,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
  * @purpose The goal for this component is to encapsulate all logic relating to how the app's layout
  * should function.
  * 
- * **This allows**:
+ * **This allows:**
  * - all sub-components to focus on their own encapsulated behaviour
  * - most layout changes to be made in one place
  * - the {@link AppComponent} to stay lean and focused on its main task, orchestrating the app as a whole
@@ -33,7 +33,7 @@ export class LayoutComponent implements OnInit {
   /**
    * Current padding of the layout, updated by {@link onHeightChange}.
    * 
-   * **Padding is set dynamically so that**:
+   * **Padding is set dynamically so that:**
    * - {@link LayoutComponent} does not need to know about other elements' styling
    * - layout sub-components can be made without a predefined height
    * @param padding.top Responds to the height of {@link NavComponent}. Defaults to `20px`.
@@ -72,11 +72,11 @@ export class LayoutComponent implements OnInit {
   /**
    * {@link onNewRoute} is responsible for setting up route specific elements relating to the layout.
    * 
-   * **`this.fixed`**: Tells the view if the new route requires {@link NavComponent} to fixed to the
+   * **`this.fixed`:** Tells the view if the new route requires {@link NavComponent} to fixed to the
    * top of the page.
    * - Route data is set in the {@link AppRoutingModule}.
    * 
-   * **`scrollTop`**: Scrolls the page to the top.
+   * **`scrollTop`:** Scrolls the page to the top.
    * - Without this users will stay at their current scroll position when navigating between pages
    * which is unexpected.
    */

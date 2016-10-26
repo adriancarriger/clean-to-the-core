@@ -10,7 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-
+/**
+ * @whatItDoes The root module class that is bootstraped by the `main.ts` file.
+ * @see [Angular 2 docs - the application root module](https://angular.io/docs/ts/latest/guide/ngmodule.html#root-module)
+ */
 @NgModule({
   declarations: [
     AppComponent

@@ -2,7 +2,12 @@
  * @module CoreModule
  */ /** */
 import { Component } from '@angular/core';
-
+/**
+ * @whatItDoes Returns the {@link FooterComponent} view
+ * @consumers {@link LayoutComponent}
+ * 
+ * Shown at the bottom of each page.
+ */
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
