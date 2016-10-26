@@ -11,9 +11,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NavComponent } from './nav/nav.component';
 import { WatchHeightDirective } from './watch-height.directive';
-
 /**
- * This module follows the Angular style guide [STYLE 04-11](https://angular.io/styleguide#!#04-11)
+ * This module follows the Angular style guide [STYLE 04-11](https://angular.io/styleguide#04-11)
  */
 @NgModule({
   imports: [
