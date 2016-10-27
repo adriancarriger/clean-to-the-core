@@ -1,7 +1,9 @@
-<nav class="nav">
-  <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">Clean to the Core</a>
-  <div class="nav-right">
-    <a [routerLink]="['/about']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item" aria-label="About Clean to the Core">About</a>
-    <button class="nav-item btn-link">Sign in / Sign up</button>
+<nav class="nav" [class.white-text]="whiteText">
+  <div class="nav-content">
+    <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">Clean to the Core</a>
+    <div class="nav-right">
+      <a [routerLink]="['/about']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item" aria-label="About Clean to the Core">About</a>
+      <button class="nav-item btn-link">Sign in / Sign up</button>
+    </div>
   </div>
 </nav>

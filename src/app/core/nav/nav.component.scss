@@ -1,13 +1,36 @@
 @import '../../../variables';
 .nav {
-  display: flex;
-  justify-content: space-between;
-  .nav-right {
-    justify-content: flex-end;
+  $textPadding: 10px;
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1;
+    font-size: 19px;
+    .nav-right {
+      justify-content: flex-end;
+    }
+    .nav-item {
+      padding: $textPadding;
+      display: inline-block;
+      font-family: $titleFont;
+      padding-bottom: 0;
+    }
   }
-  .nav-item {
-    padding: 10px;
-    display: inline-block;
-    font-family: $titleFont;
+  &:after {
+    content: "";
+    height: $textPadding;
+    display: block;
+  }
+  &.white-text {
+    .nav-content {
+      background-color: rgba(0, 0, 0, 0.54);
+      .nav-item {
+        color: white;
+      }
+    }
+    &:after {
+      // background: linear-gradient(rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.01)); // wip
+      background-color: rgba(0, 0, 0, 0.54);
+    }
   }
 }

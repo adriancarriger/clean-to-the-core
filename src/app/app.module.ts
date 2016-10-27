@@ -19,7 +19,7 @@ import { CoreModule } from './core/core.module';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    CoreModule.forRoot(),
+    CoreModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 /**
  * @module CoreModule
  */ /** */
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 /**
  * @whatItDoes Returns the {@link NavComponent} view
  * @consumers {@link LayoutComponent}
@@ -13,4 +13,6 @@ import { Component } from '@angular/core';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent { }
+export class NavComponent {
+  @Input() whiteText: boolean;
+}

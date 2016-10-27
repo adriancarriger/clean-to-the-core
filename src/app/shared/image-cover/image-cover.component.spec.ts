@@ -1,25 +1,23 @@
 /* tslint:disable:no-unused-variable */
-import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
-import { HomeComponent } from './home.component';
-import { SharedModule } from '../shared/shared.module';
+import { ImageCoverComponent } from './image-cover.component';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('ImageCoverComponent', () => {
+  let component: ImageCoverComponent;
+  let fixture: ComponentFixture<ImageCoverComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ SharedModule ],
-      declarations: [ HomeComponent ]
+      declarations: [ ImageCoverComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(ImageCoverComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
