@@ -1,11 +1,13 @@
 @import '../../../variables';
 :host {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
   .label-container {
     border-radius: 50%;
     width: 70px;
     height: 70px;
-    float: left;
-    font-size: 18px;
+    font-size: 16px;
     position: relative;
     margin: 3px;
     background-color: black;

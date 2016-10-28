@@ -2,12 +2,6 @@
 .primary-image {
   padding-bottom: 50%;
   display: block;
-  position: relative; 
-  app-labels {
-    position: absolute;
-    right: 5%;
-    bottom: 30px;
-  }
 }
 .header {
   text-align: center;
@@ -19,4 +13,17 @@
   .blurb {
     font-family: $titleFont;
   }
+  app-labels {
+    max-width: 515px;
+    margin: 25px auto;
+    @media(min-width: $desktopBreakPoint) {
+      position: absolute;
+      right: 5%;
+      bottom: 100px;
+    }
+  }
+}
+:host {
+  display: block;
+  position: relative;
 }
