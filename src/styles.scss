@@ -1,7 +1,7 @@
 @import './variables';
 // Fonts
 @font-face {
-	font-family: GeosansLight;
+	font-family: $titleFont;
 	font-weight: normal;
 	src: url('assets/GeosansLight.ttf');
 }
@@ -9,9 +9,16 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
+body, html {
+  font-family: $titleFont;
+  font-size: 20px;
+}
 a {
-  color: $primaryColor;
+  color: $linkColor;
   text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 // http://stackoverflow.com/a/12642009/5357459
 .btn-link {
