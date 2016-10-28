@@ -9,7 +9,7 @@
     "e2e": "protractor",
     "fixCoverage": "node ./scripts/fix_coverage.js",
     "lint": "tslint \"src/**/*.ts\"",
-    "pree2e": "webdriver-manager update",
+    "pree2e": "webdriver-manager update; tsc --project e2e",
     "minCoverage": "node ./scripts/minimum_coverage.js",
     "start": "ng serve",
     "test": "ng lint && ng test --watch false && npm run fixCoverage",
