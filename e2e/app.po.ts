@@ -1,8 +1,9 @@
-import { browser, element, by } from 'protractor';
+import { by, element } from 'protractor';
+import { Utilities } from './utilities';
 
 export class CleanToTheCorePage {
   navigateTo() {
-    return browser.get('/');
+    return Utilities.navTo('/');
   }
 
   getParagraphText() {

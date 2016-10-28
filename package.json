@@ -7,6 +7,7 @@
     "deploy": "npm run docs && ng gh-pages:deploy --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"",
     "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/app",
     "e2e": "protractor",
+    "e2eTests": "export PROTRACTOR_ENV='local'; ng e2e",
     "fixCoverage": "node ./scripts/fix_coverage.js",
     "lint": "tslint \"src/**/*.ts\"",
     "pree2e": "webdriver-manager update; tsc --project e2e",
