@@ -1,7 +1,13 @@
+@import '../../variables';
 .primary-image {
   padding-bottom: 50%;
   display: block;
   position: relative; 
+  app-labels {
+    position: absolute;
+    right: 5%;
+    bottom: 30px;
+  }
 }
 .header {
   text-align: center;
@@ -9,5 +15,8 @@
     font-size: 25px;
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+  .blurb {
+    font-family: $titleFont;
   }
 }
