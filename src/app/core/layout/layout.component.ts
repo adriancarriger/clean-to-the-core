@@ -27,9 +27,12 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
   /**
-   * This allows the {@link NavComponent} to be fixed to the top of the page.
+   * Route specific layout options.
+   * 
+   * This lets the {@link NavComponent} view know about any number of route specific
+   * layout customization options that are set in the {@link AppRoutingModule} config.
    */
-  fixed: boolean;
+  layout: LayoutOptions;
   /**
    * Current padding of the layout, updated by {@link onHeightChange}.
    * 
@@ -72,16 +75,21 @@ export class LayoutComponent implements OnInit {
   /**
    * {@link onNewRoute} is responsible for setting up route specific elements relating to the layout.
    * 
-   * **`this.fixed`:** Tells the view if the new route requires {@link NavComponent} to fixed to the
-   * top of the page.
-   * - Route data is set in the {@link AppRoutingModule}.
+   * **`this.layout`:** Tells the {@link NavComponent} view about any number of route specific
+   * layout customization options that are set in the {@link AppRoutingModule} config.
    * 
    * **`scrollTop`:** Scrolls the page to the top.
    * - Without this users will stay at their current scroll position when navigating between pages
    * which is unexpected.
    */
   private onNewRoute() {
-    this.fixed = this.activatedRoute.snapshot.firstChild.data['fixed'];
+    this.layout = this.activatedRoute.snapshot.firstChild.data['layout'];
     document.body.scrollTop = 0;
   }
+}
+/**
+ * Route specific layout options.
+ */
+export interface LayoutOptions {
+  [propName: string]: boolean|number|string;
 }

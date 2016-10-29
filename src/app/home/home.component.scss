@@ -1,28 +1,45 @@
 @import '../../variables';
-.primary-image {
-  padding-bottom: 50%;
-  display: block;
-}
-.header {
-  text-align: center;
-  .title {
-    font-size: 25px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+$imageHeight: 50%;
+.fixed-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  .primary-image {
+    display: block;
+    padding-bottom: $imageHeight;
   }
-  .blurb {
-    font-family: $titleFont;
-  }
-  app-labels {
-    max-width: 515px;
-    margin: 25px auto;
-    @media(min-width: $desktopBreakPoint) {
-      position: absolute;
-      right: 5%;
-      bottom: 100px;
+  .header {
+    text-align: center;
+    overflow: hidden;
+    .title {
+      font-size: 25px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .blurb {
+      font-family: $titleFont;
+    }
+    app-labels {
+      max-width: 515px;
+      margin: 25px auto;
+      @media(min-width: $desktopBreakPoint) {
+        position: absolute;
+        right: 5%;
+        bottom: 100px;
+      }
     }
   }
 }
+
+.home-content {
+  background: white;
+  margin-top: calc( #{$imageHeight} + 190px );
+  padding-top: 20px;
+  z-index: 10;
+}
+
 :host {
   display: block;
   position: relative;

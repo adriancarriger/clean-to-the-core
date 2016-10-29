@@ -10,22 +10,20 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      fixed: false
+      layout: {
+        navWhiteText: true,
+        paddingTop: false,
+        zIndex: 0
+      }
     },
     loadChildren: './home/home.module#HomeModule'
   },
   {
     path: 'about',
-    data: {
-      fixed: true
-    },
     loadChildren: './about/about.module#AboutModule'
   },
   {
     path: 'recipe/:slug',
-    data: {
-      fixed: true
-    },
     loadChildren: './recipe/recipe.module#RecipeModule'
   },
   {
