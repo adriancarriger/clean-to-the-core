@@ -9,9 +9,9 @@ import { RouterModule } from '@angular/router';
 import { GlobalEventsService } from './global-events.service';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
-import { NavComponent } from './nav/nav.component';
 import { throwIfAlreadyLoaded } from './module-import-guard';
-import { WatchHeightDirective } from './watch-height.directive';
+import { NavComponent } from './nav/nav.component';
+import { SharedModule } from '../shared/shared.module';
 /**
  * @whatItDoes {@link CoreModule} exists to make commonly used singleton services and single-use classes available
  * for use in the many other modules.
@@ -22,10 +22,11 @@ import { WatchHeightDirective } from './watch-height.directive';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports: [LayoutComponent],
-  declarations: [FooterComponent, NavComponent, LayoutComponent, WatchHeightDirective]
+  declarations: [FooterComponent, NavComponent, LayoutComponent]
 })
 export class CoreModule {
   /**

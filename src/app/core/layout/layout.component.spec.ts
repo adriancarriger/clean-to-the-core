@@ -14,7 +14,7 @@ import { HomeModule } from '../../home/home.module';
 describe('LayoutComponent', () => {
   const config: Route[] = [
     { path: '', component: HomeComponent },
-    { path: 'test', component: HomeComponent, data: { fixed: true }}
+    { path: 'test', component: HomeComponent, data: { layout: { paddingTop: true } }}
   ];
   let component: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>;
@@ -53,7 +53,7 @@ describe('LayoutComponent', () => {
   it('should set fixed to true on route change', () => {
     router.navigate(['/test']).then(() => {
       expect(location.path()).toBe('/test');
-      expect(component.fixed).toBe(true);
+      expect(component.layout['paddingTop']).toBe(true);
     });
   });
 

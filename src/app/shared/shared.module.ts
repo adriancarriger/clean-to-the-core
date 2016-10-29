@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageCoverComponent } from './image-cover/image-cover.component';
 import { LabelsComponent } from './labels/labels.component';
+import { WatchHeightDirective } from './watch-height/watch-height.directive';
 /**
  * @whatItDoes {@link SharedModule} exists to hold the common components, directives, and pipes
  * and share them with the modules that need them.
@@ -19,10 +20,13 @@ import { LabelsComponent } from './labels/labels.component';
   ],
   declarations: [
     ImageCoverComponent,
-    LabelsComponent ],
+    LabelsComponent,
+    WatchHeightDirective
+  ],
   exports: [
     ImageCoverComponent,
-    LabelsComponent
+    LabelsComponent,
+    WatchHeightDirective
   ]
 })
 export class SharedModule { }

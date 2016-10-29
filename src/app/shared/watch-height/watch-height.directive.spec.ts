@@ -3,7 +3,7 @@ import { Component, Injectable } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs/Rx';
 
-import { GlobalEventsService } from './global-events.service';
+import { GlobalEventsService } from '../../core/global-events.service';
 import { WatchHeightDirective } from './watch-height.directive';
 
 @Component({
