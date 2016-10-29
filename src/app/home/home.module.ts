@@ -4,8 +4,9 @@
  */ /** */
 import { NgModule } from '@angular/core';
 
-import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { HomeRoutingModule } from './home-routing.module';
+import { FilterComponent } from './filter/filter.component';
 import { SharedModule } from '../shared/shared.module';
 /**
  * @whatItDoes Lazy loaded feature module for the home page.
@@ -16,6 +17,6 @@ import { SharedModule } from '../shared/shared.module';
     HomeRoutingModule,
     SharedModule
   ],
-  declarations: [HomeComponent]
+  declarations: [HomeComponent, FilterComponent]
 })
 export class HomeModule { }

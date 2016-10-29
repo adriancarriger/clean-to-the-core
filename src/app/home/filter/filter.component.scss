@@ -1,0 +1,26 @@
+@import '../../../variables';
+$fontSize: 20px;
+:host {
+  display: block;
+  background-color: $accentColor;
+  font-size: $fontSize;
+  // Filter layout
+  display: flex;
+  justify-content: space-between;
+  font-size: 19px;
+  .nav-left {
+    justify-content: flex-start;
+  }
+  .nav-right {
+    justify-content: flex-end;
+  }
+  // Input
+  .input-item {
+    border: none;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 20px;
+    font-size: $fontSize;
+    font-weight: 300;
+  }
+}
