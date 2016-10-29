@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { FilterComponent } from './filter.component';
+import { SharedModule } from '../../shared/shared.module';
 
 describe('FilterComponent', () => {
   let component: FilterComponent;
@@ -11,6 +12,7 @@ describe('FilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ SharedModule ],
       declarations: [ FilterComponent ]
     })
     .compileComponents();

@@ -28,6 +28,7 @@ import { UiModule } from '../ui/ui.module';
   exports: [
     ImageCoverComponent,
     LabelsComponent,
+    UiModule,
     WatchHeightDirective
   ]
 })

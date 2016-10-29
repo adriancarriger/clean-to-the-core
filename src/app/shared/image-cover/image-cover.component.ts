@@ -46,13 +46,13 @@ export class ImageCoverComponent implements AfterViewInit, OnChanges {
   /**
    * First call to {@link updateImage}.
    */
-  public ngAfterViewInit() {
+  ngAfterViewInit() {
     this.updateImage();
   }
   /**
    * Updates the image (via {@link updateImage}) if the {@link src} Input changes.
    */
-  public ngOnChanges() {
+  ngOnChanges() {
     this.updateImage();
   }
   /**
