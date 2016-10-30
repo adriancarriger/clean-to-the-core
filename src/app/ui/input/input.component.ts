@@ -30,6 +30,10 @@ export class InputComponent {
    */
   @Input() special: string;
   /**
+   * attr.aria-label (optional)
+   */
+  @Input() label: string;
+  /**
    * Emits all changes via `update`.
    */
   @Output() update = new EventEmitter();
@@ -41,13 +45,13 @@ export class InputComponent {
    * Gets the input value.
    * @returns returns the current value of the `input`.
    */
-  get() {
+  get(): string {
     return this.input.nativeElement.value;
   }
   /**
    * Sets the `input` value. 
    */
-  set(newValue) {
+  set(newValue: string) {
     this.input.nativeElement.value = newValue;
   }
 }

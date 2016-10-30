@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  width: 9em;
+  height: 2em;
+  position: relative;
+  select {
+    color: white;
+    display: block;
+    font-size: 1em;
+    padding: 0 10px;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    height: 100%;  
+    background-color: transparent;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    &::-ms-expand {
+      display:none;
+    }
+    .default-select {
+      display: none;
+    }
+    .hide-option {
+      display: none;
+    }
+    &:focus {
+      outline: solid white 2px;
+    }
+    // Background
+    background-position: 98% 50%;
+    background-repeat: no-repeat;
+    background-size: 1.6em;
+    // Inline SVG to make the UiModule more portable
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;fill:white" xml:space="preserve"> <polygon points="396.6,160 416,180.7 256,352 96,180.7 115.3,160 256,310.5 "/> </svg>');
+  }
+}

@@ -1,11 +1,7 @@
 <div class="nav-left">
-  <app-input color="rgba(255, 139, 148, 0.53)" special="search"></app-input>
-  <select>
-    <option>All Meal Types</option>
-  </select>
-  <select>
-    <option>All Allergens</option>
-  </select>
+  <app-input color="rgba(255, 139, 148, 0.53)" special="search" label="Search recipes"></app-input>
+  <app-select [category]="'Meal Types'" [options]="['Breakfast', 'Lunch', 'Dinner']"></app-select>
+  <app-select [category]="'Allergens'" [options]="['Gluten free', 'Corn Free']"></app-select>
 </div>
 <div class="nav-right">
   My favorited items

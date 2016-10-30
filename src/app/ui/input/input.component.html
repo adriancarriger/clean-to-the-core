@@ -1,2 +1,2 @@
-<input #input (input)="update.emit($event.value)" type="type" [style.background-color]="color ? color : null">
+<input #input (input)="update.emit($event.value)" type="type" [style.background-color]="color ? color : null" [attr.aria-label]="label ? label : null">
 <app-icon-search *ngIf="special === 'search'"></app-icon-search>
