@@ -14,9 +14,15 @@
   .nav-left {
     justify-content: flex-start;
     display: flex;
+    @media(min-width: $desktopBreakPoint) {
+      padding-left: 7%;
+    }
   }
   .nav-right {
     justify-content: flex-end;
+    @media(min-width: $desktopBreakPoint) {
+      padding-right: 7%;
+    }
   }
   .item {
     margin: 3px;
