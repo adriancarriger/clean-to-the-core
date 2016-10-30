@@ -1,4 +1,4 @@
-<div class="fixed-content">
+<div class="fixed-content" appWatchHeight (heightChange)="fixedHeight = $event + 'px'">
   <app-image-cover [src]="mocks.img" class="primary-image"></app-image-cover>
   <header class="header">
     <h1 class="title">Pork Belly Slices AKA Bacon</h1>
@@ -6,6 +6,6 @@
     <app-labels [labels]="mocks.labels"></app-labels>
   </header>
 </div>
-<div class="home-content">
+<div class="home-content" [style.margin-top]="fixedHeight">
   <app-filter></app-filter>
 </div>

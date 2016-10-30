@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 
 import { HomeComponent } from './home.component';
 import { FilterComponent } from './filter/filter.component';
+import { GlobalEventsService } from '../core/global-events.service';
 import { SharedModule } from '../shared/shared.module';
 
 describe('HomeComponent', () => {
@@ -14,7 +15,11 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ SharedModule ],
-      declarations: [ FilterComponent, HomeComponent ]
+      declarations: [ FilterComponent, HomeComponent ],
+      providers: [
+        GlobalEventsService,
+        { provide: 'Window', useValue: window }
+      ]
     })
     .compileComponents();
   }));

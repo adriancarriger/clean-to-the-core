@@ -6,7 +6,9 @@ import { Route, Router} from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { LayoutComponent } from './layout.component';
+import { CoreModule  } from '../core.module';
 import { FooterComponent } from '../footer/footer.component';
+import { GlobalEventsService } from '../global-events.service';
 import { NavComponent } from '../nav/nav.component';
 import { HomeComponent } from '../../home/home.component';
 import { HomeModule } from '../../home/home.module';
@@ -24,11 +26,14 @@ describe('LayoutComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        CoreModule,
         HomeModule,
         RouterTestingModule.withRoutes(config)
       ],
-      providers: [Location],
-      declarations: [ FooterComponent, LayoutComponent, NavComponent ]
+      providers: [
+        GlobalEventsService,
+        { provide: 'Window', useValue: window }
+      ]
     })
     .compileComponents();
   }));

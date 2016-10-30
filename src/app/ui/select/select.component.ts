@@ -8,8 +8,6 @@ import {
   Input,
   Output,
   ViewChild } from '@angular/core';
-
-
 /**
  * @whatItDoes Returns a simple ui component as defined in the {@link UiModule}.
  */
@@ -37,7 +35,7 @@ export class SelectComponent {
    */
   @Input() title: string;
   /**
-   * `background-color` from the `input` element when not focused.
+   * `background-color` from the `select` element when not focused.
    */
   @Input() color: string;
   /**
@@ -45,20 +43,21 @@ export class SelectComponent {
    */
   @Output() update = new EventEmitter();
   /**
-   * A reference to the `input` element.
+   * A reference to the `select` element.
    */
-  @ViewChild('input') private input: ElementRef;
+  @ViewChild('select') private select: ElementRef;
   /**
-   * Gets the input value.
-   * @returns returns the current value of the `input`.
+   * Gets the select value.
+   * @returns returns the current value of the `select`.
    */
   get(): string {
-    return this.input.nativeElement.value;
+    let selectNative = this.select.nativeElement;
+    return selectNative.options[selectNative.selectedIndex].value;
   }
   /**
-   * Sets the `input` value. 
+   * Sets the `select` value. 
    */
   set(newValue: string) {
-    this.input.nativeElement.value = newValue;
+    this.select.nativeElement.value = newValue;
   }
 }

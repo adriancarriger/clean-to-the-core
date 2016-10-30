@@ -19,10 +19,17 @@ describe('ImageCoverComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ImageCoverComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create if src is defined', () => {
+    component.src = 'favicon.ico';
+    fixture.detectChanges();
+    expect(component).toBeTruthy();
+  });
+
+  it('should create if src is undefined', () => {
+    component.src = undefined;
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

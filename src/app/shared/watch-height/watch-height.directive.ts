@@ -1,7 +1,7 @@
 /**
  * @module CoreModule
  */ /** */
-import { Directive, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { GlobalEventsService } from '../../core/global-events.service';
 /**
@@ -10,7 +10,7 @@ import { GlobalEventsService } from '../../core/global-events.service';
 @Directive({
   selector: '[appWatchHeight]'
 })
-export class WatchHeightDirective implements OnInit {
+export class WatchHeightDirective implements AfterViewInit, OnInit {
   /**
    * Event emitter output. Emits the pixle hieght of the {@link WatchHeightDirective}'s height.
    */
@@ -22,6 +22,14 @@ export class WatchHeightDirective implements OnInit {
   constructor(
     private el: ElementRef,
     private events: GlobalEventsService) { }
+  /**
+   * An Angular 2 [lifecyle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html)
+   * called once, after Angular initializes the host component's views and child views.
+   * - Sends the inital height of the host element
+   */
+  ngAfterViewInit() {
+    this.updateHeight();
+  }
   /**
    * An Angular 2 [lifecyle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html)
    * called once, after the first ngOnChanges.

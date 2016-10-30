@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  fixedHeight: number;
   mocks = {
     img: 'http://cleantothecore.com/wp-content/uploads/mp/image-cache/site/0/file-jan-02-6-16-04-pm.4ffbad01a5cb2b7e696072810bc9264d.jpeg',
     labels: [

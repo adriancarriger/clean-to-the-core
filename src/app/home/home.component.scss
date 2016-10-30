@@ -11,6 +11,7 @@ $imageHeight: 50%;
     padding-bottom: $imageHeight;
   }
   .header {
+    $headerMargin: 25px;
     text-align: center;
     overflow: hidden;
     .title {
@@ -20,10 +21,12 @@ $imageHeight: 50%;
     }
     .blurb {
       font-family: $titleFont;
+      margin-bottom: $headerMargin;
     }
     app-labels {
       max-width: 515px;
-      margin: 25px auto;
+      margin: $headerMargin auto;
+      margin-top: 0;
       @media(min-width: $desktopBreakPoint) {
         position: absolute;
         right: 5%;
@@ -35,7 +38,7 @@ $imageHeight: 50%;
 
 .home-content {
   background: white;
-  margin-top: calc( #{$imageHeight} + 190px );
+  // margin-top: calc( #{$imageHeight} + 190px );
   z-index: 10;
 }
 
