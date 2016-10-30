@@ -36,8 +36,9 @@ export class WatchHeightDirective implements AfterViewInit, OnInit {
    * - Sends the inital height of the host element
    */
   ngAfterViewInit() {
-    this.updateHeight();
-    this.changeDetectorRef.detectChanges();
+    setTimeout( () => {
+      this.updateHeight();
+    }, 0);
   }
   /**
    * An Angular 2 [lifecyle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html)
