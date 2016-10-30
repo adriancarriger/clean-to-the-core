@@ -42,7 +42,7 @@
   "devDependencies": {
     "@types/jasmine": "^2.2.30",
     "@types/node": "^6.0.42",
-    "angular-cli": "^1.0.0-beta.18",
+    "angular-cli": "1.0.0-beta.19-3",
     "codelyzer": "1.0.0-beta.2",
     "coveralls": "^2.11.14",
     "jasmine-core": "2.5.2",
@@ -59,6 +59,7 @@
     "tslint": "3.15.1",
     "typedoc": "^0.5.0",
     "typedoc-plugin-external-module-name": "^1.0.4",
-    "typescript": "2.0.6"
+    "typescript": "2.0.6",
+    "webdriver-manager": "10.2.5"
   }
 }
