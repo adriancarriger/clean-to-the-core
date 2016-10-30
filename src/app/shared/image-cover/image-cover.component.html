@@ -1,2 +1,2 @@
-<img [src]="src" [attr.alt]="alt ? alt : ''" />
+<img *ngIf="src" [src]="src" [attr.alt]="alt ? alt : ''" />
 <ng-content></ng-content>
