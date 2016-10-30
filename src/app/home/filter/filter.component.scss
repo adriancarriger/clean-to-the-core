@@ -3,6 +3,10 @@
   display: block;
   background-color: $accentColor;
   font-size: $inputFontSize;
+  padding: 10px;
+  line-height: 2; 
+  color: white;
+  fill: white;
   // Filter layout
   display: flex;
   justify-content: space-between;
@@ -14,7 +18,7 @@
   .nav-right {
     justify-content: flex-end;
   }
-  app-input, app-select {
-    margin: 10px;
+  .item {
+    margin: 3px;
   }
 }

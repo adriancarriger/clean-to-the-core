@@ -1,7 +1,10 @@
+/**
+ * @module UiModule
+ */ /** */
 import { Component, HostBinding } from '@angular/core';
 /**
  * Search icon from [Ionicons](http://ionicons.com/).
- * [Source](https://raw.githubusercontent.com/driftyco/ionicons/master/src/ios-search-strong.svg)
+ * [Source](https://github.com/driftyco/ionicons/blob/master/src/ios-search-strong.svg)
  */
 @Component({
   selector: 'app-icon-search',

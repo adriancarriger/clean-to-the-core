@@ -1,0 +1,12 @@
+:host {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  line-height: 1;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}

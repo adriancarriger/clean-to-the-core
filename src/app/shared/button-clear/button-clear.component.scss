@@ -1,0 +1,27 @@
+:host {
+  display: inline-block;
+  $sidePadding: 10px;
+  // Turn a button into a link - http://stackoverflow.com/a/12642009/5357459
+  button {
+    /* Remove all decorations to look like normal text */
+    background: none;
+    border: none;
+    display: inline;
+    font: inherit;
+    margin: 0;
+    padding: 0 $sidePadding;
+    outline-offset: 0;
+    color: inherit;
+    /* Additional styles to look like a link */
+    cursor: pointer;
+    &:focus {
+      outline: solid white 2px;
+    }
+  }
+  /* Remove extra space inside buttons in Firefox */
+  input[type="button"]::-moz-focus-inner,
+  button::-moz-focus-inner {
+    border: none;
+    padding: 0 $sidePadding;
+  }
+}

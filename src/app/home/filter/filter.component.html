@@ -1,8 +1,8 @@
 <div class="nav-left">
-  <app-input color="rgba(255, 139, 148, 0.53)" special="search" label="Search recipes"></app-input>
-  <app-select [category]="'Meal Types'" [options]="['Breakfast', 'Lunch', 'Dinner']"></app-select>
-  <app-select [category]="'Allergens'" [options]="['Gluten free', 'Corn Free']"></app-select>
+  <app-input color="rgba(255, 139, 148, 0.53)" special="search" label="Search recipes" class="item"></app-input>
+  <app-select [category]="'Meal Types'" [options]="['Breakfast', 'Lunch', 'Dinner']" class="item"></app-select>
+  <app-select [category]="'Allergens'" [options]="['Gluten free', 'Corn Free']" class="item"></app-select>
 </div>
 <div class="nav-right">
-  My favorited items
+  <app-button-clear class="item">My <app-icon-heart></app-icon-heart>'s</app-button-clear>
 </div>

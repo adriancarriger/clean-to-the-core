@@ -4,10 +4,13 @@
  */ /** */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { ButtonClearComponent } from './button-clear/button-clear.component';
+import { IconHeartComponent } from './icon-heart/icon-heart.component';
 import { ImageCoverComponent } from './image-cover/image-cover.component';
 import { LabelsComponent } from './labels/labels.component';
-import { WatchHeightDirective } from './watch-height/watch-height.directive';
 import { UiModule } from '../ui/ui.module';
+import { WatchHeightDirective } from './watch-height/watch-height.directive';
 /**
  * @whatItDoes {@link SharedModule} exists to hold the common components, directives, and pipes
  * and share them with the modules that need them.
@@ -21,11 +24,15 @@ import { UiModule } from '../ui/ui.module';
     UiModule
   ],
   declarations: [
+    ButtonClearComponent,
+    IconHeartComponent,
     ImageCoverComponent,
     LabelsComponent,
     WatchHeightDirective
   ],
   exports: [
+    ButtonClearComponent,
+    IconHeartComponent,
     ImageCoverComponent,
     LabelsComponent,
     UiModule,
