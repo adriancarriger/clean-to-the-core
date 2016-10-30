@@ -1,7 +1,14 @@
 /**
  * @module CoreModule
  */ /** */
-import { AfterViewInit, Directive, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Directive,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output } from '@angular/core';
 
 import { GlobalEventsService } from '../../core/global-events.service';
 /**
@@ -20,6 +27,7 @@ export class WatchHeightDirective implements AfterViewInit, OnInit {
    * @param el the reference to the host element
    */
   constructor(
+    private changeDetectorRef: ChangeDetectorRef,
     private el: ElementRef,
     private events: GlobalEventsService) { }
   /**
@@ -29,6 +37,7 @@ export class WatchHeightDirective implements AfterViewInit, OnInit {
    */
   ngAfterViewInit() {
     this.updateHeight();
+    this.changeDetectorRef.detectChanges();
   }
   /**
    * An Angular 2 [lifecyle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html)
