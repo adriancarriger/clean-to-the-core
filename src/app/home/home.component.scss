@@ -40,6 +40,21 @@ $imageHeight: 50%;
   background: white;
   // margin-top: calc( #{$imageHeight} + 190px );
   z-index: 10;
+  .info-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > div, > h1 {
+      flex: 1;
+      padding: 0 10px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .social-media {
+      text-align: right;
+    }
+  }
 }
 
 :host {
