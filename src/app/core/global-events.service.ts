@@ -23,4 +23,10 @@ export class GlobalEventsService {
   resize(): Observable<Event> {
     return Observable.fromEvent(window, 'resize');
   }
+  /**
+   * Allows a subscriber to listen to window resize events.
+   */
+  scroll(): Observable<Event> {
+    return Observable.fromEvent(document, 'scroll');
+  }
 }

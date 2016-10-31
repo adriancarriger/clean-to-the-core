@@ -32,6 +32,7 @@ import { WatchHeightDirective } from './watch-height/watch-height.directive';
   ],
   exports: [
     ButtonClearComponent,
+    CommonModule,
     IconHeartComponent,
     ImageCoverComponent,
     LabelsComponent,

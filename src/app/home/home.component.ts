@@ -13,6 +13,7 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   fixedHeight: number;
+  tests = [];
   mocks = {
     img: 'http://cleantothecore.com/wp-content/uploads/mp/image-cache/site/0/file-jan-02-6-16-04-pm.4ffbad01a5cb2b7e696072810bc9264d.jpeg',
     labels: [
@@ -24,4 +25,9 @@ export class HomeComponent {
       {name: 'Soy Free', color: 'rgb(121, 210, 188)'}
     ]
   };
+  constructor() {
+    for (let i = 1; i <= 50; i++) {
+      this.tests.push(`test-${i}`);
+    }
+  }
 }

@@ -3,7 +3,7 @@
  */ /** */
 import { Component } from '@angular/core';
 /**
- * @whatItDoes Filter bar that filters recipes
+ * @whatItDoes Returns a filter bar that filters recipes
  * @consumers {@link HomeComponent}
  */
 @Component({
