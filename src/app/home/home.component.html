@@ -13,6 +13,9 @@
     <h1>Let's get cookin':</h1>
     <div class="social-media">social media</div>
   </div>
+  <div *ngFor="let recipe of (apiService.recipeList | async)">
+    {{recipe.title}}
+  </div>
   <div class="testing">
     <p *ngFor="let test of tests">{{test}}</p>
   </div>

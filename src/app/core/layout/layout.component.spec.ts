@@ -1,9 +1,11 @@
 /* tslint:disable:no-unused-variable */
+import { Injectable } from '@angular/core';
 import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 import { Route, Router} from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Subject } from 'rxjs/Rx';
 
 import { LayoutComponent } from './layout.component';
 import { CoreModule  } from '../core.module';
@@ -12,6 +14,27 @@ import { GlobalEventsService } from '../global-events.service';
 import { NavComponent } from '../nav/nav.component';
 import { HomeComponent } from '../../home/home.component';
 import { HomeModule } from '../../home/home.module';
+import { ApiService } from '../api/api.service';
+
+@Injectable()
+export class MockApiService {
+  public recipeList$;
+  private mockArray = [
+    {
+      title: 'test title 1'
+    },
+    {
+      title: 'test title 2'
+    }
+  ];
+  constructor() {
+    this.recipeList$ = new Subject();
+    this.update();
+  }
+  update() {
+    this.recipeList$.next(this.mockArray);
+  }
+}
 
 describe('LayoutComponent', () => {
   const config: Route[] = [
@@ -32,7 +55,8 @@ describe('LayoutComponent', () => {
       ],
       providers: [
         GlobalEventsService,
-        { provide: 'Window', useValue: window }
+        { provide: 'Window', useValue: window },
+        { provide: ApiService, useValue: MockApiService }
       ]
     })
     .compileComponents();

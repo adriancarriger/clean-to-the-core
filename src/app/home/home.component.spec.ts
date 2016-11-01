@@ -7,6 +7,7 @@ import { HomeComponent } from './home.component';
 import { HomeModule } from './home.module';
 import { GlobalEventsService } from '../core/global-events.service';
 import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -14,7 +15,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ HomeModule, SharedModule ],
+      imports: [ CoreModule.forRoot(), HomeModule, SharedModule ],
       providers: [
         GlobalEventsService,
         { provide: 'Window', useValue: window }

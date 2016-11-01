@@ -2,11 +2,14 @@
  * @module CoreModule
  * @preferred
  */ /** */
+import { AngularFireModule } from 'angularfire2';
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { ApiService } from './api/api.service';
 import { GlobalEventsService } from './global-events.service';
+import { firebaseConfig } from './firebase-config';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import { throwIfAlreadyLoaded } from './module-import-guard';
@@ -21,6 +24,7 @@ import { SharedModule } from '../shared/shared.module';
  */
 @NgModule({
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
     CommonModule,
     RouterModule,
     SharedModule
@@ -38,6 +42,7 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
+        ApiService,
         GlobalEventsService,
         { provide: 'Window', useValue: window }
       ]

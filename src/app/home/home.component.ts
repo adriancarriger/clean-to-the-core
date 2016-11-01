@@ -2,6 +2,8 @@
  * @module HomeModule
  */ /** */
 import { Component } from '@angular/core';
+
+import { ApiService } from '../core/api/api.service';
 /**
  * @whatItDoes Returns the {@link HomeComponent} view.
  * @consumers {@link HomeModule},  {@link HomeRoutingModule}
@@ -25,7 +27,7 @@ export class HomeComponent {
       {name: 'Soy Free', color: 'rgb(121, 210, 188)'}
     ]
   };
-  constructor() {
+  constructor(public apiService: ApiService) {
     for (let i = 1; i <= 50; i++) {
       this.tests.push(`test-${i}`);
     }
