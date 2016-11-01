@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { FilterComponent } from './filter/filter.component';
+import { RecipeAdComponent } from './recipe-ad/recipe-ad.component';
 import { StickyScrollDirective } from './sticky-scroll/sticky-scroll.directive';
 import { SharedModule } from '../shared/shared.module';
 /**
@@ -18,6 +19,6 @@ import { SharedModule } from '../shared/shared.module';
     HomeRoutingModule,
     SharedModule
   ],
-  declarations: [HomeComponent, FilterComponent, StickyScrollDirective]
+  declarations: [HomeComponent, FilterComponent, StickyScrollDirective, RecipeAdComponent]
 })
 export class HomeModule { }

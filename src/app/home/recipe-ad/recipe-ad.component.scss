@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  text-align: center;
+  app-image-cover {
+    padding-bottom: 65%;
+    height: 0;
+  }
+  .recipe-title {
+    margin: 3px 0;
+    font-size: 22px;
+    text-align: center;
+  }
+  .recipe-blurb {
+    color: gray;
+    max-width: 80%;
+    margin: 0 auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 15px;
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    .arrow {
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid gray;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+}

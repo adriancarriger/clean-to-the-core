@@ -13,10 +13,7 @@
     <h1>Let's get cookin':</h1>
     <div class="social-media">social media</div>
   </div>
-  <div *ngFor="let recipe of (apiService.recipeList | async)">
-    {{recipe.title}}
-  </div>
-  <div class="testing">
-    <p *ngFor="let test of tests">{{test}}</p>
+  <div class="recipes">
+    <app-recipe-ad *ngFor="let recipeMeta of apiService.recipeList | async; let i = index" [recipeMeta]="recipeMeta" [arrowColor]="getColor(i)"></app-recipe-ad>
   </div>
 </div>

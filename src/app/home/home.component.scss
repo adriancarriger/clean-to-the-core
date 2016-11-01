@@ -55,6 +55,16 @@ $imageHeight: 50%;
       text-align: right;
     }
   }
+  .recipes {
+    display: flex;
+    flex-wrap: wrap;
+    width: 84%;
+    margin: 0 auto;
+    app-recipe-ad {
+      width: 33.33%;
+      padding: 8px 4px;
+    }
+  }
 }
 
 :host {
