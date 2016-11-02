@@ -8,8 +8,8 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { FilterComponent } from './filter/filter.component';
 import { RecipeAdComponent } from './recipe-ad/recipe-ad.component';
-import { StickyScrollDirective } from './sticky-scroll/sticky-scroll.directive';
 import { SharedModule } from '../shared/shared.module';
+import { StickyScrollComponent } from './sticky-scroll/sticky-scroll.component';
 /**
  * @whatItDoes Lazy loaded feature module for the home page.
  * @consumers {@link AppRoutingModule} (on demand)
@@ -19,6 +19,6 @@ import { SharedModule } from '../shared/shared.module';
     HomeRoutingModule,
     SharedModule
   ],
-  declarations: [HomeComponent, FilterComponent, StickyScrollDirective, RecipeAdComponent]
+  declarations: [HomeComponent, FilterComponent, StickyScrollComponent, RecipeAdComponent, StickyScrollComponent]
 })
 export class HomeModule { }

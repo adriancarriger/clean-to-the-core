@@ -3,9 +3,8 @@
  */ /** */
 import {
   AfterViewInit,
-  Directive,
+  Component,
   ElementRef,
-  HostBinding,
   Input,
   OnDestroy,
   OnInit,
@@ -14,37 +13,27 @@ import {
 
 import { GlobalEventsService } from '../../core/global-events.service';
 /**
- * @whatItDoes Sets the host element to fixed to top when it reaches the top
+ * @whatItDoes Sets the child content fixed to top when it reaches the top
  * @consumers {@link FilterComponent}
  */
-@Directive({
-  selector: '[appStickyScroll]'
+@Component({
+  selector: 'app-sticky-scroll',
+  templateUrl: './sticky-scroll.component.html',
+  styleUrls: ['./sticky-scroll.component.scss']
 })
-export class StickyScrollDirective implements AfterViewInit, OnDestroy, OnInit {
+export class StickyScrollComponent implements AfterViewInit, OnDestroy, OnInit {
   /**
    * An additional amount of px that must be scrolled before sticking takes effect
    */
   @Input() stickyOffset: number;
   /**
-   * Sets the `top` style to 0
+   * 
    */
-  @HostBinding('style.top') topStyle = 0;
-  /**
-   * Sets the `right` style to 0
-   */
-  @HostBinding('style.right') rightStyle = 0;
-  /**
-   * Sets the `left` style to 0
-   */
-  @HostBinding('style.left') leftStyle = 0;
-  /**
-   * Sets the `z-index` style to 10
-   */
-  @HostBinding('style.z-index') zIndexStyle = 10;
+  height: number;
   /**
    * Set to `true` if the host element should be fixed to the top of the screen.
    */
-  private fixed: boolean = false;
+  fixed: boolean = false;
   /**
    * The minimum number of pixels that should be scrolled before {@link fixed} is set to `true`.
    */
@@ -88,7 +77,7 @@ export class StickyScrollDirective implements AfterViewInit, OnDestroy, OnInit {
     this.subscriptions.resize.unsubscribe();
     this.subscriptions.scroll.unsubscribe();
     if (this.fixed) {
-      this.removeSticky();
+      // this.removeSticky();
       this.fixed = false;
     }
   }
@@ -108,12 +97,12 @@ export class StickyScrollDirective implements AfterViewInit, OnDestroy, OnInit {
   /**
    * Sets host element to `position: fixed`
    */
-  private addSticky() {
-    this.renderer.setElementStyle(this.element.nativeElement, 'position', 'fixed');
-    this.renderer.setElementStyle(
-      document.documentElement, 'margin-top',
-      this.element.nativeElement.clientHeight + 'px');
-  }
+  // private addSticky() {
+  //   this.renderer.setElementStyle(this.element.nativeElement, 'position', 'fixed');
+  //   this.renderer.setElementStyle(
+  //     document.documentElement, 'margin-top',
+  //     this.element.nativeElement.clientHeight + 'px');
+  // }
   /**
    * Get dimensions related to fixing the host element.
    * 
@@ -123,27 +112,28 @@ export class StickyScrollDirective implements AfterViewInit, OnDestroy, OnInit {
    * 3. Then update the position which  will immediately restore `position: fixed` if appropriate
    */
   private getDimensions() {
-    if (this.fixed) { this.removeSticky(); }
+    this.fixed = false;
     this.minScroll = this.element.nativeElement.offsetTop + Number( this.stickyOffset );
     this.updatePosition();
   }
   /**
    * Removes fixed position
    */
-  private removeSticky() {
-    this.renderer.setElementStyle(this.element.nativeElement, 'position', null);
-    this.renderer.setElementStyle(document.documentElement, 'margin-top', null);
-  }
+  // private removeSticky() {
+  //   this.renderer.setElementStyle(this.element.nativeElement, 'position', null);
+  //   this.renderer.setElementStyle(document.documentElement, 'margin-top', null);
+  // }
   /**
    * Checks if the host element should be fixed
    */
   private updatePosition() {
-    if (document.body.scrollTop >= this.minScroll) {
-      this.fixed = true;
-      this.addSticky();
-    } else {
-      this.fixed = false;
-      this.removeSticky();
-    }
+    this.fixed = document.body.scrollTop >= this.minScroll;
+    // if (document.body.scrollTop >= this.minScroll) {
+    //   this.fixed = true;
+    //   this.addSticky();
+    // } else {
+    //   this.fixed = false;
+    //   this.removeSticky();
+    // }
   }
 }

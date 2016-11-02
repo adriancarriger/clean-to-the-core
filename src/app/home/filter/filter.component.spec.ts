@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { FilterComponent } from './filter.component';
-import { StickyScrollDirective } from '../sticky-scroll/sticky-scroll.directive';
 import { SharedModule } from '../../shared/shared.module';
 
 describe('FilterComponent', () => {
@@ -14,7 +13,7 @@ describe('FilterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ SharedModule ],
-      declarations: [ FilterComponent, StickyScrollDirective ]
+      declarations: [ FilterComponent ]
     })
     .compileComponents();
   }));
