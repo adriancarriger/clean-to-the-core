@@ -1,4 +1,6 @@
 <app-image-cover [src]="recipe?.src"></app-image-cover>
 <h2 class="recipe-title">{{recipeMeta.title}}</h2>
-<div class="allergens"></div>
+<ul class="allergens">
+  <li *ngFor="let allergen of recipe?.allergens" class="allergen">{{allergen}}</li>
+</ul>
 <div class="recipe-blurb" >{{recipe?.blurb}} <div aria-hidden="true" [style.border-left-color]="arrowColor" class="arrow"></div></div>

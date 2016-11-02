@@ -10,6 +10,35 @@
     font-size: 22px;
     text-align: center;
   }
+  .allergens {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 4px 0;
+    padding-left: 0;
+    height: 32px;
+    .allergen {
+      width: 33.33%;
+      color: gray;
+      font-size: 12px;
+      text-align: center;
+      position: relative;
+      line-height: 1.4;
+      &:after {
+        content: "";
+        border-radius: 50%;
+        width: 5px;
+        height: 5px;
+        position: absolute;
+        right: 0;
+        top: 9px;
+        background-color: gray;
+      }
+      &:nth-child(3n):after {
+        display: none;
+      }
+    }
+  }
   .recipe-blurb {
     color: gray;
     max-width: 80%;
@@ -17,7 +46,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    padding: 15px;
+    padding: 10px 15px;
     font-size: 13px;
     text-align: center;
     position: relative;
