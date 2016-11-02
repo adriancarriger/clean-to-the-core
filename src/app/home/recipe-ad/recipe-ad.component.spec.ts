@@ -1,59 +1,61 @@
-/**
- * Spec on hold 
- */
-// /* tslint:disable:no-unused-variable */
-// import { DebugElement, Injectable } from '@angular/core';
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-// import { By } from '@angular/platform-browser';
+/* tslint:disable:no-unused-variable */
+import { DebugElement, Injectable } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
-// import { Subject } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Rx';
 
-// import { RecipeAdComponent } from './recipe-ad.component';
-// import { ImageCoverComponent } from '../../shared/image-cover/image-cover.component';
-// import { ApiService } from '../../core/api/api.service';
+import { RecipeAdComponent } from './recipe-ad.component';
+import { ImageCoverComponent } from '../../shared/image-cover/image-cover.component';
+import { ApiService } from '../../core/api/api.service';
 
 
-// @Injectable()
-// export class ApiServiceMock {
-//   events$;
-//   data = {
-//     id: 0,
-//     blurb: 'blurb text'
-//   };
-//   constructor() {
-//     this.events$ = new Subject();
-//   }
-//   recipe(input) {
-//     this.update();
-//     return this.events$.asObservable();
-//   }
-//   update() {
-//     this.events$.next(this.data);
-//   }
-// }
+@Injectable()
+export class ApiServiceMock {
+  events$;
+  data = {
+    id: 0,
+    blurb: 'blurb text'
+  };
+  constructor() {
+    this.events$ = new Subject();
+  }
+  recipe(input) {
+    this.update();
+    return this.events$.asObservable();
+  }
+  update() {
+    this.events$.next(this.data);
+  }
+}
 
-// describe('RecipeAdComponent', () => {
-//   let component: RecipeAdComponent;
-//   let fixture: ComponentFixture<RecipeAdComponent>;
+describe('RecipeAdComponent', () => {
+  let component: RecipeAdComponent;
+  let fixture: ComponentFixture<RecipeAdComponent>;
+  let apiServiceMock = new ApiServiceMock();
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ImageCoverComponent, RecipeAdComponent ],
+      providers: [
+        { provide: ApiService, useValue: apiServiceMock }
+      ]
+    })
+    .compileComponents();
+  }));
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ ImageCoverComponent, RecipeAdComponent ],
-//       providers: [
-//         { provide: ApiService, useValue: ApiServiceMock }
-//       ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(() => {
+    fixture = TestBed.createComponent(RecipeAdComponent);
+    component = fixture.componentInstance;
+    component.recipeMeta = {id: 0, title: 'test title'};
+    fixture.detectChanges();
+  });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(RecipeAdComponent);
-//     component = fixture.componentInstance;
-//     component.recipeMeta = {id: 0, title: 'test title'};
-//     fixture.detectChanges();
-//   });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should get a recipe from the recipe subscription', () => {
+    apiServiceMock.update();
+    expect (component.recipe.blurb).toBe('blurb text');
+  });
+});
