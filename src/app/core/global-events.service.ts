@@ -6,8 +6,8 @@ import { Observable } from 'rxjs/Rx';
 /**
  * @whatItDoes Reponsible for handling and dispatching global events such as `window` resizing,
  * `body` scrolling, etc.
- * @consumers {@link WatchHeightDirective}
- * @providerContext {@link AppComponent}   
+ * @consumers {@link StickyScrollComponent}, {@link WatchHeightDirective}
+ * @providerScope {@link AppComponent}   
  */
 @Injectable()
 export class GlobalEventsService {
