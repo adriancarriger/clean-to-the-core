@@ -16,6 +16,6 @@
     <div class="social-media">social media</div>
   </div>
   <div class="recipes">
-    <app-recipe-ad *ngFor="let recipeMeta of apiService.recipeList | async; let i = index" [recipeMeta]="recipeMeta" [arrowColor]="getColor(i)"></app-recipe-ad>
+    <app-recipe-ad *ngFor="let recipeMeta of apiService.recipeList | async; let i = index" [recipeMeta]="recipeMeta" [routerLink]="['/recipe', recipeMeta.slug]" [arrowColor]="getColor(i)"></app-recipe-ad>
   </div>
 </div>

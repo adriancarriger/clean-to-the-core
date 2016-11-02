@@ -1,7 +1,10 @@
 /**
  * @module RecipeModule
  */ /** */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { ApiService } from '../core/api/api.service';
 /**
  * @whatItDoes Returns the {@link RecipeComponent} view.
  * @consumers {@link RecipeModule}, {@link RecipeRoutingModule}
@@ -11,4 +14,23 @@ import { Component } from '@angular/core';
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.scss']
 })
-export class RecipeComponent { }
+export class RecipeComponent implements OnInit {
+  /**
+   * The url slug for this recipe. Used to get data from the api
+   */
+  recipeSlug: string;
+  /**
+   * Creates the {@link RecipeComponent}
+   * @param activatedRoute provides a snapshot of the current route including the url slug
+   * @param apiService provides data for the current recipe
+   */
+  constructor (
+    private activatedRoute: ActivatedRoute,
+    private apiService: ApiService) { }
+  /**
+   * Gets the current recipe slug on init
+   */
+  ngOnInit() {
+    this.recipeSlug = this.activatedRoute.snapshot.params['slug'];
+  }
+}

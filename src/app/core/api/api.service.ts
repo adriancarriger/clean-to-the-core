@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 /**
  * @whatItDoes Reponsible for returning data from an API.
- * @consumers {@link HomeComponent}, {@link RecipeAdComponent}
+ * @consumers {@link HomeComponent}, {@link RecipeComponent}, {@link RecipeAdComponent}
  * @providerScope {@link AppComponent}
  * 
  * --------------------------------------------------------
