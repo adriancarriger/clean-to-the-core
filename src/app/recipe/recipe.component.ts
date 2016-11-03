@@ -3,8 +3,9 @@
  */ /** */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
 
-import { ApiService } from '../core/api/api.service';
+import { ApiService, Recipe } from '../core/api/api.service';
 /**
  * @whatItDoes Returns the {@link RecipeComponent} view.
  * @consumers {@link RecipeModule}, {@link RecipeRoutingModule}
@@ -16,9 +17,9 @@ import { ApiService } from '../core/api/api.service';
 })
 export class RecipeComponent implements OnInit {
   /**
-   * The url slug for this recipe. Used to get data from the api
+   * Data used in the recipe view.
    */
-  recipeSlug: string;
+  recipe: Observable<Recipe>;
   /**
    * Creates the {@link RecipeComponent}
    * @param activatedRoute provides a snapshot of the current route including the url slug
@@ -31,6 +32,9 @@ export class RecipeComponent implements OnInit {
    * Gets the current recipe slug on init
    */
   ngOnInit() {
-    this.recipeSlug = this.activatedRoute.snapshot.params['slug'];
+    let slug: string = this.activatedRoute.snapshot.params['slug'];
+    this.apiService.slugToId(slug).then(id => {
+      this.recipe = this.apiService.recipe(id);
+    });
   }
 }

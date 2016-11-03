@@ -23,7 +23,32 @@ export class ApiService {
   constructor(public af: AngularFire) {
     this.recipeList = af.database.list('client/recipeList');
   }
-  recipe(id: string): FirebaseObjectObservable<any> {
+  /**
+   * Gets an observable with recipe data.
+   * @param id the unique recipe id or slug used to identify the requested recipe data.
+   */
+  recipe(id: string): FirebaseObjectObservable<Recipe> {
     return this.af.database.object(`client/recipes/${id}`);
   }
+  /**
+   * @returns the id associated with the slug
+   * @param slug a unique string associated with a recipe
+   */
+  slugToId(slug: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.recipeList.subscribe(items => {
+        items.forEach(item => {
+          if (item['slug'] === slug) {
+            resolve( item['id'] );
+          }
+        });
+      });
+    });
+  }
+}
+
+export interface Recipe {
+  id: string;
+  slug: string;
+  [propName: string]: any;
 }
