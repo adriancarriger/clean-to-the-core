@@ -1,4 +1,23 @@
-<p>
-  recipe works!
-  {{ recipe | async | json }}
-</p>
+<div class="recipe-container">
+  <section class="recipe-section">
+    <div class="recipe-content">
+      <h1>{{(recipe | async)?.title}}</h1>
+      <div>October 28, 2016</div>
+      <div>Author: Nicole</div>
+      <div>{{(recipe | async)?.blurb}}</div>
+      <app-labels [labels]="(recipe | async)?.labels"></app-labels>
+      {{(recipe | async)?.image}}
+      <app-image-cover [src]="(recipe | async)?.image"></app-image-cover>
+      <div *ngIf="(recipe | async)?.text.length > 0" class="recipe-text">{{(recipe | async)?.text}}</div>
+      <div>--ingredients--</div>
+      <div>--steps--</div>
+    </div>
+    <div class="recipe-comments">
+      --comments--
+    </div>
+  </section>
+  <div class="recipe-sidebar">
+    --sidebar--
+  </div>
+</div>
+<div>--recommended--</div>

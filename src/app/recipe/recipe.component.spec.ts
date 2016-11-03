@@ -7,6 +7,8 @@ import { Subject, Observable } from 'rxjs/Rx';
 
 import { RecipeComponent } from './recipe.component';
 import { ApiService } from '../core/api/api.service';
+import { ImageCoverComponent } from '../shared/image-cover/image-cover.component';
+import { LabelsComponent } from '../shared/labels/labels.component';
 
 @Injectable()
 class MockActivatedRoute {
@@ -33,6 +35,9 @@ export class MockApiService {
     this.update();
     return this.events$.asObservable();
   }
+  slugToId(slug: string) {
+    return new Promise((resolve, reject) => resolve('1'));
+  }
   update() {
     this.events$.next(this.data);
   }
@@ -45,7 +50,7 @@ describe('RecipeComponent', () => {
   let mockApiService = new MockApiService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecipeComponent ],
+      declarations: [ ImageCoverComponent, LabelsComponent, RecipeComponent ],
       providers: [
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
         { provide: ApiService, useValue: mockApiService }
