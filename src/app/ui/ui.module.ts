@@ -31,8 +31,9 @@ import { SelectComponent } from './select/select.component';
     CommonModule
   ],
   declarations: [
-    InputComponent,
+    IconArrowDownComponent,
     IconSearchComponent,
+    InputComponent,
     SelectComponent
   ],
   exports: [
