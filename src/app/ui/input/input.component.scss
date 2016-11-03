@@ -9,6 +9,8 @@ $borderRadius: 1em;
   width: 12em;
   border-radius: $borderRadius;
   background-color: white;
+  fill: $defaultColor;
+  color: white;
   input {
     border: none;
     padding: 0.4em $sidePadding;
@@ -21,7 +23,7 @@ $borderRadius: 1em;
     height: 100%;
     font-size: 1em;
     background-color: rgba(128, 128, 128, 0.53); 
-    color: white;
+    color: inherit;
     &:focus {
       background-color: white !important;
       color: $defaultColor;
@@ -36,7 +38,7 @@ $borderRadius: 1em;
     top: 3px;
     bottom: 0;
     margin: auto;
-    fill: white;
+    fill: inherit;
     line-height: 1;
   }
 }

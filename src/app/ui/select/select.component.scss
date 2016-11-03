@@ -1,10 +1,15 @@
 :host {
+  // Default colors (can be overridden on host element without turning off encapsulation)
+  color: white;
+  fill: white;
+  outline-color: white;
+  // :host styles
   display: block;
   width: 9em;
   height: 2em;
-  position: relative;
+  position: relative;  
   select {
-    color: white;
+    color: inherit;
     display: block;
     font-size: 1em;
     padding: 0 10px;
@@ -17,6 +22,8 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     cursor: pointer;
+    position: absolute;
+    z-index: 1;
     &::-ms-expand {
       display:none;
     }
@@ -27,13 +34,18 @@
       display: none;
     }
     &:focus {
-      outline: solid white 2px;
+      outline: solid 2px;
+      outline-color: inherit;
     }
-    // Background
-    background-position: 98% 50%;
-    background-repeat: no-repeat;
-    background-size: 1.6em;
-    // Inline SVG to make the UiModule more portable
-    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;fill:white" xml:space="preserve"> <polygon points="396.6,160 416,180.7 256,352 96,180.7 115.3,160 256,310.5 "/> </svg>');
+  }
+  app-icon-arrow-down {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 3px;
+    width: 1.6em;
+    height: 1.6em;
+    fill: inherit;
   }
 }

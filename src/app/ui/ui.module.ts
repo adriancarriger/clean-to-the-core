@@ -5,9 +5,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { SelectComponent } from './select/select.component';
-import { InputComponent } from './input/input.component';
+import { IconArrowDownComponent } from './icon-arrow-down/icon-arrow-down.component';
 import { IconSearchComponent } from './icon-search/icon-search.component';
+import { InputComponent } from './input/input.component';
+import { SelectComponent } from './select/select.component';
 /**
  * @whatItDoes {@link UiModule} exists to hold the common user interface methods that offers a
  * consistant look and api to the rest of the app.
@@ -30,13 +31,15 @@ import { IconSearchComponent } from './icon-search/icon-search.component';
     CommonModule
   ],
   declarations: [
-    SelectComponent,
     InputComponent,
-    IconSearchComponent
+    IconSearchComponent,
+    SelectComponent
   ],
   exports: [
-    SelectComponent,
-    InputComponent
+    IconArrowDownComponent,
+    IconSearchComponent,
+    InputComponent,
+    SelectComponent
   ]
 })
 export class UiModule { }

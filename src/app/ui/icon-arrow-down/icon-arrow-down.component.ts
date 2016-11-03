@@ -1,0 +1,16 @@
+/**
+ * @module UiModule
+ */ /** */
+import { Component, HostBinding } from '@angular/core';
+/**
+ * Search icon from [Ionicons](http://ionicons.com/).
+ * [Source](https://github.com/driftyco/ionicons/blob/master/src/ios-arrow-down.svg)
+ */
+@Component({
+  selector: 'app-icon-arrow-down',
+  templateUrl: './icon-arrow-down.component.html',
+  styleUrls: ['./icon-arrow-down.component.scss']
+})
+export class IconArrowDownComponent {
+  @HostBinding('attr.aria-hidden') ariaHidden = 'true';
+}

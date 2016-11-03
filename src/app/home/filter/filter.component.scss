@@ -4,9 +4,7 @@
   background-color: $accentColor;
   font-size: $inputFontSize;
   padding: 10px;
-  line-height: 2; 
-  color: white;
-  fill: white;
+  line-height: 2;
   // Filter layout
   display: flex;
   justify-content: space-between;
@@ -26,5 +24,8 @@
   }
   .item {
     margin: 3px;
+    color: $accentTextColor;
+    fill: $accentTextColor;
+    outline-color: $accentTextColor;
   }
 }

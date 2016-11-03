@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
+import { IconArrowDownComponent } from '../icon-arrow-down/icon-arrow-down.component';
 import { SelectComponent } from './select.component';
 
 describe('SelectComponent', () => {
@@ -11,7 +12,7 @@ describe('SelectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectComponent ]
+      declarations: [ IconArrowDownComponent, SelectComponent ]
     })
     .compileComponents();
   }));

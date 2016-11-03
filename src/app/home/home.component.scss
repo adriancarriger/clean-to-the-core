@@ -21,6 +21,7 @@ $imageHeight: 50%;
     }
     .blurb {
       font-family: $titleFont;
+      font-size: 20px;
       margin-bottom: $headerMargin;
     }
     app-labels {
@@ -50,9 +51,11 @@ $imageHeight: 50%;
     }
     h1 {
       text-align: center;
+      font-size: 40px;
     }
     .social-media {
       text-align: right;
+      font-size: 20px;
     }
   }
   .recipes {
