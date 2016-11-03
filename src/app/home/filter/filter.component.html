@@ -7,7 +7,11 @@
     <app-button-clear (click)="drawerOpen = !drawerOpen; drawerEvent.emit()" class="item">Toggle</app-button-clear>
   </div>
 </div>
-<div class="drawer" [style.display]="drawerOpen ? 'flex' : 'none'">
-  <app-select [category]="'Meal Types'" [options]="['Breakfast', 'Lunch', 'Dinner']" class="item"></app-select>
-  <app-select [category]="'Allergens'" [options]="['Gluten free', 'Corn Free']" class="item"></app-select>
+<div class="drawer" [style.display]="drawerOpen ? 'block' : 'none'">
+  <div class="item-container">
+    <app-select [category]="'Meal Types'" [options]="['Breakfast', 'Lunch', 'Dinner']" class="item"></app-select>
+  </div>
+  <div class="item-container">
+    <app-select [category]="'Allergens'" [options]="['Gluten free', 'Corn Free']" class="item"></app-select>
+  </div>
 </div>

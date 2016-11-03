@@ -1,12 +1,13 @@
 @import '../../../variables';
 :host {
+  $spacing: 15px;
   display: block;
   background-color: $accentColor;
   font-size: $inputFontSize;
-  padding: 10px;
   line-height: 2;
   .content {
     // Filter layout
+    padding: $spacing;
     display: flex;
     justify-content: space-between;
     font-size: 19px;
@@ -32,6 +33,21 @@
       color: $accentTextColor;
       fill: $accentTextColor;
       outline-color: $accentTextColor;
+    }
+  }
+  .drawer {
+    .item-container {
+      border-top: 2px solid white;
+      text-align: center;
+      line-height: 1;
+      width: 100%;
+      .item {
+        display: inline-block;
+        width: 80%;
+        max-width: 800px;
+        margin: $spacing;
+        height: 3em;
+      }
     }
   }
 }
