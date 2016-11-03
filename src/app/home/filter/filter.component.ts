@@ -1,7 +1,7 @@
 /**
  * @module HomeModule
  */ /** */
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 /**
  * @whatItDoes Returns a filter bar that filters recipes
  * @consumers {@link HomeComponent}
@@ -11,4 +11,7 @@ import { Component } from '@angular/core';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss']
 })
-export class FilterComponent { }
+export class FilterComponent {
+  drawerOpen = false;
+  @Output() drawerEvent = new EventEmitter();
+}

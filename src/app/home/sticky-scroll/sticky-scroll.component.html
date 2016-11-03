@@ -1,5 +1,5 @@
 <div [style.height]="height + 'px'">
-  <div class="position-container" [style.position]="fixed ? 'fixed' : null" appWatchHeight (heightChange)="height = $event">
+  <div #positionContainer class="position-container" [style.position]="fixed ? 'fixed' : null" appWatchHeight (heightChange)="height = $event">
     <ng-content></ng-content>
   </div>
 </div>

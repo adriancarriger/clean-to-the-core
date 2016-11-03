@@ -5,27 +5,33 @@
   font-size: $inputFontSize;
   padding: 10px;
   line-height: 2;
-  // Filter layout
-  display: flex;
-  justify-content: space-between;
-  font-size: 19px;
-  .nav-left {
-    justify-content: flex-start;
+  .content {
+    // Filter layout
     display: flex;
-    @media(min-width: $desktopBreakPoint) {
-      padding-left: 7%;
+    justify-content: space-between;
+    font-size: 19px;
+    .nav-left {
+      justify-content: center;
+      display: flex;
+      flex-grow: 100;
+      .item {
+        width: 60%;
+      }
+      @media(min-width: $desktopBreakPoint) {
+        padding-left: 7%;
+      }
     }
-  }
-  .nav-right {
-    justify-content: flex-end;
-    @media(min-width: $desktopBreakPoint) {
-      padding-right: 7%;
+    .nav-right {
+      justify-content: flex-end;
+      @media(min-width: $desktopBreakPoint) {
+        padding-right: 7%;
+      }
     }
-  }
-  .item {
-    margin: 3px;
-    color: $accentTextColor;
-    fill: $accentTextColor;
-    outline-color: $accentTextColor;
+    .item {
+      margin: 3px;
+      color: $accentTextColor;
+      fill: $accentTextColor;
+      outline-color: $accentTextColor;
+    }
   }
 }

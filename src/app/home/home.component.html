@@ -7,8 +7,8 @@
   </header>
 </div>
 <div class="home-content" [style.margin-top]="fixedHeight + 'px'">
-  <app-sticky-scroll [stickyOffset]="fixedHeight">
-    <app-filter></app-filter>
+  <app-sticky-scroll #stickyScroll [stickyOffset]="fixedHeight">
+    <app-filter (drawerEvent)="stickyScroll.manualHeightCheck()"></app-filter>  
   </app-sticky-scroll>
   <div class="info-bar">
     <div></div>

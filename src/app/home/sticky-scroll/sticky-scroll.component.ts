@@ -9,11 +9,13 @@ import {
   OnDestroy,
   OnInit,
   Renderer,
+  ViewChild
 } from '@angular/core';
 
 import { GlobalEventsService } from '../../core/global-events.service';
 /**
- * @whatItDoes Sets the child content fixed to top when it reaches the top
+ * @whatItDoes Sets the {@link positionContainer} fixed to top when it reaches the top while the
+ * host {@link element} acts as a placeholder in the DOM
  * @consumers {@link FilterComponent}
  */
 @Component({
@@ -27,7 +29,11 @@ export class StickyScrollComponent implements AfterViewInit, OnDestroy, OnInit {
    */
   @Input() stickyOffset: number;
   /**
-   * 
+   * The actual content that gets fixed on scroll
+   */
+  @ViewChild('positionContainer') positionContainer: ElementRef;
+  /**
+   * The height of the {@link positionContainer}
    */
   height: number;
   /**
@@ -56,6 +62,16 @@ export class StickyScrollComponent implements AfterViewInit, OnDestroy, OnInit {
     private globalEventsService: GlobalEventsService,
     private element: ElementRef,
     private renderer: Renderer) { }
+  /**
+   * Manually updates {@link height}
+   * 
+   * - Wrapped in `setTimeout` to run after the view updates
+   */
+  manualHeightCheck() {
+    setTimeout( () => {
+      this.height = this.positionContainer.nativeElement.clientHeight;
+    }, 0);
+  }
   /**
    * An Angular 2 [lifecyle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html)
    * called once, after Angular initializes the host component's views and child views.
