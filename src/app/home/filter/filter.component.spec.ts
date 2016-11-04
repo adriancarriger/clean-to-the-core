@@ -6,7 +6,7 @@ import { Subject } from 'rxjs/Rx';
 
 import { FilterComponent } from './filter.component';
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
-import { MockGlobalEventsService } from '../../core/global-events/global-events.service.mock';
+import { MockGlobalEventsService } from '../../core/global-events/mock-global-events.service.spec';
 import { SharedModule } from '../../shared/shared.module';
 
 describe('FilterComponent', () => {

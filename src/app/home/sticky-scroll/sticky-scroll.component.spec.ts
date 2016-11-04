@@ -6,7 +6,7 @@ import { Subject } from 'rxjs/Rx';
 
 import { StickyScrollComponent } from './sticky-scroll.component';
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
-import { MockGlobalEventsService } from '../../core/global-events/global-events.service.mock';
+import { MockGlobalEventsService } from '../../core/global-events/mock-global-events.service.spec';
 
 describe('StickyScrollComponent', () => {
   let component: StickyScrollComponent;

@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs/Rx';
 
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
-import { MockGlobalEventsService } from '../../core/global-events/global-events.service.mock';
+import { MockGlobalEventsService } from '../../core/global-events/mock-global-events.service.spec';
 import { WatchHeightDirective } from './watch-height.directive';
 
 @Component({
