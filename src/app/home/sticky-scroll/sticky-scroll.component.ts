@@ -29,10 +29,6 @@ export class StickyScrollComponent implements AfterViewInit, OnDestroy, OnInit {
    */
   @Input() stickyOffset: number;
   /**
-   * The actual content that gets fixed on scroll
-   */
-  @ViewChild('positionContainer') positionContainer: ElementRef;
-  /**
    * The height of the {@link positionContainer}
    */
   height: number;
@@ -40,6 +36,10 @@ export class StickyScrollComponent implements AfterViewInit, OnDestroy, OnInit {
    * Set to `true` if the host element should be fixed to the top of the screen.
    */
   fixed: boolean = false;
+  /**
+   * The actual content that gets fixed on scroll
+   */
+  @ViewChild('positionContainer') private positionContainer: ElementRef;
   /**
    * The minimum number of pixels that should be scrolled before {@link fixed} is set to `true`.
    */
@@ -111,15 +111,6 @@ export class StickyScrollComponent implements AfterViewInit, OnDestroy, OnInit {
     });
   }
   /**
-   * Sets host element to `position: fixed`
-   */
-  // private addSticky() {
-  //   this.renderer.setElementStyle(this.element.nativeElement, 'position', 'fixed');
-  //   this.renderer.setElementStyle(
-  //     document.documentElement, 'margin-top',
-  //     this.element.nativeElement.clientHeight + 'px');
-  // }
-  /**
    * Get dimensions related to fixing the host element.
    * 
    * 1. Remove fixed `position: fixed` (if fixed) to get original position from top
@@ -133,23 +124,9 @@ export class StickyScrollComponent implements AfterViewInit, OnDestroy, OnInit {
     this.updatePosition();
   }
   /**
-   * Removes fixed position
-   */
-  // private removeSticky() {
-  //   this.renderer.setElementStyle(this.element.nativeElement, 'position', null);
-  //   this.renderer.setElementStyle(document.documentElement, 'margin-top', null);
-  // }
-  /**
    * Checks if the host element should be fixed
    */
   private updatePosition() {
     this.fixed = document.body.scrollTop >= this.minScroll;
-    // if (document.body.scrollTop >= this.minScroll) {
-    //   this.fixed = true;
-    //   this.addSticky();
-    // } else {
-    //   this.fixed = false;
-    //   this.removeSticky();
-    // }
   }
 }

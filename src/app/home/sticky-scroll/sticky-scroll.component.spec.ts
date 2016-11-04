@@ -35,7 +35,6 @@ describe('StickyScrollComponent', () => {
 
   it('should set style to fixed', () => {
     component.stickyOffset = -50;
-    fixture.detectChanges();
     mockGlobalEventsService.update();
     expect(component.fixed).toBe(true);
   });
@@ -44,23 +43,32 @@ describe('StickyScrollComponent', () => {
     let newPosition: string;
     // Set fixed
     component.stickyOffset = -50;
-    fixture.detectChanges();
     mockGlobalEventsService.update();
     expect(component.fixed).toBe(true);
     // Remove fixed
     component.stickyOffset = 50;
-    fixture.detectChanges();
     mockGlobalEventsService.update();
     expect(component.fixed).toBe(false);
   });
 
   it('should destroy the component', () => {
     component.stickyOffset = -50;
-    fixture.detectChanges();
     mockGlobalEventsService.update();
     expect(component.fixed).toBe(true);
     component.ngOnDestroy();
-    fixture.detectChanges();
     expect(component.fixed).toBe(false);
+  });
+
+  it('should update the height on manuel check', done => {
+    component.height = 5;
+    let positionContainer = fixture.nativeElement.getElementsByClassName('position-container')[0];
+    positionContainer.style.height = '234px';
+    expect(positionContainer.clientHeight).toBe(234);
+    expect(component.height).toBe(5);
+    component.manualHeightCheck();
+    setTimeout( () => {
+      expect(component.height).toBe(234);
+      done();
+    }, 0);
   });
 });
