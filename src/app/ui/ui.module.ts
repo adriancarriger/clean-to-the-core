@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { IconArrowDownComponent } from './icon-arrow-down/icon-arrow-down.component';
+import { IconMinusComponent } from './icon-minus/icon-minus.component';
+import { IconPlusComponent } from './icon-plus/icon-plus.component';
 import { IconSearchComponent } from './icon-search/icon-search.component';
 import { InputComponent } from './input/input.component';
 import { SelectComponent } from './select/select.component';
@@ -32,12 +34,16 @@ import { SelectComponent } from './select/select.component';
   ],
   declarations: [
     IconArrowDownComponent,
+    IconMinusComponent,
+    IconPlusComponent,
     IconSearchComponent,
     InputComponent,
     SelectComponent
   ],
   exports: [
     IconArrowDownComponent,
+    IconMinusComponent,
+    IconPlusComponent,
     IconSearchComponent,
     InputComponent,
     SelectComponent

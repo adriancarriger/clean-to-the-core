@@ -1,6 +1,7 @@
 :host {
+  $padding: 10px;
   display: inline-block;
-  $sidePadding: 10px;
+  line-height: 1;
   // Turn a button into a link - http://stackoverflow.com/a/12642009/5357459
   button {
     /* Remove all decorations to look like normal text */
@@ -9,9 +10,10 @@
     display: inline;
     font: inherit;
     margin: 0;
-    padding: 0 $sidePadding;
+    padding: $padding;
     outline-offset: 0;
     color: inherit;
+    line-height: inherit;
     /* Additional styles to look like a link */
     cursor: pointer;
     &:focus {
@@ -22,6 +24,6 @@
   input[type="button"]::-moz-focus-inner,
   button::-moz-focus-inner {
     border: none;
-    padding: 0 $sidePadding;
+    padding: $padding;
   }
 }

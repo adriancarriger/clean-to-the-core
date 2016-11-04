@@ -18,6 +18,9 @@ export class FilterComponent implements OnInit {
   @Output() drawerEvent = new EventEmitter();
   constructor(private globalEventsService: GlobalEventsService) { }
   ngOnInit() {
-    this.globalEventsService.scroll().subscribe( () => this.drawerOpen = false);
+    this.globalEventsService.scroll().subscribe( () => {
+      this.drawerOpen = false;
+      this.drawerEvent.emit();
+    });
   }
 }

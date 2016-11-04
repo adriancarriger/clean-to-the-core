@@ -46,7 +46,9 @@
         width: 80%;
         max-width: 800px;
         margin: $spacing;
-        height: 3em;
+        height: 2em;
+        font-size: 2em;
+        font-family: $titleFont;
       }
     }
   }
