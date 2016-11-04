@@ -33,4 +33,11 @@ describe('FilterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should close drawer on scroll', () => {
+    component.drawerOpen = true;
+    expect(component.drawerOpen).toBe(true);
+    mockGlobalEventsService.update();
+    expect(component.drawerOpen).toBe(false);
+  });
 });
