@@ -5,10 +5,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { IconArrowDownComponent } from './icon-arrow-down/icon-arrow-down.component';
-import { IconMinusComponent } from './icon-minus/icon-minus.component';
-import { IconPlusComponent } from './icon-plus/icon-plus.component';
-import { IconSearchComponent } from './icon-search/icon-search.component';
+import { IconArrowDownComponent } from './icons/icon-arrow-down/icon-arrow-down.component';
+import { IconHeartComponent } from './icons/icon-heart/icon-heart.component';
+import { IconMinusComponent } from './icons/icon-minus/icon-minus.component';
+import { IconPlusComponent } from './icons/icon-plus/icon-plus.component';
+import { IconSearchComponent } from './icons/icon-search/icon-search.component';
 import { InputComponent } from './input/input.component';
 import { SelectComponent } from './select/select.component';
 /**
@@ -34,6 +35,7 @@ import { SelectComponent } from './select/select.component';
   ],
   declarations: [
     IconArrowDownComponent,
+    IconHeartComponent,
     IconMinusComponent,
     IconPlusComponent,
     IconSearchComponent,
@@ -42,6 +44,7 @@ import { SelectComponent } from './select/select.component';
   ],
   exports: [
     IconArrowDownComponent,
+    IconHeartComponent,
     IconMinusComponent,
     IconPlusComponent,
     IconSearchComponent,

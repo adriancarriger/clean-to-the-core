@@ -6,7 +6,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ButtonClearComponent } from './button-clear/button-clear.component';
-import { IconHeartComponent } from './icon-heart/icon-heart.component';
 import { ImageCoverComponent } from './image-cover/image-cover.component';
 import { LabelsComponent } from './labels/labels.component';
 import { UiModule } from '../ui/ui.module';
@@ -25,7 +24,6 @@ import { WatchHeightDirective } from './watch-height/watch-height.directive';
   ],
   declarations: [
     ButtonClearComponent,
-    IconHeartComponent,
     ImageCoverComponent,
     LabelsComponent,
     WatchHeightDirective
@@ -33,7 +31,6 @@ import { WatchHeightDirective } from './watch-height/watch-height.directive';
   exports: [
     ButtonClearComponent,
     CommonModule,
-    IconHeartComponent,
     ImageCoverComponent,
     LabelsComponent,
     UiModule,
