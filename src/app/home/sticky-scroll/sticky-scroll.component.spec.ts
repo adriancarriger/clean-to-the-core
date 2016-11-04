@@ -5,33 +5,17 @@ import { DebugElement, Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Rx';
 
 import { StickyScrollComponent } from './sticky-scroll.component';
-import { GlobalEventsService } from '../../core/global-events.service';
-
-@Injectable()
-export class MockGlobalEventsService {
-  events$;
-  constructor() {
-    this.events$ = new Subject();
-  }
-  resize() {
-    return this.events$.asObservable();
-  }
-  scroll() {
-    return this.events$.asObservable();
-  }
-  update() {
-    this.events$.next(1);
-  }
-}
+import { GlobalEventsService } from '../../core/global-events/global-events.service';
+import { MockGlobalEventsService } from '../../core/global-events/global-events.service.mock';
 
 describe('StickyScrollComponent', () => {
   let component: StickyScrollComponent;
   let fixture: ComponentFixture<StickyScrollComponent>;
-  let mockEvents = new MockGlobalEventsService;
+  let mockGlobalEventsService = new MockGlobalEventsService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [
-        { provide: GlobalEventsService, useValue: mockEvents },
+        { provide: GlobalEventsService, useValue: mockGlobalEventsService },
         { provide: 'Window', useValue: window }
       ],
       declarations: [ StickyScrollComponent ]
@@ -52,7 +36,7 @@ describe('StickyScrollComponent', () => {
   it('should set style to fixed', () => {
     component.stickyOffset = -50;
     fixture.detectChanges();
-    mockEvents.update();
+    mockGlobalEventsService.update();
     expect(component.fixed).toBe(true);
   });
 
@@ -61,19 +45,19 @@ describe('StickyScrollComponent', () => {
     // Set fixed
     component.stickyOffset = -50;
     fixture.detectChanges();
-    mockEvents.update();
+    mockGlobalEventsService.update();
     expect(component.fixed).toBe(true);
     // Remove fixed
     component.stickyOffset = 50;
     fixture.detectChanges();
-    mockEvents.update();
+    mockGlobalEventsService.update();
     expect(component.fixed).toBe(false);
   });
 
   it('should destroy the component', () => {
     component.stickyOffset = -50;
     fixture.detectChanges();
-    mockEvents.update();
+    mockGlobalEventsService.update();
     expect(component.fixed).toBe(true);
     component.ngOnDestroy();
     fixture.detectChanges();

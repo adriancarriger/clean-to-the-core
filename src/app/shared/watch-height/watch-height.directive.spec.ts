@@ -3,7 +3,8 @@ import { Component, Injectable } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs/Rx';
 
-import { GlobalEventsService } from '../../core/global-events.service';
+import { GlobalEventsService } from '../../core/global-events/global-events.service';
+import { MockGlobalEventsService } from '../../core/global-events/global-events.service.mock';
 import { WatchHeightDirective } from './watch-height.directive';
 
 @Component({
@@ -14,27 +15,13 @@ export class ContainerComponent {
   testOutput;
 }
 
-@Injectable()
-export class MockGlobalEventsService {
-  events$;
-  constructor() {
-    this.events$ = new Subject();
-  }
-  resize() {
-    return this.events$.asObservable();
-  }
-  update() {
-    this.events$.next(1);
-  }
-}
-
 describe('Directive: WatchHeight', () => {
   let fixture: ComponentFixture<ContainerComponent>;
-  let mockEvents = new MockGlobalEventsService;
+  let mockGlobalEventsService = new MockGlobalEventsService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [
-        { provide: GlobalEventsService, useValue: mockEvents }
+        { provide: GlobalEventsService, useValue: mockGlobalEventsService }
       ],
       declarations: [ContainerComponent, WatchHeightDirective]
     })
@@ -54,13 +41,10 @@ describe('Directive: WatchHeight', () => {
     expect( fixture.componentInstance.testOutput ).toBe(0);
   });
 
-  it('should emit an updated height', done => {
+  it('should emit an updated height', () => {
     fixture.componentInstance.heightInput = '202px';
     fixture.detectChanges();
-    mockEvents.update();
-    setTimeout( () => { // Wait for height to update
-      expect( fixture.componentInstance.testOutput ).toBe(202);
-      done();
-    }, 500);
+    mockGlobalEventsService.update();
+    expect( fixture.componentInstance.testOutput ).toBe(202);
   });
 });

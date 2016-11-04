@@ -5,36 +5,20 @@ import { DebugElement, Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Rx';
 
 import { FilterComponent } from './filter.component';
-import { GlobalEventsService } from '../../core/global-events.service';
+import { GlobalEventsService } from '../../core/global-events/global-events.service';
+import { MockGlobalEventsService } from '../../core/global-events/global-events.service.mock';
 import { SharedModule } from '../../shared/shared.module';
-
-@Injectable()
-export class MockGlobalEventsService {
-  events$;
-  constructor() {
-    this.events$ = new Subject();
-  }
-  resize() {
-    return this.events$.asObservable();
-  }
-  scroll() {
-    return this.events$.asObservable();
-  }
-  update() {
-    this.events$.next(1);
-  }
-}
 
 describe('FilterComponent', () => {
   let component: FilterComponent;
   let fixture: ComponentFixture<FilterComponent>;
-  let mockEvents = new MockGlobalEventsService;
+  let mockGlobalEventsService = new MockGlobalEventsService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ SharedModule ],
       declarations: [ FilterComponent ],
       providers: [
-        { provide: GlobalEventsService, useValue: mockEvents }
+        { provide: GlobalEventsService, useValue: mockGlobalEventsService }
       ]
     })
     .compileComponents();

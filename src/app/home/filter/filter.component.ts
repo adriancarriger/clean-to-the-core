@@ -3,7 +3,7 @@
  */ /** */
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { GlobalEventsService } from '../../core/global-events.service';
+import { GlobalEventsService } from '../../core/global-events/global-events.service';
 /**
  * @whatItDoes Returns a filter bar that filters recipes
  * @consumers {@link HomeComponent}

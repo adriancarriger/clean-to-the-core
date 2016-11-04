@@ -7,7 +7,7 @@ import { Subject, Observable } from 'rxjs/Rx';
 import { HomeComponent } from './home.component';
 import { HomeModule } from './home.module';
 import { ApiService } from '../core/api/api.service';
-import { GlobalEventsService } from '../core/global-events.service';
+import { GlobalEventsService } from '../core/global-events/global-events.service';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 

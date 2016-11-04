@@ -10,7 +10,7 @@ import { Subject } from 'rxjs/Rx';
 import { LayoutComponent } from './layout.component';
 import { CoreModule  } from '../core.module';
 import { FooterComponent } from '../footer/footer.component';
-import { GlobalEventsService } from '../global-events.service';
+import { GlobalEventsService } from '../global-events/global-events.service';
 import { NavComponent } from '../nav/nav.component';
 import { HomeComponent } from '../../home/home.component';
 import { HomeModule } from '../../home/home.module';

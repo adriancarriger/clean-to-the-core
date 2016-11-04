@@ -2,32 +2,12 @@
 import { DebugElement, Injectable } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
 import { Subject } from 'rxjs/Rx';
 
 import { RecipeAdComponent } from './recipe-ad.component';
 import { ImageCoverComponent } from '../../shared/image-cover/image-cover.component';
 import { ApiService } from '../../core/api/api.service';
-
-
-@Injectable()
-export class ApiServiceMock {
-  events$;
-  data = {
-    id: 0,
-    blurb: 'blurb text'
-  };
-  constructor() {
-    this.events$ = new Subject();
-  }
-  recipe(input) {
-    this.update();
-    return this.events$.asObservable();
-  }
-  update() {
-    this.events$.next(this.data);
-  }
-}
+import { ApiServiceMock } from '../../core/api/api.service.mock';
 
 describe('RecipeAdComponent', () => {
   let component: RecipeAdComponent;

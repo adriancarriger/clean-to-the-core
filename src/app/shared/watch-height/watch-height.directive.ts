@@ -10,7 +10,7 @@ import {
   OnInit,
   Output } from '@angular/core';
 
-import { GlobalEventsService } from '../../core/global-events.service';
+import { GlobalEventsService } from '../../core/global-events/global-events.service';
 /**
  * Emits the host's height `OnInit` and when the window resizes.
  */

@@ -12,7 +12,7 @@ import {
   ViewChild
 } from '@angular/core';
 
-import { GlobalEventsService } from '../../core/global-events.service';
+import { GlobalEventsService } from '../../core/global-events/global-events.service';
 /**
  * @whatItDoes Sets the {@link positionContainer} fixed to top when it reaches the top while the
  * host {@link element} acts as a placeholder in the DOM

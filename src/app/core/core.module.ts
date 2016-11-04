@@ -8,7 +8,7 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core
 import { RouterModule } from '@angular/router';
 
 import { ApiService } from './api/api.service';
-import { GlobalEventsService } from './global-events.service';
+import { GlobalEventsService } from './global-events/global-events.service';
 import { firebaseConfig } from './firebase-config';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
