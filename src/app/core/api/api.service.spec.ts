@@ -5,34 +5,7 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 import { Subject, Observable } from 'rxjs/Rx';
 
 import { ApiService } from './api.service';
-
-@Injectable()
-export class MockAngularFire {
-  recipeList$;
-  database = {
-    list: (input: string) => {
-      return this.recipeList$.asObservable();
-    },
-    object: (input: string) => {
-      return this.recipeList$.asObservable();
-    }
-  };
-  private mockArray = [
-    {
-      title: 'test title 1'
-    },
-    {
-      title: 'test title 2'
-    }
-  ];
-  constructor() {
-    this.recipeList$ = new Subject();
-    this.update();
-  }
-  update() {
-    this.recipeList$.next(this.mockArray);
-  }
-}
+import { MockAngularFire } from '../../../imported-mocks/mock-angular-fire.service.spec';
 
 describe('Service: ApiService', () => {
   let mockAngularFire = new MockAngularFire();
@@ -49,7 +22,7 @@ describe('Service: ApiService', () => {
     TestBed.compileComponents();
   }));
 
-  it('should ...', inject([ApiService], (service: ApiService) => {
+  it('should create the service', inject([ApiService], (service: ApiService) => {
     expect(service).toBeTruthy();
   }));
 
@@ -57,4 +30,11 @@ describe('Service: ApiService', () => {
     let recipe = service.recipe('2');
     expect(recipe instanceof Observable).toBe(true);
   }));
+
+  it('should return an id', async(inject([ApiService], (service) => {
+    service.slugToId('test-slug-2').then(id => {
+      expect(id).toBe('48825');
+    });
+    mockAngularFire.update();
+  })));
 });

@@ -15,6 +15,11 @@ export class MockApiService {
     this.update();
     return this.events$.asObservable();
   }
+  slugToId(slug: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      resolve('02');
+    });
+  }
   update() {
     this.events$.next(this.data);
   }
