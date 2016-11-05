@@ -20,8 +20,7 @@ before_install:
   - sudo dpkg -i google-chrome*.deb
 
 after_success:
-  # Send coverage data to Coveralls
-  - cat ./coverage/coverage.lcov | ./node_modules/coveralls/bin/coveralls.js
+  # Send coverage data to Codecov
   - bash <(curl -s https://codecov.io/bash)
   # Start e2e test via sauce (on hold for now)
   # - npm run e2e protractor.sauce.conf.js
