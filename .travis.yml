@@ -22,6 +22,7 @@ before_install:
 after_success:
   # Send coverage data to Coveralls
   - cat ./coverage/coverage.lcov | ./node_modules/coveralls/bin/coveralls.js
+  - bash <(curl -s https://codecov.io/bash)
   # Start e2e test via sauce (on hold for now)
   # - npm run e2e protractor.sauce.conf.js
 
