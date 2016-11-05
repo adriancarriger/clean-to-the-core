@@ -5,6 +5,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { AxFocus01FixDirective } from './ax-focus-01-fix/ax-focus-01-fix.directive';
 import { ButtonClearComponent } from './button-clear/button-clear.component';
 import { ImageCoverComponent } from './image-cover/image-cover.component';
 import { LabelsComponent } from './labels/labels.component';
@@ -23,12 +24,14 @@ import { WatchHeightDirective } from './watch-height/watch-height.directive';
     UiModule
   ],
   declarations: [
+    AxFocus01FixDirective,
     ButtonClearComponent,
     ImageCoverComponent,
     LabelsComponent,
     WatchHeightDirective
   ],
   exports: [
+    AxFocus01FixDirective,
     ButtonClearComponent,
     CommonModule,
     ImageCoverComponent,
