@@ -1,11 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Rx';
 /**
- * **Use like this:**
+ * **For Components:**
+ * ```
+   constructor(
+     @Inject('Window') private window: Window
+     private otherInjectables: OtherInjectables) { }
+ * ```
+ * 
+ * **For tests:**
  * 1. import
- * `import { MockWindowService } from '../../../mocks/mock-window.service.spec';`
+ * ```
+   import { MockWindowService } from '../../../mocks/mock-window.service.spec';
+   ```
  * 2. create
- * let mockWindowService = new MockWindowService();
+ * ```
+   let mockWindowService = new MockWindowService();
+   ```
  * 3. Add to providers
  * ```
    providers: [
@@ -15,7 +26,7 @@ import { Subject } from 'rxjs/Rx';
  */
 @Injectable()
 export class MockWindowService {
-  events$ = {};
+  events$ = { };
   pageXOffset: number;
   pageYOffset: number;
   newEvent(event, eventObject) {

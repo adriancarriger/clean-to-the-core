@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Rx';
 /**
- * **Use like this:**
+ * **For Components:**
+ * ```
+   constructor(
+     @Inject('Document') private document: Document
+     private otherInjectables: OtherInjectables) { }
+ * ```
+ * 
+ * **For tests:**
  * 1. import
  * ```
    import { MockDocumentService } from '../../../mocks/mock-document.service.spec';
@@ -19,7 +26,7 @@ import { Subject } from 'rxjs/Rx';
  */
 @Injectable()
 export class MockDocumentService {
-  events$ = {};
+  events$ = { };
   activeElement;
   newEvent(event, eventObject) {
     this.events$[event].next(eventObject);

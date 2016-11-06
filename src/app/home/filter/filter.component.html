@@ -4,7 +4,7 @@
   </div>
   <div class="nav-right">
     <app-button-clear label="My favorite recipes" class="item"><app-icon-heart></app-icon-heart></app-button-clear>
-    <app-button-clear label="Toggle additional filter options" (click)="drawerOpen = !drawerOpen; drawerEvent.emit()" class="item">
+    <app-button-clear label="Toggle additional filter options" (click)="onDrawerToggle()" class="item">
       <app-icon-plus *ngIf="!drawerOpen"></app-icon-plus>
       <app-icon-minus *ngIf="drawerOpen"></app-icon-minus>
     </app-button-clear>

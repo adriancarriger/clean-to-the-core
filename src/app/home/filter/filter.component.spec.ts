@@ -8,17 +8,20 @@ import { FilterComponent } from './filter.component';
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
 import { MockGlobalEventsService } from '../../core/global-events/mock-global-events.service.spec';
 import { SharedModule } from '../../shared/shared.module';
+import { MockWindowService } from '../../../mocks/mock-window.service.spec';
 
 describe('FilterComponent', () => {
   let component: FilterComponent;
   let fixture: ComponentFixture<FilterComponent>;
   let mockGlobalEventsService = new MockGlobalEventsService();
+  let mockWindowService = new MockWindowService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ SharedModule ],
       declarations: [ FilterComponent ],
       providers: [
-        { provide: GlobalEventsService, useValue: mockGlobalEventsService }
+        { provide: GlobalEventsService, useValue: mockGlobalEventsService },
+        { provide: 'Window', useValue: mockWindowService }
       ]
     })
     .compileComponents();
@@ -27,6 +30,7 @@ describe('FilterComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FilterComponent);
     component = fixture.componentInstance;
+    mockWindowService.pageYOffset = 0;
     fixture.detectChanges();
   });
 
@@ -38,6 +42,28 @@ describe('FilterComponent', () => {
     component.drawerOpen = true;
     expect(component.drawerOpen).toBe(true);
     mockGlobalEventsService.update();
+    expect(component.drawerOpen).toBe(false);
+  });
+
+  it('should open the drawer', () => {
+    document.body.style.height = '900px';
+    document.body.style.margin = '132px';
+    expect(component.drawerOpen).toBe(false);
+    component.onDrawerToggle();
+    fixture.detectChanges();
+    expect(mockWindowService.pageYOffset).toBe(132);
+    expect(component.drawerOpen).toBe(true);
+    document.body.style.height = '0';
+    document.body.style.margin = '0';
+  });
+
+  it('should close the drawer', () => {
+    component.drawerOpen = true;
+    fixture.detectChanges();
+    expect(component.drawerOpen).toBe(true);
+    component.onDrawerToggle();
+    fixture.detectChanges();
+    expect(mockWindowService.pageYOffset).toBe(0);
     expect(component.drawerOpen).toBe(false);
   });
 });
