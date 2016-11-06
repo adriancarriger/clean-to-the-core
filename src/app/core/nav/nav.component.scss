@@ -6,6 +6,7 @@
     justify-content: space-between;
     line-height: 1;
     font-size: 19px;
+    background-color: rgba(0, 0, 0, 0.54);
     .nav-right {
       justify-content: flex-end;
     }
@@ -13,17 +14,7 @@
       padding: $textPadding;
       display: inline-block;
       font-family: $titleFont;
-    }
-  }
-  &.white-text {
-    .nav-content {
-      background-color: rgba(0, 0, 0, 0.54);
-      .nav-item {
-        color: white;
-      }
-    }
-    &:after {
-      background-color: rgba(0, 0, 0, 0.54);
+      color: white;
     }
   }
 }
