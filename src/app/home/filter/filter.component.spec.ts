@@ -45,6 +45,16 @@ describe('FilterComponent', () => {
     expect(component.drawerOpen).toBe(false);
   });
 
+  it('should close drawer on scroll', () => {
+    component.dontCloseOnScroll = true;
+    component.drawerOpen = true;
+    expect(component.dontCloseOnScroll).toBe(true);
+    expect(component.drawerOpen).toBe(true);
+    mockGlobalEventsService.update();
+    expect(component.drawerOpen).toBe(true);
+    expect(component.dontCloseOnScroll).toBe(false);
+  });
+
   it('should open the drawer', () => {
     document.body.style.height = '900px';
     document.body.style.margin = '132px';

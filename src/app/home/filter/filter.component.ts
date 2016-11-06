@@ -15,6 +15,10 @@ import { GlobalEventsService } from '../../core/global-events/global-events.serv
 })
 export class FilterComponent implements OnInit {
   /**
+   * Option to prevent {@link onScroll} default behaviour.
+   */
+  dontCloseOnScroll = false;
+  /**
    * Ouputs events related to the drawer opening/closing.
    */
   @Output() drawerEvent = new EventEmitter();
@@ -41,10 +45,7 @@ export class FilterComponent implements OnInit {
    * - sends a drawer event via the {@link drawerEvent} output.
    */
   ngOnInit() {
-    this.globalEventsService.scroll().subscribe( () => {
-      this.drawerOpen = false;
-      this.drawerEvent.emit();
-    });
+    this.globalEventsService.scroll().subscribe( () => this.onScroll() );
   }
   /**
    * Called when the drawer is toggled.
@@ -55,9 +56,23 @@ export class FilterComponent implements OnInit {
    */
   onDrawerToggle() {
     this.drawerOpen = !this.drawerOpen;
-    this.drawerEvent.emit();
     if (this.drawerOpen) {
-      this.window.scrollTo(0, this.getOffsetTop());
+      this.dontCloseOnScroll = true;
+      this.window.scrollTo(0, this.getOffsetTop() + this.window.pageYOffset);
+    }
+    this.drawerEvent.emit();
+  }
+  /**
+   * Called on scroll.
+   * - Default: closes the drawer and emits a drawer event
+   * - {@link dontCloseOnScroll} allows to skip the default behaviour
+   */
+  onScroll() {
+    if (this.dontCloseOnScroll) {
+      this.dontCloseOnScroll = false;
+    } else {
+      this.drawerOpen = false;
+      this.drawerEvent.emit();
     }
   }
   /**
