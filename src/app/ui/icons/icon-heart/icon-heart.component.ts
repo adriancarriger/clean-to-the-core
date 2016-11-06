@@ -1,7 +1,7 @@
 /**
  * @module SharedModule
  */ /** */
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 /**
  * Search icon from [Ionicons](http://ionicons.com/).
  * [Source](https://github.com/driftyco/ionicons/blob/master/src/heart.svg)
@@ -11,4 +11,6 @@ import { Component } from '@angular/core';
   templateUrl: './icon-heart.component.html',
   styleUrls: ['./icon-heart.component.scss']
 })
-export class IconHeartComponent { }
+export class IconHeartComponent {
+  @HostBinding('attr.aria-hidden') ariaHidden = 'true';
+}
