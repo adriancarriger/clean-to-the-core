@@ -21,8 +21,8 @@
         </ul>
       </div>
     </div>
-    <div class="recipe-comments">
-      --comments--
+    <div *ngIf="(recipe | async)?.id" class="recipe-comments">
+      <disqus [shortname]="'cleantothecore'" [identifier]="(recipe | async)?.id"></disqus>
     </div>
   </section>
   <div class="recipe-sidebar">
