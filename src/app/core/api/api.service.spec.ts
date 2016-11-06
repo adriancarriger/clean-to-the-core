@@ -5,7 +5,7 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 import { Subject, Observable } from 'rxjs/Rx';
 
 import { ApiService } from './api.service';
-import { MockAngularFire } from '../../../imported-mocks/mock-angular-fire.service.spec';
+import { MockAngularFire } from '../../../mocks/mock-angular-fire.service.spec';
 
 describe('Service: ApiService', () => {
   let mockAngularFire = new MockAngularFire();

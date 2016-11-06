@@ -44,7 +44,8 @@ export class CoreModule {
       providers: [
         ApiService,
         GlobalEventsService,
-        { provide: 'Window', useValue: window }
+        { provide: 'Window', useValue: window },
+        { provide: 'Document', useValue: document }
       ]
     };
   }

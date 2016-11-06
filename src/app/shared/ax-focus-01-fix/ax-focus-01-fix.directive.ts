@@ -1,6 +1,4 @@
-import { Directive, ElementRef, HostBinding, OnInit } from '@angular/core';
-
-import { GlobalEventsService } from '../../core/global-events/global-events.service';
+import { Directive, ElementRef, HostBinding, Inject, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[appAxFocus01Fix]'
@@ -14,15 +12,19 @@ export class AxFocus01FixDirective implements OnInit {
    * 
    */
   constructor(
+    @Inject('Document') private document: Document,
     private el: ElementRef,
-    private globalEventsService: GlobalEventsService) { }
+    @Inject('Window') private window: Window
+    ) { }
   /**
-   * Setup listeners
+   * - Setup listeners
+   * - Detect initial scroll position
    */
   ngOnInit() {
-    document.addEventListener('keydown', e => this.onKeyDown(e));
-    document.addEventListener('keyup', e => this.onKeyUp(e));
-    this.globalEventsService.scroll().subscribe(e => this.onScroll(e));
+    this.document.addEventListener('keydown', e => this.onKeyDown(e));
+    this.document.addEventListener('keyup', e => this.onKeyUp(e));
+    this.window.addEventListener('scroll', () => this.onScroll());
+    this.onScroll();
   }
   /**
    * Set all elements with this directive to visible by screen readers.
@@ -39,8 +41,8 @@ export class AxFocus01FixDirective implements OnInit {
    */
   private onKeyUp(e) {
     if (e.keyCode === 9) {
-      if (this.el.nativeElement === document.activeElement) {
-        window.scrollTo(0, 0);
+      if (this.el.nativeElement === this.document.activeElement) {
+        this.window.scrollTo(0, 0);
       } else {
         this.ariaHidden = true;
       }
@@ -49,10 +51,10 @@ export class AxFocus01FixDirective implements OnInit {
   /**
    * 
    */
-  private onScroll(event) {
-    let scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  private onScroll() {
+    let scrollPosition = this.window.pageYOffset || document.documentElement.scrollTop;
     if (scrollPosition === 0) {
-      this.ariaHidden = true;
+      this.ariaHidden = false;
     } else {
       this.ariaHidden = true;
     }

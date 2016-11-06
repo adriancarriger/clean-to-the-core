@@ -10,6 +10,7 @@ import { ApiService } from '../core/api/api.service';
 import { GlobalEventsService } from '../core/global-events/global-events.service';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
+import { MockDocumentService } from '../../mocks/mock-document.service.spec';
 
 @Injectable()
 export class MockApiService {
@@ -36,10 +37,12 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let mockApiService = new MockApiService();
+  let mockDocumentService = new MockDocumentService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ CoreModule, HomeModule, SharedModule ],
       providers: [
+        { provide: 'Document', useValue: mockDocumentService },
         GlobalEventsService,
         { provide: 'Window', useValue: window },
         { provide: ApiService, useValue: mockApiService }

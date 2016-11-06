@@ -15,6 +15,7 @@ import { NavComponent } from '../nav/nav.component';
 import { HomeComponent } from '../../home/home.component';
 import { HomeModule } from '../../home/home.module';
 import { ApiService } from '../api/api.service';
+import { MockDocumentService } from '../../../mocks/mock-document.service.spec';
 
 @Injectable()
 export class MockApiService {
@@ -45,7 +46,7 @@ describe('LayoutComponent', () => {
   let fixture: ComponentFixture<LayoutComponent>;
   let location: Location;
   let router: Router;
-
+  let mockDocumentService = new MockDocumentService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -55,8 +56,9 @@ describe('LayoutComponent', () => {
       ],
       providers: [
         GlobalEventsService,
-        { provide: 'Window', useValue: window },
-        { provide: ApiService, useValue: MockApiService }
+        { provide: ApiService, useValue: MockApiService },
+        { provide: 'Document', useValue: mockDocumentService },
+        { provide: 'Window', useValue: window }
       ]
     })
     .compileComponents();

@@ -5,15 +5,19 @@ import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { NavComponent } from './nav.component';
+import { MockDocumentService } from '../../../mocks/mock-document.service.spec';
 
 describe('NavComponent', () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
-
+  let mockDocumentService = new MockDocumentService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ NavComponent ]
+      declarations: [ NavComponent ],
+      providers: [
+        { provide: 'Document', useValue: mockDocumentService }
+      ]
     })
     .compileComponents();
   }));
