@@ -11,12 +11,19 @@
     padding-top: 0;
     .recipe-content {
       line-height: 1.5;
+      ul {
+        list-style: none;
+        padding-left: 15px;
+      }
       .title {
         font-size: 40px;
         margin: 5px 0;
       }
       .date, .author {
         color: $visibleGray;
+      }
+      .blurb {
+        margin: 10px 0;
       }
       app-labels {
         justify-content: flex-start;

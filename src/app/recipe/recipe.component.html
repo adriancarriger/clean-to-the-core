@@ -7,9 +7,19 @@
       <div class="blurb">{{(recipe | async)?.blurb}}</div>
       <app-labels [labels]="(recipe | async)?.labels"></app-labels>
       <app-image-cover [src]="(recipe | async)?.image"></app-image-cover>
-      <div *ngIf="(recipe | async)?.text.length > 0" class="recipe-text">{{(recipe | async)?.text}}</div>
-      <div>--ingredients--</div>
-      <div>--steps--</div>
+      <div *ngIf="(recipe | async)?.text" class="recipe-text">{{(recipe | async)?.text}}</div>
+      <div *ngIf="(recipe | async)?.ingredients"class="ingredients">
+        <h2>Ingredients</h2>
+        <ul [attr.aria-label]="'ingredients to make the ' + (recipe | async)?.title + ' recipe'">
+          <li *ngFor="let ingredient of (recipe | async)?.ingredients">{{ingredient}}</li>
+        </ul>
+      </div>
+      <div *ngIf="(recipe | async)?.steps"class="steps">
+        <h2>Steps</h2>
+        <ul [attr.aria-label]="'steps to make the ' + (recipe | async)?.title + ' recipe'">
+          <li *ngFor="let step of (recipe | async)?.steps">{{step}}</li>
+        </ul>
+      </div>
     </div>
     <div class="recipe-comments">
       --comments--
