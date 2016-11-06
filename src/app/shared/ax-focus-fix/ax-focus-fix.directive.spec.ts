@@ -3,7 +3,7 @@ import { Component, HostBinding, Injectable, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs/Rx';
 
-import { AxFocus01FixDirective } from './ax-focus-01-fix.directive';
+import { AxFocusFixDirective } from './ax-focus-fix.directive';
 import { MockDocumentService } from '../../../mocks/mock-document.service.spec';
 import { MockWindowService } from '../../../mocks/mock-window.service.spec';
 
@@ -25,7 +25,7 @@ describe('Directive: appAxFocus01Fix', () => {
         { provide: 'Document', useValue: mockDocumentService },
         { provide: 'Window', useValue: mockWindowService }
       ],
-      declarations: [AxFocus01FixDirective, ContainerComponent]
+      declarations: [AxFocusFixDirective, ContainerComponent]
     })
     .compileComponents();
   }));
