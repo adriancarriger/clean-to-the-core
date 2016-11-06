@@ -1,20 +1,30 @@
-
+@import '../../variables';
 .recipe-container {
   display: flex;
   flex-wrap: wrap;
   padding: 3%;
+  padding-top: 0;
   font-size: 16px;
   .recipe-section {
     width: 66.66%;
     padding: 3%;
+    padding-top: 0;
     .recipe-content {
       line-height: 1.5;
+      .title {
+        font-size: 40px;
+        margin: 5px 0;
+      }
+      .date, .author {
+        color: $visibleGray;
+      }
       app-labels {
         justify-content: flex-start;
       }
       app-image-cover {
         padding-bottom: 50%;
         height: 0;
+        margin: 20px 0;
       }
     }
   }

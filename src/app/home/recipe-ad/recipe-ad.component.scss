@@ -1,3 +1,4 @@
+@import '../../../variables';
 :host {
   display: block;
   text-align: center;
@@ -41,7 +42,7 @@
     }
   }
   .recipe-blurb {
-    color: #737373;
+    color: $visibleGray;
     max-width: 80%;
     margin: 0 auto;
     text-overflow: ellipsis;
