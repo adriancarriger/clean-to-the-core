@@ -21,7 +21,7 @@ export class AxFocusFixDirective implements OnInit {
   /**
    * Sets the `aria-hidden` attribute of the host element.
    */
-  @HostBinding('attr.aria-hidden') ariaHidden = true;
+  @HostBinding('attr.aria-hidden') ariaHidden: boolean;
   /**
    * Creates the {@link AxFocusFixDirective}
    * @param document the global `document` variable
@@ -31,8 +31,7 @@ export class AxFocusFixDirective implements OnInit {
   constructor(
     @Inject('Document') private document: Document,
     private el: ElementRef,
-    @Inject('Window') private window: Window
-    ) { }
+    @Inject('Window') private window: Window) { }
   /**
    * - Setup listeners
    * - Detect initial scroll position
