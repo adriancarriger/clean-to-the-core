@@ -2,7 +2,7 @@
  * @module RecipeModule
  * @preferred
  */ /** */
-import { Ng2DisqusModule } from '../forks/ng2-disqus/ng2-disqus.module';
+import { Ng2DisqusModule } from '../../../node_modules/ng2-disqus/src/ng2-disqus.module';
 import { NgModule } from '@angular/core';
 
 import { RecipeComponent } from './recipe.component';

@@ -20,7 +20,7 @@
       </div>
     </div>
     <div *ngIf="(recipe | async)?.id">
-      <app-disqus [shortname]="'cleantothecore'" [identifier]="(recipe | async)?.id"></app-disqus>
+      <disqus [shortname]="'cleantothecore'" [identifier]="(recipe | async)?.id"></disqus>
     </div>
   </section>
   <div class="recipe-sidebar">

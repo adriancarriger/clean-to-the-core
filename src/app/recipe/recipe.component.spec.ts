@@ -4,7 +4,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, Observable } from 'rxjs/Rx';
-import { Ng2DisqusModule } from '../forks/ng2-disqus/ng2-disqus.module';
 
 import { RecipeComponent } from './recipe.component';
 import { ApiService } from '../core/api/api.service';
@@ -12,7 +11,7 @@ import { ImageCoverComponent } from '../shared/image-cover/image-cover.component
 import { LabelsComponent } from '../shared/labels/labels.component';
 
 @Component({
-  selector: 'app-disqus',
+  /* tslint:disable */selector: 'disqus',/* tslint:enable */
   template: '<div id="disqus_thread"></div>'
 })
 export class MockDisqus {
