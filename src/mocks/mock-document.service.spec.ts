@@ -28,6 +28,7 @@ import { Subject } from 'rxjs/Rx';
 export class MockDocumentService {
   events$ = { };
   activeElement;
+  head;
   newEvent(event, eventObject) {
     this.events$[event].next(eventObject);
   }
