@@ -11,11 +11,11 @@
       <div *ngFor="let item of (recipe | async)?.items" class="recipe-item">
         <div *ngIf="item.ingredients"class="ingredients">
           <h2>Ingredients</h2>
-          {{item.ingredients}}
+          <div [innerHTML]="item.ingredients"></div>
         </div>
         <div *ngIf="item.steps"class="steps">
           <h2>Steps</h2>
-          {{item.steps}}
+          <div [innerHTML]="item.steps"></div>
         </div>
       </div>
     </div>
