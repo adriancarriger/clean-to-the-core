@@ -9,12 +9,13 @@
       <app-image-cover [src]="(recipe | async)?.image"></app-image-cover>
       <div *ngIf="(recipe | async)?.text" class="recipe-text">{{(recipe | async)?.text}}</div>
       <div *ngFor="let item of (recipe | async)?.items" class="recipe-item">
+        <h2 class="item-title" *ngIf="item.name">{{item.name}}</h2>
         <div *ngIf="item.ingredients"class="ingredients">
-          <h2>Ingredients</h2>
+          <h3>Ingredients</h3>
           <div [innerHTML]="item.ingredients"></div>
         </div>
         <div *ngIf="item.steps"class="steps">
-          <h2>Steps</h2>
+          <h3>Steps</h3>
           <div [innerHTML]="item.steps"></div>
         </div>
       </div>
