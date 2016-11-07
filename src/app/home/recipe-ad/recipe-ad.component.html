@@ -1,4 +1,4 @@
-<app-image-cover [src]="recipe?.src"></app-image-cover>
+<app-image-cover [src]="recipe?.image"></app-image-cover>
 <h2 class="recipe-title">{{recipeMeta.title}}</h2>
 <ul class="allergens">
   <li *ngFor="let allergen of recipe?.allergens" class="allergen">{{allergen}}</li>
