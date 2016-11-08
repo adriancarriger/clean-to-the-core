@@ -2,6 +2,7 @@
  * @module UiModule
  */ /** */
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -16,7 +17,7 @@ import {
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
-export class SelectComponent {
+export class SelectComponent implements AfterViewInit {
   /**
    * Category (pural) for the type of options (e.g. Restaurants, animals, cities, etc.)
    * @default all is used as a default like this: `All ${category}`
@@ -53,6 +54,13 @@ export class SelectComponent {
   get(): string {
     let selectNative = this.select.nativeElement;
     return selectNative.options[selectNative.selectedIndex].value;
+  }
+  /**
+   * Emits the inital value.
+   */
+  ngAfterViewInit() {
+    let initValue = this.get();
+    this.update.emit(initValue);
   }
   /**
    * Sets the `select` value. 

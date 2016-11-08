@@ -1,9 +1,11 @@
 /**
  * @module HomeModule
  */ /** */
-import { Component, ElementRef, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
+import { FilterOptions } from './filter-options';
+import { FilterUtilitiesService } from './filter-utilities.service';
 /**
  * @whatItDoes Returns a filter bar that filters recipes
  * @consumers {@link HomeComponent}
@@ -30,22 +32,42 @@ export class FilterComponent implements OnInit {
    */
   drawerOpen = false;
   /**
+   * Optional filter items.
+   * 
+   * - Filter by search
+   * - Filter by select boxes (array)
+   */
+  @Input() filterOptions: FilterOptions;
+  /**
+   * Contains filter information usually sent to a pipe for filtering data.
+   */
+  filterValues = {};
+  /**
+   * Emits the time during an update to trigger pipes relying on an {@link update} event.
+   */
+  @Output() time = new EventEmitter();
+  /**
+   * Emits the {@link filterValues} object.
+   */
+  @Output() update = new EventEmitter();
+  /**
    * Creates the {@link FilterComponent}
+   * @param el a reference to the FilterComponent element
+   * @param filterUtilitiesService used for simple utility functions.
    * @param globalEventsService used to subscribe to global events like scroll
    */
   constructor(
     private el: ElementRef,
+    private filterUtilitiesService: FilterUtilitiesService,
     private globalEventsService: GlobalEventsService,
     @Inject('Window') private window: Window) { }
   /**
    * Subscribes to the global scroll event.
-   * 
-   * **On scroll:**
-   * - closes the drawer
-   * - sends a drawer event via the {@link drawerEvent} output.
+   * Triggers an update with init data
    */
   ngOnInit() {
     this.globalEventsService.scroll().subscribe( () => this.onScroll() );
+    this.onUpdate();
   }
   /**
    * Called when the drawer is toggled.
@@ -66,6 +88,7 @@ export class FilterComponent implements OnInit {
    * Called on scroll.
    * - Default: closes the drawer and emits a drawer event
    * - {@link dontCloseOnScroll} allows to skip the default behaviour
+   * - sends a drawer event via the {@link drawerEvent} output.
    */
   onScroll() {
     if (this.dontCloseOnScroll) {
@@ -74,6 +97,29 @@ export class FilterComponent implements OnInit {
       this.drawerOpen = false;
       this.drawerEvent.emit();
     }
+  }
+  /**
+   * Triggered on an update from a select input.
+   * 
+   * - Turns the human name into a camelcase key
+   * - Attaches the new value to the key
+   * - Send the data via {@link onUpdate}
+   */
+  onSelectUpdate(name: string, value) {
+    let camelName = this.filterUtilitiesService.camelize(name);
+    this.filterValues[camelName] = value;
+    this.onUpdate();
+  }
+  /**
+   * Triggered on an update from all inputs
+   * 
+   * - Emits the current filter values
+   * - Emits the current time to trigger pure pipes
+   */
+  onUpdate() {
+    let timestamp = new Date().getTime();
+    this.update.emit(this.filterValues);
+    this.time.emit( timestamp );
   }
   /**
    * Gets the total offset top of the component element.

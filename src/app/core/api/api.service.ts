@@ -3,6 +3,7 @@
  */ /** */
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { FilterOptions } from '../../home/filter/filter-options';
 /**
  * @whatItDoes Reponsible for returning data from an API.
  * @consumers {@link HomeComponent}, {@link RecipeComponent}, {@link RecipeAdComponent}
@@ -20,8 +21,10 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 @Injectable()
 export class ApiService {
   public recipeList: FirebaseListObservable<any[]>;
+  public filterOptions: FirebaseObjectObservable<FilterOptions>;
   constructor(public af: AngularFire) {
     this.recipeList = af.database.list('client/recipeList');
+    this.filterOptions = af.database.object('client/filter');
   }
   /**
    * Gets an observable with recipe data.

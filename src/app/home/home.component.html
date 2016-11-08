@@ -8,7 +8,7 @@
 </div>
 <div class="home-content" [style.margin-top]="fixedHeight + 'px'">
   <app-sticky-scroll #stickyScroll [stickyOffset]="fixedHeight">
-    <app-filter (drawerEvent)="stickyScroll.manualHeightCheck()"></app-filter>  
+    <app-filter (time)="stamp = $event" (update)="filterValues = $event" (drawerEvent)="stickyScroll.manualHeightCheck()" [filterOptions]="apiService.filterOptions | async"></app-filter>  
   </app-sticky-scroll>
   <div class="info-bar">
     <div></div>
@@ -16,6 +16,6 @@
     <div class="social-media">social media</div>
   </div>
   <div class="recipes">
-    <app-recipe-ad *ngFor="let recipeMeta of apiService.recipeList | async; let i = index" [recipeMeta]="recipeMeta" [routerLink]="['/recipe', recipeMeta.slug]" [arrowColor]="getColor(i)"></app-recipe-ad>
+    <app-recipe-ad *ngFor="let recipeMeta of apiService.recipeList | async | filter:stamp:filterValues; let i = index" [recipeMeta]="recipeMeta" [routerLink]="['/recipe', recipeMeta.slug]" [arrowColor]="getColor(i)"></app-recipe-ad>
   </div>
 </div>

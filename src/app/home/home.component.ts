@@ -15,6 +15,16 @@ import { ApiService } from '../core/api/api.service';
 })
 export class HomeComponent {
   /**
+   * Timestamp of the last filter update.
+   * 
+   * -Needed to alert pipes of updates. Pure pipes won't notice a change inside an object.
+   */
+  stamp: number;
+  /**
+   * Object containing filter data.
+   */
+  filterValues: any;
+  /**
    * The height of the `.fixed-content` element. Used to offset the scrolling content in the
    * `.home-content` element.
    */

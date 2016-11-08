@@ -1,20 +1,17 @@
 <div class="content">
   <div class="nav-left">
-    <app-input color="rgba(255, 139, 148, 0.53)" special="search" label="Search recipes" class="item"></app-input>
+    <app-input *ngIf="filterOptions?.search" (update)="filterValues['search'] = $event; onUpdate()" color="rgba(255, 87, 128, 0.53)" special="search" label="Search recipes" class="item"></app-input>
   </div>
   <div class="nav-right">
     <app-button-clear label="My favorite recipes" class="item"><app-icon-heart></app-icon-heart></app-button-clear>
-    <app-button-clear label="Toggle additional filter options" (click)="onDrawerToggle()" class="item">
+    <app-button-clear *ngIf="filterOptions?.nonSearch" label="Toggle additional filter options" (click)="onDrawerToggle()" class="item">
       <app-icon-plus *ngIf="!drawerOpen"></app-icon-plus>
       <app-icon-minus *ngIf="drawerOpen"></app-icon-minus>
     </app-button-clear>
   </div>
 </div>
 <div class="drawer" [style.display]="drawerOpen ? 'block' : 'none'">
-  <div class="item-container">
-    <app-select [category]="'Meal Types'" [options]="['Breakfast', 'Lunch', 'Dinner']" class="item"></app-select>
-  </div>
-  <div class="item-container">
-    <app-select [category]="'Allergens'" [options]="['Gluten free', 'Corn Free']" class="item"></app-select>
+  <div *ngFor="let option of filterOptions?.nonSearch" class="item-container">
+    <app-select *ngIf="option.type === 'select'" (update)="onSelectUpdate(option.name, $event)" [category]="option.name" [options]="option.options" class="item"></app-select>
   </div>
 </div>
