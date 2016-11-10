@@ -16,7 +16,7 @@
     <div class="social-media">social media</div>
   </div>
   <div class="recipes">
-    <app-recipe-ad *ngFor="let recipe of apiService.recipes | async | filter:stamp:filterValues:filteredMeta; let i = index" [recipe]="recipe" [routerLink]="['/recipe', recipe.slug]" [arrowColor]="getColor(i)"></app-recipe-ad>
+    <app-recipe-ad *ngFor="let recipe of apiService.recipes | async | filter:stamp:filterValues:filteredMeta | sort:'stamp'" [recipe]="recipe" [routerLink]="['/recipe', recipe.slug]" [arrowColor]="getColor(i)"></app-recipe-ad>
     <div *ngIf="(apiService.recipes | async) !== undefined && filteredMeta?.count === 0" class="no-results">
         No matches for {{filteredMeta.query}}
     </div>

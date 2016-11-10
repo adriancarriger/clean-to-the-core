@@ -2,44 +2,17 @@
 import { Component, Injectable } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GlobalEventsService } from '../../core/global-events/global-events.service';
-import { MockGlobalEventsService } from '../../core/global-events/mock-global-events.service.spec';
 import { FilterPipe } from './filter.pipe';
 import { FilterUtilitiesService } from './filter-utilities.service';
+import { MockFilterData } from './mock-filter-data.spec';
+import { GlobalEventsService } from '../../core/global-events/global-events.service';
+import { MockGlobalEventsService } from '../../core/global-events/mock-global-events.service.spec';
 
 @Component({
   template: ``
 })
 export class ContainerComponent {
-  data = [
-    {
-      dataUrl: 'https://example.com/slug-1',
-      id: 1,
-      name: 'Ron Swanson',
-      party: 'libertarian',
-      slug: 'slug-1',
-      text: 'this is a string of searchable text with the keyword: Ulysses',
-      options: ['option-1', 'option-2', 'option-3']
-    },
-    {
-      category: '',
-      dataUrl: 'https://example.com/slug-2',
-      id: 2,
-      name: 'Leslie Knope',
-      party: 'democrat',
-      slug: 'slug-2',
-      text: 'this is another string of searchable text with the keyword: Barbara',
-      options: ['option-4', 'option-5', 'option-6']
-    },
-    {
-      dataUrl: 'https://example.com/slug-3',
-      id: 3,
-      name: 'Bobby Newport',
-      party: 'republican',
-      slug: 'slug-3',
-      text: 'this is another string of searchable text with the keyword: Unknown'
-    }
-  ];
+  data;
   filteredMeta = {
     searchFields: ['name', 'text', 'options']
   };
@@ -48,6 +21,7 @@ export class ContainerComponent {
   stamp: number;
   constructor(private filterPipe: FilterPipe) { }
   ngOnInit() {
+    this.data = MockFilterData;
     this.runPipe();
   }
   runPipe() {
