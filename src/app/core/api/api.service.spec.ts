@@ -26,16 +26,9 @@ describe('Service: ApiService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should return an observable', inject([ApiService], (service: ApiService) => {
-    let recipe = service.recipe(2);
-    expect(recipe instanceof Observable).toBe(true);
-  }));
-
   it('should return a recipe', async(inject([ApiService], (service: ApiService) => {
-    service.slugToRecipe('test-slug-2').then(recipeObservable => {
-      recipeObservable.subscribe(recipe => {
-        expect(recipe.id).toBe('48825');
-      });
+    service.slugToRecipe('test-slug-2').subscribe(recipe => {
+      expect(recipe.id).toBe('48825');
     });
     mockAngularFire.update();
   })));
