@@ -93,7 +93,15 @@ export class FilterPipe implements PipeTransform {
       // Skip search 
       if (key === 'search') { continue; }
       // If filtering by this type then filter out any items that don't match
-      if (meta.input[key] !== 'all' && item[key] !== meta.input[key]) { return; }
+      if (meta.input[key] !== 'all') {
+        if (Array.isArray(item[key])) {
+          if (item[key].indexOf( meta.input[key] ) === -1) {
+            return;
+          }
+        } else if (item[key] !== meta.input[key]) {
+          return;
+        }
+      }
     }
     // filter by search terms
     if (meta.checkSearch) {

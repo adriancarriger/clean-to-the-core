@@ -18,7 +18,8 @@ export class ContainerComponent {
       name: 'Ron Swanson',
       party: 'libertarian',
       slug: 'slug-1',
-      text: 'this is a string of searchable text with the keyword: Ulysses'
+      text: 'this is a string of searchable text with the keyword: Ulysses',
+      options: ['option-1', 'option-2', 'option-3']
     },
     {
       category: '',
@@ -27,7 +28,8 @@ export class ContainerComponent {
       name: 'Leslie Knope',
       party: 'democrat',
       slug: 'slug-2',
-      text: 'this is another string of searchable text with the keyword: Barbara'
+      text: 'this is another string of searchable text with the keyword: Barbara',
+      options: ['option-4', 'option-5', 'option-6']
     },
     {
       dataUrl: 'https://example.com/slug-3',
@@ -164,5 +166,11 @@ describe('Pipe: Filter', () => {
     component.filteredMeta.searchFields = [];
     component.search('Andy Dwyer');
     expect(component.output.length).toBe(3);
+  });
+
+  it('should find an item in an array', () => {
+    component.filterBy('options', 'option-2');
+    expect(component.output.length).toBe(1);
+    expect(component.output[0].name).toBe('Ron Swanson');
   });
 });
