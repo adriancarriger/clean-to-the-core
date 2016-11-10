@@ -7,31 +7,11 @@ import { Subject, Observable } from 'rxjs/Rx';
 import { HomeComponent } from './home.component';
 import { HomeModule } from './home.module';
 import { ApiService } from '../core/api/api.service';
+import { MockApiService } from '../core/api/mock-api.service.spec';
 import { GlobalEventsService } from '../core/global-events/global-events.service';
-import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
+import { SharedModule } from '../shared/shared.module';
 import { MockDocumentService } from '../../mocks/mock-document.service.spec';
-
-@Injectable()
-export class MockApiService {
-  recipeList;
-  events$;
-  data = {
-    id: 0,
-    blurb: 'blurb text'
-  };
-  constructor() {
-    this.events$ = new Subject();
-    this.recipeList = this.events$.asObservable();
-  }
-  recipe(input) {
-    this.update();
-    return this.events$.asObservable();
-  }
-  update() {
-    this.events$.next(this.data);
-  }
-}
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -67,5 +47,11 @@ describe('HomeComponent', () => {
     expect( component.getColor(1) ).toBe('#dae109');
     expect( component.getColor(5) ).toBe('#dae109');
     expect( component.getColor(higherNumber) ).toBe('#67d165');
+  });
+
+  it('should get filterOptions from an Observable', () => {
+    mockApiService.update();
+    let searchFields = component.filteredMeta.searchFields;
+    expect(searchFields.length === 0).toBe(true);
   });
 });

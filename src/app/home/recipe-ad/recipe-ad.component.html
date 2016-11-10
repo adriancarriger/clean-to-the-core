@@ -1,6 +1,6 @@
-<app-image-cover [src]="recipe?.image"></app-image-cover>
-<h2 class="recipe-title">{{recipeMeta.title}}</h2>
+<app-image-cover [src]="recipe.image"></app-image-cover>
+<h2 class="recipe-title">{{recipe.title}}</h2>
 <ul class="allergens">
-  <li *ngFor="let allergen of recipe?.allergens" class="allergen">{{allergen}}</li>
+  <li *ngFor="let allergen of recipe.allergens" class="allergen">{{allergen}}</li>
 </ul>
-<div class="recipe-blurb" >{{recipe?.blurb}} <div aria-hidden="true" [style.border-left-color]="arrowColor" class="arrow"></div></div>
+<div class="recipe-blurb" >{{recipe.blurb}} <div aria-hidden="true" [style.border-left-color]="arrowColor" class="arrow"></div></div>

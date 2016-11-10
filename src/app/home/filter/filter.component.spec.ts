@@ -80,10 +80,12 @@ describe('FilterComponent', () => {
   });
 
   it('should update select values', () => {
-    component.onSelectUpdate('Test name here', 'new value 1');
+    component.onSelectUpdate('Test name here', 'all');
+    component.onSelectUpdate('Another test name here', 'new value 1');
+    component.onUpdate();
     fixture.detectChanges();
     let filterValues = component.filterValues;
-    let thisValue = filterValues['testNameHere'];
+    let thisValue = filterValues['anotherTestNameHere'];
     expect(thisValue).toBe('new value 1');
   });
 });

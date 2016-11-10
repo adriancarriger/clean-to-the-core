@@ -2,12 +2,17 @@
  * @module HomeModule
  */ /** */
 export interface FilterOptions {
-  search: boolean;
-  nonSearch?: Array<SearchOption>;
+  search: SearchOptions;
+  nonSearch?: Array<NonSearchOption>;
 }
 
-export interface SearchOption {
+export interface NonSearchOption {
   name: String;
   options?: Array<string>;
   type: String;
+}
+
+export interface SearchOptions {
+  use: boolean;
+  searchFields: Array<string>;
 }

@@ -1,7 +1,7 @@
 /**
  * @module HomeModule
  */ /** */
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 import { ApiService } from '../core/api/api.service';
 /**
@@ -13,13 +13,18 @@ import { ApiService } from '../core/api/api.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-  /**
-   * Timestamp of the last filter update.
-   * 
-   * -Needed to alert pipes of updates. Pure pipes won't notice a change inside an object.
+export class HomeComponent implements OnInit {
+   /**
+   * The colors that are passed to each {@link RecipeAdComponenet} used for the blurb arrow color.
    */
-  stamp: number;
+  arrowColors: Array<string> = ['#7ab9d0', '#dae109', '#ff8b94', '#67d165'];
+  /**
+   * Data that is bound to the filter pipe. It can pass through filter data and get back data
+   * that tells how many results were found after filtering.
+   */
+  filteredMeta = {
+    searchFields: []
+  };
   /**
    * Object containing filter data.
    */
@@ -30,9 +35,11 @@ export class HomeComponent {
    */
   fixedHeight: number;
   /**
-   * The colors that are passed to each {@link RecipeAdComponenet} used for the blurb arrow color.
+   * Timestamp of the last filter update.
+   * 
+   * -Needed to alert pipes of updates. Pure pipes won't notice a change inside an object.
    */
-  arrowColors: Array<string> = ['#7ab9d0', '#dae109', '#ff8b94', '#67d165'];
+  stamp: number;
   /**
    * A reference to the component that helps the {@link FilterComponent} stick to the top of the page
    */
@@ -63,5 +70,14 @@ export class HomeComponent {
   getColor(index): string {
     let mod = index % this.arrowColors.length;
     return this.arrowColors[mod];
+  }
+  /**
+   * Updates search fields from api
+   */
+  ngOnInit() {
+    this.apiService.filterOptions.subscribe(options => {
+      this.filteredMeta.searchFields = options.search.searchFields;
+      this.stamp = new Date().getTime();
+    });
   }
 }

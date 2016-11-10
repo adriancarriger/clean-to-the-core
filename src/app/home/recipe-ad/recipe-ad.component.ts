@@ -1,9 +1,7 @@
 /**
  * @module HomeModule
  */ /** */
-import {  Component, Input, OnInit } from '@angular/core';
-
-import { ApiService } from '../../core/api/api.service';
+import {  Component, Input } from '@angular/core';
 /**
  * @whatItDoes Displays a single recipe ad item.
  * @consumers {@link HomeModule}
@@ -13,7 +11,7 @@ import { ApiService } from '../../core/api/api.service';
   templateUrl: './recipe-ad.component.html',
   styleUrls: ['./recipe-ad.component.scss']
 })
-export class RecipeAdComponent implements OnInit {
+export class RecipeAdComponent {
   /**
    * The arrow color for the `.blurb`.
    */
@@ -21,22 +19,5 @@ export class RecipeAdComponent implements OnInit {
   /**
    * Base data for the recipe including `id` and `title`.
    */
-  @Input() recipeMeta;
-  /**
-   * Data used to display the recipe.
-   */
-  recipe;
-  /**
-   * Creates the {@link RecipeAdComponent}
-   * @param apiService the api used to get data for the recipe
-   */
-  constructor(private apiService: ApiService) { }
-  /**
-   * Gets the `recipe` data from the api on init
-   */
-  ngOnInit() {
-    this.apiService.recipe(this.recipeMeta.id).subscribe(recipe => {
-      this.recipe = recipe;
-    });
-  }
+  @Input() recipe;
 }

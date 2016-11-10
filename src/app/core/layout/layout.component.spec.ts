@@ -15,27 +15,8 @@ import { NavComponent } from '../nav/nav.component';
 import { HomeComponent } from '../../home/home.component';
 import { HomeModule } from '../../home/home.module';
 import { ApiService } from '../api/api.service';
+import { MockApiService } from '../api/mock-api.service.spec';
 import { MockDocumentService } from '../../../mocks/mock-document.service.spec';
-
-@Injectable()
-export class MockApiService {
-  public recipeList$;
-  private mockArray = [
-    {
-      title: 'test title 1'
-    },
-    {
-      title: 'test title 2'
-    }
-  ];
-  constructor() {
-    this.recipeList$ = new Subject();
-    this.update();
-  }
-  update() {
-    this.recipeList$.next(this.mockArray);
-  }
-}
 
 describe('LayoutComponent', () => {
   const config: Route[] = [
@@ -47,6 +28,7 @@ describe('LayoutComponent', () => {
   let location: Location;
   let router: Router;
   let mockDocumentService = new MockDocumentService();
+  let mockApiService = new MockApiService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -56,7 +38,7 @@ describe('LayoutComponent', () => {
       ],
       providers: [
         GlobalEventsService,
-        { provide: ApiService, useValue: MockApiService },
+        { provide: ApiService, useValue: mockApiService },
         { provide: 'Document', useValue: mockDocumentService },
         { provide: 'Window', useValue: window }
       ]

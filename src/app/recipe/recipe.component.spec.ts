@@ -7,6 +7,7 @@ import { Subject, Observable } from 'rxjs/Rx';
 
 import { RecipeComponent } from './recipe.component';
 import { ApiService } from '../core/api/api.service';
+import { MockApiService } from '../core/api/mock-api.service.spec';
 import { ImageCoverComponent } from '../shared/image-cover/image-cover.component';
 import { LabelsComponent } from '../shared/labels/labels.component';
 
@@ -26,30 +27,6 @@ class MockActivatedRoute {
       slug: 'test-slug-1'
     }
   };
-}
-
-@Injectable()
-export class MockApiService {
-  recipeObj;
-  events$;
-  data = {
-    id: 0,
-    blurb: 'blurb text'
-  };
-  constructor() {
-    this.events$ = new Subject();
-    this.recipeObj = this.events$.asObservable();
-  }
-  recipe(input) {
-    this.update();
-    return this.events$.asObservable();
-  }
-  slugToId(slug: string) {
-    return new Promise((resolve, reject) => resolve('1'));
-  }
-  update() {
-    this.events$.next(this.data);
-  }
 }
 
 describe('RecipeComponent', () => {

@@ -51,6 +51,10 @@ export class FilterComponent implements OnInit {
    */
   @Output() update = new EventEmitter();
   /**
+   * True if the filter bar is at the top of the page for sure.
+   */
+  private showingResults = false;
+  /**
    * Creates the {@link FilterComponent}
    * @param el a reference to the FilterComponent element
    * @param filterUtilitiesService used for simple utility functions.
@@ -62,11 +66,19 @@ export class FilterComponent implements OnInit {
     private globalEventsService: GlobalEventsService,
     @Inject('Window') private window: Window) { }
   /**
-   * Subscribes to the global scroll event.
-   * Triggers an update with init data
+   * After the view has loaded, assume that the results may not be showing.
+   */
+  ngAfterViewInit() {
+    this.showingResults = false;
+  }
+  /**
+   * - Subscribes to the global scroll event.
+   * - Subscribes to the global resize event and assumes results may not be showing on resize.
+   * - Triggers an update with init data
    */
   ngOnInit() {
     this.globalEventsService.scroll().subscribe( () => this.onScroll() );
+    this.globalEventsService.resize().subscribe( () => this.showingResults = false );
     this.onUpdate();
   }
   /**
@@ -80,7 +92,7 @@ export class FilterComponent implements OnInit {
     this.drawerOpen = !this.drawerOpen;
     if (this.drawerOpen) {
       this.dontCloseOnScroll = true;
-      this.window.scrollTo(0, this.getOffsetTop() + this.window.pageYOffset);
+      this.showResults();
     }
     this.drawerEvent.emit();
   }
@@ -94,6 +106,7 @@ export class FilterComponent implements OnInit {
     if (this.dontCloseOnScroll) {
       this.dontCloseOnScroll = false;
     } else {
+      this.showingResults = false;
       this.drawerOpen = false;
       this.drawerEvent.emit();
     }
@@ -117,9 +130,24 @@ export class FilterComponent implements OnInit {
    * - Emits the current time to trigger pure pipes
    */
   onUpdate() {
+    if (this.filtering()) { this.showResults(); }
     let timestamp = new Date().getTime();
     this.update.emit(this.filterValues);
     this.time.emit( timestamp );
+  }
+  /**
+   * True if currently filtering.
+   * 
+   * Checks if the filter is currently filtering (true),
+   * or if the filter values are just set to the default values (false).
+   */
+  filtering(): boolean {
+    let defaults = ['', 'all'];
+    for (let key in this.filterValues) {
+      if (defaults.indexOf( this.filterValues[key] ) === -1) {
+        return true;
+      }
+    }
   }
   /**
    * Gets the total offset top of the component element.
@@ -133,5 +161,14 @@ export class FilterComponent implements OnInit {
       el = el.offsetParent;
     }
     return offset;
+  }
+  /**
+   * Scrolls the view to show filter results.
+   */
+  private showResults() {
+    if (!this.showingResults) {
+      this.window.scrollTo(0, this.getOffsetTop() + this.window.pageYOffset);
+      this.showingResults = true;
+    }
   }
 }
