@@ -41,7 +41,7 @@ export class ContainerComponent {
     }
   ];
   filteredMeta = {
-    searchFields: ['name', 'text']
+    searchFields: ['name', 'text', 'options']
   };
   filterInput = { };
   output: any;

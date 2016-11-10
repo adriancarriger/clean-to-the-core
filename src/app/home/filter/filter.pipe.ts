@@ -108,7 +108,11 @@ export class FilterPipe implements PipeTransform {
       let searchable: string; // this string contains searchable text
       meta.searchFields.forEach(searchField => {
         if (item[searchField] !== undefined) {
-          searchable += ' ' + item[searchField];
+          if (Array.isArray(item[searchField])) {
+            item[searchField].forEach(subItem => searchable += ' ' + subItem);
+          } else {
+            searchable += ' ' + item[searchField];
+          }
         }
       });
       searchable = searchable.toLowerCase();
