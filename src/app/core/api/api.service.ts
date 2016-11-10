@@ -4,6 +4,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { FilterOptions } from '../../home/filter/filter-options';
+import { Observable } from 'rxjs';
 /**
  * @whatItDoes Reponsible for returning data from an API.
  * @consumers {@link HomeComponent}, {@link RecipeComponent}, {@link RecipeAdComponent}
@@ -20,39 +21,25 @@ import { FilterOptions } from '../../home/filter/filter-options';
  */
 @Injectable()
 export class ApiService {
-  public recipes: FirebaseListObservable<any[]>;
+  public recipes: FirebaseListObservable<Recipe[]>;
   public filterOptions: FilterOptionsObservable;
   constructor(public af: AngularFire) {
     this.recipes = af.database.list('client/recipes');
     this.filterOptions = af.database.object('client/filter');
   }
   /**
-   * Gets an observable with recipe data.
-   * @param id the unique recipe id or slug used to identify the requested recipe data.
-   */
-  recipe(key: number): RecipeObservable {
-    return this.af.database.object(`client/recipes/${key}`);
-  }
-  /**
    * @returns the recipe associated with the slug
    * @param slug a unique string associated with a recipe
    */
-  slugToRecipe(slug: string): Promise<RecipeObservable> {
-    return new Promise((resolve, reject) => {
-      this.recipes.subscribe(items => {
-        items.forEach( (item, index) => {
-          if (item['slug'] === slug) {
-            resolve( this.recipe(index) );
-          }
-        });
-      });
-    });
+  slugToRecipe(slug: string): RecipeObservable {
+    return this.recipes
+      .map(recipes => recipes.find(recipe => recipe.slug === slug));
   }
 }
 
 export interface FilterOptionsObservable extends FirebaseObjectObservable<FilterOptions> { }
 
-export interface RecipeObservable extends FirebaseObjectObservable<Recipe> { }
+export interface RecipeObservable extends Observable<Recipe> { }
 
 export interface Recipe {
   id: string;

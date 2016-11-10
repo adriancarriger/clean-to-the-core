@@ -32,6 +32,6 @@ export class RecipeComponent implements OnInit {
    */
   ngOnInit() {
     let slug: string = this.activatedRoute.snapshot.params['slug'];
-    this.apiService.slugToRecipe(slug).then(recipe => this.recipe = recipe);
+    this.recipe = this.apiService.slugToRecipe(slug);
   }
 }
