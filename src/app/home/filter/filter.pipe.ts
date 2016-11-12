@@ -135,7 +135,7 @@ export class FilterPipe implements PipeTransform {
    */
   private readableList(prev: string, curr: string, i: number, a: Array<string>): string {
     let term: string = curr.toLowerCase();
-    let grammer: string = a.length === i + 1 ? ', and ' : i > 0 ? ', ' : '';
+    let grammer: string = (a.length === i + 1 && a.length > 1) ? ', and ' : i > 0 ? ', ' : '';
     return `${prev}${grammer}"${term}"`;
   }
   /**
