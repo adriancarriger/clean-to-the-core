@@ -21,8 +21,8 @@ import { FilterOptionsObservable, Recipe, RecipeObservable } from './api-interfa
  */
 @Injectable()
 export class ApiService {
-  public recipes: FirebaseListObservable<Recipe[]>;
-  public filterOptions: FilterOptionsObservable;
+  recipes: FirebaseListObservable<Recipe[]>;
+  filterOptions: FilterOptionsObservable;
   constructor(public af: AngularFire) {
     this.recipes = af.database.list('client/recipes');
     this.filterOptions = af.database.object('client/filter');
