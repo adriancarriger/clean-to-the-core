@@ -34,23 +34,17 @@ export class FilterPipe implements PipeTransform {
       filteredMeta.count = -1; // filter not active
       return;
     }
-    let queries: Array<string> = [];
     let filtering = this.filtering(filterInput, filteredMeta);
     if (!filtering.any) {
       filteredMeta.count = -1; // filter not active
       return value;
     }
-    if (filtering.search) {
-      // Treat each word as a query and normalize to lowercase
-      let rawQueries: Array<string> = filterInput.search.toLowerCase().split(' ');
-      // Remove stop words
-      queries = this.removeStopWords( rawQueries );
-      if (queries.length === 0) { filtering.search = false; }
-    }
+    let searchQueries: Array<string> = filtering.search ? this.getQueries(filterInput.search) : [];
+    if (searchQueries.length === 0) { filtering.search = false; }
     // Meta data used to filter each item in the input `value`.
     let meta = {
       input: filterInput,
-      queries: queries,
+      searchQueries: searchQueries,
       checkSearch: filtering.search,
       searchFields: filteredMeta.searchFields
     };
@@ -81,6 +75,16 @@ export class FilterPipe implements PipeTransform {
     return status;
   }
   /**
+   * Takes a raw query string and returns an array of important words to use for search.
+   */
+  private getQueries(searchQueries: string): Array<string> {
+    // Treat each word as a query and normalize to lowercase
+    return searchQueries
+      .toLowerCase()
+      .split(' ')
+      .filter(item => !this.stopWords().includes(item));
+  }
+  /**
    * The actual filter logic applied to each item.
    * 
    * - Filters out non search queries first (e.g. select box queries)
@@ -95,7 +99,7 @@ export class FilterPipe implements PipeTransform {
       // If filtering by this type then filter out any items that don't match
       if (meta.input[key] !== 'all') {
         if (Array.isArray(item[key])) {
-          if (item[key].indexOf( meta.input[key] ) === -1) {
+          if (!item[key].includes(meta.input[key])) {
             return;
           }
         } else if (item[key] !== meta.input[key]) {
@@ -116,8 +120,8 @@ export class FilterPipe implements PipeTransform {
         }
       });
       searchable = searchable.toLowerCase();
-      for (let i = 0 ; i < meta.queries.length; i++) {
-        if (searchable.indexOf( meta.queries[i] ) === -1) { return; }
+      for (let i = 0 ; i < meta.searchQueries.length; i++) {
+        if (!searchable.includes(meta.searchQueries[i])) { return; }
       }
     }
     return item;
@@ -137,14 +141,6 @@ export class FilterPipe implements PipeTransform {
     let term: string = curr.toLowerCase();
     let grammer: string = (a.length === i + 1 && a.length > 1) ? ', and ' : i > 0 ? ', ' : '';
     return `${prev}${grammer}"${term}"`;
-  }
-  /**
-   * Removes stop words from queries.
-   */
-  private removeStopWords(queries: Array<string>): Array<string> {
-    return queries.filter((item) => {
-      return this.stopWords().indexOf(item) === -1;
-    });
   }
   /**
    * Returns the current stop words.
