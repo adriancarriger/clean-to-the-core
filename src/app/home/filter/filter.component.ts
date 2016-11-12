@@ -142,12 +142,8 @@ export class FilterComponent implements OnInit {
    * or if the filter values are just set to the default values (false).
    */
   filtering(): boolean {
-    let defaults = ['', 'all'];
-    for (let key in this.filterValues) {
-      if (defaults.indexOf( this.filterValues[key] ) === -1) {
-        return true;
-      }
-    }
+    return Object.values(this.filterValues)
+      .reduce((p, c: string) => ['', 'all'].includes(c) ? p : true, false);
   }
   /**
    * Gets the total offset top of the component element.
