@@ -2,9 +2,9 @@
  * @module CoreModule
  */ /** */
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
-import { FilterOptions } from '../../home/filter/filter-options';
-import { Observable } from 'rxjs';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+
+import { FilterOptionsObservable, Recipe, RecipeObservable } from './api-interfaces';
 /**
  * @whatItDoes Reponsible for returning data from an API.
  * @consumers {@link HomeComponent}, {@link RecipeComponent}, {@link RecipeAdComponent}
@@ -37,12 +37,4 @@ export class ApiService {
   }
 }
 
-export interface FilterOptionsObservable extends FirebaseObjectObservable<FilterOptions> { }
 
-export interface RecipeObservable extends Observable<Recipe> { }
-
-export interface Recipe {
-  id: string;
-  slug: string;
-  [propName: string]: any;
-}

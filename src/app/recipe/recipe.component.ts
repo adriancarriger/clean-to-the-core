@@ -4,7 +4,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { ApiService, RecipeObservable } from '../core/api/api.service';
+import { RecipeObservable } from '../core/api/api-interfaces';
+import { ApiService } from '../core/api/api.service';
 /**
  * @whatItDoes Returns the {@link RecipeComponent} view.
  * @consumers {@link RecipeModule}, {@link RecipeRoutingModule}

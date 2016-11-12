@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2';
 import { Subject } from 'rxjs/Rx';
 
-import { FilterOptionsObservable, RecipeObservable } from './api.service';
+import { FilterOptionsObservable, RecipeObservable } from './api-interfaces';
 
 @Injectable()
 export class MockApiService {
