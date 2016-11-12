@@ -57,10 +57,7 @@ export class FilterPipe implements PipeTransform {
    * Checks if the filterInput is trying to filter anything at all.
    */
   private filtering(filterInput, filteredMeta) {
-    let status = {
-      any: false,
-      search: false
-    };
+    let status = { any: false, search: false };
     if (filterInput === undefined || filterInput === {}) { return status; }
     for (let key in filterInput) {
       if (key === 'search') {
@@ -92,39 +89,28 @@ export class FilterPipe implements PipeTransform {
    * any queries.
    */
   private filterItem(item: Object, meta) {
-    // filter by select boxes
-    for (let key in meta.input) {
-      // Skip search 
-      if (key === 'search') { continue; }
-      // If filtering by this type then filter out any items that don't match
-      if (meta.input[key] !== 'all') {
-        if (Array.isArray(item[key])) {
-          if (!item[key].includes(meta.input[key])) {
-            return;
-          }
-        } else if (item[key] !== meta.input[key]) {
-          return;
-        }
-      }
-    }
-    // filter by search terms
+    // Filter by select terms
+    if (Object.keys(meta.input)
+      .filter(x => x !== 'search' && meta.input[x] !== 'all')
+      .find(y => !this.flatArray(item[y]).includes(meta.input[y]))) { return; }
+    // Filter by search terms
     if (meta.checkSearch) {
-      let searchable: string; // this string contains searchable text
-      meta.searchFields.forEach(searchField => {
-        if (item[searchField] !== undefined) {
-          if (Array.isArray(item[searchField])) {
-            item[searchField].forEach(subItem => searchable += ' ' + subItem);
-          } else {
-            searchable += ' ' + item[searchField];
-          }
-        }
-      });
-      searchable = searchable.toLowerCase();
-      for (let i = 0 ; i < meta.searchQueries.length; i++) {
-        if (!searchable.includes(meta.searchQueries[i])) { return; }
-      }
+      let searchable = meta.searchFields
+        .filter(x => item[x] !== undefined)
+        .reduce((a, b) => {
+          return a + ' ' + this.flatArray(item[b])
+            .reduce((e, f) => e + ' ' + f, '')
+            .toLowerCase();
+        }, '');
+      if (meta.searchQueries.find(x => !searchable.includes(x))) { return; }
     }
     return item;
+  }
+  /**
+   * Normalizes a string or array of strings to a flat array of strings.
+   */
+  private flatArray(input): Array<string> {
+    return [input].reduce((c, d) => c.concat(d), []);
   }
   /**
    * Converts queries into a readable list.
