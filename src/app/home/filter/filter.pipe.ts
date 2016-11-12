@@ -125,33 +125,18 @@ export class FilterPipe implements PipeTransform {
   /**
    * Converts queries into a readable list.
    */
-  private readableQueries(filterInput): string {
-    let defaults = ['', 'all'];
-    let filterBy: Array<string> = [];
-    // non search filter
-    for (let key in filterInput) {
-      if (defaults.indexOf(filterInput[key]) === -1) {
-        filterBy.push( filterInput[key] );
-      }
-    }
-    return this.readableList(filterBy);
+  private readableQueries(inputs: Object): string {
+    return Object.values(inputs)
+      .filter(input => !['', 'all'].includes(input))
+      .reduce(this.readableList, '');
   }
   /**
-   * Converts an array into a readable list
+   * Reduce an array into a readable list
    */
-  private readableList(list: Array<string>) {
-    let readable = '';
-    list.forEach((rawItem: string, i: number) => {
-      let item: string = rawItem.toLowerCase();
-      if (i === 0) {
-        readable = '"' + item + '"';
-      } else if (list.length === i + 1) {
-        readable += ', and "' + item + '"';
-      } else {
-        readable += ', "' + item + '"';
-      }
-    });
-    return readable;
+  private readableList(prev: string, curr: string, i: number, a: Array<string>): string {
+    let term: string = curr.toLowerCase();
+    let grammer: string = a.length === i + 1 ? ', and ' : i > 0 ? ', ' : '';
+    return `${prev}${grammer}"${term}"`;
   }
   /**
    * Removes stop words from queries.
