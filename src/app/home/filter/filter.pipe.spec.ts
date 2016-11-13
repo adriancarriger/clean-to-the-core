@@ -14,7 +14,8 @@ import { MockGlobalEventsService } from '../../core/global-events/mock-global-ev
 export class ContainerComponent {
   data;
   filteredMeta = {
-    searchFields: ['name', 'text', 'options']
+    searchFields: ['name', 'text', 'options'],
+    prefilter: undefined
   };
   filterInput = { };
   output: any;
@@ -161,5 +162,12 @@ describe('Pipe: Filter', () => {
     component.filterBy('options', 'option-2');
     expect(component.output.length).toBe(1);
     expect(component.output[0].name).toBe('Ron Swanson');
+  });
+
+  it('should ...', () => {
+    expect(component.output.length).toBe(3);
+    component.filteredMeta.prefilter = (x, i) => i !== 0;
+    component.runPipe();
+    expect(component.output.length).toBe(2);
   });
 });

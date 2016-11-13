@@ -28,6 +28,8 @@ export class FilterPipe implements PipeTransform {
    * @param filteredMeta.searchFields an input for the searchable fields of the value items
    * @param filteredMeta.count the total results returned by the transform
    * @param filteredMeta.query a readable list of the the active filter items
+   * @param filteredMeta.prefilter a filter that runs on the data if no other filter inputs are
+   * given.
    */
   transform(value: any, updateTime?: number, filterInput?: any, filteredMeta?: any): any {
     if (value === undefined || value === null) {
@@ -37,7 +39,8 @@ export class FilterPipe implements PipeTransform {
     let filtering = this.filtering(filterInput, filteredMeta);
     if (!filtering.any) {
       filteredMeta.count = -1; // filter not active
-      return value;
+      let prefilter = filteredMeta.prefilter !== undefined ? filteredMeta.prefilter : () => true;
+      return value.filter(prefilter);
     }
     let searchQueries: Array<string> = filtering.search ? this.getQueries(filterInput.search) : [];
     if (searchQueries.length === 0) { filtering.search = false; }

@@ -54,4 +54,9 @@ describe('HomeComponent', () => {
     let searchFields = component.filteredMeta.searchFields;
     expect(searchFields.length === 0).toBe(true);
   });
+
+  it('should use filter.prefilter to filter an array', () => {
+    let filtered = [34, 65, 23, 78].filter(component.filteredMeta.prefilter);
+    expect(filtered).toEqual([65, 23, 78]);
+  });
 });

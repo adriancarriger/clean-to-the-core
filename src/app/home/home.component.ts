@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
    * that tells how many results were found after filtering.
    */
   filteredMeta = {
-    searchFields: []
+    searchFields: [],
+    prefilter: (x, i) => i !== 0
   };
   /**
    * Object containing filter data.
