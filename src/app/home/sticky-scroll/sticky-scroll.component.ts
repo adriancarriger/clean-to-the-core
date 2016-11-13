@@ -6,6 +6,7 @@ import {
   Component,
   ElementRef,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
   Renderer,
@@ -23,7 +24,7 @@ import { GlobalEventsService } from '../../core/global-events/global-events.serv
   templateUrl: './sticky-scroll.component.html',
   styleUrls: ['./sticky-scroll.component.scss']
 })
-export class StickyScrollComponent implements AfterViewInit, OnDestroy, OnInit {
+export class StickyScrollComponent implements AfterViewInit, OnChanges,  OnDestroy, OnInit {
   /**
    * An additional amount of px that must be scrolled before sticking takes effect
    */
@@ -96,6 +97,12 @@ export class StickyScrollComponent implements AfterViewInit, OnDestroy, OnInit {
       // this.removeSticky();
       this.fixed = false;
     }
+  }
+  /**
+   * Updates dimensions when the input value of {@link stickyOffset} changes.
+   */
+  ngOnChanges() {
+    this.getDimensions();
   }
   /**
    * An Angular 2 [lifecyle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html)
