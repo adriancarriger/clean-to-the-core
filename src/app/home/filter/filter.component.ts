@@ -17,6 +17,10 @@ import { FilterUtilitiesService } from './filter-utilities.service';
 })
 export class FilterComponent implements OnInit {
   /**
+   * Emits the time during an update to trigger pipes relying on an {@link update} event.
+   */
+  @Output() change = new EventEmitter();
+  /**
    * Option to prevent {@link onScroll} default behaviour.
    */
   dontCloseOnScroll = false;
@@ -42,10 +46,6 @@ export class FilterComponent implements OnInit {
    * Contains filter information usually sent to a pipe for filtering data.
    */
   filterValues = {};
-  /**
-   * Emits the time during an update to trigger pipes relying on an {@link update} event.
-   */
-  @Output() time = new EventEmitter();
   /**
    * Emits the {@link filterValues} object.
    */
@@ -133,7 +133,7 @@ export class FilterComponent implements OnInit {
     if (this.filtering()) { this.showResults(); }
     let timestamp = new Date().getTime();
     this.update.emit(this.filterValues);
-    this.time.emit( timestamp );
+    this.change.emit( timestamp );
   }
   /**
    * True if currently filtering.

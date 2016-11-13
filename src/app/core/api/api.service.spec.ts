@@ -32,4 +32,11 @@ describe('Service: ApiService', () => {
     });
     mockAngularFire.update();
   })));
+
+  it('should return the latest recipe', async(inject([ApiService], (service: ApiService) => {
+    service.latest.subscribe(latest => {
+      expect(latest.slug).toBe('test-slug-3');
+    });
+    mockAngularFire.update();
+  })));
 });

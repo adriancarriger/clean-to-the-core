@@ -21,11 +21,26 @@ import { FilterOptionsObservable, Recipe, RecipeObservable } from './api-interfa
  */
 @Injectable()
 export class ApiService {
+  /**
+   * Observable of a list of recipes.
+   */
   recipes: FirebaseListObservable<Recipe[]>;
+  /**
+   * Observable of filter options. Used to set up the {@link FilterComponent}
+   */
   filterOptions: FilterOptionsObservable;
+  /**
+   * Observable of the latest recipe published.
+   */
+  latest: RecipeObservable;
+  /**
+   * Creates the {@link ApiService}
+   * @param af Angular Fire service used to connect to Firebase
+   */
   constructor(public af: AngularFire) {
     this.recipes = af.database.list('client/recipes');
     this.filterOptions = af.database.object('client/filter');
+    this.latest = this.recipes.map(recipes => recipes[recipes.length - 1]);
   }
   /**
    * @returns the recipe associated with the slug

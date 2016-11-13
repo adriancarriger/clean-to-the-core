@@ -1,14 +1,15 @@
 <div class="fixed-content" appWatchHeight (heightChange)="fixedHeight = $event">
-  <app-image-cover [src]="mocks.img" class="primary-image"></app-image-cover>
+  <app-image-cover [src]="(apiService.latest | async)?.image" class="primary-image"></app-image-cover>
   <header class="header">
-    <h1 class="title">Pork Belly Slices AKA Bacon</h1>
-    <div class="blurb">Old school bacon, before packaging came along. <a href="#" appAxFocus01Fix>View Recipe</a></div>
-    <app-labels [labels]="mocks.labels"></app-labels>
+    <h1 class="title">{{ (apiService.latest | async)?.title }}</h1>
+    <div class="blurb">{{ (apiService.latest | async)?.blurb }} <a href="#" appAxFocus01Fix>View Recipe</a></div>
+    <app-labels (change)="wh.updateHeight()" [labels]="(apiService.latest | async)?.labels"></app-labels>
   </header>
 </div>
+
 <div class="home-content" [style.margin-top]="fixedHeight + 'px'">
   <app-sticky-scroll #stickyScroll [stickyOffset]="fixedHeight">
-    <app-filter (time)="stamp = $event" (update)="filterValues = $event" (drawerEvent)="stickyScroll.manualHeightCheck()" [filterOptions]="apiService.filterOptions | async"></app-filter>  
+    <app-filter (change)="filterStamp = $event" (update)="filterValues = $event" (drawerEvent)="stickyScroll.manualHeightCheck()" [filterOptions]="apiService.filterOptions | async"></app-filter>  
   </app-sticky-scroll>
   <div class="info-bar">
     <div></div>
@@ -16,7 +17,7 @@
     <div class="social-media">social media</div>
   </div>
   <div class="recipes">
-    <app-recipe-ad *ngFor="let recipe of apiService.recipes | async | filter:stamp:filterValues:filteredMeta | sort:'stamp'" [recipe]="recipe" [routerLink]="['/recipe', recipe.slug]" [arrowColor]="getColor(i)"></app-recipe-ad>
+    <app-recipe-ad *ngFor="let recipe of apiService.recipes | async | filter:filterStamp:filterValues:filteredMeta | sort:'stamp'" [recipe]="recipe" [routerLink]="['/recipe', recipe.slug]" [arrowColor]="getColor(i)"></app-recipe-ad>
     <div *ngIf="(apiService.recipes | async) !== undefined && filteredMeta?.count === 0" class="no-results">
         No matches for {{filteredMeta.query}}
     </div>
