@@ -27,15 +27,15 @@ describe('Service: ApiService', () => {
   }));
 
   it('should return a recipe', async(inject([ApiService], (service: ApiService) => {
-    service.slugToRecipe('test-slug-2').subscribe(recipe => {
-      expect(recipe.id).toBe('48825');
+    service.slugToRecipe('slug-2').subscribe(recipe => {
+      expect(recipe.id).toEqual(2);
     });
     mockAngularFire.update();
   })));
 
   it('should return the latest recipe', async(inject([ApiService], (service: ApiService) => {
     service.latest.subscribe(latest => {
-      expect(latest.slug).toBe('test-slug-3');
+      expect(latest.slug).toEqual('slug-3');
     });
     mockAngularFire.update();
   })));

@@ -40,7 +40,7 @@ export class ApiService {
   constructor(public af: AngularFire) {
     this.recipes = af.database.list('client/recipes');
     this.filterOptions = af.database.object('client/filter');
-    this.latest = this.recipes.map(recipes => recipes[recipes.length - 1]);
+    this.latest = this.recipes.map(recipes => recipes[0]);
   }
   /**
    * @returns the recipe associated with the slug

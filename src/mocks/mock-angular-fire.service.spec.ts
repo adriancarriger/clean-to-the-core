@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Rx';
 
+import { MockApiData } from '../app/core/api/mock-api-data.spec';
+
 @Injectable()
 export class MockAngularFire {
   recipeList$;
@@ -12,24 +14,9 @@ export class MockAngularFire {
       return this.recipeList$.asObservable();
     }
   };
-  private mockArray = [
-    {
-      id: '02342',
-      slug: 'test-slug-1',
-      title: 'test title 1'
-    },
-    {
-      id: '48825',
-      slug: 'test-slug-2',
-      title: 'test title 2'
-    },
-    {
-      id: '23675',
-      slug: 'test-slug-3',
-      title: 'test title 3'
-    }
-  ];
+  private mockArray: Array<Object>;
   constructor() {
+    this.mockArray = MockApiData;
     this.recipeList$ = new Subject();
     this.update();
   }

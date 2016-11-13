@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterPipe } from './filter.pipe';
 import { FilterUtilitiesService } from './filter-utilities.service';
-import { MockFilterData } from './mock-filter-data.spec';
+import { MockApiData } from '../../core/api/mock-api-data.spec';
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
 import { MockGlobalEventsService } from '../../core/global-events/mock-global-events.service.spec';
 
@@ -22,7 +22,7 @@ export class ContainerComponent {
   stamp: number;
   constructor(private filterPipe: FilterPipe) { }
   ngOnInit() {
-    this.data = MockFilterData;
+    this.data = MockApiData;
     this.runPipe();
   }
   runPipe() {

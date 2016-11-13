@@ -7,7 +7,6 @@ import { NgModule } from '@angular/core';
 import { FilterComponent } from './filter/filter.component';
 import { FilterPipe } from './filter/filter.pipe';
 import { FilterUtilitiesService } from './filter/filter-utilities.service';
-import { SortPipe } from './filter/sort.pipe';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { RecipeAdComponent } from './recipe-ad/recipe-ad.component';
@@ -27,7 +26,6 @@ import { SharedModule } from '../shared/shared.module';
     FilterPipe,
     HomeComponent,
     RecipeAdComponent,
-    SortPipe,
     StickyScrollComponent
   ],
   providers: [FilterUtilitiesService]
