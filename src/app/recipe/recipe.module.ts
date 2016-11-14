@@ -2,7 +2,6 @@
  * @module RecipeModule
  * @preferred
  */ /** */
-import { Ng2DisqusModule } from '../../../node_modules/ng2-disqus/src/ng2-disqus.module';
 import { NgModule } from '@angular/core';
 
 import { RecipeComponent } from './recipe.component';
@@ -14,7 +13,6 @@ import { SharedModule } from '../shared/shared.module';
  */
 @NgModule({
   imports: [
-    Ng2DisqusModule,
     RecipeRoutingModule,
     SharedModule
   ],
