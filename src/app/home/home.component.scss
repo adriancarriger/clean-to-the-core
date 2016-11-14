@@ -63,9 +63,13 @@ $imageHeight: 50%;
     flex-wrap: wrap;
     width: 84%;
     margin: 0 auto;
-    app-recipe-ad {
+    .app-recipe-ad {
       width: 33.33%;
       padding: 8px 4px;
+      a, a:hover {
+        color: inherit;
+        text-decoration: inherit;
+      }
     }
   }
 }
