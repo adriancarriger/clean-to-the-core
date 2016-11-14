@@ -3,7 +3,6 @@
     <app-input *ngIf="filterOptions?.search" (update)="filterValues['search'] = $event; onUpdate()" color="rgba(255, 87, 128, 0.53)" special="search" label="Search recipes" class="item"></app-input>
   </div>
   <div class="nav-right">
-    <app-button-clear label="My favorite recipes" class="item"><app-icon-heart></app-icon-heart></app-button-clear>
     <app-button-clear *ngIf="filterOptions?.nonSearch" label="Toggle additional filter options" (click)="onDrawerToggle()" class="item">
       <app-icon-plus *ngIf="!drawerOpen"></app-icon-plus>
       <app-icon-minus *ngIf="drawerOpen"></app-icon-minus>

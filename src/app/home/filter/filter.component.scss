@@ -5,6 +5,7 @@
   background-color: $accentColor;
   font-size: $inputFontSize;
   line-height: 2;
+  min-height: 75px;
   .content {
     // Filter layout
     padding: $spacing;
