@@ -24,8 +24,7 @@ describe('StickyScrollComponent', () => {
     mockGlobalEventsService = new MockGlobalEventsService();
     TestBed.configureTestingModule({
       providers: [
-        { provide: GlobalEventsService, useValue: mockGlobalEventsService },
-        { provide: 'Window', useValue: window }
+        { provide: GlobalEventsService, useValue: mockGlobalEventsService }
       ],
       declarations: [ ContainerComponent, StickyScrollComponent ]
     })

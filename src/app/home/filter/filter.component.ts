@@ -2,6 +2,7 @@
  * @module HomeModule
  */ /** */
 import { Component, ElementRef, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
 import { FilterOptions } from './filter-options';
@@ -47,6 +48,12 @@ export class FilterComponent implements OnInit {
    */
   filterValues = {};
   /**
+   * Used to hold the `.unsubscribe()` method to the scroll subscription when active.
+   * 
+   * - Unsubscribe is called if the user scrolls while the drawer is open.  
+   */
+  scrollSubscription: Subscription;
+  /**
    * Emits the {@link filterValues} object.
    */
   @Output() update = new EventEmitter();
@@ -77,8 +84,7 @@ export class FilterComponent implements OnInit {
    * - Triggers an update with init data
    */
   ngOnInit() {
-    this.globalEventsService.scroll().subscribe( () => this.onScroll() );
-    this.globalEventsService.resize().subscribe( () => this.showingResults = false );
+    this.globalEventsService.emitters$['resize'].subscribe( () => this.showingResults = false );
     this.onUpdate();
   }
   /**
@@ -93,6 +99,10 @@ export class FilterComponent implements OnInit {
     if (this.drawerOpen) {
       this.dontCloseOnScroll = true;
       this.showResults();
+      this.scrollSubscription = this.globalEventsService.emitters$['scroll']
+        .subscribe(() => this.onScroll());
+    } else {
+      this.closeDrawer();
     }
     this.drawerEvent.emit();
   }
@@ -106,9 +116,7 @@ export class FilterComponent implements OnInit {
     if (this.dontCloseOnScroll) {
       this.dontCloseOnScroll = false;
     } else {
-      this.showingResults = false;
-      this.drawerOpen = false;
-      this.drawerEvent.emit();
+      this.closeDrawer();
     }
   }
   /**
@@ -144,6 +152,19 @@ export class FilterComponent implements OnInit {
   filtering(): boolean {
     return Object.values(this.filterValues)
       .reduce((p, c: string) => ['', 'all'].includes(c) ? p : true, false);
+  }
+  /**
+   * Closes the additional filter options.
+   * 
+   * - Unsbuscribes from the scroll subscription
+   * - Resets varibles
+   * - Emits a drawer event
+   */
+  private closeDrawer() {
+    this.scrollSubscription.unsubscribe();
+    this.showingResults = false;
+    this.drawerOpen = false;
+    this.drawerEvent.emit();
   }
   /**
    * Gets the total offset top of the component element.

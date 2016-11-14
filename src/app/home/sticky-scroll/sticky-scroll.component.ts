@@ -110,10 +110,10 @@ export class StickyScrollComponent implements AfterViewInit, OnChanges,  OnDestr
    * - Subscribes to global resize and scroll events.
    */
   ngOnInit() {
-    this.subscriptions.resize = this.globalEventsService.resize().subscribe(data => {
+    this.subscriptions.resize = this.globalEventsService.emitters$['resize'].subscribe( () => {
       this.getDimensions();
     });
-    this.subscriptions.scroll = this.globalEventsService.scroll().subscribe( () => {
+    this.subscriptions.scroll = this.globalEventsService.emitters$['scroll'].subscribe( () => {
       this.updatePosition();
     });
   }

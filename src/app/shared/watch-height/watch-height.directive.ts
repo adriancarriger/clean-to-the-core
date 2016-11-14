@@ -54,7 +54,7 @@ export class WatchHeightDirective implements AfterViewInit, OnInit {
    * Subscribes to the {@link GlobalEventsService}'s window resize `EventEmitter`.
    */
   private listenToResize() {
-    this.events.resize().subscribe( () => {
+    this.events.emitters$['resize'].subscribe( () => {
       this.updateHeight();
     });
   }

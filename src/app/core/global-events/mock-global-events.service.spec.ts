@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Rx';
 
+import { GlobalEventsService } from './global-events.service';
+
 @Injectable()
-export class MockGlobalEventsService {
-  events$;
+export class MockGlobalEventsService extends GlobalEventsService {
   constructor() {
-    this.events$ = new Subject();
+    super(null);
   }
-  resize() {
-    return this.events$.asObservable();
-  }
-  scroll() {
-    return this.events$.asObservable();
+  onInit() {
+    this.emitters$['scroll'] = new Subject();
+    this.emitters$['resize'] = new Subject();
   }
   update() {
-    this.events$.next(1);
+    this.emitters$['scroll'].next();
+    this.emitters$['resize'].next();
   }
 }

@@ -14,9 +14,11 @@ import { MockWindowService } from '../../../mocks/mock-window.service.spec';
 describe('FilterComponent', () => {
   let component: FilterComponent;
   let fixture: ComponentFixture<FilterComponent>;
-  let mockGlobalEventsService = new MockGlobalEventsService();
-  let mockWindowService = new MockWindowService();
+  let mockGlobalEventsService: MockGlobalEventsService;
+  let mockWindowService: MockWindowService;
   beforeEach(async(() => {
+    mockWindowService = new MockWindowService();
+    mockGlobalEventsService = new MockGlobalEventsService();
     TestBed.configureTestingModule({
       imports: [ SharedModule ],
       declarations: [ FilterComponent ],
@@ -41,15 +43,15 @@ describe('FilterComponent', () => {
   });
 
   it('should close drawer on scroll', () => {
-    component.drawerOpen = true;
+    component.onDrawerToggle();
+    component.dontCloseOnScroll = false;
     expect(component.drawerOpen).toBe(true);
     mockGlobalEventsService.update();
     expect(component.drawerOpen).toBe(false);
   });
 
-  it('should close drawer on scroll', () => {
-    component.dontCloseOnScroll = true;
-    component.drawerOpen = true;
+  it('should not close drawer on scroll if dontCloseOnScroll is true', () => {
+    component.onDrawerToggle();
     expect(component.dontCloseOnScroll).toBe(true);
     expect(component.drawerOpen).toBe(true);
     mockGlobalEventsService.update();
@@ -65,17 +67,15 @@ describe('FilterComponent', () => {
     fixture.detectChanges();
     expect(mockWindowService.pageYOffset).toBe(132);
     expect(component.drawerOpen).toBe(true);
+    // Reset for future tests
     document.body.style.height = '0';
     document.body.style.margin = '0';
   });
 
   it('should close the drawer', () => {
-    component.drawerOpen = true;
-    fixture.detectChanges();
+    component.onDrawerToggle();
     expect(component.drawerOpen).toBe(true);
     component.onDrawerToggle();
-    fixture.detectChanges();
-    expect(mockWindowService.pageYOffset).toBe(0);
     expect(component.drawerOpen).toBe(false);
   });
 

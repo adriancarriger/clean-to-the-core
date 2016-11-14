@@ -38,7 +38,8 @@ export class MockWindowService {
       callback(eventObject);
     });
   }
-  scrollTo(x: number, y: number) {
+  removeEventListener(event, callback) { }
+  scrollTo(x, y) {
     this.pageXOffset = x;
     this.pageYOffset = y;
     if ('scroll' in this.events$) {
@@ -46,6 +47,9 @@ export class MockWindowService {
     }
   }
   private scrollEvent() {
-    this.newEvent('scroll', {x: this.pageXOffset, y: this.pageYOffset});
+    this.newEvent('scroll', {
+      x: this.pageXOffset,
+      y: this.pageYOffset
+    });
   }
 }

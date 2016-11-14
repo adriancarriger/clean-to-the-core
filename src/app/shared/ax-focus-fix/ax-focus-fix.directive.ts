@@ -2,6 +2,8 @@
  * @module SharedModule
  */ /** */
 import { Directive, ElementRef, HostBinding, Inject, OnInit } from '@angular/core';
+
+import { GlobalEventsService } from '../../core/global-events/global-events.service';
 /**
  * @whatItDoes This makes the Chrome accesibility audit pass for
  * [AX_FOCUS_01](https://github.com/GoogleChrome/accessibility-developer-tools/wiki/Audit-Rules#ax_focus_01).
@@ -31,6 +33,7 @@ export class AxFocusFixDirective implements OnInit {
   constructor(
     @Inject('Document') private document: Document,
     private el: ElementRef,
+    private globalEventsService: GlobalEventsService,
     @Inject('Window') private window: Window) { }
   /**
    * - Setup listeners
@@ -39,7 +42,7 @@ export class AxFocusFixDirective implements OnInit {
   ngOnInit() {
     this.document.addEventListener('keydown', e => this.onKeyDown(e));
     this.document.addEventListener('keyup', e => this.onKeyUp(e));
-    this.window.addEventListener('scroll', () => this.onScroll());
+    this.globalEventsService.emitters$['scroll'].subscribe(() => this.onScroll());
     this.onScroll();
   }
   /**
