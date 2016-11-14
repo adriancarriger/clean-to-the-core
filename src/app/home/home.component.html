@@ -2,7 +2,7 @@
   <app-image-cover [src]="(apiService.latest | async)?.image" class="primary-image"></app-image-cover>
   <header class="header">
     <h1 class="title">{{ (apiService.latest | async)?.title }}</h1>
-    <div class="blurb">{{ (apiService.latest | async)?.blurb }} <a href="#" appAxFocus01Fix>View Recipe</a></div>
+    <div class="blurb">{{ (apiService.latest | async)?.blurb }} <a *ngIf="apiService.latest | async" [routerLink]="['/recipe', (apiService.latest | async)?.slug]" appAxFocus01Fix>View Recipe</a></div>
     <app-labels (change)="wh.updateHeight()" [labels]="(apiService.latest | async)?.labels"></app-labels>
   </header>
 </div>
