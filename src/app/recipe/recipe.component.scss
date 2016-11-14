@@ -6,8 +6,10 @@
   padding-top: 0;
   font-size: 16px;
   .recipe-section {
-    width: 66.66%;
-    padding: 3%;
+    // width: 66.66%; // with sidebar
+    // padding: 3%; // with sidebar
+    width: 100%;
+    padding: 6%;
     padding-top: 0;
     .recipe-content {
       line-height: 1.5;
@@ -43,8 +45,8 @@
       }
     }
   }
-  .recipe-sidebar {
-    width: 33.33%;
-    padding: 3%;
-  }
+  // .recipe-sidebar {
+  //   width: 33.33%;
+  //   padding: 3%;
+  // }
 }
