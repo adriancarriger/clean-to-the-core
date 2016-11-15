@@ -22,8 +22,8 @@ Checkout the [documentation](https://adriancarriger.github.io/clean-to-the-core/
 
 ## Tech Stack
 
-* Front end: [Angular 2](https://github.com/angular/angular) version 2.1.2
-* Scaffolding: [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19
+* Front end: [Angular 2](https://github.com/angular/angular) version 2.2.0
+* Scaffolding: [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
