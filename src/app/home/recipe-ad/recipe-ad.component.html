@@ -1,6 +1,8 @@
 <app-image-cover [src]="recipe.image"></app-image-cover>
 <h2 class="recipe-title">{{recipe.title}}</h2>
 <ul class="allergens">
-  <li *ngFor="let allergen of recipe.allergens" class="allergen">{{allergen}}</li>
+  <template ngFor let-allergen [ngForOf]="recipe.allergens" let-i="index">
+    <li *ngIf="i < 6" class="allergen">{{allergen}}</li>
+  </template>
 </ul>
 <div class="recipe-blurb" >{{recipe.blurb}} <div aria-hidden="true" [style.border-left-color]="arrowColor" class="arrow"></div></div>
