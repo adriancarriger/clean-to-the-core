@@ -12,9 +12,7 @@
     <app-filter (change)="filterStamp = $event" (update)="filterValues = $event" (drawerEvent)="stickyScroll.manualHeightCheck()" [filterOptions]="apiService.filterOptions | async"></app-filter>  
   </app-sticky-scroll>
   <div class="info-bar">
-    <div></div>
     <h1>Let's get cookin'</h1>
-    <div class="social-media">social media</div>
   </div>
   <div class="recipes">
     <div *ngFor="let recipe of apiService.recipes | async | filter:filterStamp:filterValues:filteredMeta" class="app-recipe-ad">

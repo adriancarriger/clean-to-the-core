@@ -41,20 +41,9 @@ $imageHeight: 50%;
   background: white;
   z-index: 10;
   .info-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    > div, > h1 {
-      flex: 1;
-      padding: 0 10px;
-    }
     h1 {
       text-align: center;
       font-size: 40px;
-    }
-    .social-media {
-      text-align: right;
-      font-size: 20px;
     }
   }
   .recipes {
