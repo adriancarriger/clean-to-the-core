@@ -19,6 +19,7 @@
           <div [innerHTML]="item.steps"></div>
         </div>
       </div>
+      <div *ngIf="(recipe | async)?.conclusion" class="conclusion">{{(recipe | async)?.conclusion}}</div>
     </div>
   </section>
 </div>
