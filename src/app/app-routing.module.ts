@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: './about/about.module#AboutModule'
   },
   {
+    path: 'legal',
+    loadChildren: './legal/legal.module#LegalModule'
+  },
+  {
     path: 'recipe/:slug',
     loadChildren: './recipe/recipe.module#RecipeModule'
   },
