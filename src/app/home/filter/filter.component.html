@@ -3,7 +3,7 @@
     <div *ngFor="let option of filterOptions?.nonSearch" class="item-container">
       <app-select *ngIf="option.type === 'select'" (update)="onSelectUpdate(option.name, $event)" [category]="option.name" [options]="option.options" class="item"></app-select>
     </div>
-    <app-input *ngIf="filterOptions?.search" (update)="filterValues['search'] = $event; onUpdate()" color="white" special="search" label="Search recipes" class="item"></app-input>
+    <app-input *ngIf="filterOptions?.search" (update)="filterValues['search'] = $event; onUpdate()" special="search" label="Search recipes" class="item"></app-input>
   </div>
   <div class="nav-right">
     <a class="item" aria-label="Instagram social media external link" href="https://www.instagram.com/cleantothecore/" target="_blank">
