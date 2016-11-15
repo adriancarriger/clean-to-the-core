@@ -1,3 +1,7 @@
+/**
+  * Global Styles - all other components use encapsulation
+  * @see https://angular.io/docs/ts/latest/guide/component-styles.html#!#view-encapsulation
+  */
 @import './variables';
 // Fonts
 @font-face {
@@ -5,7 +9,7 @@
 	font-weight: normal;
 	src: url('assets/GeosansLight.ttf');
 }
-// All elements
+// Elements
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -24,25 +28,7 @@ a {
     text-decoration: underline;
   }
 }
-// http://stackoverflow.com/a/12642009/5357459
-.btn-link {
-  /* Remove all decorations to look like normal text */
-  background: none;
-  border: none;
-  display: inline;
-  font: inherit;
-  margin: 0;
-  padding: 0;
-  outline: none;
-  outline-offset: 0;
-  /* Additional styles to look like a link */
-  color: $primaryColor;
-  cursor: pointer;
-  // text-decoration: underline;
-}
-/* Remove extra space inside buttons in Firefox */
-input[type="button"]::-moz-focus-inner,
-button::-moz-focus-inner {
-  border: none;
-  padding: 0;
+ul {
+  list-style: none;
+  padding-left: 0;
 }

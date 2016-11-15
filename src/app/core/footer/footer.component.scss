@@ -1,0 +1,38 @@
+@import '../../../variables';
+:host {
+  display: block;
+  background-color: $accentColor;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  .social-media {
+    margin: 20px 0;
+    color: white;
+    fill: white;
+    font-size: 70px;
+    .item {
+      display: inline-block;
+      width: 70px;
+    }
+  }
+  hr { 
+    display: block;
+    width: 370px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    margin-bottom: 100px;
+    @media (max-width: 500px) {
+      width: 80%;
+    }
+  }
+  .links {
+    .link {
+      padding: 15px;
+      > a {
+        color: rgba(0, 0, 0, 0.68);
+      }
+    }
+  }
+}

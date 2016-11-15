@@ -1,0 +1,16 @@
+/**
+ * @module SharedModule
+ */ /** */
+import { Component, HostBinding } from '@angular/core';
+/**
+ * Search icon from [Ionicons](http://ionicons.com/).
+ * [Source](https://github.com/driftyco/ionicons/blob/master/src/social-instagram-outline.svg)
+ */
+@Component({
+  selector: 'app-icon-instagram',
+  templateUrl: './icon-instagram.component.html',
+  styleUrls: ['./icon-instagram.component.scss']
+})
+export class IconInstagramComponent {
+  @HostBinding('attr.aria-hidden') ariaHidden = 'true';
+}

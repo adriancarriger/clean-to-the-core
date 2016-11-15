@@ -3,23 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { FooterComponent } from './footer.component';
-import { UiModule } from '../../ui/ui.module';
+import { IconPinterestComponent } from './icon-pinterest.component';
 
-describe('FooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
+describe('IconPinterestComponent', () => {
+  let component: IconPinterestComponent;
+  let fixture: ComponentFixture<IconPinterestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ UiModule ],
-      declarations: [ FooterComponent ]
+      declarations: [ IconPinterestComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterComponent);
+    fixture = TestBed.createComponent(IconPinterestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,8 +6,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { IconArrowDownComponent } from './icons/icon-arrow-down/icon-arrow-down.component';
+import { IconFacebookComponent } from './icons/icon-facebook/icon-facebook.component';
 import { IconHeartComponent } from './icons/icon-heart/icon-heart.component';
+import { IconInstagramComponent } from './icons/icon-instagram/icon-instagram.component';
 import { IconMinusComponent } from './icons/icon-minus/icon-minus.component';
+import { IconPinterestComponent } from './icons/icon-pinterest/icon-pinterest.component';
 import { IconPlusComponent } from './icons/icon-plus/icon-plus.component';
 import { IconSearchComponent } from './icons/icon-search/icon-search.component';
 import { InputComponent } from './input/input.component';
@@ -35,8 +38,11 @@ import { SelectComponent } from './select/select.component';
   ],
   declarations: [
     IconArrowDownComponent,
+    IconFacebookComponent,
     IconHeartComponent,
+    IconInstagramComponent,
     IconMinusComponent,
+    IconPinterestComponent,
     IconPlusComponent,
     IconSearchComponent,
     InputComponent,
@@ -44,8 +50,11 @@ import { SelectComponent } from './select/select.component';
   ],
   exports: [
     IconArrowDownComponent,
+    IconFacebookComponent,
     IconHeartComponent,
+    IconInstagramComponent,
     IconMinusComponent,
+    IconPinterestComponent,
     IconPlusComponent,
     IconSearchComponent,
     InputComponent,
