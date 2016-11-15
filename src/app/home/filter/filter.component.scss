@@ -2,38 +2,38 @@
 :host {
   $spacing: 15px;
   display: block;
-  background-color: $accentColor;
+  background-color: white;
   font-size: $inputFontSize;
   line-height: 2;
-  min-height: 75px;
+  border-top: 1px solid #c3c3c3;
   .content {
     // Filter layout
-    padding: $spacing;
+    padding: $spacing 20px;
     display: flex;
     justify-content: space-between;
     font-size: 19px;
     .nav-left {
       justify-content: center;
       display: flex;
-      flex-grow: 100;
-      .item {
-        width: 60%;
-      }
       @media(min-width: $desktopBreakPoint) {
         padding-left: 7%;
       }
     }
     .nav-right {
       justify-content: flex-end;
+      display: flex;
+      align-items: center;
       @media(min-width: $desktopBreakPoint) {
         padding-right: 7%;
       }
     }
     .item {
       margin: 3px;
-      color: $accentTextColor;
-      fill: $accentTextColor;
-      outline-color: $accentTextColor;
+      color: black;
+      fill: black;
+      outline-color: black;
+      font-family: $titleFont;
+      font-size: 0.8em;
     }
   }
   .drawer {

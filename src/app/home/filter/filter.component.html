@@ -1,16 +1,19 @@
 <div class="content">
   <div class="nav-left">
-    <app-input *ngIf="filterOptions?.search" (update)="filterValues['search'] = $event; onUpdate()" color="rgba(255, 87, 128, 0.53)" special="search" label="Search recipes" class="item"></app-input>
+    <div *ngFor="let option of filterOptions?.nonSearch" class="item-container">
+      <app-select *ngIf="option.type === 'select'" (update)="onSelectUpdate(option.name, $event)" [category]="option.name" [options]="option.options" class="item"></app-select>
+    </div>
+    <app-input *ngIf="filterOptions?.search" (update)="filterValues['search'] = $event; onUpdate()" color="white" special="search" label="Search recipes" class="item"></app-input>
   </div>
   <div class="nav-right">
-    <app-button-clear *ngIf="filterOptions?.nonSearch" label="Toggle additional filter options" (click)="onDrawerToggle()" class="item">
-      <app-icon-plus *ngIf="!drawerOpen"></app-icon-plus>
-      <app-icon-minus *ngIf="drawerOpen"></app-icon-minus>
-    </app-button-clear>
-  </div>
-</div>
-<div class="drawer" [style.display]="drawerOpen ? 'block' : 'none'">
-  <div *ngFor="let option of filterOptions?.nonSearch" class="item-container">
-    <app-select *ngIf="option.type === 'select'" (update)="onSelectUpdate(option.name, $event)" [category]="option.name" [options]="option.options" class="item"></app-select>
+    <a class="item" href="https://www.instagram.com/cleantothecore/" target="_blank">
+      <app-icon-instagram></app-icon-instagram>
+    </a>
+    <a class="item" href="https://www.facebook.com/Clean-to-the-Core-456459467870666/" target="_blank">
+      <app-icon-facebook></app-icon-facebook>
+    </a>
+    <a class="item" href="https://www.pinterest.com/janesmith0711/" target="_blank">
+      <app-icon-pinterest></app-icon-pinterest>
+    </a>
   </div>
 </div>

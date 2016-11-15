@@ -1,7 +1,7 @@
 @import '../../../variables';
 $defaultColor: gray;
 $sidePadding: 0.7em;
-$borderRadius: 1em;
+$borderRadius: 0;
 :host {
   display: block;
   position: relative;
@@ -24,13 +24,20 @@ $borderRadius: 1em;
     font-size: 1em;
     background-color: rgba(128, 128, 128, 0.53); 
     color: inherit;
-    &:focus {
-      background-color: white !important;
-      color: $defaultColor;
-      & + app-icon-search {
-        fill: $defaultColor;
-      }
+    &:focus + .design {
+      width: 100%;
+      background-color: black;
     }
+  }
+  .design {
+    position: absolute;
+    bottom: 0;
+    left: 2em;
+    right: 0;
+    background-color: transparent;
+    height: 1px;
+    width: 0;
+    transition: 0.5s ease;
   }
   app-icon-search {
     position: absolute;
