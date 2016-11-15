@@ -13,6 +13,7 @@ import { IconMinusComponent } from './icons/icon-minus/icon-minus.component';
 import { IconPinterestComponent } from './icons/icon-pinterest/icon-pinterest.component';
 import { IconPlusComponent } from './icons/icon-plus/icon-plus.component';
 import { IconSearchComponent } from './icons/icon-search/icon-search.component';
+import { LogoComponent } from './icons/logo/logo.component';
 import { InputComponent } from './input/input.component';
 import { SelectComponent } from './select/select.component';
 /**
@@ -46,6 +47,7 @@ import { SelectComponent } from './select/select.component';
     IconPlusComponent,
     IconSearchComponent,
     InputComponent,
+    LogoComponent,
     SelectComponent
   ],
   exports: [
@@ -58,6 +60,7 @@ import { SelectComponent } from './select/select.component';
     IconPlusComponent,
     IconSearchComponent,
     InputComponent,
+    LogoComponent,
     SelectComponent
   ]
 })

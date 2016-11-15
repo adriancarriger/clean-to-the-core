@@ -2,7 +2,7 @@
  * @module CoreModule
  */ /** */
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 import { FilterOptionsObservable, Recipe, RecipeObservable } from './api-interfaces';
 /**
@@ -22,6 +22,10 @@ import { FilterOptionsObservable, Recipe, RecipeObservable } from './api-interfa
 @Injectable()
 export class ApiService {
   /**
+   * Observable of about data.
+   */
+  about: FirebaseObjectObservable<Object>;
+  /**
    * Observable of a list of recipes.
    */
   recipes: FirebaseListObservable<Recipe[]>;
@@ -38,8 +42,15 @@ export class ApiService {
    * @param af Angular Fire service used to connect to Firebase
    */
   constructor(public af: AngularFire) {
-    this.recipes = af.database.list('client/recipes');
-    this.filterOptions = af.database.object('client/filter');
+    this.onInit();
+  }
+  /**
+   * Called when creating the service.
+   */
+  onInit() {
+    this.about = this.af.database.object('client/about');
+    this.recipes = this.af.database.list('client/recipes');
+    this.filterOptions = this.af.database.object('client/filter');
     this.latest = this.recipes.map(recipes => recipes[0]);
   }
   /**

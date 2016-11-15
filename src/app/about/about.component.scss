@@ -1,0 +1,30 @@
+:host {
+  min-height: 80vh;
+  app-logo {
+    width: 150px;
+    margin: 5px auto 40px auto;
+    display: block;
+  }
+  .title {
+    font-family: CheddarJack;
+    color: gray;
+    font-size: 50px;
+    text-align: center;
+  }
+  .author {
+    margin: 0 auto;
+    margin-top: 70px;
+    width: 50%;
+    app-image-cover {
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .author-bio {
+      margin: 80px 0 50px 0;
+      line-height: 1.5;
+    }
+  }
+}
