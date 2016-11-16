@@ -1,7 +1,7 @@
 /**
  * @module HomeModule
  */ /** */
-import {  Component, Input } from '@angular/core';
+import {  Component, Input, OnInit } from '@angular/core';
 /**
  * @whatItDoes Displays a single recipe ad item.
  * @consumers {@link HomeModule}
@@ -11,13 +11,36 @@ import {  Component, Input } from '@angular/core';
   templateUrl: './recipe-ad.component.html',
   styleUrls: ['./recipe-ad.component.scss']
 })
-export class RecipeAdComponent {
+export class RecipeAdComponent implements OnInit {
   /**
-   * The arrow color for the `.blurb`.
+   * The current blurb arrow color
    */
-  @Input() arrowColor;
+  arrowColor;
+  /**
+   * The colors options for the blurb arrow color.
+   */
+  arrowColors: Array<string> = ['#7ab9d0', '#dae109', '#ff8b94', '#67d165'];
+  /**
+   * The index from the parent loop used to decide the {@link arrowColor}
+   */
+  @Input() index;
   /**
    * Base data for the recipe including `id` and `title`.
    */
   @Input() recipe;
+  /**
+   * Cycles through the {@link arrowColors} based on the current index
+   */
+  updateColor() {
+    let mod = this.index % this.arrowColors.length;
+    this.arrowColor = this.arrowColors[mod];
+  }
+  /**
+   * Run once on component creation
+   * 
+   * - Gets the blurb arrow color
+   */
+  ngOnInit() {
+    this.updateColor();
+  }
 }

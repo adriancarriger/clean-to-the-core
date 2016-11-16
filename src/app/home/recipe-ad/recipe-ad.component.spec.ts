@@ -24,4 +24,18 @@ describe('RecipeAdComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set the correct color', () => {
+    let higherNumber =  (4 * 341) - 1;
+    expect(component.arrowColors.length).toBe(4);
+    component.index = 1;
+    component.updateColor();
+    expect( component.arrowColor ).toBe('#dae109');
+    component.index = 5;
+    component.updateColor();
+    expect( component.arrowColor).toBe('#dae109');
+    component.index = higherNumber;
+    component.updateColor();
+    expect( component.arrowColor).toBe('#67d165');
+  });
 });

@@ -15,10 +15,6 @@ import { WatchHeightDirective } from '../shared/watch-height/watch-height.direct
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-   /**
-   * The colors that are passed to each {@link RecipeAdComponenet} used for the blurb arrow color.
-   */
-  arrowColors: Array<string> = ['#7ab9d0', '#dae109', '#ff8b94', '#67d165'];
   /**
    * Data that is bound to the filter pipe. It can pass through filter data and get back data
    * that tells how many results were found after filtering.
@@ -56,14 +52,6 @@ export class HomeComponent implements OnInit {
    * @param apiService the api used to get data for the recipe
    */
   constructor(private apiService: ApiService) { }
-  /**
-   * Cycles through the {@link arrowColors} based on the current index
-   * @param index the index of the loop of recipes
-   */
-  getColor(index): string {
-    let mod = index % this.arrowColors.length;
-    return this.arrowColors[mod];
-  }
   /**
    * Updates search fields from api
    */

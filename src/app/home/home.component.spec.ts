@@ -41,14 +41,6 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should return a color', () => {
-    let higherNumber =  (4 * 341) - 1;
-    expect(component.arrowColors.length).toBe(4);
-    expect( component.getColor(1) ).toBe('#dae109');
-    expect( component.getColor(5) ).toBe('#dae109');
-    expect( component.getColor(higherNumber) ).toBe('#67d165');
-  });
-
   it('should get filterOptions from an Observable', () => {
     mockApiService.update();
     let searchFields = component.filteredMeta.searchFields;
