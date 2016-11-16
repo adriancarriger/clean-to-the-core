@@ -5,4 +5,4 @@
     <li *ngIf="i < 6" class="allergen">{{allergen}}</li>
   </template>
 </ul>
-<div class="recipe-blurb" >{{recipe.blurb}} <div aria-hidden="true" [style.border-left-color]="arrowColor" class="arrow"></div></div>
+<div *ngIf="recipe.blurb" class="recipe-blurb" >{{recipe.blurb}} <div aria-hidden="true" [style.border-left-color]="arrowColor" class="arrow"></div></div>
