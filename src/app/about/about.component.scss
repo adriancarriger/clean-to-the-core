@@ -1,3 +1,4 @@
+@import '../../variables';
 :host {
   min-height: 80vh;
   app-logo {
@@ -15,6 +16,12 @@
     margin: 0 auto;
     margin-top: 70px;
     width: 50%;
+    @media (max-width: $mobileBreakPoint) {
+      width: 70%;
+    }
+    @media (max-width: 450px) {
+      width: 90%;
+    }
     app-image-cover {
       border-radius: 50%;
       height: 100px;
