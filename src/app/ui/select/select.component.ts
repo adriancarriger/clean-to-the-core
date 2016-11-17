@@ -19,6 +19,10 @@ import {
 })
 export class SelectComponent implements AfterViewInit {
   /**
+   * attr.aria-hidden (optional)
+   */
+  @Input() ariaHidden: boolean;
+  /**
    * Category (pural) for the type of options (e.g. Restaurants, animals, cities, etc.)
    * @default all is used as a default like this: `All ${category}`
    */
@@ -39,6 +43,10 @@ export class SelectComponent implements AfterViewInit {
    * `background-color` from the `select` element when not focused.
    */
   @Input() color: string;
+  /**
+   * attr.tabindex (optional)
+   */
+  @Input() tabindex: number;
   /**
    * Emits all changes via `update`.
    */

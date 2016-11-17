@@ -1,4 +1,4 @@
-<select *ngIf="options" #select (change)="update.emit(select.value)" [attr.title]="title ? title : null" [attr.aria-label]="label ? label : null">
+<select *ngIf="options" #select (change)="update.emit(select.value)" [tabindex]="tabindex" [attr.aria-hidden]="ariaHidden ? ariaHidden : null" [attr.title]="title ? title : null" [attr.aria-label]="label ? label : null">
   <option value="all">All {{category}}</option>
   <option *ngFor="let option of options" [value]="option">{{option}}</option>
 </select>
