@@ -58,6 +58,12 @@ $imageHeight: 50%;
         color: inherit;
         text-decoration: inherit;
       }
+      @media (max-width: $mobileBreakPoint) {
+        width: 100%;
+      }
+      @media (min-width: $mobileBreakPoint + 1) and (max-width: $desktopBreakPoint) {
+        width: 50%;
+      }
     }
   }
 }
