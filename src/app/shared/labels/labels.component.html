@@ -1,3 +1,5 @@
-<div *ngFor="let label of labels" [style.background]="label.color" class="label-container">
-  <div class="label-text">{{label.name}}</div>
+<div *ngFor="let label of labels" class="label-container">
+  <div [style.background]="label.color" class="label-content">
+    <div class="label-text">{{label.name}}</div>
+  </div>
 </div>

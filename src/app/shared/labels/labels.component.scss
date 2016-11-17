@@ -1,28 +1,37 @@
 @import '../../../variables';
 :host {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 auto;
   line-height: 1.15;
   .label-container {
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    font-size: 14px;
-    position: relative;
-    margin: 3px;
-    background-color: black;
-    .label-text {
-      color: #353536;
-      height: 2.2em;
-      text-align: center;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      margin: auto;
-      word-spacing: 30000px; // http://stackoverflow.com/a/18891911/5357459 
+    .label-content {
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      font-size: 14px;
+      position: relative;
+      margin: 3px;
+      background-color: black;
+      margin: 10px auto;
+      .label-text {
+        color: #353536;
+        height: 2.2em;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        word-spacing: 30000px; // http://stackoverflow.com/a/18891911/5357459 
+      }
+    }
+  }
+  @media (max-width: 600px) {
+    .label-container {
+      width: 33%;
     }
   }
 }
