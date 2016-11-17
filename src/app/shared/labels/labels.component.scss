@@ -14,7 +14,7 @@
       position: relative;
       margin: 3px;
       background-color: black;
-      margin: 10px auto;
+      margin: 10px;
       .label-text {
         color: #353536;
         height: 2.2em;
@@ -29,9 +29,13 @@
       }
     }
   }
-  @media (max-width: 600px) {
+  @media (max-width: 660px) {
+    max-width: 400px;
     .label-container {
       width: 33%;
+      .label-content {
+        margin: 10px auto;
+      }
     }
   }
 }
