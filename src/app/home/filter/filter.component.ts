@@ -88,8 +88,12 @@ export class FilterComponent implements OnInit {
    * - Triggers an update with init data
    */
   ngOnInit() {
-    this.globalEventsService.emitters$['resize'].subscribe( () => this.showingResults = false );
+    this.globalEventsService.emitters$['resize'].subscribe( () => {
+      this.showingResults = false;
+      this.checkWidth();
+    });
     this.onUpdate();
+    this.checkWidth();
   }
   /**
    * Called when the drawer is toggled.
@@ -156,6 +160,16 @@ export class FilterComponent implements OnInit {
   filtering(): boolean {
     return Object.values(this.filterValues)
       .reduce((p, c: string) => ['', 'all'].includes(c) ? p : true, false);
+  }
+  /**
+   * Checks the width to set {@link map} to mobile if necessary.
+   */
+  private checkWidth() {
+    if (this.window.innerWidth > 767) {
+      this.map = 'default';
+    } else {
+      this.map = 'mobile';
+    }
   }
   /**
    * Closes the additional filter options.

@@ -6,6 +6,7 @@
   font-size: $inputFontSize;
   line-height: 2;
   border-top: 1px solid #c3c3c3;
+  overflow: hidden;
   .content {
     // Filter layout
     padding: $spacing 20px;
@@ -15,6 +16,11 @@
     margin: 0 auto;
     @media(min-width: $desktopBreakPoint) {
       width: 86%;
+    }
+    @media (min-width: $mobileBreakPoint + 1) {
+      .toggle {
+        display: none;
+      }
     }
     .left {
       &:last-of-type {
@@ -34,6 +40,16 @@
         outline: solid black 1px;
       }
     }
+    .search {
+      app-input {
+        overflow: hidden;
+      }
+      .toggle {
+        app-button-clear {
+          background-color: purple;
+        }
+      }
+    }
     .item {
       margin: 3px;
       color: black;
@@ -41,6 +57,36 @@
       outline-color: black;
       font-family: $titleFont;
       font-size: 0.8em;
+    }
+    @media (max-width: $mobileBreakPoint) {
+      $mobileFontSize: 20px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-height: 260px;
+      .left {
+        flex: 1 0 100%;
+        margin: 5px auto;
+        font-size: $mobileFontSize;        
+        width: 90%;
+      }
+      .right.item {
+        margin: 20px;
+        font-size: $mobileFontSize;
+        &:first-of-type {
+          margin-left: auto;
+        }
+        &:last-of-type {
+          margin-right: auto;
+        }
+      }
+      .search {
+        display: flex;
+        margin: 0 auto;
+        app-input {
+          margin-right: auto;
+          width: 70%;
+        }
+      }
     }
   }
 }

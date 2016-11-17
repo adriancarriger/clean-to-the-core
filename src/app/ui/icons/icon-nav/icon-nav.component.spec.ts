@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { IconMinusComponent } from './icon-minus.component';
+import { IconNavComponent } from './icon-nav.component';
 
-describe('IconMinusComponent', () => {
-  let component: IconMinusComponent;
-  let fixture: ComponentFixture<IconMinusComponent>;
+describe('IconNavComponent', () => {
+  let component: IconNavComponent;
+  let fixture: ComponentFixture<IconNavComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IconMinusComponent ]
+      declarations: [ IconNavComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IconMinusComponent);
+    fixture = TestBed.createComponent(IconNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,8 +1,9 @@
-<div class="content">
+<div class="content" [style.max-height]="!drawerOpen ? '70px' : null">
   <template ngFor let-item [ngForOf]="filterItems | remap:map">
     <div class="left" [ngClass]="{search: item.type === 'search'}">
       <app-select *ngIf="item.type === 'select'" (update)="onSelectUpdate(item.name, $event)" [category]="item.name" [options]="item.options" class="left item"></app-select>
       <app-input *ngIf="item.type === 'search'" (update)="filterValues['search'] = $event; onUpdate()" special="search" label="Search recipes" class="item"></app-input>
+      <app-button-clear class="toggle" *ngIf="item.type === 'search'" (click)="onDrawerToggle()"><app-icon-nav></app-icon-nav></app-button-clear>
     </div>
   </template>
   

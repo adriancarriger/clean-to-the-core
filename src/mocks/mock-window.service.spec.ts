@@ -29,6 +29,7 @@ export class MockWindowService {
   events$ = { };
   pageXOffset: number;
   pageYOffset: number;
+  innerWidth = 0;
   newEvent(event, eventObject) {
     this.events$[event].next(eventObject);
   }

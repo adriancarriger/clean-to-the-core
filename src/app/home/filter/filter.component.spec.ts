@@ -61,6 +61,20 @@ describe('FilterComponent', () => {
     expect(component.dontCloseOnScroll).toBe(false);
   });
 
+  it('should set map to null', () => {
+    component.map = 'mobile';
+    mockWindowService.innerWidth = 1200;
+    mockGlobalEventsService.update();
+    expect(component.map).toEqual('default');
+  });
+
+  it('should set map to mobile', () => {
+    component.map = 'default';
+    mockWindowService.innerWidth = 700;
+    mockGlobalEventsService.update();
+    expect(component.map).toEqual('mobile');
+  });
+
   it('should open the drawer', () => {
     document.body.style.height = '900px';
     document.body.style.margin = '132px';
