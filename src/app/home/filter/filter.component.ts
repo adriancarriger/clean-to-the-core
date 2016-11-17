@@ -5,7 +5,7 @@ import { Component, ElementRef, EventEmitter, Inject, Input, OnInit, Output } fr
 import { Subscription } from 'rxjs';
 
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
-import { FilterOptions } from './filter-options';
+import { FilterItems } from './filter-options';
 import { FilterUtilitiesService } from './filter-utilities.service';
 /**
  * @whatItDoes Returns a filter bar that filters recipes
@@ -42,11 +42,15 @@ export class FilterComponent implements OnInit {
    * - Filter by search
    * - Filter by select boxes (array)
    */
-  @Input() filterOptions: FilterOptions;
+  @Input() filterItems: FilterItems;
   /**
    * Contains filter information usually sent to a pipe for filtering data.
    */
   filterValues = {};
+  /**
+   * Used to reorder the input fields via the {@link RemapPipe}
+   */
+  map: string;
   /**
    * Used to hold the `.unsubscribe()` method to the scroll subscription when active.
    * 

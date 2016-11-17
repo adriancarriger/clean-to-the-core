@@ -11,6 +11,8 @@ import { MockGlobalEventsService } from '../../core/global-events/mock-global-ev
 import { SharedModule } from '../../shared/shared.module';
 import { MockWindowService } from '../../../mocks/mock-window.service.spec';
 
+import { RemapPipe } from './remap.pipe';
+
 describe('FilterComponent', () => {
   let component: FilterComponent;
   let fixture: ComponentFixture<FilterComponent>;
@@ -21,7 +23,7 @@ describe('FilterComponent', () => {
     mockGlobalEventsService = new MockGlobalEventsService();
     TestBed.configureTestingModule({
       imports: [ SharedModule ],
-      declarations: [ FilterComponent ],
+      declarations: [ FilterComponent, RemapPipe ],
       providers: [
         FilterUtilitiesService,
         { provide: GlobalEventsService, useValue: mockGlobalEventsService },

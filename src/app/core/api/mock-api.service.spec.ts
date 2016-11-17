@@ -12,7 +12,7 @@ export class MockApiService {
   recipes: FirebaseListObservable<any[]>;
   filterOptions: FilterOptionsObservable;
   private filterOptionsData = {
-    search: { searchFields: [] }
+    searchFields: []
   };
   private recipesData = [];
   private recipeData = {

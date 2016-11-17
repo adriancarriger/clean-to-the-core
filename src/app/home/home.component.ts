@@ -33,12 +33,6 @@ export class HomeComponent implements OnInit {
    */
   fixedHeight: number;
   /**
-   * Timestamp of the last filter update.
-   * 
-   * -Needed to alert pipes of updates. Pure pipes won't notice a change inside an object.
-   */
-  stamp: number;
-  /**
    * A reference to the component that helps the {@link FilterComponent} stick to the top of the page
    */
   stickyScroll: ElementRef;
@@ -57,8 +51,7 @@ export class HomeComponent implements OnInit {
    */
   ngOnInit() {
     this.apiService.filterOptions.subscribe(options => {
-      this.filteredMeta.searchFields = options.search.searchFields;
-      this.stamp = new Date().getTime();
+      this.filteredMeta.searchFields = options.searchFields;
     });
   }
 }
