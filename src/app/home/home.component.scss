@@ -9,6 +9,9 @@ $imageHeight: 50%;
   .primary-image {
     display: block;
     padding-bottom: $imageHeight;
+    @media (max-width: $mobileBreakPoint) {
+      margin-top: 39px;
+    }
   }
   .header {
     $headerMargin: 25px;
@@ -57,11 +60,35 @@ $imageHeight: 50%;
       a, a:hover {
         color: inherit;
         text-decoration: inherit;
+        display: block;
+        &:focus {
+          outline: none;
+          position: relative;
+          :after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            border: 2px solid black;
+          }
+          // app-recipe-ad {
+          //   border: 1px solid black;
+          // }
+        }
       }
-      @media (max-width: $mobileBreakPoint) {
+    }
+    @media (max-width: $mobileBreakPoint) {
+      width: 100%;
+      .app-recipe-ad {
         width: 100%;
+        padding: 8px 0;
       }
-      @media (min-width: $mobileBreakPoint + 1) and (max-width: $desktopBreakPoint) {
+    }
+    @media (min-width: $mobileBreakPoint + 1) and (max-width: $desktopBreakPoint) {
+      .app-recipe-ad {
         width: 50%;
       }
     }

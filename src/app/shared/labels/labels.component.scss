@@ -30,11 +30,14 @@
     }
   }
   @media (max-width: 660px) {
+    font-size: 14px;
     max-width: 400px;
     .label-container {
       width: 33%;
       .label-content {
         margin: 10px auto;
+        width: 60px;
+        height: 60px;
       }
     }
   }
