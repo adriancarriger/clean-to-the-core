@@ -36,6 +36,9 @@ $imageHeight: 50%;
         right: 5%;
         bottom: 100px;
       }
+      @media (max-width: 400px) {
+        max-width: 260px;
+      }
     }
   }
 }
