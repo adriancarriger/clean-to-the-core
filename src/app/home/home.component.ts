@@ -1,7 +1,7 @@
 /**
  * @module HomeModule
  */ /** */
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 
 import { ApiService } from '../core/api/api.service';
 import { WatchHeightDirective } from '../shared/watch-height/watch-height.directive';
@@ -44,8 +44,18 @@ export class HomeComponent implements OnInit {
   /**
    * Creates the {@link HomeComponent}
    * @param apiService the api used to get data for the recipe
+   * @param window a reference to the global window object
    */
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    @Inject('Window') private window: Window) { }
+  /**
+   * Updates the scroll position each time the filter updates so that the filter bar is touching
+   * the top of the page.
+   */
+  onFilterUpdate(yPos: number) {
+    setTimeout(() => this.window.scrollTo(0, yPos + 100));
+  }
   /**
    * Updates search fields from api
    */

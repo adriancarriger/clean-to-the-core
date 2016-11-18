@@ -2,7 +2,6 @@
  * @module UiModule
  */ /** */
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -17,7 +16,7 @@ import {
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
-export class SelectComponent implements AfterViewInit {
+export class SelectComponent {
   /**
    * attr.aria-hidden (optional)
    */
@@ -62,13 +61,6 @@ export class SelectComponent implements AfterViewInit {
   get(): string {
     let selectNative = this.select.nativeElement;
     return selectNative.options[selectNative.selectedIndex].value;
-  }
-  /**
-   * Emits the inital value.
-   */
-  ngAfterViewInit() {
-    let initValue = this.get();
-    this.update.emit(initValue);
   }
   /**
    * Sets the `select` value. 

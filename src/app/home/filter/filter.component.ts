@@ -92,7 +92,6 @@ export class FilterComponent implements OnInit {
       this.showingResults = false;
       this.checkWidth();
     });
-    this.onUpdate();
     this.checkWidth();
   }
   /**
@@ -106,7 +105,7 @@ export class FilterComponent implements OnInit {
     this.drawerOpen = !this.drawerOpen;
     if (this.drawerOpen) {
       this.dontCloseOnScroll = true;
-      this.showResults();
+      this.change.emit( new Date().getTime() );
       this.scrollSubscription = this.globalEventsService.emitters$['scroll']
         .subscribe(() => this.onScroll());
     } else {
@@ -146,20 +145,8 @@ export class FilterComponent implements OnInit {
    * - Emits the current time to trigger pure pipes
    */
   onUpdate() {
-    if (this.filtering()) { this.showResults(); }
-    let timestamp = new Date().getTime();
     this.update.emit(this.filterValues);
-    this.change.emit( timestamp );
-  }
-  /**
-   * True if currently filtering.
-   * 
-   * Checks if the filter is currently filtering (true),
-   * or if the filter values are just set to the default values (false).
-   */
-  filtering(): boolean {
-    return Object.values(this.filterValues)
-      .reduce((p, c: string) => ['', 'all'].includes(c) ? p : true, false);
+    this.change.emit( new Date().getTime() );
   }
   /**
    * Checks the width to set {@link map} to mobile if necessary.
@@ -183,27 +170,5 @@ export class FilterComponent implements OnInit {
     this.showingResults = false;
     this.drawerOpen = false;
     this.drawerEvent.emit();
-  }
-  /**
-   * Gets the total offset top of the component element.
-   */
-  private getOffsetTop(): number {
-    let el = this.el.nativeElement;
-    // http://stackoverflow.com/a/10564748/5357459
-    let offset = 0;
-    while (el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop)) {
-      offset += el.offsetTop - el.scrollTop;
-      el = el.offsetParent;
-    }
-    return offset;
-  }
-  /**
-   * Scrolls the view to show filter results.
-   */
-  private showResults() {
-    if (!this.showingResults) {
-      this.window.scrollTo(0, this.getOffsetTop() + this.window.pageYOffset);
-      this.showingResults = true;
-    }
   }
 }

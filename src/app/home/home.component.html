@@ -9,7 +9,7 @@
 
 <div class="home-content" [style.margin-top]="fixedHeight + 'px'">
   <app-sticky-scroll #stickyScroll [stickyOffset]="fixedHeight">
-    <app-filter (change)="filterStamp = $event" (update)="filterValues = $event" (drawerEvent)="stickyScroll.manualHeightCheck()" [filterItems]="(apiService.filterOptions | async)?.items"></app-filter>  
+    <app-filter (change)="filterStamp = $event; onFilterUpdate(fixedHeight)" (update)="filterValues = $event" (drawerEvent)="stickyScroll.manualHeightCheck()" [filterItems]="(apiService.filterOptions | async)?.items"></app-filter>  
   </app-sticky-scroll>
   <div class="info-bar">
     <h1>Let's get cookin'</h1>

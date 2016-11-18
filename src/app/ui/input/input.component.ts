@@ -2,7 +2,6 @@
  * @module UiModule
  */ /** */
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -17,7 +16,7 @@ import {
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
-export class InputComponent implements AfterViewInit {
+export class InputComponent {
   /**
    * Accepts any input type, defaults to `text`.
    */
@@ -48,13 +47,6 @@ export class InputComponent implements AfterViewInit {
    */
   get(): string {
     return this.input.nativeElement.value;
-  }
-  /**
-   * Emits the inital value.
-   */
-  ngAfterViewInit() {
-    let initValue = this.get();
-    this.update.emit(initValue);
   }
   /**
    * Sets the `input` value. 

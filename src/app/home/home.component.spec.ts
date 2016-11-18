@@ -12,19 +12,22 @@ import { GlobalEventsService } from '../core/global-events/global-events.service
 import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
 import { MockDocumentService } from '../../mocks/mock-document.service.spec';
+import { MockWindowService } from '../../mocks/mock-window.service.spec';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let mockApiService = new MockApiService();
   let mockDocumentService = new MockDocumentService();
+  let mockWindowService: MockWindowService;
   beforeEach(async(() => {
+    mockWindowService = new MockWindowService();
     TestBed.configureTestingModule({
       imports: [ CoreModule, HomeModule, SharedModule ],
       providers: [
         { provide: 'Document', useValue: mockDocumentService },
         GlobalEventsService,
-        { provide: 'Window', useValue: window },
+        { provide: 'Window', useValue: mockWindowService },
         { provide: ApiService, useValue: mockApiService }
       ]
     })
@@ -50,5 +53,14 @@ describe('HomeComponent', () => {
   it('should use filter.prefilter to filter an array', () => {
     let filtered = [34, 65, 23, 78].filter(component.filteredMeta.prefilter);
     expect(filtered).toEqual([65, 23, 78]);
+  });
+
+  it('should scroll', done => {
+    component.onFilterUpdate(123);
+    setTimeout( () => {
+      let newP = mockWindowService.pageYOffset;
+      expect(newP).toBe(223);
+      done();
+    });
   });
 });

@@ -81,7 +81,6 @@ describe('FilterComponent', () => {
     expect(component.drawerOpen).toBe(false);
     component.onDrawerToggle();
     fixture.detectChanges();
-    expect(mockWindowService.pageYOffset).toBe(132);
     expect(component.drawerOpen).toBe(true);
     // Reset for future tests
     document.body.style.height = '0';
