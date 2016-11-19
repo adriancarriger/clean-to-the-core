@@ -3,6 +3,7 @@
  * @preferred
  */ /** */
 import { NgModule } from '@angular/core';
+import { MomentModule } from 'angular2-moment';
 
 import { RecipeComponent } from './recipe.component';
 import { RecipeRoutingModule } from './recipe-routing.module';
@@ -14,6 +15,7 @@ import { TimerButtonComponent } from './timer-button/timer-button.component';
  */
 @NgModule({
   imports: [
+    MomentModule,
     RecipeRoutingModule,
     SharedModule
   ],

@@ -3,6 +3,7 @@ import { Component, DebugElement, Injectable, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { MomentModule } from 'angular2-moment';
 import { Subject, Observable } from 'rxjs/Rx';
 
 import { RecipeComponent } from './recipe.component';
@@ -27,7 +28,7 @@ describe('RecipeComponent', () => {
   let mockApiService = new MockApiService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ SharedModule ],
+      imports: [ MomentModule, SharedModule ],
       declarations: [
         RecipeComponent,
         TimerButtonComponent

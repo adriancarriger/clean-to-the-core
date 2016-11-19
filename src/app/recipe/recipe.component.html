@@ -2,8 +2,8 @@
   <section class="recipe-section">
     <div class="recipe-content">
       <h1 class="title">{{(recipe | async)?.title}}</h1>
-      <div class="date">October 28, 2016</div>
-      <div class="author">Author: Nicole</div>
+      <div class="date">{{(recipe | async)?.stamp | amDateFormat:'MMMM D, YYYY'}}</div>
+      <div *ngIf="(recipe | async)?.author" class="author">Author: {{(recipe | async)?.author}}</div>
       <div class="blurb">{{(recipe | async)?.blurb}}</div>
       <app-labels [labels]="(recipe | async)?.labels"></app-labels>
       <app-image-cover [src]="(recipe | async)?.image"></app-image-cover>
