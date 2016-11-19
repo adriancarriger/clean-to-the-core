@@ -14,9 +14,16 @@
           <h3>Ingredients</h3>
           <div [innerHTML]="item.ingredients"></div>
         </div>
-        <div *ngIf="item.steps"class="steps">
+        <div *ngIf="item.stepsObj"class="steps">
           <h3>Steps</h3>
-          <div [innerHTML]="item.steps"></div>
+          <ul>
+            <li *ngFor="let listItem of item.stepsObj">
+              <template ngFor let-step [ngForOf]="listItem">
+                <span *ngIf="step.type === 'string'" [innerHTML]="step.data"></span>
+                <app-timer-button *ngIf="step.type === 'timerObj'" [timerObj]="step.data"></app-timer-button>
+              </template>
+            </li>
+          </ul>
         </div>
       </div>
       <div *ngIf="(recipe | async)?.conclusion" class="conclusion">{{(recipe | async)?.conclusion}}</div>

@@ -6,19 +6,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject, Observable } from 'rxjs/Rx';
 
 import { RecipeComponent } from './recipe.component';
+import { TimerButtonComponent }  from './timer-button/timer-button.component';
 import { ApiService } from '../core/api/api.service';
 import { MockApiService } from '../core/api/mock-api.service.spec';
-import { ImageCoverComponent } from '../shared/image-cover/image-cover.component';
-import { LabelsComponent } from '../shared/labels/labels.component';
-
-@Component({
-  /* tslint:disable */selector: 'disqus',/* tslint:enable */
-  template: '<div id="disqus_thread"></div>'
-})
-export class MockDisqus {
-  @Input() identifier: string;
-  @Input() shortname: string;
-}
+import { SharedModule } from '../shared/shared.module';
 
 @Injectable()
 class MockActivatedRoute {
@@ -36,7 +27,11 @@ describe('RecipeComponent', () => {
   let mockApiService = new MockApiService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MockDisqus, ImageCoverComponent, LabelsComponent, RecipeComponent ],
+      imports: [ SharedModule ],
+      declarations: [
+        RecipeComponent,
+        TimerButtonComponent
+      ],
       providers: [
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
         { provide: ApiService, useValue: mockApiService }

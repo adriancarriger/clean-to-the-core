@@ -1,5 +1,5 @@
 :host {
-  $padding: 10px;
+  padding: 10px;
   display: inline-block;
   line-height: 1;
   // Turn a button into a link - http://stackoverflow.com/a/12642009/5357459
@@ -10,7 +10,7 @@
     display: inline;
     font: inherit;
     margin: 0;
-    padding: $padding;
+    padding: inherit;
     outline-offset: 0;
     color: inherit;
     line-height: inherit;
@@ -24,6 +24,6 @@
   input[type="button"]::-moz-focus-inner,
   button::-moz-focus-inner {
     border: none;
-    padding: $padding;
+    padding: inherit;
   }
 }

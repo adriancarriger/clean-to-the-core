@@ -12,6 +12,7 @@ import { IconInstagramComponent } from './icons/icon-instagram/icon-instagram.co
 import { IconNavComponent } from './icons/icon-nav/icon-nav.component';
 import { IconPinterestComponent } from './icons/icon-pinterest/icon-pinterest.component';
 import { IconSearchComponent } from './icons/icon-search/icon-search.component';
+import { IconTimeComponent } from './icons/icon-time/icon-time.component';
 import { LogoComponent } from './icons/logo/logo.component';
 import { InputComponent } from './input/input.component';
 import { SelectComponent } from './select/select.component';
@@ -44,6 +45,7 @@ import { SelectComponent } from './select/select.component';
     IconNavComponent,
     IconPinterestComponent,
     IconSearchComponent,
+    IconTimeComponent,
     InputComponent,
     LogoComponent,
     SelectComponent
@@ -56,6 +58,7 @@ import { SelectComponent } from './select/select.component';
     IconNavComponent,
     IconPinterestComponent,
     IconSearchComponent,
+    IconTimeComponent,
     InputComponent,
     LogoComponent,
     SelectComponent
