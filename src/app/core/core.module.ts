@@ -14,6 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { NavComponent } from './nav/nav.component';
+import { TimerComponent } from './timer/timer.component';
+import { TimerService } from './timer/timer.service';
 import { SharedModule } from '../shared/shared.module';
 /**
  * @whatItDoes {@link CoreModule} exists to make commonly used singleton services and single-use classes available
@@ -30,7 +32,7 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   exports: [LayoutComponent],
-  declarations: [FooterComponent, NavComponent, LayoutComponent]
+  declarations: [FooterComponent, NavComponent, LayoutComponent, TimerComponent]
 })
 export class CoreModule {
   /**
@@ -44,8 +46,9 @@ export class CoreModule {
       providers: [
         ApiService,
         GlobalEventsService,
-        { provide: 'Window', useValue: window },
-        { provide: 'Document', useValue: document }
+        TimerService,
+        { provide: 'Document', useValue: document },
+        { provide: 'Window', useValue: window }
       ]
     };
   }
