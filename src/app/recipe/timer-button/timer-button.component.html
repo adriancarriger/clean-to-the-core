@@ -1,4 +1,4 @@
 <app-button-clear>
-  <span *ngIf="timerObj?.exactly">{{timerObj.exactly}}</span><span *ngIf="timerObj?.short">{{timerObj.short}}-{{timerObj.long}}</span> minute<template [ngIf]="timerObj?.exactly !== '1'">s</template>
+  <template [ngIf]="timerObj?.exactly">{{timerObj.exactly}}</template><template [ngIf]="timerObj?.short">{{timerObj.short}}-{{timerObj.long}}</template> minute<template [ngIf]="timerObj?.exactly !== '1'">s</template>
   <app-icon-time></app-icon-time>
 </app-button-clear>
