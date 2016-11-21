@@ -5,15 +5,21 @@ import { DebugElement } from '@angular/core';
 
 import { TimerButtonComponent } from './timer-button.component';
 import { SharedModule } from '../../shared/shared.module';
+import { TimerService } from '../../core/timer/timer.service';
+import { MockTimerService } from '../../core/timer/mock-timer.service.spec';
 
 describe('TimerButtonComponent', () => {
   let component: TimerButtonComponent;
   let fixture: ComponentFixture<TimerButtonComponent>;
-
+  let mockTimerService: MockTimerService;
   beforeEach(async(() => {
+    mockTimerService = new MockTimerService();
     TestBed.configureTestingModule({
       imports: [ SharedModule ],
-      declarations: [ TimerButtonComponent ]
+      declarations: [ TimerButtonComponent ],
+      providers: [
+        { provide: TimerService, useValue: mockTimerService }
+      ]
     })
     .compileComponents();
   }));

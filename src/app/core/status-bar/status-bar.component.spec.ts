@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { StatusBarComponent } from './status-bar.component';
 import { StatusBarService } from './status-bar.service';
-import { MockStatusBarService } from './mock-status-bar.service';
+import { MockStatusBarService } from './mock-status-bar.service.spec';
 
 describe('StatusBarComponent', () => {
   let mockStatusBarService: MockStatusBarService;
@@ -32,9 +32,9 @@ describe('StatusBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should set height to -50px', done => {
+  it('should set height to -0px', done => {
     setTimeout(() => {
-       expect(component.top).toBe('-50px');
+      expect(component.top).toBe('-0px');
       done();
     }, 300);
   });

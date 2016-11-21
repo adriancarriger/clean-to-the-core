@@ -5,7 +5,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { StatusBarAwareDirective } from './status-bar-aware.directive';
 
 import { StatusBarService } from './status-bar.service';
-import { MockStatusBarService } from './mock-status-bar.service';
+import { MockStatusBarService } from './mock-status-bar.service.spec';
 
 describe('Directive: StatusBarAware', () => {
   let mockStatusBarService: MockStatusBarService;

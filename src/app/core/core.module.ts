@@ -37,7 +37,8 @@ import { SharedModule } from '../shared/shared.module';
   exports: [
     LayoutComponent,
     StatusBarComponent,
-    StatusBarAwareDirective
+    StatusBarAwareDirective,
+    TimerComponent
   ],
   declarations: [
     FooterComponent,

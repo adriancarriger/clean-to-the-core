@@ -1,4 +1,4 @@
-<app-button-clear>
+<app-button-clear (click)="timerService.startTimer(timerObj)" [style.color]="timerService.running ? 'black' : null">
   <template [ngIf]="timerObj?.exactly">{{timerObj.exactly}}</template><template [ngIf]="timerObj?.short">{{timerObj.short}}-{{timerObj.long}}</template> minute<template [ngIf]="timerObj?.exactly !== '1'">s</template>
-  <app-icon-time></app-icon-time>
+  <app-icon-time [style.fill]="timerService.running ? 'black' : null"></app-icon-time>
 </app-button-clear>

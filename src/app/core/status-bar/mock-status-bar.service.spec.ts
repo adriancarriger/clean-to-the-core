@@ -10,4 +10,7 @@ export class MockStatusBarService extends StatusBarService {
   onInit() {
 
   }
+  setActive(newValue) {
+
+  }
 }
