@@ -12,7 +12,6 @@ export class TimerService {
   startTimer(timerObj) {
     if (!this.running) {
       this.setupTimer(timerObj);
-      this.statusBarService.setBarHeight(23);
     }
   }
   private setupTimer(timerObj) {
