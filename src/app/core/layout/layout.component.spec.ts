@@ -16,6 +16,7 @@ import { HomeComponent } from '../../home/home.component';
 import { HomeModule } from '../../home/home.module';
 import { ApiService } from '../api/api.service';
 import { MockApiService } from '../api/mock-api.service.spec';
+import { StatusBarService } from '../status-bar/status-bar.service';
 import { MockDocumentService } from '../../../mocks/mock-document.service.spec';
 
 describe('LayoutComponent', () => {
@@ -38,6 +39,7 @@ describe('LayoutComponent', () => {
       ],
       providers: [
         GlobalEventsService,
+        StatusBarService,
         { provide: ApiService, useValue: mockApiService },
         { provide: 'Document', useValue: mockDocumentService },
         { provide: 'Window', useValue: window }
@@ -60,7 +62,7 @@ describe('LayoutComponent', () => {
 
   it('should update padding on Height changes', () => {
     component.onHeightChange('top', 40, 10);
-    expect(component.padding.top).toEqual('50px');
+    expect(component.padding.top).toEqual(50);
   });
 
   it('should set fixed to true on route change', () => {

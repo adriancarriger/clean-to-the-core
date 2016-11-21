@@ -14,6 +14,9 @@ import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { NavComponent } from './nav/nav.component';
+import { StatusBarAwareDirective } from './status-bar/status-bar-aware.directive';
+import { StatusBarComponent } from './status-bar/status-bar.component';
+import { StatusBarService } from './status-bar/status-bar.service';
 import { TimerComponent } from './timer/timer.component';
 import { TimerService } from './timer/timer.service';
 import { SharedModule } from '../shared/shared.module';
@@ -31,8 +34,19 @@ import { SharedModule } from '../shared/shared.module';
     RouterModule,
     SharedModule
   ],
-  exports: [LayoutComponent],
-  declarations: [FooterComponent, NavComponent, LayoutComponent, TimerComponent]
+  exports: [
+    LayoutComponent,
+    StatusBarComponent,
+    StatusBarAwareDirective
+  ],
+  declarations: [
+    FooterComponent,
+    LayoutComponent,
+    NavComponent,
+    StatusBarComponent,
+    StatusBarAwareDirective,
+    TimerComponent
+  ]
 })
 export class CoreModule {
   /**
@@ -46,6 +60,7 @@ export class CoreModule {
       providers: [
         ApiService,
         GlobalEventsService,
+        StatusBarService,
         TimerService,
         { provide: 'Document', useValue: document },
         { provide: 'Window', useValue: window }

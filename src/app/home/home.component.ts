@@ -4,6 +4,7 @@
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 
 import { ApiService } from '../core/api/api.service';
+import { StatusBarService } from '../core/status-bar/status-bar.service';
 import { WatchHeightDirective } from '../shared/watch-height/watch-height.directive';
 /**
  * @whatItDoes Returns the {@link HomeComponent} view.
@@ -48,6 +49,7 @@ export class HomeComponent implements OnInit {
    */
   constructor(
     private apiService: ApiService,
+    private statusBarService: StatusBarService,
     @Inject('Window') private window: Window) { }
   /**
    * Updates the scroll position each time the filter updates so that the filter bar is touching

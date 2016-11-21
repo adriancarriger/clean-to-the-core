@@ -2,11 +2,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component, DebugElement, Injectable, ViewChild } from '@angular/core';
+import { Route, Router} from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Subject } from 'rxjs/Rx';
 
 import { StickyScrollComponent } from './sticky-scroll.component';
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
 import { MockGlobalEventsService } from '../../core/global-events/mock-global-events.service.spec';
+import { StatusBarService } from '../../core/status-bar/status-bar.service';
 
 @Component({
   template: `<app-sticky-scroll #stickyScroll [stickyOffset]="stickyOffset"></app-sticky-scroll>`
@@ -20,10 +23,19 @@ describe('StickyScrollComponent', () => {
   let component: ContainerComponent;
   let fixture: ComponentFixture<ContainerComponent>;
   let mockGlobalEventsService: MockGlobalEventsService;
+  let router: Router;
+  const config: Route[] = [
+    { path: '', component: ContainerComponent },
+    { path: 'test', component: ContainerComponent}
+  ];
   beforeEach(async(() => {
     mockGlobalEventsService = new MockGlobalEventsService();
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule.withRoutes(config)
+      ],
       providers: [
+        StatusBarService,
         { provide: GlobalEventsService, useValue: mockGlobalEventsService }
       ],
       declarations: [ ContainerComponent, StickyScrollComponent ]

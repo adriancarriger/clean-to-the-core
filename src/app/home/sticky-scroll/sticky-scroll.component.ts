@@ -13,6 +13,7 @@ import {
   ViewChild
 } from '@angular/core';
 
+import { StatusBarService } from '../../core/status-bar/status-bar.service';
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
 /**
  * @whatItDoes Sets the {@link positionContainer} fixed to top when it reaches the top while the
@@ -24,7 +25,7 @@ import { GlobalEventsService } from '../../core/global-events/global-events.serv
   templateUrl: './sticky-scroll.component.html',
   styleUrls: ['./sticky-scroll.component.scss']
 })
-export class StickyScrollComponent implements AfterViewInit, OnChanges,  OnDestroy, OnInit {
+export class StickyScrollComponent implements AfterViewInit, OnChanges, OnDestroy, OnInit {
   /**
    * An additional amount of px that must be scrolled before sticking takes effect
    */
@@ -62,7 +63,8 @@ export class StickyScrollComponent implements AfterViewInit, OnChanges,  OnDestr
   constructor(
     private globalEventsService: GlobalEventsService,
     private element: ElementRef,
-    private renderer: Renderer) { }
+    private renderer: Renderer,
+    private statusBarService: StatusBarService) { }
   /**
    * Manually updates {@link height}
    * 

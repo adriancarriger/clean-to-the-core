@@ -3,6 +3,8 @@
  */ /** */
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+
+import { StatusBarService } from '../status-bar/status-bar.service';
 /**
  * @whatItDoes Manages all layout functions for the {@link AppComponent}.
  * @purpose The goal for this component is to encapsulate all logic relating to how the app's layout
@@ -43,15 +45,16 @@ export class LayoutComponent implements OnInit {
    * @param padding.bottom Responds to the height of {@link FooterComponent}. Defaults to `20px`.
    */
   padding = {
-    top: '20px',
-    bottom: '20px'
+    top: '20',
+    bottom: '20'
   };
   /**
    * Creates the {@link LayoutComponent}.
    */
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private statusBarService: StatusBarService) { }
   /**
    * When {@link NavComponent} or {@link FooterComponent} emits a height change,
    * {@link onHeightChange} adds the new height to the padding of the `.content-area` element.
@@ -60,7 +63,7 @@ export class LayoutComponent implements OnInit {
    * @param additionalPadding  extra padding beyond the pixel height of the element being measured.
    */
   onHeightChange(position: string, newHeight: number, additionalPadding: number) {
-    this.padding[position] = newHeight + additionalPadding + 'px';
+    this.padding[position] = newHeight + additionalPadding;
   }
   /**
    * Sets up the route change listener.
