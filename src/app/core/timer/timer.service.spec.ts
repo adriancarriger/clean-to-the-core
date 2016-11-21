@@ -58,4 +58,21 @@ describe('Service: Timer', () => {
     service.startTimer(timerObj);
     expect(service.timeLeft).toBe(0);
   }));
+
+  it('should create readable text', inject([TimerService], (service: TimerService) => {
+    service.startTimer({ exactly: 1});
+    expect(service.readable).toBe('1:00');
+    service.running = false;
+    service.startTimer({ exactly: 90});
+    expect(service.readable).toBe('1:30:00');
+    service.running = false;
+    service.startTimer({ exactly: 10});
+    expect(service.readable).toBe('10:00');
+    service.running = false;
+    service.startTimer({ exactly: 65});
+    expect(service.readable).toBe('1:05:00');
+    service.running = false;
+    service.startTimer({ exactly: 34 / 60});
+    expect(service.readable).toBe('0:34');
+  }));
 });
