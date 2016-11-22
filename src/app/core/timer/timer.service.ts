@@ -8,31 +8,49 @@ export class TimerService {
   timeLeft = 0;
   interval: NodeJS.Timer;
   readable: string;
+  id: string;
+  slug: string;
+  title = 'Clean to the Core';
+  timerObj;
   constructor(
     public statusBarService: StatusBarService) { }
-  startTimer(timerObj) {
-    if (!this.running) {
-      this.setupTimer(timerObj);
-    }
+  toggleTimer(timerObj, title, slug, id) {
+    this.running ? this.stopTimer() : this.startTimer(timerObj, title, slug, id);
   }
-  private setupTimer(timerObj) {
+  startTimer(timerObj, title, slug, id) {
+    this.id = id;
+    this.title = title;
+    this.slug = slug;
+    this.timerObj = timerObj;
     this.timeLeft = 60 * (timerObj.exactly || timerObj.short);
     this.updateReadable();
     this.running = true;
     this.statusBarService.setActive(true);
     this.interval = setInterval(() => this.onEachInterval(), 1000);
   }
+  stopTimer() {
+    clearInterval(this.interval);
+    this.statusBarService.setActive(false);
+    this.running = false;
+  }
+  resetTimer() {
+    this.timeLeft = 60 * (this.timerObj.exactly || this.timerObj.short);
+    this.updateReadable();
+  }
+  changeMinute(change) {
+    let newTime = this.timeLeft + (60 * change);
+    if (newTime > 0) {
+      this.timeLeft = newTime;
+      this.updateReadable();
+    }
+  }
+
   private onEachInterval() {
      this.timeLeft--;
      this.updateReadable();
       if (this.timeLeft === 0) {
-        this.onTimerEnd();
+        this.stopTimer();
       }
-  }
-  private onTimerEnd() {
-    clearInterval(this.interval);
-    this.statusBarService.setActive(false);
-    this.running = false;
   }
   /**
    * http://stackoverflow.com/a/11486026/5357459

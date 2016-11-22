@@ -8,7 +8,7 @@
       <app-labels [labels]="(recipe | async)?.labels"></app-labels>
       <app-image-cover [src]="(recipe | async)?.image"></app-image-cover>
       <div *ngIf="(recipe | async)?.text" class="recipe-text">{{(recipe | async)?.text}}</div>
-      <div *ngFor="let item of (recipe | async)?.items" class="recipe-item">
+      <div *ngFor="let item of (recipe | async)?.items; let itemIndex = index" class="recipe-item">
         <h2 class="item-title" *ngIf="item.name">{{item.name}}</h2>
         <div *ngIf="item.ingredients"class="ingredients">
           <h3>Ingredients</h3>
@@ -17,11 +17,9 @@
         <div *ngIf="item.stepsObj"class="steps">
           <h3>Steps</h3>
           <ul>
-            <li *ngFor="let listItem of item.stepsObj">
-              <template ngFor let-step [ngForOf]="listItem">
-                <span *ngIf="step.type === 'string'" [innerHTML]="step.data"></span>
-                <app-timer-button *ngIf="step.type === 'timerObj'" [timerObj]="step.data"></app-timer-button>
-              </template>
+            <li *ngFor="let listItem of item.stepsObj; let listIndex = index">
+              <template ngFor let-step [ngForOf]="listItem"><span *ngIf="step.type === 'string'" [innerHTML]="step.data"></span>
+              <app-timer-button *ngIf="step.type === 'timerObj'" [id]="itemIndex + '-' + listIndex" [title]="(recipe | async)?.title" [slug]="(recipe | async)?.slug" [timerObj]="step.data"></app-timer-button></template>
             </li>
           </ul>
         </div>

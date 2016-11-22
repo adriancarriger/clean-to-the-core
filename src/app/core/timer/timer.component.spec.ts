@@ -2,24 +2,35 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { Route, Router} from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { TimerComponent } from './timer.component';
 import { TimerService } from './timer.service';
 import { MockTimerService } from './mock-timer.service.spec';
-
+import { SharedModule } from '../../shared/shared.module';
 import { StatusBarService } from '../../core/status-bar/status-bar.service';
 
 describe('TimerComponent', () => {
   let component: TimerComponent;
   let fixture: ComponentFixture<TimerComponent>;
   let mockTimerService: MockTimerService;
+  let router: Router;
+  const config: Route[] = [
+    { path: '', component: TimerComponent },
+    { path: 'test', component: TimerComponent}
+  ];
   beforeEach(async(() => {
     mockTimerService = new MockTimerService();
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule.withRoutes(config),
+        SharedModule
+      ],
       declarations: [ TimerComponent ],
       providers: [
         StatusBarService,
-        TimerService,
+      TimerService,
         { provide: TimerService, useValue: mockTimerService }
       ]
     })

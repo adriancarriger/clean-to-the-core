@@ -1,0 +1,39 @@
+@import '../../../variables';
+:host {
+  font-family: $titleFont;
+  .title {
+    padding: 10px;
+    text-align: center;
+    a {
+      color: black;
+      &:hover {
+        text-decoration: none;
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    
+    align-items: center;
+    $iconSize: 30px;
+    .left {
+      margin-right: auto;
+      color: green;
+      font-size: $iconSize;
+    }
+    .center {
+      display: flex;
+      align-items: center;
+      app-button-clear {
+        font-size: $iconSize;
+        display: flex;
+      }
+    }
+    .right {
+      margin-left: auto;
+      color: red;
+    }
+  }
+}

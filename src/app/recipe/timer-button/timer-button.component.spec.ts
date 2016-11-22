@@ -27,10 +27,21 @@ describe('TimerButtonComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TimerButtonComponent);
     component = fixture.componentInstance;
+    component.timerObj = {exactly: '5'};
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should update on changes', () => {
+    component.timerObj = {short: '2', long: '8'};
+    expect(component.time).toBe('5 minutes');
+    component.ngOnChanges();
+    expect(component.time).toBe('2-8 minutes');
+    component.timerObj = {exactly: '1'};
+    component.ngOnChanges();
+    expect(component.time).toBe('1 minute');
   });
 });

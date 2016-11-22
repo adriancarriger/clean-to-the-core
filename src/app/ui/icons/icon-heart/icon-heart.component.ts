@@ -1,5 +1,5 @@
 /**
- * @module SharedModule
+ * @module UiModule
  */ /** */
 import { Component, HostBinding } from '@angular/core';
 /**
