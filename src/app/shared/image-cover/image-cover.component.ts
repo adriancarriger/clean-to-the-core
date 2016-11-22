@@ -61,7 +61,7 @@ export class ImageCoverComponent implements AfterViewInit, OnChanges {
    * this helped!: http://stackoverflow.com/a/22374423/5357459
    */
   private updateImage() {
-    if (this.src !== undefined) {
+    if (this.src !== undefined && this.src !== null) {
       this.renderer.setElementStyle(
         this.element.nativeElement, 'backgroundImage', `url(${this.src})`);
     }
