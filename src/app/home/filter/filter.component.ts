@@ -1,7 +1,7 @@
 /**
  * @module HomeModule
  */ /** */
-import { Component, ElementRef, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
@@ -16,7 +16,7 @@ import { FilterUtilitiesService } from './filter-utilities.service';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss']
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent implements AfterViewInit, OnInit {
   /**
    * Emits the time during an update to trigger pipes relying on an {@link update} event.
    */

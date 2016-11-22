@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterPipe } from './filter.pipe';
@@ -11,7 +11,7 @@ import { MockGlobalEventsService } from '../../core/global-events/mock-global-ev
 @Component({
   template: ``
 })
-export class ContainerComponent {
+export class ContainerComponent implements OnInit {
   data;
   filteredMeta = {
     searchFields: ['name', 'text', 'options'],
