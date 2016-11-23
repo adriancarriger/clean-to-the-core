@@ -61,7 +61,7 @@ export class TimerService {
   private onTimerComplete() {
       let pushObj = {
         body: `Your timer for ${this.title} has finished.`,
-        icon: '/assets/push-logo.png'
+        icon: 'assets/push-logo.png'
       };
       this.pushNotificationsService.create('Timer complete', pushObj).subscribe();
       this.stopTimer();
