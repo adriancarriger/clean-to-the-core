@@ -1,18 +1,23 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
+import { PushNotificationsService } from 'angular2-notifications';
 
 import { TimerService } from './timer.service';
 import { StatusBarService } from '../../core/status-bar/status-bar.service';
 import { MockStatusBarService } from '../../core/status-bar/mock-status-bar.service.spec';
+import { MockPushService } from './mock-push.service.spec';
 
 describe('Service: Timer', () => {
+  let mockPushService: MockPushService;
   let mockStatusBarService: MockStatusBarService;
   beforeEach(() => {
+    mockPushService = new MockPushService();
     mockStatusBarService = new MockStatusBarService();
     TestBed.configureTestingModule({
       providers: [
         TimerService,
+        { provide: PushNotificationsService, useValue: mockPushService },
         { provide: StatusBarService, useValue: mockStatusBarService }
       ]
     });

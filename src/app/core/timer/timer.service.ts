@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PushNotificationsService } from 'angular2-notifications';
 
 import { StatusBarService } from '../status-bar/status-bar.service';
 
@@ -13,9 +14,13 @@ export class TimerService {
   title = 'Clean to the Core';
   timerObj;
   constructor(
+    public pushNotificationsService: PushNotificationsService,
     public statusBarService: StatusBarService) { }
   toggleTimer(timerObj, title, slug, id) {
     this.running ? this.stopTimer() : this.startTimer(timerObj, title, slug, id);
+    if (this.pushNotificationsService.permission === 'default') {
+      this.pushNotificationsService.requestPermission();
+    }
   }
   startTimer(timerObj, title, slug, id) {
     this.id = id;
@@ -49,8 +54,17 @@ export class TimerService {
      this.timeLeft--;
      this.updateReadable();
       if (this.timeLeft === 0) {
-        this.stopTimer();
+        this.onTimerComplete();
       }
+  }
+
+  private onTimerComplete() {
+      let pushObj = {
+        body: `Your timer for ${this.title} has finished.`,
+        icon: '/assets/push-logo.png'
+      };
+      this.pushNotificationsService.create('Timer complete', pushObj).subscribe();
+      this.stopTimer();
   }
   /**
    * http://stackoverflow.com/a/11486026/5357459

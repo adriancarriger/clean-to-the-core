@@ -5,6 +5,6 @@ import { TimerService } from './timer.service';
 @Injectable()
 export class MockTimerService extends TimerService {
   constructor() {
-    super(null);
+    super(null, null);
   }
 }

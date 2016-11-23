@@ -2,10 +2,12 @@
  * @module CoreModule
  * @preferred
  */ /** */
-import { AngularFireModule } from 'angularfire2';
+
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { PushNotificationsModule } from 'angular2-notifications';
+import { AngularFireModule } from 'angularfire2';
 
 import { ApiService } from './api/api.service';
 import { GlobalEventsService } from './global-events/global-events.service';
@@ -31,6 +33,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
     CommonModule,
+    PushNotificationsModule,
     RouterModule,
     SharedModule
   ],
