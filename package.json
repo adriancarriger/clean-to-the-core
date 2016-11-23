@@ -27,7 +27,7 @@
   "private": true,
   "dependencies": {
     "@angular/common": "2.2.2",
-    "@angular/compiler": "2.2.2",
+    "@angular/compiler": "2.2.3",
     "@angular/core": "2.2.2",
     "@angular/forms": "2.2.2",
     "@angular/http": "2.2.2",
