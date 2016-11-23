@@ -1,4 +1,5 @@
 <div class="fixed-content" appWatchHeight (heightChange)="fixedHeight = $event" [style.transition]="statusBarService.animate ? 'padding-top 1s' : null" [style.padding-top]="statusBarService.currentStatus.height + 'px'" >
+  <app-loading *ngIf="!(apiService.latest | async)"></app-loading>
   <app-image-cover [src]="(apiService.latest | async)?.image" class="primary-image"></app-image-cover>
   <header class="header">
     <h1 class="title">{{ (apiService.latest | async)?.title }}</h1>

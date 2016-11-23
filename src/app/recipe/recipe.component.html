@@ -1,6 +1,7 @@
 <div class="recipe-container">
   <section class="recipe-section">
     <div class="recipe-content">
+      <app-loading *ngIf="!(recipe | async)"></app-loading>
       <h1 class="title">{{(recipe | async)?.title}}</h1>
       <div class="date">{{(recipe | async)?.stamp | amDateFormat:'MMMM D, YYYY'}}</div>
       <div *ngIf="(recipe | async)?.author" class="author">Author: {{(recipe | async)?.author}}</div>

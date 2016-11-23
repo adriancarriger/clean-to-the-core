@@ -2,5 +2,6 @@
 <h1 class="title">life should be yummy!</h1>
 <div class="author">
   <app-image-cover src="http://cleantothecore.com/wp-content/uploads/mp/image-cache/site/7/file-oct-04-9-26-38-am.f6a63b429eeb1846177e2c204f10c57c.jpeg"></app-image-cover>
+  <app-loading *ngIf="!(apiService.about | async)"></app-loading>
   <div class="author-bio">{{ (apiService.about | async)?.text }}</div>
 </div>

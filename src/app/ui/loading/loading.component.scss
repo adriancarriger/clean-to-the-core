@@ -1,0 +1,15 @@
+@import '../../../variables';
+svg {
+    animation: spin 1s infinite linear;
+    stroke: $primaryColor;
+    width: 80px;
+    height: 80px;
+    margin: 250px auto;
+    display: block;
+}
+
+@keyframes spin {
+	0%  {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}	
+}
+
