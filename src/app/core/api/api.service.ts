@@ -49,7 +49,11 @@ export class ApiService {
    */
   onInit() {
     this.about = this.af.database.object('client/about');
-    this.recipes = this.af.database.list('client/recipes');
+    this.recipes = this.af.database.list('client/recipes', {
+      query: {
+        orderByChild: 'revStamp'
+      }
+    });
     this.filterOptions = this.af.database.object('client/filter');
     this.latest = this.recipes.map(recipes => recipes[0]);
   }
@@ -58,8 +62,7 @@ export class ApiService {
    * @param slug a unique string associated with a recipe
    */
   slugToRecipe(slug: string): RecipeObservable {
-    return this.recipes
-      .map(recipes => recipes.find(recipe => recipe.slug === slug));
+    return this.af.database.object(`client/recipes/${slug}`);
   }
 }
 
