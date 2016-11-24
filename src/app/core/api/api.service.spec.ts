@@ -8,8 +8,9 @@ import { ApiService } from './api.service';
 import { MockAngularFire } from '../../../mocks/mock-angular-fire.service.spec';
 
 describe('Service: ApiService', () => {
-  let mockAngularFire = new MockAngularFire();
+  let mockAngularFire: MockAngularFire;
   beforeEach(() => {
+    mockAngularFire = new MockAngularFire();
     TestBed.configureTestingModule({
       providers: [
         ApiService,

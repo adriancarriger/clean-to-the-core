@@ -55,7 +55,7 @@ export class ApiService {
       }
     });
     this.filterOptions = this.af.database.object('client/filter');
-    this.latest = this.recipes.map(recipes => recipes[0]);
+    this.latest = this.recipes.pluck('0');
   }
   /**
    * @returns the recipe associated with the slug
@@ -65,5 +65,3 @@ export class ApiService {
     return this.af.database.object(`client/recipes/${slug}`);
   }
 }
-
-
