@@ -2,7 +2,7 @@
  * @module RecipeModule
  */ /** */
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 import { RecipeObservable } from '../core/api/api-interfaces';
 import { ApiService } from '../core/api/api.service';
@@ -27,12 +27,17 @@ export class RecipeComponent implements OnInit {
    */
   constructor (
     private activatedRoute: ActivatedRoute,
-    private apiService: ApiService) { }
+    private apiService: ApiService,
+    private router: Router) { }
   /**
    * Gets the current recipe slug on init
    */
   ngOnInit() {
-    let slug: string = this.activatedRoute.snapshot.params['slug'];
-    this.recipe = this.apiService.slugToRecipe(slug);
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        let slug: string = this.activatedRoute.snapshot.params['slug'];
+        this.recipe = this.apiService.slugToRecipe(slug);
+      }
+    });
   }
 }

@@ -3,19 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { TestBed, async, inject } from '@angular/core/testing';
 import { NavigationEnd, Router } from '@angular/router';
 import { StatusBarService } from './status-bar.service';
-
-@Injectable()
-export class MockRouter {
-  events = new EventEmitter();
-  constructor() {
-    this.onInit();
-  }
-  onInit() {
-  }
-  fakeEvent(obj) {
-    this.events.emit(obj);
-  }
-}
+import { MockRouter } from '../../../mocks/mock-router.spec';
 
 describe('Service: StatusBar', () => {
   let mockRouter: MockRouter;

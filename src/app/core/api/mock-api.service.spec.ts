@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2';
-import { Subject } from 'rxjs/Rx';
+import { Subject, ReplaySubject } from 'rxjs/Rx';
 
 import { FilterOptionsObservable, RecipeObservable } from './api-interfaces';
 
@@ -21,7 +21,7 @@ export class MockApiService {
   };
   private id = 0;
   constructor() {
-    this.recipe$ = new Subject();
+    this.recipe$ = new ReplaySubject();
     this.options$ = new Subject();
     this.recipes$ = new Subject();
     this.filterOptions = this.options$.asObservable();
@@ -32,10 +32,9 @@ export class MockApiService {
     this.update();
     return this.recipe$.asObservable();
   }
-  slugToRecipe(slug: string): Promise<RecipeObservable> {
-    return new Promise((resolve, reject) => {
-      resolve( this.recipe(2) );
-    });
+  slugToRecipe(slug: string): RecipeObservable {
+    this.update();
+    return this.recipe$.asObservable();
   }
   update() {
     this.addRecipe();
