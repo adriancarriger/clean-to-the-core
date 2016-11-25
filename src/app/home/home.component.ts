@@ -34,6 +34,10 @@ export class HomeComponent implements OnInit {
    */
   fixedHeight: number;
   /**
+   * 
+   */
+  limit = 9;
+  /**
    * A reference to the component that helps the {@link FilterComponent} stick to the top of the page
    */
   stickyScroll: ElementRef;
@@ -65,5 +69,8 @@ export class HomeComponent implements OnInit {
     this.apiService.filterOptions.subscribe(options => {
       this.filteredMeta.searchFields = options.searchFields;
     });
+  }
+  onScroll() {
+    this.limit += 6;
   }
 }

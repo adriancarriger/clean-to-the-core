@@ -77,4 +77,10 @@ describe('HomeComponent', () => {
       done();
     });
   });
+
+  it('should increase the limit', () => {
+    component.limit = 7;
+    component.onScroll();
+    expect(component.limit).toBe(13);
+  });
 });

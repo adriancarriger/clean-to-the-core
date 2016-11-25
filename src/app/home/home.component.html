@@ -15,8 +15,12 @@
   <div class="info-bar">
     <h1>Let's get cookin'</h1>
   </div>
-  <div class="recipes">
-    <div *ngFor="let recipe of apiService.recipes | async | filter:filterStamp:filterValues:filteredMeta; let i = index" class="app-recipe-ad">
+  <div class="recipes"
+    infinite-scroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="500"
+    (scrolled)="onScroll()">
+    <div *ngFor="let recipe of apiService.recipes | async | filter:filterStamp:filterValues:filteredMeta | limitTo:limit; let i = index" class="app-recipe-ad">
       <a [routerLink]="['/recipe', recipe.slug]">
         <app-recipe-ad [recipe]="recipe" [index]="i"></app-recipe-ad>
       </a>
