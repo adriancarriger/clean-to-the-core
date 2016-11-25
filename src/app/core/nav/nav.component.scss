@@ -1,6 +1,5 @@
 @import '../../../variables';
 .nav {
-  $textPadding: 10px;
   .nav-content {
     display: flex;
     justify-content: space-between;
@@ -12,10 +11,14 @@
       justify-content: flex-end;
     }
     .nav-item {
-      padding: $textPadding;
+      margin: 8px;
+      padding: 2px 4px;
       display: inline-block;
       font-family: $titleFont;
       color: white;
+      &:focus {
+        outline: solid 1px white;
+      }
     }
   }
 }
