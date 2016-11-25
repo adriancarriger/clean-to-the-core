@@ -22,6 +22,7 @@ import { StatusBarService } from './status-bar/status-bar.service';
 import { TimerComponent } from './timer/timer.component';
 import { TimerService } from './timer/timer.service';
 import { SharedModule } from '../shared/shared.module';
+import { SkipNavComponent } from './skip-nav/skip-nav.component';
 /**
  * @whatItDoes {@link CoreModule} exists to make commonly used singleton services and single-use classes available
  * for use in the many other modules.
@@ -49,7 +50,8 @@ import { SharedModule } from '../shared/shared.module';
     NavComponent,
     StatusBarComponent,
     StatusBarAwareDirective,
-    TimerComponent
+    TimerComponent,
+    SkipNavComponent
   ]
 })
 export class CoreModule {

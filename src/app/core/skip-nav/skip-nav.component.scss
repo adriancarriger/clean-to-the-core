@@ -1,0 +1,30 @@
+.skip-nav {
+  position: absolute;
+  border: none;
+  &:not(:focus) {
+    z-index: 99999999;
+    width: 1px;
+    overflow: hidden;
+    left: 100px;
+    padding: 0;
+    background: transparent;
+    color: black;
+    font-size: 30px;
+  }
+  &:focus {
+    position: fixed;
+    top: 2px;
+    left: 2px;
+    z-index: 99999;
+    padding: 10px;
+    font-size: 20px;
+    background-color: white;
+  }
+}
+#start-of-content {
+	position: absolute;
+	height: 1px;
+	width: 1px;
+	z-index: 9999999;
+	outline: none;
+}
