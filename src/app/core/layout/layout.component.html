@@ -1,4 +1,4 @@
-<app-nav [whiteText]="layout?.navWhiteText" [style.z-index]="layout?.zIndex !== '' ? layout?.zIndex : null" appWatchHeight (heightChange)="onHeightChange('top', $event, 10)" appStatusBarAware></app-nav>
+<app-nav [style.z-index]="layout?.zIndex !== '' ? layout?.zIndex : null" appWatchHeight (heightChange)="onHeightChange('top', $event, 10)" appStatusBarAware></app-nav>
 <div class="content-container">
   <div [style.padding-top]="layout?.paddingTop !== false ? padding.top + 'px' : null" [style.padding-bottom]="padding.bottom + 'px'" class="content-area" appStatusBarAware statusBarExclude="['/']">
     <router-outlet></router-outlet>

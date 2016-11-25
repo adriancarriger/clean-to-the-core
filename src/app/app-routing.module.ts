@@ -11,7 +11,6 @@ const routes: Routes = [
     path: '',
     data: {
       layout: {
-        navWhiteText: true,
         paddingTop: false,
         zIndex: 0
       }
