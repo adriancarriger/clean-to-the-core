@@ -41,7 +41,9 @@
       }
     }
     .search {
+      width: 35%;
       app-input {
+        width: 100%;
         overflow: hidden;
       }
       .toggle {
