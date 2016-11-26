@@ -6,7 +6,6 @@ import { By } from '@angular/platform-browser';
 import { AboutComponent } from './about.component';
 import { ApiService } from '../core/api/api.service';
 import { ImageCoverComponent } from '../shared/image-cover/image-cover.component';
-import { LogoComponent } from '../ui/icons/logo/logo.component';
 import { LoadingComponent } from '../ui/loading/loading.component';
 
 @Injectable()
@@ -37,8 +36,7 @@ describe('AboutComponent', () => {
       declarations: [
         AboutComponent,
         ImageCoverComponent,
-        LoadingComponent,
-        LogoComponent
+        LoadingComponent
       ],
       providers: [
         { provide: ApiService, useValue: mockApiService }
