@@ -70,6 +70,9 @@
         margin: 5px auto;
         font-size: $mobileFontSize;        
         width: 90%;
+        app-button-clear {
+          padding: 5px;
+        }
       }
       .right.item {
         margin: 20px;
@@ -84,6 +87,7 @@
       .search {
         display: flex;
         margin: 0 auto;
+        align-items: center;
         app-input {
           margin-right: auto;
           width: 70%;

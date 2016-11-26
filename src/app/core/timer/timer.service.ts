@@ -6,6 +6,7 @@ import { StatusBarService } from '../status-bar/status-bar.service';
 @Injectable()
 export class TimerService {
   running = false;
+  showTimer = false;
   timeLeft = 0;
   interval: NodeJS.Timer;
   readable: string;
@@ -30,6 +31,7 @@ export class TimerService {
     this.timeLeft = 60 * (timerObj.exactly || timerObj.short);
     this.updateReadable();
     this.running = true;
+    this.showTimer = true;
     this.statusBarService.setActive(true);
     this.interval = setInterval(() => this.onEachInterval(), 1000);
   }
@@ -37,6 +39,9 @@ export class TimerService {
     clearInterval(this.interval);
     this.statusBarService.setActive(false);
     this.running = false;
+    setTimeout(() => {
+      this.showTimer = false;
+    }, 1000);
   }
   resetTimer() {
     this.timeLeft = 60 * (this.timerObj.exactly || this.timerObj.short);

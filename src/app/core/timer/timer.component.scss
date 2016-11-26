@@ -1,6 +1,8 @@
 @import '../../../variables';
 :host {
   font-family: $titleFont;
+  display: block;
+  min-height: 114px;
   .title {
     padding: 10px;
     text-align: center;
@@ -33,7 +35,7 @@
     }
     .right {
       margin-left: auto;
-      color: red;
+      color: $visibleRed;
     }
   }
 }
