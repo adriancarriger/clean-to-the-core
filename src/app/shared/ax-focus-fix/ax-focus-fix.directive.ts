@@ -2,6 +2,7 @@
  * @module SharedModule
  */ /** */
 import { Directive, ElementRef, HostBinding, Inject, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
 /**
@@ -25,6 +26,10 @@ export class AxFocusFixDirective implements OnInit {
    */
   @HostBinding('attr.aria-hidden') ariaHidden: boolean;
   /**
+   * This directive will not affect skipped routes.
+   */
+  skipRoute: boolean;
+  /**
    * Creates the {@link AxFocusFixDirective}
    * @param document the global `document` variable
    * @param el a reference to the host element
@@ -34,16 +39,28 @@ export class AxFocusFixDirective implements OnInit {
     @Inject('Document') private document: Document,
     private el: ElementRef,
     private globalEventsService: GlobalEventsService,
+    private router: Router,
     @Inject('Window') private window: Window) { }
   /**
    * - Setup listeners
    * - Detect initial scroll position
    */
   ngOnInit() {
+    this.skipIfHome();
     this.document.addEventListener('keydown', e => this.onKeyDown(e));
     this.document.addEventListener('keyup', e => this.onKeyUp(e));
     this.globalEventsService.emitters$['scroll'].subscribe(() => this.onScroll());
     this.onScroll();
+  }
+  /**
+   * This directive only applies to the home route
+   */
+  private skipIfHome() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.skipRoute = event.url !== '/';
+      }
+    });
   }
   /**
    * Set host element to visible by screen readers on tab keypress.
@@ -53,7 +70,7 @@ export class AxFocusFixDirective implements OnInit {
    */
   private onKeyDown(event: KeyboardEvent) {
     if (event.keyCode === 9) {
-      this.ariaHidden = false;
+      this.setHidden(false);
     }
   }
   /**
@@ -68,7 +85,7 @@ export class AxFocusFixDirective implements OnInit {
       if (this.el.nativeElement === this.document.activeElement) {
         this.window.scrollTo(0, 0);
       } else {
-        this.ariaHidden = true;
+        this.setHidden(true);
       }
     }
   }
@@ -77,10 +94,9 @@ export class AxFocusFixDirective implements OnInit {
    */
   private onScroll() {
     let scrollPosition = this.window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollPosition === 0) {
-      this.ariaHidden = false;
-    } else {
-      this.ariaHidden = true;
-    }
+    this.setHidden(scrollPosition !== 0);
+  }
+  private setHidden(newValue: boolean) {
+    this.ariaHidden = newValue && !this.skipRoute;
   }
 }

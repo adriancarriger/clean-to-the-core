@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { Component, HostBinding, Injectable, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs/Rx';
 
 import { AxFocusFixDirective } from './ax-focus-fix.directive';
@@ -8,12 +9,14 @@ import { GlobalEventsService } from '../../core/global-events/global-events.serv
 import { MockGlobalEventsService } from '../../core/global-events/mock-global-events.service.spec';
 import { MockDocumentService } from '../../../mocks/mock-document.service.spec';
 import { MockWindowService } from '../../../mocks/mock-window.service.spec';
+import { MockRouter } from '../../../mocks/mock-router.spec';
 
 @Component({
   template: `<div #testEl appAxFocus01Fix></div>`
 })
 export class ContainerComponent {
   @ViewChild('testEl') testEl;
+  @ViewChild(AxFocusFixDirective) axFocus01Fix: AxFocusFixDirective;
 }
 
 describe('Directive: appAxFocus01Fix', () => {
@@ -22,11 +25,13 @@ describe('Directive: appAxFocus01Fix', () => {
   let mockDocumentService: MockDocumentService;
   let mockGlobalEventsService: MockGlobalEventsService;
   let mockWindowService: MockWindowService;
+  let mockRouter: MockRouter;
   function mockScrollTo(x, y) {
     mockWindowService.pageYOffset = y;
     mockGlobalEventsService.update();
   }
   beforeEach(async(() => {
+    mockRouter = new MockRouter();
     mockDocumentService = new MockDocumentService();
     mockGlobalEventsService = new MockGlobalEventsService();
     mockWindowService = new MockWindowService();
@@ -34,6 +39,7 @@ describe('Directive: appAxFocus01Fix', () => {
       providers: [
         { provide: 'Document', useValue: mockDocumentService },
         { provide: GlobalEventsService, useValue: mockGlobalEventsService },
+        { provide: Router, useValue: mockRouter },
         { provide: 'Window', useValue: mockWindowService }
       ],
       declarations: [AxFocusFixDirective, ContainerComponent]
@@ -133,5 +139,21 @@ describe('Directive: appAxFocus01Fix', () => {
     mockScrollTo(0, 228);
     fixture.detectChanges();
     expect( child.getAttribute('aria-hidden') ).toBe('true');
+  });
+
+  it ('should skip non-home routes', () => {
+    let testEvent: NavigationEnd;
+    testEvent = new NavigationEnd(1, '/test', '/test');
+    mockRouter.fakeEvent(testEvent);
+    expect(component.axFocus01Fix.skipRoute).toBe(true);
+    testEvent = new NavigationEnd(1, '/', '/');
+    mockRouter.fakeEvent(testEvent);
+    expect(component.axFocus01Fix.skipRoute).toBe(false);
+  });
+
+  it ('should not do nothing if not an instance of NavigationEnd', () => {
+    let testEvent = {id: 1, url: '/test', urlAfterRedirect: '/test'};
+    mockRouter.fakeEvent(testEvent);
+    expect(component.axFocus01Fix.skipRoute).toBe(undefined);
   });
 });
