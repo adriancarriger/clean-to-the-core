@@ -15,7 +15,7 @@ export class StatusBarComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     let height = this.elementRef.nativeElement.clientHeight;
-    setTimeout(() => this.top = `-${height + 1}px`);
+    setTimeout(() => this.top = `-${height}px`);
     this.statusBarService.setBarHeight(height);
   }
 }

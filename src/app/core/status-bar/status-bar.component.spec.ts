@@ -32,9 +32,9 @@ describe('StatusBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should set height to -1px', done => {
+  it('should set height to 0px', done => {
     setTimeout(() => {
-      expect(component.top).toBe('-1px');
+      expect(component.top).toBe('-0px');
       done();
     }, 300);
   });
