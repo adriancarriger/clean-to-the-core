@@ -119,7 +119,8 @@ export class FilterPipe implements PipeTransform {
    * Converts queries into a readable list.
    */
   private readableQueries(inputs: Object): string {
-    return Object.values(inputs)
+    return Object.keys(inputs)
+      .map(key => inputs[key])
       .filter(input => !['', 'all'].includes(input))
       .reduce(this.readableList, '');
   }
