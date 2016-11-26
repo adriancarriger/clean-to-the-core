@@ -17,7 +17,6 @@ import { IconResetComponent } from './icons/icon-reset/icon-reset.component';
 import { IconSearchComponent } from './icons/icon-search/icon-search.component';
 import { IconTimeComponent } from './icons/icon-time/icon-time.component';
 import { LoadingComponent } from './loading/loading.component';
-import { LogoComponent } from './icons/logo/logo.component';
 import { InputComponent } from './input/input.component';
 import { SelectComponent } from './select/select.component';
 /**
@@ -55,7 +54,6 @@ import { SelectComponent } from './select/select.component';
     IconTimeComponent,
     InputComponent,
     LoadingComponent,
-    LogoComponent,
     SelectComponent
   ],
   exports: [
@@ -72,7 +70,6 @@ import { SelectComponent } from './select/select.component';
     IconTimeComponent,
     InputComponent,
     LoadingComponent,
-    LogoComponent,
     SelectComponent
   ]
 })

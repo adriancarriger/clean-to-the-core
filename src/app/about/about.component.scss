@@ -1,8 +1,9 @@
 @import '../../variables';
 :host {
   min-height: 80vh;
-  app-logo {
+  .app-logo {
     width: 150px;
+    height: 150px;
     margin: 5px auto 40px auto;
     display: block;
   }
