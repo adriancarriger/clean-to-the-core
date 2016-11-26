@@ -13,6 +13,10 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 })
 export class LabelsComponent implements OnChanges {
   /**
+   * Passed to the `aria-label` attribute of the `ul`
+   */
+  @Input() label: string;
+  /**
    * An input array of with the color and name for each label element.
    */
   @Input() labels: Array<Label>;

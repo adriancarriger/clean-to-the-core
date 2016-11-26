@@ -1,12 +1,12 @@
-<div class="fixed-content" appWatchHeight (heightChange)="fixedHeight = $event" [style.transition]="statusBarService.animate ? 'padding-top 1s' : null" [style.padding-top]="statusBarService.currentStatus.height + 'px'" >
+<header class="fixed-content" appWatchHeight (heightChange)="fixedHeight = $event" [style.transition]="statusBarService.animate ? 'padding-top 1s' : null" [style.padding-top]="statusBarService.currentStatus.height + 'px'" >
   <app-loading *ngIf="!(apiService.latest | async)"></app-loading>
   <app-image-cover [src]="(apiService.latest | async)?.image" class="primary-image" [alt]="(apiService.latest | async)?.title"></app-image-cover>
-  <header class="header">
+  <section class="primary-info">
     <h1 class="title">{{ (apiService.latest | async)?.title }}</h1>
     <div class="blurb">{{ (apiService.latest | async)?.blurb }} <a *ngIf="apiService.latest | async" [routerLink]="['/recipe', (apiService.latest | async)?.slug]" appAxFocus01Fix>View&nbsp;Recipe</a></div>
-    <app-labels (change)="wh.updateHeight()" [labels]="(apiService.latest | async)?.labels"></app-labels>
-  </header>
-</div>
+    <app-labels (change)="wh.updateHeight()" [labels]="(apiService.latest | async)?.labels" label="Allergy free items for this recipe"></app-labels>
+  </section>
+</header>
 
 <div class="home-content" [style.transition]="statusBarService.animate ? 'margin-top 1s' : null" [style.margin-top]="(fixedHeight + statusBarService.currentStatus.height) + 'px'" >
   <app-sticky-scroll #stickyScroll [stickyOffset]="fixedHeight">
@@ -15,18 +15,18 @@
   <div class="info-bar">
     <h1>Let's get cookin'</h1>
   </div>
-  <div class="recipes"
+  <main class="recipes"
     infinite-scroll
     [infiniteScrollDistance]="2"
     [infiniteScrollThrottle]="500"
     (scrolled)="onScroll()">
-    <div *ngFor="let recipe of apiService.recipes | async | filter:filterStamp:filterValues:filteredMeta | limitTo:limit; let i = index" class="app-recipe-ad">
+    <section *ngFor="let recipe of apiService.recipes | async | filter:filterStamp:filterValues:filteredMeta | limitTo:limit; let i = index" class="app-recipe-ad">
       <a [routerLink]="['/recipe', recipe.slug]">
         <app-recipe-ad [recipe]="recipe" [index]="i"></app-recipe-ad>
       </a>
-    </div>
+    </section>
     <div *ngIf="(apiService.recipes | async) !== undefined && filteredMeta?.count === 0" class="no-results">
         No matches for {{filteredMeta.query}}
     </div>
-  </div>
+  </main>
 </div>

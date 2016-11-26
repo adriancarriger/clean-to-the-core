@@ -1,31 +1,33 @@
 <div class="recipe-container">
-  <section class="recipe-section">
+  <article class="recipe-article">
     <div class="recipe-content">
       <app-loading *ngIf="!(recipe | async)"></app-loading>
-      <h1 class="title">{{(recipe | async)?.title}}</h1>
-      <div class="date">{{(recipe | async)?.stamp | amDateFormat:'MMMM D, YYYY'}}</div>
-      <div *ngIf="(recipe | async)?.author" class="author">Author: {{(recipe | async)?.author}}</div>
-      <div class="blurb">{{(recipe | async)?.blurb}}</div>
-      <app-labels [labels]="(recipe | async)?.labels"></app-labels>
-      <app-image-cover [src]="(recipe | async)?.image"></app-image-cover>
-      <div *ngIf="(recipe | async)?.text" class="recipe-text">{{(recipe | async)?.text}}</div>
-      <div *ngFor="let item of (recipe | async)?.items; let itemIndex = index" class="recipe-item">
+      <section>
+        <h1 class="title">{{(recipe | async)?.title}}</h1>
+        <time [attr.aria-label]="'article published on ' + ((recipe | async)?.stamp | amDateFormat:'MMMM D, YYYY')" class="date">{{(recipe | async)?.stamp | amDateFormat:'MMMM D, YYYY'}}</time>
+        <div *ngIf="(recipe | async)?.author" class="author">Author: {{(recipe | async)?.author}}</div>
+        <div class="blurb">{{(recipe | async)?.blurb}}</div>
+        <app-labels [labels]="(recipe | async)?.labels" label="Allergy free items for this recipe"></app-labels>
+        <app-image-cover [src]="(recipe | async)?.image" [alt]="(recipe | async)?.title"></app-image-cover>
+      </section>
+      <section *ngIf="(recipe | async)?.text" class="recipe-text">{{(recipe | async)?.text}}</section>
+      <section *ngFor="let item of (recipe | async)?.items; let itemIndex = index" class="recipe-item">
         <h2 class="item-title" *ngIf="item.name">{{item.name}}</h2>
-        <div *ngIf="item.ingredients"class="ingredients">
+        <section *ngIf="item.ingredients"class="ingredients">
           <h3>Ingredients</h3>
           <div [innerHTML]="item.ingredients"></div>
-        </div>
-        <div *ngIf="item.stepsObj"class="steps">
+        </section>
+        <section *ngIf="item.stepsObj"class="steps">
           <h3>Steps</h3>
-          <ul>
+          <ul aria-label="recipe steps">
             <li *ngFor="let listItem of item.stepsObj; let listIndex = index">
               <template ngFor let-step [ngForOf]="listItem"><span *ngIf="step.type === 'string'" [innerHTML]="step.data"></span>
-              <app-timer-button *ngIf="step.type === 'timerObj'" [id]="itemIndex + '-' + listIndex" [title]="(recipe | async)?.title" [slug]="(recipe | async)?.slug" [timerObj]="step.data"></app-timer-button></template>
+              <app-timer-button *ngIf="step.type === 'timerObj'" [id]="itemIndex + '-' + listIndex" [title]="(recipe | async)?.title" [slug]="(recipe | async)?.slug" [timerObj]="step.data" ></app-timer-button></template>
             </li>
           </ul>
-        </div>
-      </div>
-      <div *ngIf="(recipe | async)?.conclusion" class="conclusion">{{(recipe | async)?.conclusion}}</div>
+        </section>
+      </section>
+      <section *ngIf="(recipe | async)?.conclusion" class="conclusion">{{(recipe | async)?.conclusion}}</section>
     </div>
-  </section>
+  </article>
 </div>

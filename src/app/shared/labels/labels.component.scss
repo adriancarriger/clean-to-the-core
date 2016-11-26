@@ -1,47 +1,52 @@
 @import '../../../variables';
 :host {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 auto;
-  line-height: 1.15;
-  .label-container {
-    .label-content {
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      font-size: 14px;
-      position: relative;
-      margin: 3px;
-      background-color: black;
-      margin: 10px;
-      display: table;
-      .label-text {
-        color: #353536;
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-        line-height: 1.3;
-        word-spacing: 30000px; // http://stackoverflow.com/a/18891911/5357459 
-      }
-    }
-  }
-  @media (max-width: 660px) {
-    font-size: 14px;
-    padding: 0 10px;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: inherit;
+    margin: 0 auto;
+    line-height: 1.15;
     .label-container {
+      display: block;
       .label-content {
-        margin: 10px auto;
-        width: 60px;
-        height: 60px;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        font-size: 14px;
+        position: relative;
+        margin: 3px;
+        background-color: black;
+        margin: 10px;
+        display: table;
+        .label-text {
+          color: #353536;
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+          line-height: 1.3;
+          word-spacing: 30000px; // http://stackoverflow.com/a/18891911/5357459 
+        }
       }
     }
-  }
-  @media (max-width: 400px) {
-    font-size: 14px;
-    max-width: 260px;
-    .label-container {
-      width: 33%;
+    @media (max-width: 660px) {
+      font-size: 14px;
+      padding: 0 10px;
+      justify-content: space-between;
+      .label-container {
+        .label-content {
+          margin: 10px auto;
+          width: 60px;
+          height: 60px;
+        }
+      }
+    }
+    @media (max-width: 500px) {
+      font-size: 14px;
+      max-width: 260px;
+      .label-container {
+        width: 33%;
+      }
     }
   }
 }

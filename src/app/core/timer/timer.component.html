@@ -1,14 +1,14 @@
-<template [ngIf]="timerService.showTimer">
-  <div class="title">
-    <a [routerLink]="['/recipe', timerService.slug]" appAxFocus01Fix>{{ timerService.title }}</a>
-  </div>
+<aside *ngIf="timerService.showTimer">
+  <h2 class="title">
+    <a [routerLink]="['/recipe', timerService.slug]" [attr.aria-label]="'Recipe related to the timer: ' + timerService.title" appAxFocus01Fix>{{ timerService.title }}</a>
+  </h2>
   <div class="controls">
     <app-button-clear label="Resets the timer to the original value" class="left" (click)="timerService.resetTimer()" appAxFocus01Fix><app-icon-reset></app-icon-reset></app-button-clear>
     <div class="center">
       <app-button-clear label="removes a minute from the timer" (click)="timerService.changeMinute(-1)" appAxFocus01Fix><app-icon-minus></app-icon-minus></app-button-clear>
-      <div>{{ timerService.readable }}</div>
+      <time role="timer" [attr.aria-label]="'time left until recipe step completion is ' + timerService.readable">{{ timerService.readable }}</time>
       <app-button-clear label="adds a minute from the timer" (click)="timerService.changeMinute(1)" appAxFocus01Fix><app-icon-plus></app-icon-plus></app-button-clear>
     </div>
-    <app-button-clear label="stops the timer.component.html" class="right" (click)="timerService.stopTimer()" appAxFocus01Fix>stop</app-button-clear>
+    <app-button-clear label="stops the timer" class="right" (click)="timerService.stopTimer()" appAxFocus01Fix>stop</app-button-clear>
   </div>
-</template>
+</aside>
