@@ -1,4 +1,4 @@
-<app-image-cover [src]="recipe.image"></app-image-cover>
+<app-image-cover [src]="recipe.image" [alt]="recipe.title"></app-image-cover>
 <h2 class="recipe-title">{{recipe.title}}</h2>
 <ul class="allergens">
   <template ngFor let-allergen [ngForOf]="recipe.allergens" let-i="index">
