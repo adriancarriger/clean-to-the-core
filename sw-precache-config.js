@@ -8,5 +8,17 @@ module.exports = {
     'dist/**.css',
     'dist/**.ttf',
     'dist/assets/**'
+  ],
+  runtimeCaching: [
+    {
+      urlPattern: /^https?:\/\/cleantothecore\.com/,
+      handler: 'networkFirst',
+      options: {
+        cache: {
+          maxEntries: 10,
+          name: 'api-cache'
+        }
+      }
+    }
   ]
 };
