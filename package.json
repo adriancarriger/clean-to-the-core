@@ -13,6 +13,8 @@
     "pree2e": "webdriver-manager update; tsc --project e2e",
     "minCoverage": "node ./scripts/minimum_coverage.js",
     "start": "ng serve",
+    "static-serve": "cd dist && live-server --port=4200 --host=localhost --entry-file=/index.html",
+    "sw": "sw-precache --root=dist --config=sw-precache-config.js",
     "test": "ng lint && ng test --watch=false --code-coverage && npm run fixCoverage",
     "typedoc": "typedoc"
   },
@@ -61,6 +63,7 @@
     "lcov-parse": "0.0.10",
     "pre-git": "^3.10.0",
     "protractor": "4.0.11",
+    "sw-precache": "^4.2.3",
     "ts-node": "1.7.0",
     "tslint": "3.15.1",
     "typedoc": "^0.5.1",
