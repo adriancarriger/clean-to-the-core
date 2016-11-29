@@ -2,9 +2,10 @@
  * @module CoreModule
  */ /** */
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { Observable } from 'rxjs';
 
 import { FilterOptionsObservable, Recipe, RecipeObservable } from './api-interfaces';
+import { FirebaseCacheService } from './firebase-cache.service';
 /**
  * @whatItDoes Reponsible for returning data from an API.
  * @consumers {@link HomeComponent}, {@link RecipeComponent}, {@link RecipeAdComponent}
@@ -24,11 +25,11 @@ export class ApiService {
   /**
    * Observable of about data.
    */
-  about: FirebaseObjectObservable<Object>;
+  about: Observable<{}>;
   /**
    * Observable of a list of recipes.
    */
-  recipes: FirebaseListObservable<Recipe[]>;
+  recipes: Observable<Recipe[]>;
   /**
    * Observable of filter options. Used to set up the {@link FilterComponent}
    */
@@ -39,22 +40,23 @@ export class ApiService {
   latest: RecipeObservable;
   /**
    * Creates the {@link ApiService}
-   * @param af Angular Fire service used to connect to Firebase
+   * @param fbCache Firebase cache service used to connect to Firebase and cache for offline use
    */
-  constructor(public af: AngularFire) {
+  constructor(
+    private fbCache: FirebaseCacheService) {
     this.onInit();
   }
   /**
    * Called when creating the service.
    */
   onInit() {
-    this.about = this.af.database.object('client/about');
-    this.recipes = this.af.database.list('client/recipes', {
+    this.about = this.fbCache.object('client/about');
+    this.recipes = this.fbCache.list('client/recipes', {
       query: {
         orderByChild: 'revStamp'
       }
     });
-    this.filterOptions = this.af.database.object('client/filter');
+    this.filterOptions = this.fbCache.object('client/filter');
     this.latest = this.recipes.pluck('0');
   }
   /**
@@ -62,6 +64,6 @@ export class ApiService {
    * @param slug a unique string associated with a recipe
    */
   slugToRecipe(slug: string): RecipeObservable {
-    return this.af.database.object(`client/recipes/${slug}`);
+    return this.fbCache.object(`client/recipes/${slug}`);
   }
 }

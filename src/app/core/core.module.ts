@@ -10,6 +10,7 @@ import { PushNotificationsModule } from 'angular2-notifications';
 import { AngularFireModule } from 'angularfire2';
 
 import { ApiService } from './api/api.service';
+import { FirebaseCacheService } from './api/firebase-cache.service';
 import { GlobalEventsService } from './global-events/global-events.service';
 import { firebaseConfig } from './firebase-config';
 import { FooterComponent } from './footer/footer.component';
@@ -23,6 +24,7 @@ import { TimerComponent } from './timer/timer.component';
 import { TimerService } from './timer/timer.service';
 import { SharedModule } from '../shared/shared.module';
 import { SkipNavComponent } from './skip-nav/skip-nav.component';
+import { LocalForageModule } from 'ng2-localforage';
 /**
  * @whatItDoes {@link CoreModule} exists to make commonly used singleton services and single-use classes available
  * for use in the many other modules.
@@ -34,6 +36,7 @@ import { SkipNavComponent } from './skip-nav/skip-nav.component';
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
     CommonModule,
+    LocalForageModule,
     PushNotificationsModule,
     RouterModule,
     SharedModule
@@ -65,6 +68,7 @@ export class CoreModule {
       ngModule: CoreModule,
       providers: [
         ApiService,
+        FirebaseCacheService,
         GlobalEventsService,
         StatusBarService,
         TimerService,

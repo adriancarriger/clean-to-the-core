@@ -1,20 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import { Injectable } from '@angular/core';
 import { async, inject, TestBed } from '@angular/core/testing';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { Subject, Observable } from 'rxjs/Rx';
 
 import { ApiService } from './api.service';
-import { MockAngularFire } from '../../../mocks/mock-angular-fire.service.spec';
+import { FirebaseCacheService } from './firebase-cache.service';
+import { MockFirebaseCacheService } from './mock-firebase-cache.service.spec';
 
 describe('Service: ApiService', () => {
-  let mockAngularFire: MockAngularFire;
+  let mockFirebaseCacheService: MockFirebaseCacheService;
   beforeEach(() => {
-    mockAngularFire = new MockAngularFire();
+    mockFirebaseCacheService = new MockFirebaseCacheService();
     TestBed.configureTestingModule({
       providers: [
         ApiService,
-        { provide: AngularFire, useValue: mockAngularFire },
+        { provide: FirebaseCacheService, useValue: mockFirebaseCacheService },
       ]
     });
   });
@@ -31,13 +31,13 @@ describe('Service: ApiService', () => {
     service.slugToRecipe('slug-2').subscribe(recipe => {
       expect(recipe.id).toEqual(2);
     });
-    mockAngularFire.update();
+    mockFirebaseCacheService.update();
   })));
 
   it('should return the latest recipe', async(inject([ApiService], (service: ApiService) => {
     service.latest.subscribe(latest => {
       expect(latest.slug).toEqual('slug-3');
     });
-    mockAngularFire.update();
+    mockFirebaseCacheService.update();
   })));
 });

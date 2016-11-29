@@ -1,4 +1,3 @@
-import { FirebaseObjectObservable } from 'angularfire2';
 import { Observable } from 'rxjs';
 
 import { FilterOptions } from '../../home/filter/filter-options';
@@ -11,7 +10,7 @@ export interface Recipe {
 
 export interface RecipeObservable extends Observable<Recipe> { }
 
-export interface FilterOptionsObservable extends FirebaseObjectObservable<FilterOptions> { }
+export interface FilterOptionsObservable extends Observable<FilterOptions> { }
 
 
 
