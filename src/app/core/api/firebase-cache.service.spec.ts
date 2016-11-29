@@ -99,4 +99,32 @@ describe('Service: FirebaseCacheService', () => {
       }, 500);
     })();
   });
+
+  it('should return a locally stored list', done => {
+    inject([FirebaseCacheService], (service: FirebaseCacheService) => {
+      service.list('list-2').subscribe(object => {
+        expect(object).toEqual(['1', '1', '1']);
+        done();
+      });
+      mockNg2LocalforageService.update(['key-1', 'key-2', 'key-3'], true);
+      mockNg2LocalforageService.update('1');
+    })();
+  });
+
+  it('should not return alocally stored list if loaded', done => {
+    inject([FirebaseCacheService], (service: FirebaseCacheService) => {
+      let returnedValue = false;
+      service.list('list-2').subscribe(object => {
+        returnedValue = true;
+      });
+      service.cache['list-2'].loaded = true;
+      mockNg2LocalforageService.update(['key-1', 'key-2', 'key-3'], true);
+      mockNg2LocalforageService.update('1');
+      // Wait for 500 ms to see if a value is returned
+      setTimeout(() => {
+        expect(returnedValue).toBe(false);
+        done();
+      }, 500);
+    })();
+  });
 });

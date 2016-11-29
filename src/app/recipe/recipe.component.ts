@@ -1,8 +1,9 @@
 /**
  * @module RecipeModule
  */ /** */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { RecipeObservable } from '../core/api/api-interfaces';
 import { ApiService } from '../core/api/api.service';
@@ -15,11 +16,15 @@ import { ApiService } from '../core/api/api.service';
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.scss']
 })
-export class RecipeComponent implements OnInit {
+export class RecipeComponent implements OnDestroy, OnInit {
   /**
    * Data used in the recipe view.
    */
   recipe: RecipeObservable;
+  /**
+   * 
+   */
+  routerSubscription: Subscription;
   /**
    * Creates the {@link RecipeComponent}
    * @param activatedRoute provides a snapshot of the current route including the url slug
@@ -30,10 +35,16 @@ export class RecipeComponent implements OnInit {
     private apiService: ApiService,
     private router: Router) { }
   /**
+   * 
+   */
+  ngOnDestroy() {
+    this.routerSubscription.unsubscribe();
+  }
+  /**
    * Gets the current recipe slug on init
    */
   ngOnInit() {
-    this.router.events.subscribe(event => {
+    this.routerSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         let slug: string = this.activatedRoute.snapshot.params['slug'];
         this.recipe = this.apiService.slugToRecipe(slug);

@@ -13,8 +13,8 @@ export class FirebaseCacheService {
   /**
    * 
    */
-  list(key: string, query?: FirebaseListFactoryOpts) {
-    if (!(key in this.cache)) { this.setupList(key, query); }
+  list(key: string, query?: FirebaseListFactoryOpts, indexOn?: string): Observable<[any]> {
+    if (!(key in this.cache)) { this.setupList(key, query, indexOn); }
     return this.cache[key].sub.asObservable();
   }
   /**
@@ -43,12 +43,16 @@ export class FirebaseCacheService {
         this.localforage.setItem({key: key, value: value});
       });
     // Local
-    this.getLocal(key);
+    this.localforage.getItem(key).subscribe(value => {
+      if (!this.cache[key].loaded && value !== null) {
+        this.cache[key].sub.next(value);
+      }
+    });
   }
   /**
    * 
    */
-  private setupList(key: string, query: FirebaseListFactoryOpts = {}) {
+  private setupList(key: string, query: FirebaseListFactoryOpts = {}, indexOn?) {
     // Create cache
     this.cache[key] = {
       loaded: false,
@@ -61,20 +65,37 @@ export class FirebaseCacheService {
       .subscribe(value => {
         this.cache[key].loaded = true;
         this.cache[key].sub.next(value);
-        this.localforage.setItem({key: key, value: value});
+        this.setList(key, value, indexOn);
       });
     // Local
-    this.getLocal(key);
+    this.getList(key);
   }
   /**
    * 
    */
-  private getLocal(key) {
-    this.localforage.getItem(key).subscribe(value => {
-      if (!this.cache[key].loaded && value !== null) {
-        this.cache[key].sub.next(value);
+  private getList(key) {
+    this.localforage.getItem(key).subscribe(listMap => {
+      if (!this.cache[key].loaded && listMap !== null) {
+        let promises = listMap.map(partialKey => {
+          let itemKey = `${key}/${partialKey}`;
+          return this.localforage.getItem(itemKey).toPromise();
+        });
+        Promise.all(promises).then(value => this.cache[key].sub.next(value));
       }
     });
+  }
+  /**
+   * 
+   */
+  private setList(key, array, indexOn) {
+    let listMap = array.reduce((p, c, i) => {
+      let Objkey = c[indexOn];
+      let storeKey = `${key}/${Objkey}`;
+      this.localforage.setItem({key: storeKey, value: c});
+      p[i] = Objkey;
+      return p;
+    }, []);
+    this.localforage.setItem({key: key, value: listMap});
   }
 }
 

@@ -1,22 +1,32 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 
 @Injectable()
 export class MockNg2LocalforageService {
   item;
+  list;
   constructor() {
     this.onInit();
   }
   onInit() {
+    this.item = new Subject();
+    this.list = new ReplaySubject();
   }
   getItem(input) {
-    this.item = new ReplaySubject();
+    if (input === 'list-2') {
+      return this.list.asObservable();
+    }
     return this.item.asObservable();
   }
   setItem(input) {
 
   }
-  update(updateInput) {
-    this.item.next(updateInput);
+  update(updateInput, list?: boolean) {
+    if (list) {
+      this.list.next(updateInput);
+    } else {
+      this.item.next(updateInput);
+      this.item.complete();
+    }
   }
 }

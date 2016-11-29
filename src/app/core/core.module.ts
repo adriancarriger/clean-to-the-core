@@ -36,7 +36,7 @@ import { LocalForageModule } from 'ng2-localforage';
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
     CommonModule,
-    LocalForageModule,
+    LocalForageModule.forRoot(),
     PushNotificationsModule,
     RouterModule,
     SharedModule

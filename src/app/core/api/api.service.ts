@@ -55,7 +55,7 @@ export class ApiService {
       query: {
         orderByChild: 'revStamp'
       }
-    });
+    }, 'slug');
     this.filterOptions = this.fbCache.object('client/filter');
     this.latest = this.recipes.pluck('0');
   }
