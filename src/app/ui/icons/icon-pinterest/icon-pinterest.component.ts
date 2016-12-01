@@ -12,5 +12,8 @@ import { Component, HostBinding } from '@angular/core';
   styleUrls: ['./icon-pinterest.component.scss']
 })
 export class IconPinterestComponent {
+  /**
+   * Sets the icon's `aria-hidden` attribute to true
+   */
   @HostBinding('attr.aria-hidden') ariaHidden = 'true';
 }

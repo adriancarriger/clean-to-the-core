@@ -14,5 +14,10 @@ import { ApiService } from '../core/api/api.service';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent {
-  constructor(private apiService: ApiService) { }
+  /**
+   * Creates the {@link LegaAboutComponentlComponent}.
+   * @param apiService used to retrive the about info used in the template 
+   */
+  constructor(
+    public apiService: ApiService) { }
 }

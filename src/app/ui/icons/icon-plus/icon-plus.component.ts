@@ -12,5 +12,8 @@ import { Component, HostBinding } from '@angular/core';
   styleUrls: ['./icon-plus.component.scss']
 })
 export class IconPlusComponent {
+  /**
+   * Sets the icon's `aria-hidden` attribute to true
+   */
   @HostBinding('attr.aria-hidden') ariaHidden = 'true';
 }

@@ -1,19 +1,49 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+/**
+ * @module CoreModule
+ */ /** */
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-
+/**
+ * @whatItDoes Provides a shortcut button to skip the main navigation for accessibility purposes.
+ * 
+ * **Features:**
+ * - Only shows the skip button on focus (usually the first tab keypress)
+ * - Can Automatically skip navigation on route changes if the page has already loaded.
+ * - Uses `aria-label` to notify the user that navigation has been skipped
+ * - Can easily be reused! This is a html container element that wraps around the main navigation
+ * so you can just drop in any navigation component and it should work as expected.
+ */
 @Component({
   selector: 'app-skip-nav',
   templateUrl: './skip-nav.component.html',
   styleUrls: ['./skip-nav.component.scss']
 })
 export class SkipNavComponent implements OnInit {
+  /**
+   * The `aria-label` text provided after navigation is skipped.
+   */
   skipLabel: string;
-  @ViewChild('startOfContent') startOfContent;
-  startContentIndex: number = -1;
+  /**
+   * Tabindex given to the `div` that receives focus after skipping navigation.
+   */
+  startContentIndex: number = null;
+  /**
+   * A reference to the `div` that receives focus after skipping navigation.
+   */
+  @ViewChild('startOfContent') startOfContent: ElementRef;
+  /**
+   * Indicates if the initial page load has completed.
+   */
   private initalLoadComplete = false;
+  /**
+   * Creates the {@link SkipNavComponent}.
+   * @param router used to listen to route changes
+   */
   constructor(
     private router: Router) { }
-
+  /**
+   * Sets up route listener on component creation.
+   */
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -38,7 +68,6 @@ export class SkipNavComponent implements OnInit {
     this.skipLabel = 'Skipping to the main content';
     this.focusPastNav();
   }
-
   /**
    * Remove `#start-of-content` from the taborder
    * after it loses focus
@@ -46,7 +75,6 @@ export class SkipNavComponent implements OnInit {
   startContentBlur() {
     this.startContentIndex = null;
   }
-
   /**
    * Set focus on `#start-of-content` and set the
    * tabindex to allow normal tab flow
@@ -55,5 +83,4 @@ export class SkipNavComponent implements OnInit {
     this.startContentIndex = 0;
     this.startOfContent.nativeElement.focus();
   }
-
 }

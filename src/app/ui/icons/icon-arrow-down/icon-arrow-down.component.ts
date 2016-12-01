@@ -12,5 +12,8 @@ import { Component, HostBinding } from '@angular/core';
   styleUrls: ['./icon-arrow-down.component.scss']
 })
 export class IconArrowDownComponent {
+  /**
+   * Sets the icon's `aria-hidden` attribute to true
+   */
   @HostBinding('attr.aria-hidden') ariaHidden = 'true';
 }

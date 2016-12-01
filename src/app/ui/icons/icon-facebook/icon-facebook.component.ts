@@ -12,5 +12,8 @@ import { Component, HostBinding } from '@angular/core';
   styleUrls: ['./icon-facebook.component.scss']
 })
 export class IconFacebookComponent {
+  /**
+   * Sets the icon's `aria-hidden` attribute to true
+   */
   @HostBinding('attr.aria-hidden') ariaHidden = 'true';
 }

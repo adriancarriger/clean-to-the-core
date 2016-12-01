@@ -12,5 +12,8 @@ import { Component, HostBinding } from '@angular/core';
   styleUrls: ['./icon-reset.component.scss']
 })
 export class IconResetComponent {
+  /**
+   * Sets the icon's `aria-hidden` attribute to true
+   */
   @HostBinding('attr.aria-hidden') ariaHidden = 'true';
 }

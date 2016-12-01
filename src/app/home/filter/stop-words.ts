@@ -1,4 +1,10 @@
-// Thanks!: http://geeklad.com/remove-stop-words-in-javascript
+/**
+ * @module HomeModule
+ */ /** */
+/**
+ * A list of commonly used stop words which are ignored during a search query.
+ * Thanks!: http://geeklad.com/remove-stop-words-in-javascript
+ */
 export const StopWords = [
   'a',
   'about',

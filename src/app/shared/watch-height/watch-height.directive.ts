@@ -3,7 +3,6 @@
  */ /** */
 import {
   AfterViewInit,
-  ChangeDetectorRef,
   Directive,
   ElementRef,
   EventEmitter,
@@ -25,9 +24,9 @@ export class WatchHeightDirective implements AfterViewInit, OnInit {
   /**
    * Creates the {@link WatchHeightDirective}
    * @param el the reference to the host element
+   * @param events used to listen to the resize event
    */
   constructor(
-    private changeDetectorRef: ChangeDetectorRef,
     private el: ElementRef,
     private events: GlobalEventsService) { }
   /**

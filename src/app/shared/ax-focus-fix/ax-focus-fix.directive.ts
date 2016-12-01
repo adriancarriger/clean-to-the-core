@@ -33,6 +33,7 @@ export class AxFocusFixDirective implements OnInit {
    * Creates the {@link AxFocusFixDirective}
    * @param document the global `document` variable
    * @param el a reference to the host element
+   * @param router used to listen to the current route
    * @param window the global `window` variable
    */
   constructor(
@@ -96,6 +97,9 @@ export class AxFocusFixDirective implements OnInit {
     let scrollPosition = this.window.pageYOffset || document.documentElement.scrollTop;
     this.setHidden(scrollPosition !== 0);
   }
+  /**
+   * Sets the host's `aria-hidden` to true if {@link skipRoute} is not enabled.
+   */
   private setHidden(newValue: boolean) {
     this.ariaHidden = newValue && !this.skipRoute;
   }

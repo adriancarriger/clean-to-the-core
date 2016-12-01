@@ -48,6 +48,7 @@ export class ApiService {
   }
   /**
    * Called when creating the service.
+   * - Gets the required items from Firebase to use in the app
    */
   onInit() {
     this.about = this.fbCache.object('client/about');

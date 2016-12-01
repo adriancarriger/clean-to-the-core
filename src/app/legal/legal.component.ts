@@ -14,9 +14,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./legal.component.scss']
 })
 export class LegalComponent implements OnInit {
-  type: string;
+  /**
+   * The deploy url of this project.
+   */
   projectUrl = 'https://adriancarriger.github.io/clean-to-the-core/';
-  constructor(private activatedRoute: ActivatedRoute) {}
+  /**
+   * Tells the template which legal material to serve: either 'terms' or 'privacy'.
+   */
+  type: string;
+  /**
+   * Creates the {@link LegalComponent}.
+   * @param activatedRoute used to get the current type
+   */
+  constructor(
+    private activatedRoute: ActivatedRoute) { }
+  /**
+   * Gets the current type on component creation.
+   */
   ngOnInit() {
     this.type = this.activatedRoute.snapshot.url[0].path;
   }

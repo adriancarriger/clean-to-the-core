@@ -1,16 +1,46 @@
+/**
+ * @module CoreModule
+ */ /** */
 import { Directive, HostBinding, Input, OnInit } from '@angular/core';
 
 import { StatusBarService } from './status-bar.service';
-
+/**
+ * @whatItDoes moves a fixed position host element with respect to the {@link StatusBarComponent}'s
+ * position.
+ * 
+ * **Features:**
+ * - Uses the same animation to move as the {@link StatusBarComponent}
+ * - Uses translate3d for smoother animation
+ */
 @Directive({
   selector: '[appStatusBarAware]'
 })
 export class StatusBarAwareDirective implements OnInit {
+  /**
+   * An array of routes to not apply the features of this directive.
+   */
   @Input() statusBarExclude: Array<string>;
+  /**
+   * The transform style applied during animation.
+   */
   @HostBinding('style.transform') transform: string = null;
+  /**
+   * The transform style applied during animation.
+   */
   @HostBinding('style.transition') transition: string;
+  /**
+   * Creates the {@link StatusBarAwareDirective}.
+   * @param statusBarService app wide service that notifies this componenet of changes to the
+   * {@link StatusBarComponent}.
+   */
   constructor(
     private statusBarService: StatusBarService) { }
+  /**
+   * Subscribes to that {@link StatusBarService}'s notification Observable OnInit
+   * 
+   * On a status update, if the {@link StatusBarComponent} is animating, then this will set the
+   * host componenet's style to animate in sync with the {@link StatusBarComponent} 
+   */
   ngOnInit() {
     this.statusBarService.status.subscribe(status => {
       this.transform = this.barActive(status) ? `translate3d(0, ${status.height}px, 0)` : null;
@@ -20,6 +50,12 @@ export class StatusBarAwareDirective implements OnInit {
       }
     });
   }
+  /**
+   * Returns true if the {@link StatusBarComponent} is active.
+   * 
+   * - It will return false if the current
+   * route is excluded via {@link statusBarExclude}.
+   */
   barActive(status): boolean {
     let useRoute = !this.statusBarExclude || !this.statusBarExclude.includes(status.route);
     return useRoute && status.height > 0;
