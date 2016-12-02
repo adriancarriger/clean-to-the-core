@@ -1,8 +1,9 @@
 /**
  * @module SharedModule
  */ /** */
-import { Directive, ElementRef, HostBinding, Inject, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostBinding, Inject, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
 /**
@@ -20,11 +21,19 @@ import { GlobalEventsService } from '../../core/global-events/global-events.serv
 @Directive({
   selector: '[appAxFocus01Fix]'
 })
-export class AxFocusFixDirective implements OnInit {
+export class AxFocusFixDirective implements OnDestroy, OnInit {
   /**
    * Sets the `aria-hidden` attribute of the host element.
    */
   @HostBinding('attr.aria-hidden') ariaHidden: boolean;
+  /**
+   * A reference to the router subscription created in {@link skipIfHome}.
+   */
+  routerSubscription: Subscription;
+  /**
+   * A reference to the scroll subscription created in {@link ngOnInit}.
+   */
+  scrollSubscription: Subscription;
   /**
    * This directive will not affect skipped routes.
    */
@@ -43,6 +52,13 @@ export class AxFocusFixDirective implements OnInit {
     private router: Router,
     @Inject('Window') private window: Window) { }
   /**
+   * Removes subscription to scroll when the host component is removed.
+   */
+  ngOnDestroy() {
+    if (this.routerSubscription !== undefined) { this.routerSubscription.unsubscribe(); }
+    if (this.scrollSubscription !== undefined) { this.scrollSubscription.unsubscribe(); }
+  }
+  /**
    * - Setup listeners
    * - Detect initial scroll position
    */
@@ -50,14 +66,15 @@ export class AxFocusFixDirective implements OnInit {
     this.skipIfHome();
     this.document.addEventListener('keydown', e => this.onKeyDown(e));
     this.document.addEventListener('keyup', e => this.onKeyUp(e));
-    this.globalEventsService.emitters$['scroll'].subscribe(() => this.onScroll());
+    this.scrollSubscription = this.globalEventsService.emitters$['scroll']
+      .subscribe(() => this.onScroll());
     this.onScroll();
   }
   /**
    * This directive only applies to the home route
    */
   private skipIfHome() {
-    this.router.events.subscribe(event => {
+    this.routerSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.skipRoute = event.url !== '/';
       }

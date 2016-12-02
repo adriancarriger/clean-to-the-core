@@ -50,4 +50,10 @@ describe('SkipNavComponent', () => {
     mockRouter.fakeEvent(testEvent);
     expect(component.skipLabel).toBe(undefined);
   });
+
+  it('should set startContentIndex to null on blur', () => {
+    component.startContentIndex = 1;
+    component.startContentBlur();
+    expect(component.startContentIndex).toBe(null);
+  });
 });
