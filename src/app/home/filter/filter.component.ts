@@ -1,7 +1,17 @@
 /**
  * @module HomeModule
  */ /** */
-import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
@@ -16,7 +26,7 @@ import { FilterUtilitiesService } from './filter-utilities.service';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss']
 })
-export class FilterComponent implements AfterViewInit, OnInit {
+export class FilterComponent implements AfterViewInit, OnDestroy, OnInit {
   /**
    * Emits the time during an update to trigger pipes relying on an {@link update} event.
    */
@@ -52,6 +62,10 @@ export class FilterComponent implements AfterViewInit, OnInit {
    */
   map: string;
   /**
+   * Holds the subscription for the {@link globalEventsService}'s resize subscription.
+   */
+  resizeSubscription: Subscription;
+  /**
    * Used to hold the `.unsubscribe()` method to the scroll subscription when active.
    * 
    * - Unsubscribe is called if the user scrolls while the drawer is open.  
@@ -83,15 +97,22 @@ export class FilterComponent implements AfterViewInit, OnInit {
     this.showingResults = false;
   }
   /**
+   * Removes the resize subscription on destroy to prevent memory leaks.
+   */
+  ngOnDestroy() {
+    this.resizeSubscription.unsubscribe();
+  }
+  /**
    * - Subscribes to the global scroll event.
    * - Subscribes to the global resize event and assumes results may not be showing on resize.
    * - Triggers an update with init data
    */
   ngOnInit() {
-    this.globalEventsService.emitters$['resize'].subscribe( () => {
-      this.showingResults = false;
-      this.checkWidth();
-    });
+    this.resizeSubscription = this.globalEventsService.emitters$['resize']
+      .subscribe(() => {
+        this.showingResults = false;
+        this.checkWidth();
+      });
     this.checkWidth();
   }
   /**

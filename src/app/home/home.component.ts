@@ -1,7 +1,8 @@
 /**
  * @module HomeModule
  */ /** */
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { ApiService } from '../core/api/api.service';
 import { StatusBarService } from '../core/status-bar/status-bar.service';
@@ -15,7 +16,7 @@ import { WatchHeightDirective } from '../shared/watch-height/watch-height.direct
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnDestroy, OnInit {
   /**
    * Data that is bound to the filter pipe. It can pass through filter data and get back data
    * that tells how many results were found after filtering.
@@ -24,6 +25,10 @@ export class HomeComponent implements OnInit {
     searchFields: [],
     prefilter: (x, i) => i !== 0
   };
+  /**
+   * Holds the subscription the to {@link apiService}'s filterOptions Observable
+   */
+  filterSubscription: Subscription;
   /**
    * Object containing filter data.
    */
@@ -63,10 +68,16 @@ export class HomeComponent implements OnInit {
     setTimeout(() => this.window.scrollTo(0, yPos + 100));
   }
   /**
+   * Unsubscribes from the {@link filterSubscription} to prevent memeory leaks.
+   */
+  ngOnDestroy() {
+    this.filterSubscription.unsubscribe();
+  }
+  /**
    * Updates search fields from api
    */
   ngOnInit() {
-    this.apiService.filterOptions.subscribe(options => {
+    this.filterSubscription = this.apiService.filterOptions.subscribe(options => {
       this.filteredMeta.searchFields = options.searchFields;
     });
   }

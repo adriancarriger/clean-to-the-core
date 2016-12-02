@@ -6,8 +6,10 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
+  OnDestroy,
   OnInit,
   Output } from '@angular/core';
+  import { Subscription } from 'rxjs';
 
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
 /**
@@ -16,11 +18,15 @@ import { GlobalEventsService } from '../../core/global-events/global-events.serv
 @Directive({
   selector: '[appWatchHeight]'
 })
-export class WatchHeightDirective implements AfterViewInit, OnInit {
+export class WatchHeightDirective implements AfterViewInit, OnDestroy, OnInit {
   /**
    * Event emitter output. Emits the pixle hieght of the {@link WatchHeightDirective}'s height.
    */
   @Output() heightChange: EventEmitter<string> = new EventEmitter();
+  /**
+   * Holds the subscription for the {@link events}'s resize Observable.
+   */
+  resizeSubscription: Subscription;
   /**
    * Creates the {@link WatchHeightDirective}
    * @param el the reference to the host element
@@ -40,6 +46,12 @@ export class WatchHeightDirective implements AfterViewInit, OnInit {
     }, 0);
   }
   /**
+   * Unsubscribes from the {@link resizeSubscription} to prevent memory leaks.
+   */
+  ngOnDestroy() {
+    if (this.resizeSubscription !== undefined) { this.resizeSubscription.unsubscribe(); }
+  }
+  /**
    * An Angular 2 [lifecyle hook](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html)
    * called once, after the first ngOnChanges.
    * - Sends the inital height of the host element
@@ -53,7 +65,7 @@ export class WatchHeightDirective implements AfterViewInit, OnInit {
    * Subscribes to the {@link GlobalEventsService}'s window resize `EventEmitter`.
    */
   private listenToResize() {
-    this.events.emitters$['resize'].subscribe( () => {
+    this.resizeSubscription = this.events.emitters$['resize'].subscribe( () => {
       this.updateHeight();
     });
   }
