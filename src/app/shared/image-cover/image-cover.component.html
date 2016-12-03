@@ -1,2 +1,5 @@
-<img *ngIf="src" [src]="src" [attr.alt]="alt ? alt : ''" />
+<div class="loading" [style.opacity]="!imgLoad && !imgError ? 1 : 0" [ngClass]="{'fade-in': fadeIn}">
+  <app-loading *ngIf="!imgLoad && !imgError"></app-loading>
+</div>
+<img *ngIf="src" (load)="imgLoad = true" (error)="imgError = true" [ngClass]="{'error': imgError}" [src]="src" [attr.alt]="alt ? alt : ''" />
 <ng-content></ng-content>

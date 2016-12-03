@@ -2,14 +2,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RecipeAdComponent } from './recipe-ad.component';
-import { ImageCoverComponent } from '../../shared/image-cover/image-cover.component';
+import { SharedModule } from '../../shared/shared.module';
 
 describe('RecipeAdComponent', () => {
   let component: RecipeAdComponent;
   let fixture: ComponentFixture<RecipeAdComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageCoverComponent, RecipeAdComponent ]
+      imports: [ SharedModule ],
+      declarations: [ RecipeAdComponent ]
     })
     .compileComponents();
   }));

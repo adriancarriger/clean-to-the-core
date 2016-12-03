@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ImageCoverComponent } from './image-cover.component';
+import { LoadingComponent } from '../../ui/loading/loading.component';
 
 describe('ImageCoverComponent', () => {
   let component: ImageCoverComponent;
@@ -11,7 +12,10 @@ describe('ImageCoverComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageCoverComponent ]
+      declarations: [
+        ImageCoverComponent,
+        LoadingComponent
+      ]
     })
     .compileComponents();
   }));

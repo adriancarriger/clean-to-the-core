@@ -1,3 +1,4 @@
+@import '../../../variables';
 // http://stackoverflow.com/a/36175093/5357459
 :host {
   display: block;
@@ -13,6 +14,18 @@
   background-size: cover;
   overflow: hidden;
   position: relative;
+  .loading {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: white;
+    opacity: 1;
+    &.fade-in {
+      transition: 0.33s opacity ease-in;
+    }
+  }
   img {
     // http://stackoverflow.com/a/11552460/5357459
     width: 100%;
@@ -21,11 +34,28 @@
     right: 0;
     bottom: 0;
     left: 0;
-    /* IE 8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    /* IE 5-7 */
-    filter: alpha(opacity=0);
-    /* modern browsers */
-    opacity: 0;
+    font-family: $titleFont;
+    text-align: center;
+    &.error {
+      padding: 20% 0;
+      background: pink;
+    }
+    &:not(.error) {
+      /* IE 8 */
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      /* IE 5-7 */
+      filter: alpha(opacity=0);
+      /* modern browsers */
+      opacity: 0;
+    }
+  }
+  app-loading {
+    top: 0;
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+    height: 80px;
+    left: 0;
+    right: 0;
   }
 }

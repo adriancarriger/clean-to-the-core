@@ -7,6 +7,7 @@ import {
   ElementRef,
   Input,
   OnChanges,
+  OnInit,
   Renderer } from '@angular/core';
 /**
  * @whatItDoes Creates an image that covers the element.
@@ -25,11 +26,23 @@ import {
   templateUrl: 'image-cover.component.html',
   styleUrls: ['image-cover.component.scss']
 })
-export class ImageCoverComponent implements AfterViewInit, OnChanges {
+export class ImageCoverComponent implements AfterViewInit, OnChanges, OnInit {
   /**
    * Optional string to use for the `alt` attribute of the `img` element.
    */
   @Input() alt: string;
+  /**
+   * Image will fade into view when true.
+   */
+  fadeIn = false;
+  /**
+   * True after there is an error loading the `img` element.
+   */
+  imgError = false;
+  /**
+   * True after `img` element has loaded.
+   */
+  imgLoad = false;
   /**
    * Image url to use for the `img` element and host element's `background-image` style.
    */
@@ -43,6 +56,12 @@ export class ImageCoverComponent implements AfterViewInit, OnChanges {
   constructor(
     private renderer: Renderer,
     private element: ElementRef) { }
+  /**
+   * Let image fade in if it takes more than 300 milliseconds o load.
+   */
+  ngOnInit() {
+    setTimeout(() => this.fadeIn = true, 300);
+  }
   /**
    * First call to {@link updateImage}.
    */
