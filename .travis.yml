@@ -19,10 +19,16 @@ before_install:
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
 
+install:
+  - npm install -g firebase-tools
+
 after_success:
   # Send coverage data to Codecov
   - bash <(curl -s https://codecov.io/bash)
   # Start e2e test via sauce (on hold for now)
   # - npm run e2e protractor.sauce.conf.js
+  # Deploy to firebase
+  - npm run fireDeployPrep
+  - firebase deploy --token=${FIREBASE_API_TOKEN}
 
 after_script:
