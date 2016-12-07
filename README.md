@@ -14,11 +14,11 @@ A progressive web app recipe blog that meets the [requirements](REQUIREMENTS.md)
 
 ## Demo
 
-Checkout the [demo](https://adriancarriger.github.io/clean-to-the-core/)
+Checkout the [demo](https://clean-to-the-core.firebaseapp.com/)
 
 ## Docs
 
-Checkout the [documentation](https://adriancarriger.github.io/clean-to-the-core/assets/docs/globals.html)
+Checkout the [documentation](https://adriancarriger.github.io/clean-to-the-core/globals.html)
 
 ## Tech Stack
 
