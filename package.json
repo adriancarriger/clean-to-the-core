@@ -6,8 +6,7 @@
   "scripts": {
     "deploy": "npm run deployBuild && npm run docs && npm run deploySend",
     "deployBuild": "ng build --base-href \"/clean-to-the-core/\" --prod && npm run sw",
-    "deployDocs": "rm -rf dist && npm run docs && npm run deploySend",
-    "deploySend": "git subtree push --prefix dist origin gh-pages",
+    "deploySend": "ng gh-pages:deploy --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\" --skip-build",
     "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' --excludeExternals ./src/app",
     "e2e": "protractor",
     "e2eTests": "export PROTRACTOR_ENV='local'; ng e2e",
