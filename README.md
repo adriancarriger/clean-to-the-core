@@ -14,14 +14,22 @@ A progressive web app recipe blog that meets the [requirements](REQUIREMENTS.md)
 
 ## Features
 
-* Works offline even after a full page refresh using a [service worker](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers). Subsequent page load times are very fast on browsers that [support service workers](http://caniuse.com/#feat=serviceworkers).
-* Designed to be accessible and passes the [chrome accessibility extension](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en) audit
-* Uses push notifications to inform a user when a recipe timer is complete
-* Routes are lazy loaded for a faster inital load time
+* `offline`: Works offline even after a full page refresh using a [service worker](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers). Subsequent page load times are very fast on browsers that [support service workers](http://caniuse.com/#feat=serviceworkers).
+* `accessible`: Designed to be accessible and passes the [chrome accessibility extension](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en) audit
+* `notifications`: Uses push notifications to inform a user when a recipe timer is complete
+* `lazy routes`: Routes are lazy loaded for a faster inital load time
 
 ## Demo
 
 Checkout the [demo](https://beta.cleantothecore.com/)
+
+<a href="https://beta.cleantothecore.com/">
+  <img alt="recipe page top" src="https://raw.githubusercontent.com/adriancarriger/clean-to-the-core/master/images/example-1.png" width="200px">
+  <img alt="recipe page steps" src="https://raw.githubusercontent.com/adriancarriger/clean-to-the-core/master/images/example-2.png" width="200px">
+  <img alt="home page" src="https://raw.githubusercontent.com/adriancarriger/clean-to-the-core/master/images/example-3.png" width="200px">
+</a>
+
+[![Example Gif](https://raw.githubusercontent.com/adriancarriger/clean-to-the-core/master/images/example.gif)](https://beta.cleantothecore.com/)
 
 ## Docs
 
