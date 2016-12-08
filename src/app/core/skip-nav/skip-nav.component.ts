@@ -81,6 +81,6 @@ export class SkipNavComponent implements OnInit {
    */
   private focusPastNav() {
     this.startContentIndex = 0;
-    this.startOfContent.nativeElement.focus();
+    setTimeout(() => this.startOfContent.nativeElement.focus());
   }
 }
