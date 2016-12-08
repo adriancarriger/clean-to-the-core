@@ -22,7 +22,7 @@ Checkout the [documentation](https://adriancarriger.github.io/clean-to-the-core/
 
 ## Tech Stack
 
-* Front end: [Angular 2](https://github.com/angular/angular) version 2.2.4
+* Front end: [Angular 2](https://github.com/angular/angular) version 2.3.0
 * Scaffolding: [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21
 
 ## Development server
