@@ -6,15 +6,22 @@
 [![devDependency Status](https://img.shields.io/david/dev/adriancarriger/clean-to-the-core/master.svg?maxAge=60)](https://david-dm.org/adriancarriger/clean-to-the-core?type=dev)
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 
-This is my fifth of five projects in the Udacity [Senior Web Developer Nanodegree](https://www.udacity.com/course/senior-web-developer-nanodegree--nd802) program. This is a work in progress.
+This is my fifth of five projects in the Udacity [Senior Web Developer Nanodegree](https://www.udacity.com/course/senior-web-developer-nanodegree--nd802) program.
 
 ## Description
 
 A progressive web app recipe blog that meets the [requirements](REQUIREMENTS.md).
 
+## Features
+
+* Works offline even after a full page refresh using a [service worker](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers). Subsequent page load times are very fast on browsers that [support service workers](http://caniuse.com/#feat=serviceworkers).
+* Designed to be accessible and passes the [chrome accessibility extension](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en) audit
+* Uses push notifications to inform a user when a recipe timer is complete
+* Routes are lazy loaded for a faster inital load time
+
 ## Demo
 
-Checkout the [demo](https://clean-to-the-core.firebaseapp.com/)
+Checkout the [demo](https://beta.cleantothecore.com/)
 
 ## Docs
 
@@ -23,6 +30,9 @@ Checkout the [documentation](https://adriancarriger.github.io/clean-to-the-core/
 ## Tech Stack
 
 * Front end: [Angular 2](https://github.com/angular/angular) version 2.3.0
+* Database/hosting: [Firebase](https://firebase.google.com/)
+* Firebase data is cached offline with IndexedDB via [localForage](https://github.com/localForage/localForage) using [this service](https://github.com/adriancarriger/clean-to-the-core/blob/master/src/app/core/api/firebase-cache.service.ts)
+* Back end prep: [Node.js](https://nodejs.org/en/) is used to transfer blog data from a [Wordpress site](http://cleantothecore.com) with code located in a [separate repository](https://github.com/adriancarriger/clean-to-the-core-backend)
 * Scaffolding: [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21
 
 ## Development server
