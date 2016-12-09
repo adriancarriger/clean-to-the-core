@@ -63,7 +63,7 @@
     "lcov-parse": "0.0.10",
     "protractor": "4.0.13",
     "sw-precache": "4.2.3",
-    "ts-node": "1.7.0",
+    "ts-node": "1.7.1",
     "tslint": "3.15.1",
     "typedoc": "0.5.1",
     "typedoc-plugin-external-module-name": "1.0.4",
