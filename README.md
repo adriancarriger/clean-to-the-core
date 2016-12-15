@@ -17,7 +17,7 @@ A progressive web app recipe blog that meets the [requirements](REQUIREMENTS.md)
 * `offline`: Works offline even after a full page refresh using a [service worker](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers). Subsequent page load times are very fast on browsers that [support service workers](http://caniuse.com/#feat=serviceworkers).
 * `accessible`: Designed to be accessible and passes the [chrome accessibility extension](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en) audit
 * `notifications`: Uses push notifications to inform a user when a recipe timer is complete
-* `lazy routes`: Routes are lazy loaded for a faster inital load time
+* `lazy routes`: Routes are lazy loaded for a faster initial load time
 
 ## Demo
 
