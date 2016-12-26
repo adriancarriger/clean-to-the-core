@@ -5,7 +5,7 @@
 @import './variables';
 // Fonts
 @font-face {
-	font-family: $titleFont;
+	font-family: $title-font;
 	font-weight: normal;
 	src: url('assets/GeosansLight.ttf');
 }
@@ -23,11 +23,11 @@ body, html {
   font-size: 20px;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: $titleFont;
+  font-family: $title-font;
   font-weight: normal;
 }
 a {
-  color: $linkColor;
+  color: $link-color;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
@@ -40,7 +40,7 @@ ul {
 
 .bootstrap-loading {
   animation: bSpin 1s infinite linear;
-  stroke: $primaryColor;
+  stroke: $primary-color;
   width: 80px;
   height: 80px;
   margin: 250px auto;

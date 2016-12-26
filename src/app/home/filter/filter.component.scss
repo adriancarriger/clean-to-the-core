@@ -3,7 +3,7 @@
   $spacing: 15px;
   display: block;
   background-color: white;
-  font-size: $inputFontSize;
+  font-size: $input-font-size;
   line-height: 2;
   border-top: 1px solid #c3c3c3;
   overflow: hidden;
@@ -14,10 +14,10 @@
     justify-content: space-between;
     font-size: 19px;
     margin: 0 auto;
-    @media(min-width: $desktopBreakPoint) {
+    @media(min-width: $desktop-break-point) {
       width: 86%;
     }
-    @media (min-width: $mobileBreakPoint + 1) {
+    @media (min-width: $mobile-break-point + 1) {
       .toggle {
         display: none;
       }
@@ -57,10 +57,10 @@
       color: black;
       fill: black;
       outline-color: black;
-      font-family: $titleFont;
+      font-family: $title-font;
       font-size: 0.8em;
     }
-    @media (max-width: $mobileBreakPoint) {
+    @media (max-width: $mobile-break-point) {
       $mobileFontSize: 20px;
       flex-direction: row;
       flex-wrap: wrap;

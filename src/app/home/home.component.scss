@@ -9,7 +9,7 @@ $imageHeight: 50%;
   .primary-image {
     display: block;
     padding-bottom: $imageHeight;
-    @media (max-width: $mobileBreakPoint) {
+    @media (max-width: $mobile-break-point) {
       margin-top: 39px;
     }
   }
@@ -23,7 +23,7 @@ $imageHeight: 50%;
       margin-bottom: 10px;
     }
     .blurb {
-      font-family: $titleFont;
+      font-family: $title-font;
       font-size: 20px;
       margin-bottom: $headerMargin;
     }
@@ -32,7 +32,7 @@ $imageHeight: 50%;
       margin: $headerMargin auto;
       margin-top: 0;
       display: block;
-      @media(min-width: $desktopBreakPoint) {
+      @media(min-width: $desktop-break-point) {
         position: absolute;
         right: 5%;
         bottom: 100px;
@@ -84,14 +84,14 @@ $imageHeight: 50%;
         }
       }
     }
-    @media (max-width: $mobileBreakPoint) {
+    @media (max-width: $mobile-break-point) {
       width: 100%;
       .app-recipe-ad {
         width: 100%;
         padding: 8px 0;
       }
     }
-    @media (min-width: $mobileBreakPoint + 1) and (max-width: $desktopBreakPoint) {
+    @media (min-width: $mobile-break-point + 1) and (max-width: $desktop-break-point) {
       .app-recipe-ad {
         width: 50%;
       }

@@ -17,7 +17,7 @@
     margin: 0 auto;
     margin-top: 70px;
     width: 50%;
-    @media (max-width: $mobileBreakPoint) {
+    @media (max-width: $mobile-break-point) {
       width: 70%;
     }
     @media (max-width: 450px) {

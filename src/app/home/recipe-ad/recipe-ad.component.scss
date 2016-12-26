@@ -24,7 +24,7 @@
     height: 32px;
     .allergen {
       width: 33.33%;
-      color: $visibleGray;
+      color: $visible-gray;
       font-size: 12px;
       text-align: center;
       position: relative;
@@ -45,7 +45,7 @@
     }
   }
   .recipe-blurb {
-    color: $visibleGray;
+    color: $visible-gray;
     max-width: 80%;
     margin: 0 auto;
     text-overflow: ellipsis;

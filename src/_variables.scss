@@ -1,16 +1,16 @@
-$primaryColor: rgba(0, 108, 175, 1);
-$accentColor: #FF5780;
-$accentTextColor: white;
-$linkColor: $primaryColor;
-$lightGray: #b9b9b9;
-$visibleGray: #737373;
-$visibleRed: #E80000;
+$primary-color: rgba(0, 108, 175, 1);
+$accent-color: #ff5780;
+$accent-text-color: #fff;
+$link-color: $primary-color;
+$light-gray: #b9b9b9;
+$visible-gray: #737373;
+$visible-red: #e80000;
 // Fonts
-$titleFont: GeosansLight;
+$title-font: GeosansLight;
 // Forms
-$formColor: $primaryColor;
-$formFocus: #83bffc;
-$inputFontSize: 20px;
+$form-color: $primary-color;
+$form-focus: #83bffc;
+$input-font-size: 20px;
 // Break points
-$mobileBreakPoint: 767px;
-$desktopBreakPoint: 1150px;
+$mobile-break-point: 767px;
+$desktop-break-point: 1150px;
