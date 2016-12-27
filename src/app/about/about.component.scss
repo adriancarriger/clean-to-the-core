@@ -1,18 +1,22 @@
 @import '../../variables';
+
 :host {
   min-height: 80vh;
+
   .app-logo {
-    width: 150px;
-    height: 150px;
-    margin: 5px auto 40px auto;
     display: block;
+    height: 150px;
+    margin: 5px auto 40px;
+    width: 150px;
   }
+
   .title {
+    color: $pure-gray;
     font-family: CheddarJack;
-    color: gray;
     font-size: 50px;
     text-align: center;
   }
+
   .author {
     margin: 0 auto;
     margin-top: 70px;
@@ -23,16 +27,18 @@
     @media (max-width: 450px) {
       width: 90%;
     }
+
     app-image-cover {
       border-radius: 50%;
       height: 100px;
-      width: 100px;
-      overflow: hidden;
       margin: 0 auto;
+      overflow: hidden;
+      width: 100px;
     }
+
     .author-bio {
-      margin: 80px 0 50px 0;
       line-height: 1.5;
+      margin: 80px 0 50px;
     }
   }
 }
