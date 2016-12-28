@@ -13,13 +13,13 @@
     "fixCoverage": "node ./scripts/fix_coverage.js",
     "fireDeployPrep": "ng build --prod && npm run sw",
     "lint": "tslint \"src/**/*.ts\"",
-    "sassLint": "sass-lint 'src/**/*.scss' -v",
+    "sassLint": "sass-lint 'src/**/*.scss' -v --max-warnings=0",
     "pree2e": "webdriver-manager update; tsc --project e2e",
     "minCoverage": "node ./scripts/minimum_coverage.js",
     "start": "ng serve",
     "static-serve": "cd dist && live-server --port=4200 --host=localhost --entry-file=/index.html",
     "sw": "sw-precache --root=dist --config=sw-precache-config.js",
-    "test": "ng lint && ng test --watch=false --code-coverage && npm run fixCoverage",
+    "test": "ng lint && npm run sassLint && ng test --watch=false --code-coverage && npm run fixCoverage",
     "typedoc": "typedoc"
   },
   "gh-pages-deploy": {
