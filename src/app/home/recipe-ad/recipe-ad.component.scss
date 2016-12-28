@@ -1,72 +1,83 @@
 @import '../../../variables';
+
 :host {
+  cursor: pointer;
   display: block;
   text-align: center;
-  cursor: pointer;
+
   app-image-cover {
-    padding-bottom: 65%;
     height: 0;
+    padding-bottom: 65%;
   }
+
   .recipe-title {
-    margin: 3px 0;
     font-size: 22px;
+    margin: 3px 0;
+    overflow: hidden;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
   }
+
   .allergens {
-    list-style: none;
     display: flex;
     flex-wrap: wrap;
+    height: 32px;
+    list-style: none;
     margin: 4px 0;
     padding-left: 0;
-    height: 32px;
+
     .allergen {
-      width: 33.33%;
       color: $visible-gray;
       font-size: 12px;
-      text-align: center;
-      position: relative;
       line-height: 1.4;
-      &:after {
-        content: "";
+      position: relative;
+      text-align: center;
+      width: 33.33%;
+
+      &::after {
+        background-color: $pure-gray;
         border-radius: 50%;
-        width: 5px;
+        content: '';
         height: 5px;
         position: absolute;
         right: 0;
         top: 9px;
-        background-color: gray;
+        width: 5px;
       }
-      &:nth-child(3n):after {
-        display: none;
+
+      &:nth-child(3n) {
+        &::after {
+          display: none;
+        }
       }
     }
   }
+
   .recipe-blurb {
     color: $visible-gray;
-    max-width: 80%;
+    display: inline-block;
+    font-size: 13px;
     margin: 0 auto;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    max-width: 80%;
     overflow: hidden;
     padding: 10px 15px;
-    font-size: 13px;
-    text-align: center;
     position: relative;
-    display: inline-block;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     .arrow {
-      width: 0;
-      height: 0;
-      border-top: 5px solid transparent;
       border-bottom: 5px solid transparent;
-      border-left: 7px solid gray;
-      position: absolute;
-      top: 0;
-      right: 0;
+      border-left: 7px solid $pure-gray;
+      border-top: 5px solid transparent;
       bottom: 0;
+      height: 0;
       margin: auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 0;
     }
   }
 }

@@ -1,41 +1,47 @@
 @import '../../variables';
-$imageHeight: 50%;
+$image-height: 50%;
+
 .fixed-content {
-  position: fixed;
-  top: 0;
   left: 0;
+  position: fixed;
   right: 0;
+  top: 0;
   z-index: -1;
+
   .primary-image {
     display: block;
-    padding-bottom: $imageHeight;
+    padding-bottom: $image-height;
     @media (max-width: $mobile-break-point) {
       margin-top: 39px;
     }
   }
+
   .primary-info {
-    $headerMargin: 25px;
-    text-align: center;
+    $header-margin: 25px;
     overflow: hidden;
+    text-align: center;
+
     .title {
       font-size: 25px;
-      margin-top: 10px;
       margin-bottom: 10px;
+      margin-top: 10px;
     }
+
     .blurb {
       font-family: $title-font;
       font-size: 20px;
-      margin-bottom: $headerMargin;
+      margin-bottom: $header-margin;
     }
+
     app-labels {
-      max-width: 550px;
-      margin: $headerMargin auto;
-      margin-top: 0;
       display: block;
+      margin: $header-margin auto;
+      margin-top: 0;
+      max-width: 550px;
       @media(min-width: $desktop-break-point) {
+        bottom: 100px;
         position: absolute;
         right: 5%;
-        bottom: 100px;
       }
       @media (max-width: 400px) {
         max-width: 260px;
@@ -45,50 +51,32 @@ $imageHeight: 50%;
 }
 
 .home-content {
-  background: white;
+  background: $white;
   z-index: 10;
+
   .info-bar {
     h1 {
-      text-align: center;
       font-size: 40px;
+      text-align: center;
     }
   }
+
   .recipes {
     display: flex;
     flex-wrap: wrap;
-    width: 84%;
     margin: 0 auto;
+    width: 84%;
+
     .app-recipe-ad {
-      width: 33.33%;
       padding: 8px 4px;
-      a, a:hover {
-        color: inherit;
-        text-decoration: inherit;
-        display: block;
-        &:focus {
-          outline: none;
-          position: relative;
-          :after {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            border: 2px solid black;
-          }
-          // app-recipe-ad {
-          //   border: 1px solid black;
-          // }
-        }
-      }
+      width: 33.33%;
     }
     @media (max-width: $mobile-break-point) {
       width: 100%;
+
       .app-recipe-ad {
-        width: 100%;
         padding: 8px 0;
+        width: 100%;
       }
     }
     @media (min-width: $mobile-break-point + 1) and (max-width: $desktop-break-point) {
@@ -99,14 +87,39 @@ $imageHeight: 50%;
   }
 }
 
+.recipe-link {
+  &,
+  &:hover {
+    color: inherit;
+    display: block;
+    text-decoration: inherit;
+  }
+
+  &:focus {
+    outline: none;
+    position: relative;
+
+    ::after {
+      border: 2px solid $black;
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+}
+
 :host {
   display: block;
   position: relative;
 }
 
 .no-results {
-  text-align: center;
+  font-size: 20px;
   height: 100px;
   margin: 100px auto;
-  font-size: 20px;
+  text-align: center;
 }

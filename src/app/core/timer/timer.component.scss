@@ -1,42 +1,52 @@
 @import '../../../variables';
+$timer-green: #008000;
+
 :host {
-  font-family: $title-font;
   display: block;
+  font-family: $title-font;
   min-height: 114px;
-  .title {
-    padding: 10px;
-    text-align: center;
-    font-size: 1em;
-    margin: 0;
-    a {
-      color: black;
-      &:hover {
-        text-decoration: none;
-        border-bottom: 1px solid black;
-      }
+}
+
+.title {
+  font-size: 1em;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+
+  a {
+    color: $black;
+
+    &:hover {
+      border-bottom: 1px solid $black;
+      text-decoration: none;
     }
   }
-  .controls {
-    display: flex;
-    justify-content: space-between;
+}
+
+.controls {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  $icon-size: 30px;
+
+  .left {
+    color: $timer-green;
+    font-size: $icon-size;
+    margin-right: auto;
+  }
+
+  .center {
     align-items: center;
-    $iconSize: 30px;
-    .left {
-      margin-right: auto;
-      color: green;
-      font-size: $iconSize;
-    }
-    .center {
+    display: flex;
+
+    app-button-clear {
       display: flex;
-      align-items: center;
-      app-button-clear {
-        font-size: $iconSize;
-        display: flex;
-      }
+      font-size: $icon-size;
     }
-    .right {
-      margin-left: auto;
-      color: $visible-red;
-    }
+  }
+
+  .right {
+    color: $visible-red;
+    margin-left: auto;
   }
 }

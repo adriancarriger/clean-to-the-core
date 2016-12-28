@@ -1,29 +1,35 @@
+@import '../../../variables';
+
 :host {
-  padding: 10px;
   display: inline-block;
   line-height: 1;
+  padding: 10px;
+
   // Turn a button into a link - http://stackoverflow.com/a/12642009/5357459
   button {
-    /* Remove all decorations to look like normal text */
+    // Remove all decorations to look like normal text
     background: none;
-    border: none;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
     display: inline;
     font: inherit;
-    margin: 0;
-    padding: inherit;
-    outline-offset: 0;
-    color: inherit;
     line-height: inherit;
-    /* Additional styles to look like a link */
-    cursor: pointer;
+    margin: 0;
+    outline-offset: 0;
+    padding: inherit;
+
     &:focus {
-      outline: solid black 1px;
+      outline: solid $black 1px;
     }
   }
-  /* Remove extra space inside buttons in Firefox */
-  input[type="button"]::-moz-focus-inner,
+
+  // Remove extra space inside buttons in Firefox
+  // sass-lint:disable-all
+  input[type='button']::-moz-focus-inner,
   button::-moz-focus-inner {
-    border: none;
+    // sass-lint:enable-all
+    border: 0;
     padding: inherit;
   }
 }

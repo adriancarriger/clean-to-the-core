@@ -1,14 +1,17 @@
 @import '../../../variables';
+
 app-button-clear {
   color: $link-color;
   padding: 0 4px;
 }
+
 app-icon-time {
-  display: inline-block;
   bottom: -2px;
-  position: relative;
+  display: inline-block;
   fill: $link-color;
+  position: relative;
 }
+
 .stop {
   color: $visible-red;
 }

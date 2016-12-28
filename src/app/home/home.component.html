@@ -21,7 +21,7 @@
     [infiniteScrollThrottle]="500"
     (scrolled)="onScroll()">
     <section *ngFor="let recipe of apiService.recipes | async | filter:filterStamp:filterValues:filteredMeta | limitTo:limit; let i = index" class="app-recipe-ad">
-      <a [routerLink]="['/recipe', recipe.slug]">
+      <a [routerLink]="['/recipe', recipe.slug]" class="recipe-link">
         <app-recipe-ad [recipe]="recipe" [index]="i"></app-recipe-ad>
       </a>
     </section>

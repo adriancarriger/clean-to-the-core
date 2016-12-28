@@ -1,61 +1,60 @@
 @import '../../../variables';
+
 // http://stackoverflow.com/a/36175093/5357459
 :host {
-  display: block;
-  width: 100%;
-  height: 100%;
   // Background
   background-position: center center;
   background-repeat: no-repeat;
   // Background size
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
+  display: block;
+  height: 100%;
   overflow: hidden;
   position: relative;
+  width: 100%;
+
   .loading {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
+    background: $white;
     bottom: 0;
-    background: white;
+    left: 0;
     opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+
     &.fade-in {
-      transition: 0.33s opacity ease-in;
+      transition: .33s opacity ease-in;
     }
   }
+
   img {
     // http://stackoverflow.com/a/11552460/5357459
-    width: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
     bottom: 0;
-    left: 0;
     font-family: $title-font;
+    left: 0;
+    position: absolute;
+    right: 0;
     text-align: center;
+    top: 0;
+    width: 100%;
+
     &.error {
+      background: $missing-image;
       padding: 20% 0;
-      background: pink;
     }
+
     &:not(.error) {
-      /* IE 8 */
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      /* IE 5-7 */
-      filter: alpha(opacity=0);
-      /* modern browsers */
       opacity: 0;
     }
   }
+
   app-loading {
-    top: 0;
-    position: absolute;
     bottom: 0;
-    margin: auto;
     height: 80px;
     left: 0;
+    margin: auto;
+    position: absolute;
     right: 0;
+    top: 0;
   }
 }

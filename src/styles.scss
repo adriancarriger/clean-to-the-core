@@ -1,38 +1,53 @@
-/**
-  * Global Styles - all other components use encapsulation
-  * @see https://angular.io/docs/ts/latest/guide/component-styles.html#!#view-encapsulation
-  */
+// Global Styles - all other components use encapsulation
+// @see https://angular.io/docs/ts/latest/guide/component-styles.html#!#view-encapsulation
+
 @import './variables';
 // Fonts
 @font-face {
-	font-family: $title-font;
-	font-weight: normal;
-	src: url('assets/GeosansLight.ttf');
+  font-family: $title-font;
+  font-weight: normal;
+  src: url('assets/GeosansLight.ttf');
 }
 @font-face {
-	font-family: CheddarJack;
-	font-weight: normal;
-	src: url('assets/cheddar-jack.ttf');
+  font-family: CheddarJack;
+  font-weight: normal;
+  src: url('assets/cheddar-jack.ttf');
 }
+
 // Elements
-*, *:before, *:after {
-  box-sizing: border-box;
+* {
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
 }
-body, html {
-  font-family: Arial,Helvetica,sans-serif;
+
+body,
+html {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
 }
-h1, h2, h3, h4, h5, h6 {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $title-font;
   font-weight: normal;
 }
+
 a {
   color: $link-color;
   text-decoration: none;
+
   &:hover {
     text-decoration: underline;
   }
 }
+
 ul {
   list-style: none;
   padding-left: 0;
@@ -40,14 +55,14 @@ ul {
 
 .bootstrap-loading {
   animation: bSpin 1s infinite linear;
-  stroke: $primary-color;
-  width: 80px;
+  display: block;
   height: 80px;
   margin: 250px auto;
-  display: block;
+  stroke: $primary-color;
+  width: 80px;
 }
 
 @keyframes bSpin {
-	0%  {transform: rotate(0deg);}
-	100% {transform: rotate(360deg);}	
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
