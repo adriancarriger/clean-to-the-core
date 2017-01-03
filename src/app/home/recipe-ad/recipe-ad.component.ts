@@ -32,7 +32,7 @@ export class RecipeAdComponent implements OnInit {
    * Cycles through the {@link arrowColors} based on the current index
    */
   updateColor() {
-    let mod = this.index % this.arrowColors.length;
+    const mod = this.index % this.arrowColors.length;
     this.arrowColor = this.arrowColors[mod];
   }
   /**

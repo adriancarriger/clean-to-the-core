@@ -107,7 +107,7 @@ export class TimerService {
    * Adds/subtracts a minute from the timer.
    */
   changeMinute(change: number) {
-    let newTime = this.timeLeft + (60 * change);
+    const newTime = this.timeLeft + (60 * change);
     if (newTime > 0) {
       this.timeLeft = newTime;
       this.updateReadable();
@@ -132,7 +132,7 @@ export class TimerService {
    * - Stops the timer 
    */
   private onTimerComplete() {
-      let pushObj = {
+      const pushObj = {
         body: `Your timer for ${this.title} has finished.`,
         icon: 'assets/push-logo.png'
       };
@@ -144,9 +144,9 @@ export class TimerService {
    * - http://stackoverflow.com/a/11486026/5357459
    */
   private updateReadable() {
-    let hrs = Math.floor(this.timeLeft / 3600);
-    let mins = Math.floor((this.timeLeft % 3600) / 60);
-    let secs = this.timeLeft % 60;
+    const hrs = Math.floor(this.timeLeft / 3600);
+    const mins = Math.floor((this.timeLeft % 3600) / 60);
+    const secs = this.timeLeft % 60;
     let ret = '';
     if (hrs > 0) {
       ret += '' + hrs + ':' + (mins < 10 ? '0' : '');

@@ -90,8 +90,8 @@ export class FirebaseCacheService {
   private getList(key: string) {
     this.localforage.getItem(key).subscribe(listMap => {
       if (!this.cache[key].loaded && listMap !== null) {
-        let promises = listMap.map(partialKey => {
-          let itemKey = `${key}/${partialKey}`;
+        const promises = listMap.map(partialKey => {
+          const itemKey = `${key}/${partialKey}`;
           return this.localforage.getItem(itemKey).toPromise();
         });
         Promise.all(promises).then(value => this.cache[key].sub.next(value));
@@ -137,9 +137,9 @@ export class FirebaseCacheService {
    * - Stores a map of all the objects, used to stitch together the list for local use 
    */
   private setList(key: string, array: Array<any>, objKeyPartial: string) {
-    let listMap = array.reduce((p, c, i) => {
-      let objKey = c[objKeyPartial];
-      let storeKey = `${key}/${objKey}`;
+    const listMap = array.reduce((p, c, i) => {
+      const objKey = c[objKeyPartial];
+      const storeKey = `${key}/${objKey}`;
       this.localforage.setItem({key: storeKey, value: c});
       p[i] = objKey;
       return p;

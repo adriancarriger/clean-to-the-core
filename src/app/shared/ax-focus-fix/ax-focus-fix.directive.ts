@@ -111,7 +111,7 @@ export class AxFocusFixDirective implements OnDestroy, OnInit {
    * On scroll set the host element to hidden only if the page has scrolled.
    */
   private onScroll() {
-    let scrollPosition = this.window.pageYOffset || document.documentElement.scrollTop;
+    const scrollPosition = this.window.pageYOffset || document.documentElement.scrollTop;
     this.setHidden(scrollPosition !== 0);
   }
   /**

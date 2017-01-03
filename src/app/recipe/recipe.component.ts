@@ -46,7 +46,7 @@ export class RecipeComponent implements OnDestroy, OnInit {
   ngOnInit() {
     this.routerSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        let slug: string = this.activatedRoute.snapshot.params['slug'];
+        const slug: string = this.activatedRoute.snapshot.params['slug'];
         this.recipe = this.apiService.slugToRecipe(slug);
       }
     });

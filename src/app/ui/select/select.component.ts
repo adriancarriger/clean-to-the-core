@@ -59,7 +59,7 @@ export class SelectComponent {
    * @returns returns the current value of the `select`.
    */
   get(): string {
-    let selectNative = this.select.nativeElement;
+    const selectNative = this.select.nativeElement;
     return selectNative.options[selectNative.selectedIndex].value;
   }
   /**

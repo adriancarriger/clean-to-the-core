@@ -68,7 +68,7 @@ export class StatusBarAwareDirective implements OnDestroy, OnInit {
    * route is excluded via {@link statusBarExclude}.
    */
   barActive(status): boolean {
-    let useRoute = !this.statusBarExclude || !this.statusBarExclude.includes(status.route);
+    const useRoute = !this.statusBarExclude || !this.statusBarExclude.includes(status.route);
     return useRoute && status.height > 0;
   }
 }

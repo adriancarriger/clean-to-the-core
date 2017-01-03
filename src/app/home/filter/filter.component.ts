@@ -155,7 +155,7 @@ export class FilterComponent implements AfterViewInit, OnDestroy, OnInit {
    * - Send the data via {@link onUpdate}
    */
   onSelectUpdate(name: string, value) {
-    let camelName = this.filterUtilitiesService.camelize(name);
+    const camelName = this.filterUtilitiesService.camelize(name);
     this.filterValues[camelName] = value;
     this.onUpdate();
   }

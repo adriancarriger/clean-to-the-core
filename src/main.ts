@@ -12,5 +12,5 @@ if (environment.production) {
 /** 
  * Must use promise variable because of https://github.com/angular/angular-cli/issues/2887
  */
-let promise = platformBrowserDynamic().bootstrapModule(AppModule);
+const promise = platformBrowserDynamic().bootstrapModule(AppModule);
 /* tslint:disable */ promise.catch(err => console.error(err)); /* tslint:enable */
