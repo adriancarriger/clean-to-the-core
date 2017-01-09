@@ -36,7 +36,7 @@
     "@angular/platform-browser-dynamic": "2.3.0",
     "@angular/router": "3.3.0",
     "angular2-infinite-scroll": "0.2.7",
-    "angular2-moment": "1.0.0",
+    "angular2-moment": "1.1.0",
     "angular2-notifications": "0.4.48",
     "angularfire2": "2.0.0-beta.5",
     "core-js": "2.4.1",
