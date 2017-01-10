@@ -62,7 +62,7 @@
     "karma-jasmine": "1.0.2",
     "karma-remap-istanbul": "0.2.1",
     "lcov-parse": "0.0.10",
-    "protractor": "4.0.13",
+    "protractor": "5.0.0",
     "sass-lint": "^1.10.2",
     "sw-precache": "4.2.3",
     "ts-node": "1.7.2",
