@@ -4,7 +4,7 @@ import { async, inject, TestBed } from '@angular/core/testing';
 import { Subject, Observable } from 'rxjs/Rx';
 
 import { ApiService } from './api.service';
-import { FirebaseCacheService } from './firebase-cache.service';
+import { Angularfire2OfflineService } from 'angularfire2-offline';
 import { MockFirebaseCacheService } from './mock-firebase-cache.service.spec';
 
 describe('Service: ApiService', () => {
@@ -14,7 +14,7 @@ describe('Service: ApiService', () => {
     TestBed.configureTestingModule({
       providers: [
         ApiService,
-        { provide: FirebaseCacheService, useValue: mockFirebaseCacheService },
+        { provide: Angularfire2OfflineService, useValue: mockFirebaseCacheService },
       ]
     });
   });
@@ -29,14 +29,14 @@ describe('Service: ApiService', () => {
 
   it('should return a recipe', async(inject([ApiService], (service: ApiService) => {
     service.slugToRecipe('slug-2').subscribe(recipe => {
-      expect(recipe.id).toEqual(2);
+      expect(recipe['id']).toEqual(2);
     });
     mockFirebaseCacheService.update();
   })));
 
   it('should return the latest recipe', async(inject([ApiService], (service: ApiService) => {
     service.latest.subscribe(latest => {
-      expect(latest.slug).toEqual('slug-3');
+      expect(latest['slug']).toEqual('slug-3');
     });
     mockFirebaseCacheService.update();
   })));
