@@ -352,9 +352,9 @@ angular2-template-loader@^0.5.0:
     codecov "^1.0.1"
     loader-utils "^0.2.15"
 
-angularfire2-offline@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/angularfire2-offline/-/angularfire2-offline-0.0.4.tgz#fc7148eeb0b329d5ae2b96644378ace1ae981b5a"
+angularfire2-offline@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/angularfire2-offline/-/angularfire2-offline-0.0.6.tgz#f96fb8457f0d91f222e7525465e0fdf4d6701ea0"
 
 angularfire2@2.0.0-beta.5:
   version "2.0.0-beta.5"
