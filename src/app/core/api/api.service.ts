@@ -2,10 +2,10 @@
  * @module CoreModule
  */ /** */
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-
-import { FilterOptionsObservable, Recipe, RecipeObservable } from './api-interfaces';
-import { FirebaseCacheService } from './firebase-cache.service';
+import {
+  Angularfire2OfflineService,
+  ListObservable,
+  ObjectObservable } from 'angularfire2-offline';
 /**
  * @whatItDoes Reponsible for returning data from an API.
  * @consumers {@link HomeComponent}, {@link RecipeComponent}, {@link RecipeAdComponent}
@@ -25,25 +25,25 @@ export class ApiService {
   /**
    * Observable of about data.
    */
-  about: Observable<{}>;
+  about: ObjectObservable;
   /**
    * Observable of a list of recipes.
    */
-  recipes: Observable<Recipe[]>;
+  recipes: ListObservable;
   /**
    * Observable of filter options. Used to set up the {@link FilterComponent}
    */
-  filterOptions: FilterOptionsObservable;
+  filterOptions: ObjectObservable;
   /**
    * Observable of the latest recipe published.
    */
-  latest: RecipeObservable;
+  latest: ObjectObservable;
   /**
    * Creates the {@link ApiService}
    * @param fbCache Firebase cache service used to connect to Firebase and cache for offline use
    */
   constructor(
-    private fbCache: FirebaseCacheService) {
+    private fbCache: Angularfire2OfflineService) {
     this.onInit();
   }
   /**
@@ -64,7 +64,7 @@ export class ApiService {
    * @returns the recipe associated with the slug
    * @param slug a unique string associated with a recipe
    */
-  slugToRecipe(slug: string): RecipeObservable {
+  slugToRecipe(slug: string): ObjectObservable {
     return this.fbCache.object(`client/recipes/${slug}`);
   }
 }

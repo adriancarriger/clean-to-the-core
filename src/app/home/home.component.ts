@@ -78,7 +78,7 @@ export class HomeComponent implements OnDestroy, OnInit {
    */
   ngOnInit() {
     this.filterSubscription = this.apiService.filterOptions.subscribe(options => {
-      this.filteredMeta.searchFields = options.searchFields;
+      this.filteredMeta.searchFields = options['searchFields'];
     });
   }
   onScroll() {

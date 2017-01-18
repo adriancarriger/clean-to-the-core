@@ -7,9 +7,9 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core
 import { RouterModule } from '@angular/router';
 import { PushNotificationsModule } from 'angular2-notifications';
 import { AngularFireModule } from 'angularfire2';
+import { Angularfire2OfflineModule } from 'angularfire2-offline';
 
 import { ApiService } from './api/api.service';
-import { FirebaseCacheService } from './api/firebase-cache.service';
 import { GlobalEventsService } from './global-events/global-events.service';
 import { firebaseConfig } from './firebase-config';
 import { FooterComponent } from './footer/footer.component';
@@ -34,6 +34,7 @@ import { LocalForageModule } from 'ng2-localforage';
 @NgModule({
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
+    Angularfire2OfflineModule.forRoot(),
     CommonModule,
     LocalForageModule.forRoot(),
     PushNotificationsModule,
@@ -67,7 +68,6 @@ export class CoreModule {
       ngModule: CoreModule,
       providers: [
         ApiService,
-        FirebaseCacheService,
         GlobalEventsService,
         StatusBarService,
         TimerService,
