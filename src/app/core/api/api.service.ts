@@ -56,9 +56,16 @@ export class ApiService {
       query: {
         orderByChild: 'revStamp'
       }
-    }, 'slug');
+    });
     this.filterOptions = this.fbCache.object('client/filter');
-    this.latest = this.recipes.pluck('0');
+    // this.latest = this.recipes.pluck('0');
+    let found = false;
+    this.recipes.forEach(x => {
+      if (!found) {
+        this.latest = <any>x;
+        found = true;
+      }
+    });
   }
   /**
    * @returns the recipe associated with the slug

@@ -1,4 +1,4 @@
-<header class="fixed-content" appWatchHeight (heightChange)="fixedHeight = $event" [style.transition]="statusBarService.animate ? 'padding-top 1s' : null" [style.padding-top]="statusBarService.currentStatus.height + 'px'" >
+<!--<header class="fixed-content" appWatchHeight (heightChange)="fixedHeight = $event" [style.transition]="statusBarService.animate ? 'padding-top 1s' : null" [style.padding-top]="statusBarService.currentStatus.height + 'px'" >
   <app-loading *ngIf="!(apiService.latest | async)"></app-loading>
   <app-image-cover [src]="(apiService.latest | async)?.image" class="primary-image" [alt]="(apiService.latest | async)?.title"></app-image-cover>
   <section class="primary-info">
@@ -6,7 +6,7 @@
     <div class="blurb">{{ (apiService.latest | async)?.blurb }} <a *ngIf="apiService.latest | async" [routerLink]="['/recipe', (apiService.latest | async)?.slug]" appAxFocus01Fix>View&nbsp;Recipe</a></div>
     <app-labels (change)="wh.updateHeight()" [labels]="(apiService.latest | async)?.labels" label="Allergy free items for this recipe"></app-labels>
   </section>
-</header>
+</header>-->
 
 <div class="home-content" [style.transition]="statusBarService.animate ? 'margin-top 1s' : null" [style.margin-top]="(fixedHeight + statusBarService.currentStatus.height) + 'px'" >
   <app-sticky-scroll #stickyScroll [stickyOffset]="fixedHeight">

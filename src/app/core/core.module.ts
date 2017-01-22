@@ -7,7 +7,7 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core
 import { RouterModule } from '@angular/router';
 import { PushNotificationsModule } from 'angular2-notifications';
 import { AngularFireModule } from 'angularfire2';
-import { Angularfire2OfflineModule } from 'angularfire2-offline';
+import { AngularFire2OfflineModule } from 'angularfire2-offline';
 
 import { ApiService } from './api/api.service';
 import { GlobalEventsService } from './global-events/global-events.service';
@@ -23,7 +23,6 @@ import { TimerComponent } from './timer/timer.component';
 import { TimerService } from './timer/timer.service';
 import { SharedModule } from '../shared/shared.module';
 import { SkipNavComponent } from './skip-nav/skip-nav.component';
-import { LocalForageModule } from 'ng2-localforage';
 /**
  * @whatItDoes {@link CoreModule} exists to make commonly used singleton services and single-use classes available
  * for use in the many other modules.
@@ -34,9 +33,8 @@ import { LocalForageModule } from 'ng2-localforage';
 @NgModule({
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
-    Angularfire2OfflineModule.forRoot(),
+    AngularFire2OfflineModule.forRoot(),
     CommonModule,
-    LocalForageModule.forRoot(),
     PushNotificationsModule,
     RouterModule,
     SharedModule
