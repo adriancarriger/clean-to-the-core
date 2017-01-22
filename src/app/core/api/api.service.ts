@@ -58,14 +58,7 @@ export class ApiService {
       }
     });
     this.filterOptions = this.fbCache.object('client/filter');
-    // this.latest = this.recipes.pluck('0');
-    let found = false;
-    this.recipes.forEach(x => {
-      if (!found) {
-        this.latest = <any>x;
-        found = true;
-      }
-    });
+    this.latest = this.recipes.pluck('0');
   }
   /**
    * @returns the recipe associated with the slug
