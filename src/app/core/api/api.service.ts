@@ -3,7 +3,7 @@
  */ /** */
 import { Injectable } from '@angular/core';
 import {
-  Angularfire2OfflineService,
+  AngularFireOffline,
   ListObservable,
   ObjectObservable } from 'angularfire2-offline';
 /**
@@ -25,25 +25,25 @@ export class ApiService {
   /**
    * Observable of about data.
    */
-  about: ObjectObservable;
+  about: ObjectObservable<any>;
   /**
    * Observable of a list of recipes.
    */
-  recipes: ListObservable;
+  recipes: ListObservable<any[]>;
   /**
    * Observable of filter options. Used to set up the {@link FilterComponent}
    */
-  filterOptions: ObjectObservable;
+  filterOptions: ObjectObservable<any>;
   /**
    * Observable of the latest recipe published.
    */
-  latest: ObjectObservable;
+  latest: ObjectObservable<any>;
   /**
    * Creates the {@link ApiService}
-   * @param fbCache Firebase cache service used to connect to Firebase and cache for offline use
+   * @param afo AngularFireOffline is used to connect to Firebase and cache data for offline use
    */
   constructor(
-    private fbCache: Angularfire2OfflineService) {
+    private afo: AngularFireOffline) {
     this.onInit();
   }
   /**
@@ -51,20 +51,20 @@ export class ApiService {
    * - Gets the required items from Firebase to use in the app
    */
   onInit() {
-    this.about = this.fbCache.object('client/about');
-    this.recipes = this.fbCache.list('client/recipes', {
+    this.about = this.afo.database.object('client/about');
+    this.recipes = this.afo.database.list('client/recipes', {
       query: {
         orderByChild: 'revStamp'
       }
     });
-    this.filterOptions = this.fbCache.object('client/filter');
+    this.filterOptions = this.afo.database.object('client/filter');
     this.latest = this.recipes.pluck('0');
   }
   /**
    * @returns the recipe associated with the slug
    * @param slug a unique string associated with a recipe
    */
-  slugToRecipe(slug: string): ObjectObservable {
-    return this.fbCache.object(`client/recipes/${slug}`);
+  slugToRecipe(slug: string): ObjectObservable<any> {
+    return this.afo.database.object(`client/recipes/${slug}`);
   }
 }

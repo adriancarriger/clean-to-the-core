@@ -4,21 +4,25 @@ import { Subject } from 'rxjs/Rx';
 import { MockApiData } from './mock-api-data.spec';
 
 @Injectable()
-export class MockFirebaseCacheService {
+export class MockAngularFireOffline {
   recipeList$;
   input;
+  database = {
+    list: undefined,
+    object: undefined
+  };
   private mockArray: Array<Object>;
   constructor() {
+    this.database.list = (input: string, query?) => {
+      return this.recipeList$.asObservable();
+    };
+    this.database.object = (input: string) => {
+      this.input = input;
+      return this.recipeList$.asObservable();
+    };
     this.mockArray = MockApiData;
     this.recipeList$ = new Subject();
     this.update();
-  }
-  list(input: string, query?) {
-    return this.recipeList$.asObservable();
-  }
-  object(input: string) {
-    this.input = input;
-    return this.recipeList$.asObservable();
   }
   update() {
     let nextObj;
