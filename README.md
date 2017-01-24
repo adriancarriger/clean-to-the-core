@@ -6,7 +6,7 @@
 [![devDependency Status](https://img.shields.io/david/dev/adriancarriger/clean-to-the-core/master.svg?maxAge=60)](https://david-dm.org/adriancarriger/clean-to-the-core?type=dev)
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 
-🍳 A gluten free, accessible, offline-first, progressive web app for creating healthy meals.
+🍏 A gluten free, accessible, offline-first, progressive web app for creating healthy meals.
 
 ## Features
 
