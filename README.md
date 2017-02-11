@@ -33,11 +33,11 @@ Checkout the [documentation](https://adriancarriger.github.io/clean-to-the-core/
 
 ## Tech Stack
 
-* Front end: [Angular 2](https://github.com/angular/angular) version 2.3.0
+* Front end: [Angular 2](https://github.com/angular/angular) version 2.3.1
 * Database/hosting: [Firebase](https://firebase.google.com/)
 * Firebase data is cached offline with IndexedDB via [localForage](https://github.com/localForage/localForage) using [this service](https://github.com/adriancarriger/clean-to-the-core/blob/master/src/app/core/api/firebase-cache.service.ts)
 * Back end prep: [Node.js](https://nodejs.org/en/) is used to transfer blog data from a [Wordpress site](http://cleantothecore.com) with code located in a [separate repository](https://github.com/adriancarriger/clean-to-the-core-backend)
-* Scaffolding: [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21
+* Scaffolding: [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.31
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
