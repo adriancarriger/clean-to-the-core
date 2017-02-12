@@ -2,7 +2,7 @@
  * @module HomeModule
  */ /** */
 import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs/subscription';
+import { Subscription } from 'rxjs/Subscription';
 
 import { ApiService } from '../core/api/api.service';
 import { StatusBarService } from '../core/status-bar/status-bar.service';

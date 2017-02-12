@@ -2,7 +2,7 @@
  * @module CoreModule
  */ /** */
 import { Directive, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/subscription';
+import { Subscription } from 'rxjs/Subscription';
 
 import { StatusBarService } from './status-bar.service';
 /**

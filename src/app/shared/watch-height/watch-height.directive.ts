@@ -9,7 +9,7 @@ import {
   OnDestroy,
   OnInit,
   Output } from '@angular/core';
-  import { Subscription } from 'rxjs/subscription';
+  import { Subscription } from 'rxjs/Subscription';
 
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
 /**

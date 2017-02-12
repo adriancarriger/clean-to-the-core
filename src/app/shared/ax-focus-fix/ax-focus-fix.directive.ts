@@ -3,7 +3,7 @@
  */ /** */
 import { Directive, ElementRef, HostBinding, Inject, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs/subscription';
+import { Subscription } from 'rxjs/Subscription';
 
 import { GlobalEventsService } from '../../core/global-events/global-events.service';
 /**
