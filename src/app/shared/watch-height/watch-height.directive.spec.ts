@@ -17,7 +17,7 @@ export class ContainerComponent {
 
 describe('Directive: WatchHeight', () => {
   let fixture: ComponentFixture<ContainerComponent>;
-  let mockGlobalEventsService = new MockGlobalEventsService();
+  const mockGlobalEventsService = new MockGlobalEventsService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [

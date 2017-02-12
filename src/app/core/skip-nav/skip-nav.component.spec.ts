@@ -38,14 +38,14 @@ describe('SkipNavComponent', () => {
   });
 
   it('should automatically skip to the main content', () => {
-    let testEvent = new NavigationEnd(1, '/test', '/test');
+    const testEvent = new NavigationEnd(1, '/test', '/test');
     mockRouter.fakeEvent(testEvent);
     mockRouter.fakeEvent(testEvent);
     expect(component.skipLabel).toBe('Skipping to the main content');
   });
 
   it('should not set the current route if not an instance of NavigationEnd', () => {
-    let testEvent = {id: 1, url: '/test', urlAfterRedirect: '/test'};
+    const testEvent = {id: 1, url: '/test', urlAfterRedirect: '/test'};
     mockRouter.fakeEvent(testEvent);
     mockRouter.fakeEvent(testEvent);
     expect(component.skipLabel).toBe(undefined);

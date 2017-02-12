@@ -59,7 +59,7 @@ describe('Directive: appAxFocus01Fix', () => {
   });
 
   it('should not set aria-hidden to false on a non-tab keydown', () => {
-    let child = fixture.nativeElement.firstElementChild;
+    const child = fixture.nativeElement.firstElementChild;
     expect( child.getAttribute('aria-hidden') ).toBe('true');
     mockDocumentService.newEvent('keydown', {keyCode: 4});
     fixture.detectChanges();
@@ -67,7 +67,7 @@ describe('Directive: appAxFocus01Fix', () => {
   });
 
   it('should set aria-hidden to false on a tab keydown', () => {
-    let child = fixture.nativeElement.firstElementChild;
+    const child = fixture.nativeElement.firstElementChild;
     expect( child.getAttribute('aria-hidden') ).toBe('true');
     mockDocumentService.newEvent('keydown', {keyCode: 9});
     fixture.detectChanges();
@@ -75,7 +75,7 @@ describe('Directive: appAxFocus01Fix', () => {
   });
 
   it('should not set aria-hidden to true on a non-tab keyup', () => {
-    let child = fixture.nativeElement.firstElementChild;
+    const child = fixture.nativeElement.firstElementChild;
     // Prepare test => set globals
     mockScrollTo(5, 7);
     expect( mockWindowService.pageYOffset ).toBe(7);
@@ -91,7 +91,7 @@ describe('Directive: appAxFocus01Fix', () => {
   });
 
   it('should set aria-hidden to true on a tab keyup', () => {
-    let child = fixture.nativeElement.firstElementChild;
+    const child = fixture.nativeElement.firstElementChild;
     // Prepare test => tab keydown
     mockDocumentService.newEvent('keydown', {keyCode: 9});
     fixture.detectChanges();
@@ -104,7 +104,7 @@ describe('Directive: appAxFocus01Fix', () => {
 
   it(`should set window offset to 0, and 
       not set aria-hidden to true on a tab  with focus`, () => {
-    let child = fixture.nativeElement.firstElementChild;
+    const child = fixture.nativeElement.firstElementChild;
     // Prepare test => set globals
     mockDocumentService.setActiveElement(child);
     mockScrollTo(0, 7);
@@ -121,7 +121,7 @@ describe('Directive: appAxFocus01Fix', () => {
   });
 
   it('should set aria-hidden to false on scrollTop', () => {
-    let child = fixture.nativeElement.firstElementChild;
+    const child = fixture.nativeElement.firstElementChild;
     expect( child.getAttribute('aria-hidden') ).toBe('true');
     // Run test => tab keyup
     mockScrollTo(0, 0);
@@ -130,7 +130,7 @@ describe('Directive: appAxFocus01Fix', () => {
   });
 
   it('should set aria-hidden to true on scroll down', () => {
-    let child = fixture.nativeElement.firstElementChild;
+    const child = fixture.nativeElement.firstElementChild;
     // Prepare test => set scroll to 0
     mockScrollTo(0, 0);
     fixture.detectChanges();
@@ -152,7 +152,7 @@ describe('Directive: appAxFocus01Fix', () => {
   });
 
   it ('should not do nothing if not an instance of NavigationEnd', () => {
-    let testEvent = {id: 1, url: '/test', urlAfterRedirect: '/test'};
+    const testEvent = {id: 1, url: '/test', urlAfterRedirect: '/test'};
     mockRouter.fakeEvent(testEvent);
     expect(component.axFocus01Fix.skipRoute).toBe(undefined);
   });

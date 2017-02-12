@@ -23,7 +23,6 @@ describe('StickyScrollComponent', () => {
   let component: ContainerComponent;
   let fixture: ComponentFixture<ContainerComponent>;
   let mockGlobalEventsService: MockGlobalEventsService;
-  let router: Router;
   const config: Route[] = [
     { path: '', component: ContainerComponent },
     { path: 'test', component: ContainerComponent}
@@ -82,7 +81,7 @@ describe('StickyScrollComponent', () => {
 
   it('should update the height on manuel check', done => {
     component.stickyScroll.height = 5;
-    let positionContainer = fixture.nativeElement.getElementsByClassName('position-container')[0];
+    const positionContainer = fixture.nativeElement.getElementsByClassName('position-container')[0];
     positionContainer.style.height = '234px';
     expect(positionContainer.clientHeight).toBe(234);
     expect(component.stickyScroll.height).toBe(5);

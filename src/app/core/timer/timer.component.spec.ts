@@ -15,7 +15,6 @@ describe('TimerComponent', () => {
   let component: TimerComponent;
   let fixture: ComponentFixture<TimerComponent>;
   let mockTimerService: MockTimerService;
-  let router: Router;
   const config: Route[] = [
     { path: '', component: TimerComponent },
     { path: 'test', component: TimerComponent}

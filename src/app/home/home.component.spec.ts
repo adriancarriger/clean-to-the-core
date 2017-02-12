@@ -20,10 +20,9 @@ import { MockWindowService } from '../../mocks/mock-window.service.spec';
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
-  let mockApiService = new MockApiService();
-  let mockDocumentService = new MockDocumentService();
+  const mockApiService = new MockApiService();
+  const mockDocumentService = new MockDocumentService();
   let mockWindowService: MockWindowService;
-  let router: Router;
   const config: Route[] = [
     { path: '', component: HomeComponent },
     { path: 'test', component: HomeComponent, data: { layout: { paddingTop: true } }}
@@ -60,19 +59,19 @@ describe('HomeComponent', () => {
 
   it('should get filterOptions from an Observable', () => {
     mockApiService.update();
-    let searchFields = component.filteredMeta.searchFields;
+    const searchFields = component.filteredMeta.searchFields;
     expect(searchFields.length === 0).toBe(true);
   });
 
   it('should use filter.prefilter to filter an array', () => {
-    let filtered = [34, 65, 23, 78].filter(component.filteredMeta.prefilter);
+    const filtered = [34, 65, 23, 78].filter(component.filteredMeta.prefilter);
     expect(filtered).toEqual([65, 23, 78]);
   });
 
   it('should scroll', done => {
     component.onFilterUpdate(123);
     setTimeout( () => {
-      let newP = mockWindowService.pageYOffset;
+      const newP = mockWindowService.pageYOffset;
       expect(newP).toBe(223);
       done();
     });

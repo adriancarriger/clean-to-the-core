@@ -3,9 +3,10 @@
  */ /** */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs/observable';
+import { Subscription } from 'rxjs/subscription';
 
-import { RecipeObservable } from '../core/api/api-interfaces';
+import { Recipe } from '../core/api/api-interfaces';
 import { ApiService } from '../core/api/api.service';
 /**
  * @whatItDoes Returns the {@link RecipeComponent} view.
@@ -20,7 +21,7 @@ export class RecipeComponent implements OnDestroy, OnInit {
   /**
    * Data used in the recipe view.
    */
-  recipe: RecipeObservable;
+  recipe: Observable<Recipe>;
   /**
    * 
    */

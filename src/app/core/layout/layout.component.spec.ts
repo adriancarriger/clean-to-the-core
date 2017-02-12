@@ -28,8 +28,8 @@ describe('LayoutComponent', () => {
   let fixture: ComponentFixture<LayoutComponent>;
   let location: Location;
   let router: Router;
-  let mockDocumentService = new MockDocumentService();
-  let mockApiService = new MockApiService();
+  const mockDocumentService = new MockDocumentService();
+  const mockApiService = new MockApiService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [

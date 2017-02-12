@@ -30,12 +30,12 @@ describe('SelectComponent', () => {
   });
 
   it('should set the select value', () => {
-    let selectNative = fixture.nativeElement.firstElementChild;
-    let initialValue = selectNative.options[selectNative.selectedIndex].value;
+    const selectNative = fixture.nativeElement.firstElementChild;
+    const initialValue = selectNative.options[selectNative.selectedIndex].value;
     expect(initialValue).toBe('all');
     component.set('Option3');
     fixture.detectChanges();
-    let newValue = selectNative.options[selectNative.selectedIndex].value;
+    const newValue = selectNative.options[selectNative.selectedIndex].value;
     expect(newValue).toBe('Option3');
   });
 

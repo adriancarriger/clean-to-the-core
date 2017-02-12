@@ -28,11 +28,11 @@ describe('InputComponent', () => {
   });
 
   it('should set the input value', () => {
-    let initialValue = fixture.nativeElement.firstElementChild.value;
+    const initialValue = fixture.nativeElement.firstElementChild.value;
     expect(initialValue).toBe('');
     component.set('new value');
     fixture.detectChanges();
-    let newValue = fixture.nativeElement.firstElementChild.value;
+    const newValue = fixture.nativeElement.firstElementChild.value;
     expect(newValue).toBe('new value');
   });
 

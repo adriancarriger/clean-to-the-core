@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject, Subject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs/Rx';
 
 @Injectable()
 export class MockNg2LocalforageService {

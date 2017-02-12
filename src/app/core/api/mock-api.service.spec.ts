@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2';
+import { Observable } from 'rxjs/observable';
 import { Subject, ReplaySubject } from 'rxjs/Rx';
 
-import { FilterOptionsObservable, RecipeObservable } from './api-interfaces';
+import { Recipe } from './api-interfaces';
+import { FilterOptions } from '../../home/filter/filter-options';
 
 @Injectable()
 export class MockApiService {
@@ -10,7 +12,7 @@ export class MockApiService {
   recipe$;
   recipes$;
   recipes: FirebaseListObservable<any[]>;
-  filterOptions: FilterOptionsObservable;
+  filterOptions: Observable<FilterOptions>;
   private filterOptionsData = {
     searchFields: []
   };
@@ -28,11 +30,11 @@ export class MockApiService {
     this.recipes = this.recipes$.asObservable();
     this.update();
   }
-  recipe(key: number): RecipeObservable {
+  recipe(key: number): Observable<Recipe> {
     this.update();
     return this.recipe$.asObservable();
   }
-  slugToRecipe(slug: string): RecipeObservable {
+  slugToRecipe(slug: string): Observable<Recipe> {
     this.update();
     return this.recipe$.asObservable();
   }
@@ -44,7 +46,7 @@ export class MockApiService {
   }
   private addRecipe() {
     this.id++;
-    let newRecipe = this.recipeData;
+    const newRecipe = this.recipeData;
     newRecipe.id = this.id;
     this.recipesData.push( newRecipe );
   }

@@ -91,14 +91,14 @@ describe('Pipe: Filter', () => {
 
   it('should filter by key', () => {
     component.filterBy('party', 'republican');
-    let output = component.output;
+    const output = component.output;
     expect(output.length).toBe(1);
     expect(output[0].name).toBe('Bobby Newport');
   });
 
   it('should not filter if key is set to "all"', () => {
     component.filterBy('party', 'all');
-    let output = component.output;
+    const output = component.output;
     expect(output.length).toBe(3);
   });
 
@@ -114,7 +114,7 @@ describe('Pipe: Filter', () => {
     component.filterBy('slug', 'slug-4');
     component.search('tom haverford');
     expect(component.output.length).toBe(0);
-    let query = component.filteredMeta['query'];
+    const query = component.filteredMeta['query'];
     expect(query).toBe('"green party", "slug-4", and "tom haverford"');
   });
 
@@ -122,14 +122,14 @@ describe('Pipe: Filter', () => {
     component.filterBy('party', 'Green Party');
     component.search('tom haverford');
     expect(component.output.length).toBe(0);
-    let query = component.filteredMeta['query'];
+    const query = component.filteredMeta['query'];
     expect(query).toBe('"green party", and "tom haverford"');
   });
 
   it('should return a not found query string for 1 item', () => {
     component.filterBy('party', 'Green Party');
     expect(component.output.length).toBe(0);
-    let query = component.filteredMeta['query'];
+    const query = component.filteredMeta['query'];
     expect(query).toBe('"green party"');
   });
 

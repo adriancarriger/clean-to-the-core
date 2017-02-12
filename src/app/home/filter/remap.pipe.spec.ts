@@ -4,7 +4,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { RemapPipe } from './remap.pipe';
 
 describe('Pipe: Remap', () => {
-  let testData = [
+  const testData = [
     {
       name: 'Object-1',
       id: 1,
@@ -43,16 +43,16 @@ describe('Pipe: Remap', () => {
     }
   ];
   it('create an instance', () => {
-    let pipe = new RemapPipe();
+    const pipe = new RemapPipe();
     expect(pipe).toBeTruthy();
   });
   it('should remap the order', () => {
-    let pipe = new RemapPipe();
-    let test1 = pipe.transform(testData).map(x => x.id);
+    const pipe = new RemapPipe();
+    const test1 = pipe.transform(testData).map(x => x.id);
     expect(test1).toEqual([1, 2, 3, 4]);
-    let test2 = pipe.transform(testData, 'mobile').map(x => x.id);
+    const test2 = pipe.transform(testData, 'mobile').map(x => x.id);
     expect(test2).toEqual([4, 3, 2, 1]);
-    let test3 = pipe.transform(testData, 'large').map(x => x.id);
+    const test3 = pipe.transform(testData, 'large').map(x => x.id);
     expect(test3).toEqual([1, 4, 2, 3]);
   });
 });

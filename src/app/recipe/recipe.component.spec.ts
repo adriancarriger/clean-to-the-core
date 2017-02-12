@@ -7,7 +7,7 @@ import { MomentModule } from 'angular2-moment';
 import { Subject, Observable } from 'rxjs/Rx';
 
 import { RecipeComponent } from './recipe.component';
-import { TimerButtonComponent }  from './timer-button/timer-button.component';
+import { TimerButtonComponent } from './timer-button/timer-button.component';
 import { ApiService } from '../core/api/api.service';
 import { MockApiService } from '../core/api/mock-api.service.spec';
 import { SharedModule } from '../shared/shared.module';
@@ -25,8 +25,8 @@ class MockActivatedRoute {
 describe('RecipeComponent', () => {
   let component: RecipeComponent;
   let fixture: ComponentFixture<RecipeComponent>;
-  let mockActivatedRoute = new MockActivatedRoute();
-  let mockApiService = new MockApiService();
+  const mockActivatedRoute = new MockActivatedRoute();
+  const mockApiService = new MockApiService();
   let mockRouter: MockRouter;
   beforeEach(async(() => {
     mockRouter = new MockRouter();
@@ -56,7 +56,7 @@ describe('RecipeComponent', () => {
   });
 
   it ('should set a recipe for the route', done => {
-    let testEvent = new NavigationEnd(1, '/test', '/test');
+    const testEvent = new NavigationEnd(1, '/test', '/test');
     mockRouter.fakeEvent(testEvent);
     component.recipe.subscribe(recipe => {
       expect(recipe.id).toBe(2);
@@ -65,7 +65,7 @@ describe('RecipeComponent', () => {
   });
 
   it ('should not set the current route if not an instance of NavigationEnd', () => {
-    let testEvent = {id: 1, url: '/test', urlAfterRedirect: '/test'};
+    const testEvent = {id: 1, url: '/test', urlAfterRedirect: '/test'};
     mockRouter.fakeEvent(testEvent);
     expect(component.recipe).toBe(undefined);
   });

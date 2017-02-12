@@ -61,10 +61,10 @@ export class StickyScrollComponent implements AfterViewInit, OnChanges, OnDestro
    * @param renderer used to make DOM changes to the host element
    */
   constructor(
+    public statusBarService: StatusBarService,
     private globalEventsService: GlobalEventsService,
     private element: ElementRef,
-    private renderer: Renderer,
-    private statusBarService: StatusBarService) { }
+    private renderer: Renderer) { }
   /**
    * Manually updates {@link height}
    * 

@@ -99,8 +99,8 @@ describe('FilterComponent', () => {
     component.onSelectUpdate('Another test name here', 'new value 1');
     component.onUpdate();
     fixture.detectChanges();
-    let filterValues = component.filterValues;
-    let thisValue = filterValues['anotherTestNameHere'];
+    const filterValues = component.filterValues;
+    const thisValue = filterValues['anotherTestNameHere'];
     expect(thisValue).toBe('new value 1');
   });
 });

@@ -27,7 +27,7 @@ describe('RecipeAdComponent', () => {
   });
 
   it('should set the correct color', () => {
-    let higherNumber =  (4 * 341) - 1;
+    const higherNumber =  (4 * 341) - 1;
     expect(component.arrowColors.length).toBe(4);
     component.index = 1;
     component.updateColor();

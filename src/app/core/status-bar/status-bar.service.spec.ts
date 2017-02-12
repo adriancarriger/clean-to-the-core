@@ -22,13 +22,13 @@ describe('Service: StatusBar', () => {
   }));
 
   it('should set the current route', inject([StatusBarService], (service: StatusBarService) => {
-    let testEvent = new NavigationEnd(1, '/test', '/test');
+    const testEvent = new NavigationEnd(1, '/test', '/test');
     mockRouter.fakeEvent(testEvent);
     expect(service.currentStatus.route).toBe('/test');
   }));
 
   it('should not set the current route if not an instance of NavigationEnd', inject([StatusBarService], (service: StatusBarService) => {
-    let testEvent = {id: 1, url: '/test', urlAfterRedirect: '/test'};
+    const testEvent = {id: 1, url: '/test', urlAfterRedirect: '/test'};
     mockRouter.fakeEvent(testEvent);
     expect(service.currentStatus.route).toBe(null);
   }));

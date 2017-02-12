@@ -2,7 +2,7 @@
  * @module HomeModule
  */ /** */
 import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/subscription';
 
 import { ApiService } from '../core/api/api.service';
 import { StatusBarService } from '../core/status-bar/status-bar.service';
@@ -29,6 +29,12 @@ export class HomeComponent implements OnDestroy, OnInit {
    * Holds the subscription the to {@link apiService}'s filterOptions Observable
    */
   filterSubscription: Subscription;
+  /**
+   * Timestamp of the last time the filter was updated.
+   * 
+   * Used to notify the related filter pipe that a change has occurred.
+   */
+  filterStamp: number;
   /**
    * Object containing filter data.
    */
@@ -57,8 +63,8 @@ export class HomeComponent implements OnDestroy, OnInit {
    * @param window a reference to the global window object
    */
   constructor(
-    private apiService: ApiService,
-    private statusBarService: StatusBarService,
+    public apiService: ApiService,
+    public statusBarService: StatusBarService,
     @Inject('Window') private window: Window) { }
   /**
    * Updates the scroll position each time the filter updates so that the filter bar is touching

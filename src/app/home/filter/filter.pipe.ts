@@ -36,22 +36,22 @@ export class FilterPipe implements PipeTransform {
       filteredMeta.count = -1; // filter not active
       return;
     }
-    let filtering = this.filtering(filterInput, filteredMeta);
+    const filtering = this.filtering(filterInput, filteredMeta);
     if (!filtering.any) {
       filteredMeta.count = -1; // filter not active
-      let prefilter = filteredMeta.prefilter !== undefined ? filteredMeta.prefilter : () => true;
+      const prefilter = filteredMeta.prefilter !== undefined ? filteredMeta.prefilter : () => true;
       return value.filter(prefilter);
     }
-    let searchQueries: Array<string> = filtering.search ? this.getQueries(filterInput.search) : [];
+    const searchQueries: Array<string> = filtering.search ? this.getQueries(filterInput.search) : [];
     if (searchQueries.length === 0) { filtering.search = false; }
     // Meta data used to filter each item in the input `value`.
-    let meta = {
+    const meta = {
       input: filterInput,
       searchQueries: searchQueries,
       checkSearch: filtering.search,
       searchFields: filteredMeta.searchFields
     };
-    let filtered = value.filter(item => this.filterItem(item, meta));
+    const filtered = value.filter(item => this.filterItem(item, meta));
     filteredMeta.count = filtered.length;
     filteredMeta.query = this.readableQueries(filterInput);
     return filtered;
@@ -60,9 +60,9 @@ export class FilterPipe implements PipeTransform {
    * Checks if the filterInput is trying to filter anything at all.
    */
   private filtering(filterInput, filteredMeta) {
-    let status = { any: false, search: false };
+    const status = { any: false, search: false };
     if (filterInput === undefined || filterInput === {}) { return status; }
-    for (let key in filterInput) {
+    for (const key in filterInput) {
       if (key === 'search') {
         if (filterInput[key] !== '' && filteredMeta.searchFields.length > 0) {
           status.search = true;
@@ -98,7 +98,7 @@ export class FilterPipe implements PipeTransform {
       .find(y => !this.flatArray(item[y]).includes(meta.input[y]))) { return; }
     // Filter by search terms
     if (meta.checkSearch) {
-      let searchable = meta.searchFields
+      const searchable = meta.searchFields
         .filter(x => item[x] !== undefined)
         .reduce((a, b) => {
           return a + ' ' + this.flatArray(item[b])
@@ -128,8 +128,8 @@ export class FilterPipe implements PipeTransform {
    * Reduce an array into a readable list
    */
   private readableList(prev: string, curr: string, i: number, a: Array<string>): string {
-    let term: string = curr.toLowerCase();
-    let grammer: string = (a.length === i + 1 && a.length > 1) ? ', and ' : i > 0 ? ', ' : '';
+    const term: string = curr.toLowerCase();
+    const grammer: string = (a.length === i + 1 && a.length > 1) ? ', and ' : i > 0 ? ', ' : '';
     return `${prev}${grammer}"${term}"`;
   }
   /**

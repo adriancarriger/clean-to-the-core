@@ -10,7 +10,7 @@ import { MockDocumentService } from '../../../mocks/mock-document.service.spec';
 describe('NavComponent', () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
-  let mockDocumentService = new MockDocumentService();
+  const mockDocumentService = new MockDocumentService();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],

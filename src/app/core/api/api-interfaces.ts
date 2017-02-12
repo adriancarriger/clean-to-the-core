@@ -1,9 +1,8 @@
 /**
  * @module CoreModule
  */ /** */
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/observable';
 
-import { FilterOptions } from '../../home/filter/filter-options';
 /**
  * Interface for individual recipe items
  */
@@ -12,14 +11,3 @@ export interface Recipe {
   slug: string;
   [propName: string]: any;
 }
-/**
- * An Observable of a `Recipe`.
- */
-export interface RecipeObservable extends Observable<Recipe> { }
-/**
- * An Observable of `FilterOptions`
- */
-export interface FilterOptionsObservable extends Observable<FilterOptions> { }
-
-
-

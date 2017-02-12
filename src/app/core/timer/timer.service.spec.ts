@@ -29,8 +29,8 @@ describe('Service: Timer', () => {
 
   it('should start the timer', done => {
     inject([TimerService], (service: TimerService) => {
-      let time = 2 / 60;
-      let timerObj = { exactly: time};
+      const time = 2 / 60;
+      const timerObj = { exactly: time};
       service.startTimer(timerObj, 'title', 'slug', 'id');
       expect(service.running).toBe(true);
       expect(service.timeLeft).toBe(2);
@@ -42,8 +42,8 @@ describe('Service: Timer', () => {
   });
 
   it('should toggle the timer on, then off', inject([TimerService], (service: TimerService) => {
-    let time = 2 / 60;
-    let timerObj = { exactly: time};
+    const time = 2 / 60;
+    const timerObj = { exactly: time};
     service.toggleTimer(timerObj, 'title', 'slug', 'id');
     expect(service.running).toBe(true);
     expect(service.timeLeft).toBe(2);
@@ -53,9 +53,9 @@ describe('Service: Timer', () => {
 
   it('should start the timer using the short time', done => {
     inject([TimerService], (service: TimerService) => {
-      let short = 2 / 60;
-      let long = 5 / 60;
-      let timerObj = { short: short, long: long};
+      const short = 2 / 60;
+      const long = 5 / 60;
+      const timerObj = { short: short, long: long};
       service.startTimer(timerObj, 'title', 'slug', 'id');
       expect(service.running).toBe(true);
       expect(service.timeLeft).toBe(2);
@@ -67,8 +67,8 @@ describe('Service: Timer', () => {
   });
 
   it('should add one minute', inject([TimerService], (service: TimerService) => {
-    let time = 2 / 60;
-    let timerObj = { exactly: time};
+    const time = 2 / 60;
+    const timerObj = { exactly: time};
     service.toggleTimer(timerObj, 'title', 'slug', 'id');
     expect(service.running).toBe(true);
     expect(service.timeLeft).toBe(2);
@@ -79,8 +79,8 @@ describe('Service: Timer', () => {
   }));
 
   it('should reset the timer', inject([TimerService], (service: TimerService) => {
-    let time = 2 / 60;
-    let timerObj = { exactly: time};
+    const time = 2 / 60;
+    const timerObj = { exactly: time};
     service.toggleTimer(timerObj, 'title', 'slug', 'id');
     expect(service.running).toBe(true);
     expect(service.timeLeft).toBe(2);
@@ -93,8 +93,8 @@ describe('Service: Timer', () => {
   }));
 
   it('should reset the timer to the short time', inject([TimerService], (service: TimerService) => {
-    let time = 2 / 60;
-    let timerObj = { short: time, long: 5 };
+    const time = 2 / 60;
+    const timerObj = { short: time, long: 5 };
     service.toggleTimer(timerObj, 'title', 'slug', 'id');
     expect(service.running).toBe(true);
     expect(service.timeLeft).toBe(2);
