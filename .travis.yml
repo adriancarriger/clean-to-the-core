@@ -9,6 +9,7 @@ branches:
   only:
   - master
   - /^greenkeeper-.*$/
+  - /^greenkeeper/.*$/
 
 before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
