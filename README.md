@@ -1,5 +1,7 @@
 # Clean to the Core
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/adriancarriger/clean-to-the-core.svg)](https://greenkeeper.io/)
+
 [![Build Status](http://img.shields.io/travis/adriancarriger/clean-to-the-core/master.svg?maxAge=60)](https://travis-ci.org/adriancarriger/clean-to-the-core)
 [![Codecov](https://img.shields.io/codecov/c/github/adriancarriger/clean-to-the-core/master.svg?maxAge=60)](https://codecov.io/gh/adriancarriger/clean-to-the-core)
 [![Dependency Status](https://img.shields.io/david/adriancarriger/clean-to-the-core/master.svg?maxAge=60)](https://david-dm.org/adriancarriger/clean-to-the-core)
