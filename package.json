@@ -69,7 +69,7 @@
     "sw-precache": "4.2.3",
     "ts-node": "1.7.2",
     "tslint": "4.3.0",
-    "typedoc": "0.5.1",
+    "typedoc": "0.5.7",
     "typedoc-plugin-external-module-name": "1.0.4",
     "typescript": "2.0.10",
     "webdriver-manager": "11.0.0"
