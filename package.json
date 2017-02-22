@@ -71,7 +71,7 @@
     "tslint": "4.3.0",
     "typedoc": "0.5.1",
     "typedoc-plugin-external-module-name": "1.0.4",
-    "typescript": "2.0.10",
+    "typescript": "2.2.1",
     "webdriver-manager": "11.0.0"
   }
 }
