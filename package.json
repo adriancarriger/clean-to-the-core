@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@angular/cli": "1.0.0-beta.31",
-    "@angular/compiler-cli": "2.3.1",
+    "@angular/compiler-cli": "2.4.9",
     "@types/chai": "3.4.34",
     "@types/jasmine": "2.5.38",
     "@types/localforage": "0.0.33",
