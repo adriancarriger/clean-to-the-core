@@ -4,8 +4,9 @@
 import { Injectable } from '@angular/core';
 import {
   AngularFireOffline,
-  ListObservable,
-  ObjectObservable } from 'angularfire2-offline';
+  AfoListObservable,
+  AfoObjectObservable } from 'angularfire2-offline';
+  import { Observable } from 'rxjs/Observable';
 /**
  * @whatItDoes Reponsible for returning data from an API.
  * @consumers {@link HomeComponent}, {@link RecipeComponent}, {@link RecipeAdComponent}
@@ -25,19 +26,19 @@ export class ApiService {
   /**
    * Observable of about data.
    */
-  about: ObjectObservable<any>;
+  about: AfoObjectObservable<any>;
   /**
    * Observable of a list of recipes.
    */
-  recipes: ListObservable<any[]>;
+  recipes: AfoListObservable<any[]>;
   /**
    * Observable of filter options. Used to set up the {@link FilterComponent}
    */
-  filterOptions: ObjectObservable<any>;
+  filterOptions: AfoObjectObservable<any>;
   /**
    * Observable of the latest recipe published.
    */
-  latest: ObjectObservable<any>;
+  latest: Observable<any>;
   /**
    * Creates the {@link ApiService}
    * @param afo AngularFireOffline is used to connect to Firebase and cache data for offline use
@@ -64,7 +65,7 @@ export class ApiService {
    * @returns the recipe associated with the slug
    * @param slug a unique string associated with a recipe
    */
-  slugToRecipe(slug: string): ObjectObservable<any> {
+  slugToRecipe(slug: string): AfoObjectObservable<any> {
     return this.afo.database.object(`client/recipes/${slug}`);
   }
 }

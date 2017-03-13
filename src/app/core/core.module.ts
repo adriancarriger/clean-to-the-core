@@ -33,7 +33,6 @@ import { SkipNavComponent } from './skip-nav/skip-nav.component';
 @NgModule({
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireOfflineModule,
     CommonModule,
     PushNotificationsModule,
     RouterModule,

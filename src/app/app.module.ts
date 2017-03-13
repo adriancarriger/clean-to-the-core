@@ -4,6 +4,7 @@
  */ /** */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireOfflineModule } from 'angularfire2-offline';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { CoreModule } from './core/core.module';
     AppComponent
   ],
   imports: [
+    AngularFireOfflineModule,
     AppRoutingModule,
     BrowserModule,
     CoreModule.forRoot()

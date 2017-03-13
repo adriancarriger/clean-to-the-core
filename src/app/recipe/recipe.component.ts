@@ -3,7 +3,7 @@
  */ /** */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { AfoObjectObservable } from 'angularfire2-offline';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Recipe } from '../core/api/api-interfaces';
@@ -21,7 +21,7 @@ export class RecipeComponent implements OnDestroy, OnInit {
   /**
    * Data used in the recipe view.
    */
-  recipe: Observable<Recipe>;
+  recipe: AfoObjectObservable<Recipe>;
   /**
    * 
    */
