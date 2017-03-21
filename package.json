@@ -67,7 +67,7 @@
     "protractor": "5.1.0",
     "sass-lint": "1.10.2",
     "sw-precache": "4.2.3",
-    "ts-node": "1.7.2",
+    "ts-node": "2.1.2",
     "tslint": "4.3.0",
     "typedoc": "0.5.1",
     "typedoc-plugin-external-module-name": "1.0.4",
