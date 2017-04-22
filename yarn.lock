@@ -291,15 +291,15 @@ angular2-notifications@0.4.48:
   version "0.4.48"
   resolved "https://registry.yarnpkg.com/angular2-notifications/-/angular2-notifications-0.4.48.tgz#81e7814e2ef90d11fdb68a2638f735cad88e5eb1"
 
-angularfire2-offline@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/angularfire2-offline/-/angularfire2-offline-2.0.3.tgz#a1f41af3e98584e966f19c8e9d490d9570ad55da"
+angularfire2-offline@2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/angularfire2-offline/-/angularfire2-offline-2.0.5.tgz#2e717ff987622ecd5dad3c2d455d2d3ad70fa7c6"
   dependencies:
-    localforage "^1.4.3"
+    localforage "1.5.0"
 
-angularfire2@2.0.0-beta.7:
-  version "2.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/angularfire2/-/angularfire2-2.0.0-beta.7.tgz#ce4f98467c5a8b2cc1dfd607fda718aee8d64521"
+angularfire2@2.0.0-beta.8:
+  version "2.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/angularfire2/-/angularfire2-2.0.0-beta.8.tgz#8ec172ff17448c3ccdb79e9c6179da556ff05e1b"
 
 ansi-align@^1.1.0:
   version "1.1.0"
@@ -2125,9 +2125,9 @@ findup@0.1.5:
     colors "~0.6.0-1"
     commander "~2.1.0"
 
-firebase@3.6.6:
-  version "3.6.6"
-  resolved "https://registry.yarnpkg.com/firebase/-/firebase-3.6.6.tgz#3062036e6f47e78a23f300cd168eda1bc02a5908"
+firebase@3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-3.7.2.tgz#fab14f7e31de007dd373f9295a81f6fba04d3c98"
   dependencies:
     dom-storage "2.0.2"
     faye-websocket "0.9.3"
@@ -3180,9 +3180,9 @@ karma-cli@1.0.1:
   dependencies:
     resolve "^1.1.6"
 
-karma-coverage-istanbul-reporter@^0.2.0:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/karma-coverage-istanbul-reporter/-/karma-coverage-istanbul-reporter-0.2.2.tgz#d17bb802db4287d3b6a8ef4f10d79c318536e0c4"
+karma-coverage-istanbul-reporter@^0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/karma-coverage-istanbul-reporter/-/karma-coverage-istanbul-reporter-0.3.1.tgz#ea90c452ec1c514d688a2def1be844487b2689a7"
   dependencies:
     istanbul-api "^1.1.1"
 
@@ -3331,9 +3331,9 @@ loader-utils@0.2.x, loader-utils@^0.2.15, loader-utils@^0.2.16, loader-utils@^0.
     json5 "^0.5.0"
     object-assign "^4.0.1"
 
-localforage@^1.4.3:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/localforage/-/localforage-1.4.3.tgz#a212543c39c7c76424edd12bf474c489aaca494c"
+localforage@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/localforage/-/localforage-1.5.0.tgz#6b994e19b56611fa85df3992df397ac4ab66e815"
   dependencies:
     lie "3.0.2"
 
