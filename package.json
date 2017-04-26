@@ -53,7 +53,7 @@
     "@types/jasmine": "2.5.38",
     "@types/localforage": "0.0.33",
     "@types/lodash": "ts2.0",
-    "@types/node": "6.0.42",
+    "@types/node": "7.0.14",
     "codelyzer": "~2.0.0-beta.1",
     "gh-pages-deploy": "0.4.2",
     "jasmine-core": "2.5.2",
