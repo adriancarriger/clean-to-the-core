@@ -38,7 +38,7 @@
     "angular2-moment": "1.0.0",
     "angular2-notifications": "0.4.48",
     "angularfire2": "2.0.0-beta.8",
-    "angularfire2-offline": "2.0.7",
+    "angularfire2-offline": "4.0.1",
     "core-js": "2.4.1",
     "firebase": "3.8.0",
     "moment": "2.17.1",
